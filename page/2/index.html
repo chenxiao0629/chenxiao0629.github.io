@@ -152,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-10文件处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-11、函数的基本使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/10%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">文件处理</a>
+      <a class="article-title" href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">函数的基本使用</a>
     </h1>
   
 
         
-        <a href="/2022/05/13/10%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="archive-article-date">
+        <a href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
   	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
 </a>
         
@@ -172,9 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br></pre></td><td class="code"><pre><span class="line">操作系统</span><br><span class="line">	windows mac linux</span><br><span class="line">双击文件</span><br><span class="line">	硬盘转 磁头读取数据</span><br><span class="line">保存文件</span><br><span class="line">	硬盘转 磁头写入数据</span><br><span class="line"> </span><br><span class="line">我们在操作文件的时候其实操作的是硬盘</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;文件其实是操作系统暴露给我们可以简单快捷的操作硬盘的接口&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">绝对路径与相对路径</span><br><span class="line">	绝对路径</span><br><span class="line">    	非常详细的路径描述</span><br><span class="line">        	无论什么人什么位置都可以找到</span><br><span class="line">    相对路径</span><br><span class="line">    	有一个参考</span><br><span class="line">        	只有对应的人才可以找到</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line"><span class="comment"># 一、文件处理       </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># res = open(r&#x27;a.txt&#x27;,&#x27;r&#x27;,encoding=&#x27;utf8&#x27;)</span></span><br><span class="line"><span class="comment"># print(res.read())</span></span><br><span class="line"><span class="comment"># res.close()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开a.txt 使用变量名f指代改文件</span></span><br><span class="line"><span class="comment"># with open(r&#x27;a.txt&#x27;,&#x27;r&#x27;,encoding=&#x27;utf8&#x27;) as f:</span></span><br><span class="line"><span class="comment">#     print(f.read())  # 读取文件内容</span></span><br><span class="line">    <span class="comment"># with子代码运行结束之后会自动调用close关闭文件资源</span></span><br><span class="line"><span class="comment"># &quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># with open(文件路径,读写模式,编码格式) as 变量名:</span></span><br><span class="line"><span class="comment">#     子代码块</span></span><br><span class="line"><span class="comment"># 文件路径是必须的</span></span><br><span class="line"><span class="comment"># 读写模式和编码格式是可选的</span></span><br><span class="line"><span class="comment"># &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果不指定读写模式 那么默认使用r</span></span><br><span class="line"><span class="comment"># 如果不指定编码格式 那么默认使用当前计算机内部默认编码</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;在中国所有的windows电脑内部默认的编码是gbk&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;a.txt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.read())  <span class="comment"># 读取文件内容</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消转义</span></span><br><span class="line"><span class="comment"># res = r&#x27;D:\day08\a.txt&#x27;</span></span><br><span class="line"><span class="comment"># res1 = r&#x27;D:\day08\n.txt&#x27;</span></span><br><span class="line"><span class="comment"># res2 = r&#x27;D:\day08\t.txt&#x27;</span></span><br><span class="line"><span class="comment"># print(res,res1,res2)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;a.txt&#x27;</span>, mode=<span class="string">&#x27;rt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f, \</span><br><span class="line">		<span class="built_in">open</span>(<span class="string">r&#x27;b.txt&#x27;</span>, mode=<span class="string">&#x27;wt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二、文件打开模式</span></span><br><span class="line"><span class="comment"># 1、控制文件读写操作的模式</span></span><br><span class="line"><span class="comment"># r（默认）</span></span><br><span class="line"><span class="comment"># w</span></span><br><span class="line"><span class="comment"># a</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、控制文件读写内容的模式</span></span><br><span class="line"><span class="comment"># t（默认的）：读写都是以字符串为单位的，只适用于文件文件，必须指定encoding参数</span></span><br><span class="line"><span class="comment"># b：读写都是以bytes为单位的，适用于所有文件，一定不能指定encoding参数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># r模式：只读模式，如果文件不存在则报错,文件存在则文件指针处于文件开头</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(f.read())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;=&#x27;</span>*<span class="number">50</span>)</span><br><span class="line"><span class="built_in">print</span>(f.read())</span><br><span class="line"><span class="built_in">print</span>(f.readable())</span><br><span class="line"><span class="built_in">print</span>(f.writable())</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># w模式：只写模式，如果文件不存在则创建空文档,文件存在则清空，文件指针处于文件开头</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;wt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">f.write(<span class="string">&quot;你好\n&quot;</span>)</span><br><span class="line">f.write(<span class="string">&quot;哈哈哈\n&quot;</span>)</span><br><span class="line">f.write(<span class="string">&quot;我擦勒\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">f.write(<span class="string">&quot;你好\n哈哈哈\n我擦勒\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(f.readable())</span><br><span class="line"><span class="built_in">print</span>(f.writable())</span><br><span class="line"></span><br><span class="line">f.close()</span><br><span class="line"><span class="comment"># 总结：w模式，在打开了文件不关的情况下，连续的write写入，新写的内容永远跟在后面</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a模式：只追加写模式，如果文件不存在则创建空文档,文件存在不会清空，文件指针处于文件末尾</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;c.txt&#x27;</span>,mode=<span class="string">&#x27;at&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">f.write(<span class="string">&quot;4444\n&quot;</span>)</span><br><span class="line">f.write(<span class="string">&quot;555\n&quot;</span>)</span><br><span class="line">f.write(<span class="string">&quot;6666\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(f.readable())</span><br><span class="line"><span class="built_in">print</span>(f.writable())</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 总结：a模式，在打开了文件不关的情况下，连续的write写入，新写的内容永远跟在后面,这一点与w模式相同</span></span><br><span class="line"><span class="comment">#    不同的是，在打开了文件关闭然后重新打开的情况下，a模式永远写在后面</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># b模式：读写都是以bytes为单位的，适用于所有文件，一定不能指定encoding参数</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;1.mp4&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    res = f.read()</span><br><span class="line">    <span class="built_in">print</span>(res.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	res = f.read()</span><br><span class="line">	<span class="built_in">print</span>(res.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;ab&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&quot;啊手动阀手动阀&quot;</span>.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例：文件拷贝功能</span></span><br><span class="line"><span class="comment"># # 方案一：</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;1.mp4&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f1,<span class="built_in">open</span>(<span class="string">r&#x27;D:\1111111.mp4&#x27;</span>,mode=<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">    res = f1.read()</span><br><span class="line">    f2.write(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方案二：</span></span><br><span class="line"><span class="comment"># 储备知识：</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># f.read()</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line,end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;1.mp4&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 具体实现：</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;1.mp4&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f1,<span class="built_in">open</span>(<span class="string">r&#x27;D:\1111111.mp4&#x27;</span>,mode=<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f1:</span><br><span class="line">        f2.write(line)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可读可写</span></span><br><span class="line"><span class="comment"># r+t</span></span><br><span class="line"><span class="comment"># w+t</span></span><br><span class="line"><span class="comment"># a+t</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># r+b</span></span><br><span class="line"><span class="comment"># w+b</span></span><br><span class="line"><span class="comment"># a+b</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;r+t&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.readable())</span><br><span class="line">    <span class="built_in">print</span>(f.writable())</span><br><span class="line">    <span class="built_in">print</span>(f.read())</span><br><span class="line">    f.write(<span class="string">&quot;22222222222222222222\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;w+t&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.readable())</span><br><span class="line">    <span class="built_in">print</span>(f.writable())</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 三、文件操作的其他方法</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># lines = f.readlines()</span></span><br><span class="line">    <span class="comment"># print(lines)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(f.readline())</span><br><span class="line">    <span class="built_in">print</span>(f.readline())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;wt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># f.write(&quot;111\n222\n333\n&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># lines = [&#x27;111\n&#x27;,&#x27;222\n&#x27;,&#x27;3333\n&#x27;]</span></span><br><span class="line">    <span class="comment"># for line in lines:</span></span><br><span class="line">    <span class="comment">#     f.write(line)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># f.writelines(lines)</span></span><br><span class="line"></span><br><span class="line">    f.write(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">    f.flush()  <span class="comment"># 令操作系统直接存储硬盘，而不是等缓存到一定大小后在存</span></span><br><span class="line">    <span class="comment"># f.writelines(&#x27;hello&#x27;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 四、操控文件指针移动</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 大前提：只有t模式下的，f.read(n)中的n代表的是字符个数，除此以外，关于指针的移动，单位都是字节bytes</span></span><br><span class="line"><span class="comment"># f.read()</span></span><br><span class="line"><span class="comment"># with open(&#x27;a.txt&#x27;,mode=&#x27;rt&#x27;,encoding=&#x27;utf-8&#x27;) as f:</span></span><br><span class="line"><span class="comment">#     res = f.read(6)</span></span><br><span class="line"><span class="comment">#     print(res)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># with open(&#x27;a.txt&#x27;,mode=&#x27;rb&#x27;) as f:</span></span><br><span class="line"><span class="comment">#     # res = f.read(6)</span></span><br><span class="line"><span class="comment">#     res = f.read(8)</span></span><br><span class="line"><span class="comment">#     print(res.decode(&#x27;utf-8&#x27;))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># f.truncate()</span></span><br><span class="line"><span class="comment"># with open(&#x27;a.txt&#x27;,mode=&#x27;r+t&#x27;,encoding=&#x27;utf-8&#x27;) as f:</span></span><br><span class="line"><span class="comment">#     f.truncate(8)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># f.seek移动的全都是字节个数，字符串中：在UTF-8编码中：一个中文等于三个字节，中文标点占三个字节.一个英文字符等于一个字节，英文标点占一个字节。</span></span><br><span class="line"><span class="comment"># Unicode中：一个英文等于两个字节，一个中文（含繁体）等于两个字节。中文标点占两个字节，英文标点。	</span></span><br><span class="line">f.seek(字节个数,<span class="number">0</span>)</span><br><span class="line">f.seek(字节个数,<span class="number">1</span>)</span><br><span class="line">f.seek(字节个数,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">ps：只有<span class="number">0</span>模式可以t下使用，其中<span class="number">1</span>和<span class="number">2</span>模式只能在b模式下使用，但是无论在t模式还是b模式下，移动的都是字节个数</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line">    <span class="comment"># f.seek(9,0)</span></span><br><span class="line">    <span class="comment"># f.seek(3,0)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line">    f.seek(<span class="number">9</span>,<span class="number">1</span>)</span><br><span class="line">    f.seek(<span class="number">3</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line">    f.seek(<span class="number">0</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;a.txt&#x27;</span>,mode=<span class="string">&#x27;ab&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(f.tell())</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 文件修改的两种方式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.txt&#x27;</span>, mode=<span class="string">&#x27;r+t&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">   f.seek(<span class="number">9</span>,<span class="number">0</span>)</span><br><span class="line">   f.write(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">文件修改的原理：</span><br><span class="line">把硬盘数据读入内存，在内存修改完毕后，再覆盖回硬盘</span><br><span class="line"></span><br><span class="line">具体来说又分为两种方案</span><br><span class="line">方案一：</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.txt&#x27;</span>,mode=<span class="string">&#x27;rt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.txt&#x27;</span>,mode=<span class="string">&#x27;wt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(data.replace(<span class="string">&#x27;egon&#x27;</span>,<span class="string">&#x27;EGON&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">方案二：</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.txt&#x27;</span>,mode=<span class="string">&#x27;rt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f1,\</span><br><span class="line">        <span class="built_in">open</span>(<span class="string">&#x27;.test.txt.swp&#x27;</span>,mode=<span class="string">&#x27;wt&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f1:</span><br><span class="line">        f2.write(line.replace(<span class="string">&#x27;EGON&#x27;</span>,<span class="string">&quot;egon&quot;</span>))</span><br><span class="line"></span><br><span class="line">os.remove(<span class="string">&#x27;test.txt&#x27;</span>)</span><br><span class="line">os.rename(<span class="string">&#x27;.test.txt.swp&#x27;</span>,<span class="string">&#x27;test.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1 什么是函数</span></span><br><span class="line"><span class="string">    函数就是盛放功能(一系列代码)的容器</span></span><br><span class="line"><span class="string">    定义函数就是造出了一个工具</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    事先准备工具的过程-&gt;函数的定义</span></span><br><span class="line"><span class="string">    遇到应用场景拿来就用-&gt;函数的调用</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2 为何要用函数</span></span><br><span class="line"><span class="string">    不用函数写出的代码问题是:</span></span><br><span class="line"><span class="string">        1 程序的组织结构不清晰,可读性差,可维护性差</span></span><br><span class="line"><span class="string">        2 可扩展性差</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3 如何用函数</span></span><br><span class="line"><span class="string">    原则:</span></span><br><span class="line"><span class="string">        先定义</span></span><br><span class="line"><span class="string">        后调用</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    定义函数的语法:</span></span><br><span class="line"><span class="string">    def 函数名(参数1,参数2,参数3,...):</span></span><br><span class="line"><span class="string">        代码1</span></span><br><span class="line"><span class="string">        代码2</span></span><br><span class="line"><span class="string">        代码3</span></span><br><span class="line"><span class="string">        return 值</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    调用函数语法:</span></span><br><span class="line"><span class="string">    res = 函数名(值1,值2,值3)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> 定义函数与调用函数</span><br><span class="line">x = <span class="number">10</span></span><br><span class="line">y = x</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():  <span class="comment"># func = 函数的内存地址</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;*&quot;</span> * <span class="number">40</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>.center(<span class="number">40</span>, <span class="string">&#x27; &#x27;</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;=&#x27;</span> * <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(func)</span><br><span class="line">f = func</span><br><span class="line">f()</span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line">func()</span><br><span class="line">func()</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> 函数定义阶段发生的事情:</span><br><span class="line"> 申请内存空间,把函数体代码放进去,然后把内存地址绑定给函数名</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">2</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">3</span> 函数调用阶段发生的事情: 执行函数体代码</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">1</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">2</span>)</span><br><span class="line">    asdf</span><br><span class="line">    <span class="built_in">print</span>(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line"></span><br><span class="line">ps: 函数定义阶段只检测语法不执行代码,只有在调用函数时才会执行函数体代码</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例1:</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from bar&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from foo&#x27;</span>)</span><br><span class="line">    bar()</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例<span class="number">2</span>:</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from foo&#x27;</span>)</span><br><span class="line">    bar()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from bar&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line">          </span><br><span class="line">          </span><br><span class="line"><span class="comment"># 函数的参数：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line">    res = x + y</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">if</span> x &gt; y:</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func(<span class="number">11231231231</span>, <span class="number">22123123123213</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>(<span class="params">inp_user,inp_pwd</span>):</span><br><span class="line">    <span class="keyword">if</span> inp_user == <span class="string">&#x27;egon&#x27;</span> <span class="keyword">and</span> inp_pwd == <span class="string">&quot;123&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ok&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">login(<span class="string">&#x27;egon&#x27;</span>,<span class="string">&quot;123&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l = [<span class="number">111</span>, <span class="number">222</span>, <span class="number">333</span>, <span class="number">444</span>, <span class="number">555</span>]</span><br><span class="line"></span><br><span class="line">size = <span class="built_in">len</span>(l)</span><br><span class="line"><span class="keyword">if</span> size &gt; <span class="number">3</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;ok&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;no&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">max2</span>(<span class="params">sal1, sal2</span>):</span><br><span class="line">    <span class="keyword">if</span> sal1 &gt; sal2:</span><br><span class="line">        <span class="keyword">return</span> sal1</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> sal2</span><br><span class="line"></span><br><span class="line">res = max2(<span class="number">1000</span>,<span class="number">2000</span>)</span><br><span class="line"><span class="built_in">print</span>(res * <span class="number">12</span>)</span><br><span class="line"></span><br><span class="line">l = [<span class="number">111</span>, <span class="number">22</span>, <span class="number">333</span>]</span><br><span class="line">res = l.append(<span class="number">4444</span>)</span><br><span class="line">res = l.pop()</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span>返回值的语法:</span><br><span class="line">函数内可以有多个<span class="keyword">return</span>,但只要执行一次,整个函数就立即结束,并且将<span class="keyword">return</span>后的值当作本次调用的产品返回</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;aaaa&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">11111111111111</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;bbbb&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2222222222</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;cccc&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">333333333</span></span><br><span class="line"></span><br><span class="line">res = func()</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line">具体来说函数的返回值有三种形式</span><br><span class="line"><span class="number">1</span> <span class="keyword">return</span> 值: 返回的就是改值本身/-</span><br><span class="line"><span class="number">2</span> <span class="keyword">return</span> 值<span class="number">1</span>,值<span class="number">2</span>,值<span class="number">3</span>:返回的是小元组</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1111</span>,<span class="string">&quot;aaa&quot;</span>,[<span class="number">11</span>,<span class="number">222</span>]</span><br><span class="line"></span><br><span class="line">x,y,z = func()</span><br><span class="line"><span class="built_in">print</span>(x,y,z)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 没有return或者return无值或者return None:返回的都是None</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    res = <span class="number">1</span> + <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">res = func()</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
       
 
       
@@ -186,7 +184,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/10%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -390,6 +388,228 @@
 
 
   
+    <article id="post-13、名称空间与作用域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">名称空间与作用域</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、名称空间</p>
+<p>​	1.内建名称空间</p>
+<p>​	2、全局名称空间</p>
+<p>​	3、局部名称空间</p>
+<p>二、作用域</p>
+<p>​	1、全局作用域</p>
+<p>​	2、作用域与名字查找的优先级</p>
+<h1 id="一、名称空间"><a href="#一、名称空间" class="headerlink" title="一、名称空间"></a>一、名称空间</h1><p>名称空间即存放名字与对象映射&#x2F;绑定关系的地方。对于x&#x3D;3，Python会申请内存空间存放对象3，然后将名字x与3的绑定关系存放于名称空间中，del x表示清除该绑定关系</p>
+<p>在程序执行期间最多会存在三种名称空间</p>
+<h2 id="1-内建名称空间"><a href="#1-内建名称空间" class="headerlink" title="1.内建名称空间"></a>1.内建名称空间</h2><p>伴随python解释器的启动&#x2F;关闭而产生&#x2F;回收，因而是第一个被加载的名称空间，用来存放一些内置的名字，比如内建函数名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span></span><br><span class="line">&lt;built-<span class="keyword">in</span> function <span class="built_in">max</span>&gt; <span class="comment">#built-in内建</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2、全局名称空间"><a href="#2、全局名称空间" class="headerlink" title="2、全局名称空间"></a>2、全局名称空间</h2><p>伴随python文件的开始执行&#x2F;执行完毕而产生&#x2F;回收，是第二个被加载的名称空间，文件执行过程中产生的名字都会存放于该名称空间中，如下名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys <span class="comment">#模块名sys</span></span><br><span class="line"></span><br><span class="line">x=<span class="number">1</span> <span class="comment">#变量名x</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> x == <span class="number">1</span>:</span><br><span class="line">    y=<span class="number">2</span> <span class="comment">#变量名y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x</span>): <span class="comment">#函数名foo</span></span><br><span class="line">    y=<span class="number">1</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">Class Bar: <span class="comment">#类名Bar</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、局部名称空间"><a href="#3、局部名称空间" class="headerlink" title="3、局部名称空间"></a>3、局部名称空间</h2><p>伴随函数的调用&#x2F;结束而临时产生&#x2F;回收，函数的形参、函数内定义的名字都会被存放于该名称空间中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x</span>):</span><br><span class="line">    y=<span class="number">3</span> <span class="comment">#调用函数时，才会执行函数代码，名字x和y都存放于该函数的局部名称空间中</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、作用域"><a href="#二、作用域" class="headerlink" title="二、作用域"></a>二、作用域</h1><h2 id="1、全局作用域与局部作用域"><a href="#1、全局作用域与局部作用域" class="headerlink" title="1、全局作用域与局部作用域"></a>1、全局作用域与局部作用域</h2><p>按照名字作用范围的不同可以将三个名称空间划分为两个区域：</p>
+<ol>
+<li>全局作用域:位于全局名称空间、内建名称空间中的名字属于全局范围，该范围内的名字全局存活（除非被删除，否则在整个文件执行过程中存活）、全局有效（在任意位置都可以使用）；</li>
+<li>局部作用域:位于局部名称空间中的名字属于局部范围。该范围内的名字临时存活（即在函数调用时临时生成，函数调用结束后就释放）、局部有效（只能在函数内使用）。</li>
+</ol>
+<h2 id="2、作用域与名字查找的优先级"><a href="#2、作用域与名字查找的优先级" class="headerlink" title="2、作用域与名字查找的优先级"></a>2、作用域与名字查找的优先级</h2><p>在局部作用域查找名字时，起始位置是局部作用域，所以先查找局部名称空间，没有找到，再去全局作用域查找：先查找全局名称空间，没有找到，再查找内置名称空间，最后都没有找到就会抛出异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">100</span> <span class="comment">#全局作用域的名字x</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    x=<span class="number">300</span> <span class="comment">#局部作用域的名字x</span></span><br><span class="line">    <span class="built_in">print</span>(x) <span class="comment">#在局部找x</span></span><br><span class="line">foo()<span class="comment">#结果为300</span></span><br></pre></td></tr></table></figure>
+
+<p>在全局作用域查找名字时，起始位置便是全局作用域，所以先查找全局名称空间，没有找到，再查找内置名称空间，最后都没有找到就会抛出异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">100</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    x=<span class="number">300</span> <span class="comment">#在函数调用时产生局部作用域的名字x</span></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">#在全局找x,结果为100</span></span><br></pre></td></tr></table></figure>
+
+<p>提示：可以调用内建函数locals()和globals()来分别查看局部作用域和全局作用域的名字，查看的结果都是字典格式。在全局作用域查看到的locals()的结果等于globals()</p>
+<p>Python支持函数的嵌套定义，在内嵌的函数内查找名字时，会优先查找自己局部作用域的名字，然后由内而外一层层查找外部嵌套函数定义的作用域，没有找到，则查找全局作用域</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>(): <span class="comment"># 函数名inner属于outer这一层作用域的名字</span></span><br><span class="line">        x=<span class="number">3</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;inner x:%s&#x27;</span> %x)</span><br><span class="line"></span><br><span class="line">    inner()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;outer x:%s&#x27;</span> %x)</span><br><span class="line"></span><br><span class="line">outer() </span><br><span class="line"><span class="comment">#结果为</span></span><br><span class="line">inner x:<span class="number">3</span></span><br><span class="line">outer x:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>在函数内，无论嵌套多少层，都可以查看到全局作用域的名字，若要在函数内修改全局名称空间中名字的值，当值为不可变类型时，则需要用到global关键字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    <span class="keyword">global</span> x <span class="comment">#声明x为全局名称空间的名字</span></span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">#结果为2</span></span><br></pre></td></tr></table></figure>
+
+<p>当实参的值为可变类型时，函数体内对该值的修改将直接反应到原值，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">num_list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">nums</span>):</span><br><span class="line">    nums.append(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">foo(num_list)</span><br><span class="line"><span class="built_in">print</span>(num_list)</span><br><span class="line"><span class="comment">#结果为</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>对于嵌套多层的函数，使用nonlocal关键字可以将名字声明为来自外部嵌套函数定义的作用域（非全局）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span>  <span class="title function_">f1</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> x</span><br><span class="line">        x=<span class="number">3</span></span><br><span class="line">    f2() <span class="comment">#调用f2(),修改f1作用域中名字x的值</span></span><br><span class="line">    <span class="built_in">print</span>(x) <span class="comment">#在f1作用域查看x</span></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line"></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>nonlocal x会从当前函数的外层函数开始一层层去查找名字x，若是一直到最外层函数都找不到，则会抛出异常。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-14、函数对象和闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/">函数对象与闭包</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><ul>
+<li>一 函数对象</li>
+</ul>
+</li>
+<li><ul>
+<li>1.1 函数可以被引用</li>
+<li>1.2 函数可以作为容器类型的元素</li>
+<li>1.3 函数可以作为参数传入另外一个函数</li>
+<li>1.4 函数的返回值可以是一个函数</li>
+</ul>
+</li>
+<li><p>二 闭包函数</p>
+</li>
+<li><ul>
+<li>2.1 闭与包</li>
+<li>2.2 闭包的用途</li>
+</ul>
+</li>
+</ul>
+<h1 id="一-函数对象"><a href="#一-函数对象" class="headerlink" title="一 函数对象"></a>一 函数对象</h1><p>函数对象指的是函数可以被当做’数据’来处理，具体可以分为四个方面的使用，我们如下</p>
+<h2 id="1、函数可以被引用"><a href="#1、函数可以被引用" class="headerlink" title="1、函数可以被引用"></a>1、函数可以被引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x+y</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func=add</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、函数可以作为容器类型的元素"><a href="#2、函数可以作为容器类型的元素" class="headerlink" title="2、函数可以作为容器类型的元素"></a>2、函数可以作为容器类型的元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic=&#123;<span class="string">&#x27;add&#x27;</span>:add,<span class="string">&#x27;max&#x27;</span>:<span class="built_in">max</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic</span><br><span class="line">&#123;<span class="string">&#x27;add&#x27;</span>: &lt;function add at <span class="number">0x100661e18</span>&gt;, <span class="string">&#x27;max&#x27;</span>: &lt;built-<span class="keyword">in</span> function <span class="built_in">max</span>&gt;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic[<span class="string">&#x27;add&#x27;</span>](<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3、函数可以作为参数传入另一个函数"><a href="#3、函数可以作为参数传入另一个函数" class="headerlink" title="3、函数可以作为参数传入另一个函数"></a>3、函数可以作为参数传入另一个函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x,y,func</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> func(x,y)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo(<span class="number">1</span>,<span class="number">2</span>,add)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4、函数的返回值可以是一个函数"><a href="#4、函数的返回值可以是一个函数" class="headerlink" title="4、函数的返回值可以是一个函数"></a>4、函数的返回值可以是一个函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>(): </span><br><span class="line">     <span class="keyword">return</span> add </span><br><span class="line">func=bar() </span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="二-闭包函数"><a href="#二-闭包函数" class="headerlink" title="二 闭包函数"></a>二 闭包函数</h1><h2 id="1、闭与包"><a href="#1、闭与包" class="headerlink" title="1、闭与包"></a>1、闭与包</h2><p>基于函数对象的概念，可以将函数返回到任意位置去调用，但作用域的关系是在定义完函数时就已经被确定了的，与函数的调用位置无关。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f2</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f3</span>():</span><br><span class="line">    x=<span class="number">3</span></span><br><span class="line">    f2=f1() <span class="comment">#调用f1()返回函数f2</span></span><br><span class="line">    f2() <span class="comment">#需要按照函数定义时的作用关系去执行，与调用位置无关</span></span><br><span class="line"></span><br><span class="line">f3() <span class="comment">#结果为1</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说函数被当做数据处理时，始终以自带的作用域为准。若内嵌函数包含对外部函数作用域（而非全局作用域）中变量的引用，那么该’内嵌函数’就是闭包函数，简称闭包(Closures)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>():</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">func=outer()</span><br><span class="line">func() <span class="comment"># 结果为2</span></span><br></pre></td></tr></table></figure>
+
+<p>可以通过函数的<strong>closure</strong>属性，查看到闭包函数所包裹的外部变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>func.__closure__</span><br><span class="line">(&lt;cell at <span class="number">0x10212af78</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10028cca0</span>&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func.__closure__[<span class="number">0</span>].cell_contents</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>“闭”代表函数是内部的，“包”代表函数外’包裹’着对外层作用域的引用。因而无论在何处调用闭包函数，使用的仍然是包裹在其外层的变量。</p>
+<h2 id="2、闭包的用途"><a href="#2、闭包的用途" class="headerlink" title="2、闭包的用途"></a>2、闭包的用途</h2><p>目前为止，我们得到了两种为函数体传值的方式，一种是直接将值以参数的形式传入，另外一种就是将值包给函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment">#方式一：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">return</span> requests.get(url).text</span><br><span class="line"></span><br><span class="line"><span class="comment">#方式二：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">page</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">        <span class="keyword">return</span> requests.get(url).text</span><br><span class="line">    <span class="keyword">return</span> get</span><br></pre></td></tr></table></figure>
+
+<p>提示：requests模块是用来模拟浏览器向网站发送请求并将页面内容下载到本地，需要事先安装：pip3 install requests</p>
+<p>对比两种方式，方式一在下载同一页面时需要重复传入url，而方式二只需要传一次值，就会得到一个包含指定url的闭包函数，以后调用该闭包函数无需再传url</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一下载同一页面</span></span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二下载同一页面</span></span><br><span class="line">python=page(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">python()</span><br><span class="line">python()</span><br><span class="line">python()</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>闭包函数的这种特性有时又称为惰性计算。使用将值包给函数的方式，在接下来的装饰器中也将大有用处</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-15、装饰器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -514,19 +734,19 @@
 
 
   
-    <article id="post-13、名称空间与作用域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-16、迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">名称空间与作用域</a>
+      <a class="article-title" href="/2022/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/">迭代器</a>
     </h1>
   
 
         
-        <a href="/2022/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="archive-article-date">
+        <a href="/2022/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
   	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
 </a>
         
@@ -534,49 +754,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、名称空间</p>
-<p>​	1.内建名称空间</p>
-<p>​	2、全局名称空间</p>
-<p>​	3、局部名称空间</p>
-<p>二、作用域</p>
-<p>​	1、全局作用域</p>
-<p>​	2、作用域与名字查找的优先级</p>
-<h1 id="一、名称空间"><a href="#一、名称空间" class="headerlink" title="一、名称空间"></a>一、名称空间</h1><p>名称空间即存放名字与对象映射&#x2F;绑定关系的地方。对于x&#x3D;3，Python会申请内存空间存放对象3，然后将名字x与3的绑定关系存放于名称空间中，del x表示清除该绑定关系</p>
-<p>在程序执行期间最多会存在三种名称空间</p>
-<h2 id="1-内建名称空间"><a href="#1-内建名称空间" class="headerlink" title="1.内建名称空间"></a>1.内建名称空间</h2><p>伴随python解释器的启动&#x2F;关闭而产生&#x2F;回收，因而是第一个被加载的名称空间，用来存放一些内置的名字，比如内建函数名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span></span><br><span class="line">&lt;built-<span class="keyword">in</span> function <span class="built_in">max</span>&gt; <span class="comment">#built-in内建</span></span><br></pre></td></tr></table></figure>
+        <p>一、迭代器介绍</p>
+<ul>
+<li>可迭代对象</li>
+<li>迭代器对象</li>
+</ul>
+<p>二、for循环原理</p>
+<p>三、迭代器的优缺点</p>
+<ul>
+<li>优点</li>
+<li>缺点</li>
+</ul>
+<h1 id="一-迭代器介绍"><a href="#一-迭代器介绍" class="headerlink" title="一 迭代器介绍"></a>一 迭代器介绍</h1><p>迭代器即用来迭代取值的工具，而迭代是重复反馈过程的活动，其目的通常是为了逼近所需的目标或结果，每一次对过程的重复称为一次”迭代“，而每一次迭代得到的结果会作为下一次迭代的初始值，单纯的重复并不是迭代</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> Ture:</span><br><span class="line">    msg = <span class="built_in">input</span>(<span class="string">&#x27;&gt;&gt;&gt;:&#x27;</span>).strip()</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
 
-<h2 id="2、全局名称空间"><a href="#2、全局名称空间" class="headerlink" title="2、全局名称空间"></a>2、全局名称空间</h2><p>伴随python文件的开始执行&#x2F;执行完毕而产生&#x2F;回收，是第二个被加载的名称空间，文件执行过程中产生的名字都会存放于该名称空间中，如下名字</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys <span class="comment">#模块名sys</span></span><br><span class="line"></span><br><span class="line">x=<span class="number">1</span> <span class="comment">#变量名x</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> x == <span class="number">1</span>:</span><br><span class="line">    y=<span class="number">2</span> <span class="comment">#变量名y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x</span>): <span class="comment">#函数名foo</span></span><br><span class="line">    y=<span class="number">1</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">Class Bar: <span class="comment">#类名Bar</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>下述while循环才是一个迭代过程，不仅满足重复，而且以每次重新赋值后的index值作为下一次循环中的新的索引进行取值，反复迭代，最终可以取尽列表中的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line"></span><br><span class="line">index = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> index &lt; <span class="built_in">len</span>(goods):</span><br><span class="line">    <span class="built_in">print</span>(goods(index))</span><br><span class="line">    index += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="3、局部名称空间"><a href="#3、局部名称空间" class="headerlink" title="3、局部名称空间"></a>3、局部名称空间</h2><p>伴随函数的调用&#x2F;结束而临时产生&#x2F;回收，函数的形参、函数内定义的名字都会被存放于该名称空间中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x</span>):</span><br><span class="line">    y=<span class="number">3</span> <span class="comment">#调用函数时，才会执行函数代码，名字x和y都存放于该函数的局部名称空间中</span></span><br></pre></td></tr></table></figure>
+<h2 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h2><p>通过索引的方式进行迭代取值，实现简单，但仅使用于序列类型：字符串，列表，元组。对于没有索引的字典、集合等非序列类型，必须找到一种不依赖索引来进行迭代取值的方式，这就用到了迭代器。</p>
+<p>要想了解迭代器为何物，必须事先搞清楚一个很重要的概念：可迭代对象（Iterable）。从语法形式上讲，内置有__iter__方法的对象都是可迭代对象，字符串、列表、元组、字典、集合、打开的文件都是可迭代对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;egon&#x27;</span>&#125;.__iter__</span><br><span class="line">&#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;.__iter__</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 
-<h1 id="二、作用域"><a href="#二、作用域" class="headerlink" title="二、作用域"></a>二、作用域</h1><h2 id="1、全局作用域与局部作用域"><a href="#1、全局作用域与局部作用域" class="headerlink" title="1、全局作用域与局部作用域"></a>1、全局作用域与局部作用域</h2><p>按照名字作用范围的不同可以将三个名称空间划分为两个区域：</p>
-<ol>
-<li>全局作用域:位于全局名称空间、内建名称空间中的名字属于全局范围，该范围内的名字全局存活（除非被删除，否则在整个文件执行过程中存活）、全局有效（在任意位置都可以使用）；</li>
-<li>局部作用域:位于局部名称空间中的名字属于局部范围。该范围内的名字临时存活（即在函数调用时临时生成，函数调用结束后就释放）、局部有效（只能在函数内使用）。</li>
-</ol>
-<h2 id="2、作用域与名字查找的优先级"><a href="#2、作用域与名字查找的优先级" class="headerlink" title="2、作用域与名字查找的优先级"></a>2、作用域与名字查找的优先级</h2><p>在局部作用域查找名字时，起始位置是局部作用域，所以先查找局部名称空间，没有找到，再去全局作用域查找：先查找全局名称空间，没有找到，再查找内置名称空间，最后都没有找到就会抛出异常</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">100</span> <span class="comment">#全局作用域的名字x</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    x=<span class="number">300</span> <span class="comment">#局部作用域的名字x</span></span><br><span class="line">    <span class="built_in">print</span>(x) <span class="comment">#在局部找x</span></span><br><span class="line">foo()<span class="comment">#结果为300</span></span><br></pre></td></tr></table></figure>
+<h2 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><p>调用obj.iter()方法返回的结果就是一个迭代器对象(Iterator)。迭代器对象是内置有iter和next方法的对象，打开的文件本身就是一个迭代器对象，执行迭代器对象.iter()方法得到的仍然是迭代器本身，不依赖于索引的迭代取值方式，只要存在多个”值“，无论序列类型还是非序列类型都可以按照迭代器的方式取值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;  <span class="comment"># 可迭代对象s</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i = <span class="built_in">iter</span>(s)  <span class="comment"># 本质就是载调用s.__iter__()，返回s的迭代器对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)  <span class="comment"># 本质就是再调用i.__next__()</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)  <span class="comment"># 抛出StopIteration的异常，代表无值可取，迭代结束</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
 
-<p>在全局作用域查找名字时，起始位置便是全局作用域，所以先查找全局名称空间，没有找到，再查找内置名称空间，最后都没有找到就会抛出异常</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">100</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    x=<span class="number">300</span> <span class="comment">#在函数调用时产生局部作用域的名字x</span></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">#在全局找x,结果为100</span></span><br></pre></td></tr></table></figure>
+<h1 id="for循环原理"><a href="#for循环原理" class="headerlink" title="for循环原理"></a>for循环原理</h1><p>有了迭代器后，我们便可以不依赖索引迭代取值了，使用while循环的实现方式如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line">i = <span class="built_in">iter</span>(goods)  <span class="comment"># 每次都需要重新获取一个迭代器对象</span></span><br><span class="line"><span class="keyword">while</span> Ture:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">next</span>(i))</span><br><span class="line">    <span class="keyword">except</span> StopIteration:  <span class="comment"># 捕捉异常终止循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-<p>提示：可以调用内建函数locals()和globals()来分别查看局部作用域和全局作用域的名字，查看的结果都是字典格式。在全局作用域查看到的locals()的结果等于globals()</p>
-<p>Python支持函数的嵌套定义，在内嵌的函数内查找名字时，会优先查找自己局部作用域的名字，然后由内而外一层层查找外部嵌套函数定义的作用域，没有找到，则查找全局作用域</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>(): <span class="comment"># 函数名inner属于outer这一层作用域的名字</span></span><br><span class="line">        x=<span class="number">3</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;inner x:%s&#x27;</span> %x)</span><br><span class="line"></span><br><span class="line">    inner()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;outer x:%s&#x27;</span> %x)</span><br><span class="line"></span><br><span class="line">outer() </span><br><span class="line"><span class="comment">#结果为</span></span><br><span class="line">inner x:<span class="number">3</span></span><br><span class="line">outer x:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>for循环又称为迭代循环，in后可以跟任意可迭代对象，上述while循环可以简写为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> goods:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure>
 
-<p>在函数内，无论嵌套多少层，都可以查看到全局作用域的名字，若要在函数内修改全局名称空间中名字的值，当值为不可变类型时，则需要用到global关键字</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    <span class="keyword">global</span> x <span class="comment">#声明x为全局名称空间的名字</span></span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">#结果为2</span></span><br></pre></td></tr></table></figure>
-
-<p>当实参的值为可变类型时，函数体内对该值的修改将直接反应到原值，</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">num_list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">nums</span>):</span><br><span class="line">    nums.append(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">foo(num_list)</span><br><span class="line"><span class="built_in">print</span>(num_list)</span><br><span class="line"><span class="comment">#结果为</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<p>对于嵌套多层的函数，使用nonlocal关键字可以将名字声明为来自外部嵌套函数定义的作用域（非全局）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span>  <span class="title function_">f1</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> x</span><br><span class="line">        x=<span class="number">3</span></span><br><span class="line">    f2() <span class="comment">#调用f2(),修改f1作用域中名字x的值</span></span><br><span class="line">    <span class="built_in">print</span>(x) <span class="comment">#在f1作用域查看x</span></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line"></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>nonlocal x会从当前函数的外层函数开始一层层去查找名字x，若是一直到最外层函数都找不到，则会抛出异常。</p>
+<p>for循环再工作时，首先会调用可迭代对象goods内置的iter方法拿到一个迭代器对象，然后再调用该迭代器对象的next方法将取到的值赋给iten，执行循环体完成一次循环，周而复始，直到捕捉StopIteration异常，结束迭代。</p>
+<h1 id="三-迭代器的优缺点"><a href="#三-迭代器的优缺点" class="headerlink" title="三 迭代器的优缺点"></a>三 迭代器的优缺点</h1><p>基于索引的迭代取值，所有的状态都保存在了索引中，而基于迭代器实现迭代的方式不再需要索引，所有迭代的状态就保存在迭代器中，然而这种处理方式优点于缺点并存：</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>为序列和非序列类型提供了统一的迭代取值方式。</li>
+<li>惰性计算：迭代器对象表示的是一个数据流，可以只在需要时才去调用next来计算出一个值，就迭代器本身来说，同一时刻在内存中只有一个值，因而可以存放无限大的数据流，而对于其他容器类型，如列表，需要把所有的元素都存放于内存中，受内存大小的限制，可以存放的值的个数是有限的。</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>除非取尽，否则无法获取迭代器的长度</li>
+<li>只能取下一个值，不能回到开始，更像是’一次性的‘，迭代器产生后的唯一目标就是重复执行next方法直到值取尽，否则就会停留在某个位置，等待下一次调用next；若是要再次迭代同个对象，你只能重新调用iter方法去创建一个新的迭代器对象，如果有两个或者多个循环使用同一个迭代器，必然只会有一个循环能取到值。</li>
+</ul>
 
       
 
@@ -589,7 +806,100 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-18、函数递归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/">函数递归</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>函数递归调用介绍</p>
+<p>回溯与递推</p>
+<h1 id="一、函数递归调用介绍"><a href="#一、函数递归调用介绍" class="headerlink" title="一、函数递归调用介绍"></a>一、函数递归调用介绍</h1><p>函数不仅可以嵌套定义，话可以桥套调用，即在调用一个函数的过程中，函数内部又调用另一个函数，而函数的递归调用指的是在调用一个函数的过程中又直接或间接地调用该函数本身</p>
+<p>例如，在调用f1地过程中，又调用f1，这就是直接调用函数f1本身</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    peint(<span class="string">&#x27;from f1&#x27;</span>)</span><br><span class="line">    f1()</span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
+
+<p>在调用f1的过程中，又调用f2，而在调用f2的过程中又调用f1，这就是间接调用f1函数本身</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from f1&#x27;</span>)</span><br><span class="line">    f2()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from f2&#x27;</span>)</span><br><span class="line">    f1()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，两种情况下递归调用都是一个无限循环的过程，但在python对函数的递归调用的深度做了限制，因而并不会像大家想的那样进入无线循环，会抛出异常，要避免出现这种情况，就必须让递归调用在某个特定条件下终止</p>
+<p>提示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.可以使用sys.getrecursionlimit()去查看递归深度，默认值为1000，虽然可以使用</span></span><br><span class="line">sys.setrecursionlimit()  <span class="comment"># 去设置该值，但仍受限于主机操作系统栈大小的限制</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.python不是一门函数式编程语言，无法对递归进行尾递归优化</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、回溯与递推"><a href="#二、回溯与递推" class="headerlink" title="二、回溯与递推"></a>二、回溯与递推</h1><p>下面我们用一个浅显的例子，为了让读者阐释递归的原理和使用：</p>
+<p>某公司四个员工坐在一起，问第四个人薪水，他说比第三个人多1000，问第三个人薪水，第他说比第二个人多1000，问第二个人薪水，他说比第一个人多1000，最后第一人说自己每月5000，请问第四个人的薪水是多少？</p>
+<p>思路解析：</p>
+<p>要知道第四个人的月薪，就必须知道第三个人的，第三个人的又取决于第二个人的，第二个人的又取决于第一个人的，而且每一个员工都比前一个多一千，数学表达式即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">salary(<span class="number">4</span>)=salary(<span class="number">3</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">3</span>)=salary(<span class="number">2</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">2</span>)=salary(<span class="number">1</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">1</span>)=<span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 总结为：</span></span><br><span class="line">salary(n) = salary(n-<span class="number">1</span>) + <span class="number">1000</span>  <span class="comment"># n&gt;1</span></span><br><span class="line">salary(<span class="number">1</span>) = <span class="number">5000</span>  <span class="comment"># n = 1</span></span><br></pre></td></tr></table></figure>
+
+<p>很明显这是一个递归的过程，可以将该过程分为两个阶段：回溯和递推。</p>
+<p> 在回溯阶段，要求第n个员工的薪水，需要回溯得到(n-1)个员工的薪水，以此类推，直到得到第一个员工的薪水，此时，salary(1)已知，因而不必再向前回溯了。然后进入递推阶段：从第一个员工的薪水可以推算出第二个员工的薪水(6000)，从第二个员工的薪水可以推算出第三个员工的薪水(7000)，以此类推，一直推算出第第四个员工的薪水(8000)为止，递归结束。需要注意的一点是，递归一定要有一个结束条件，这里n&#x3D;1就是结束条件。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b8756ae5141d371f4594408e3df84e56_720w.jpg" alt="img"></p>
+<p>代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">salary</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5000</span></span><br><span class="line">    <span class="keyword">return</span> salary(n - <span class="number">1</span>) + <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">s = salary(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行结果为 8000</span></span><br></pre></td></tr></table></figure>
+
+<p>程序分析：</p>
+<p>在未满足n==1的条件时，一直进行递归调用，即一直回溯，见图4.3的左半部分。而在满足n==1的条件时，终止递归调用，即结束回溯，从而进入递推阶段，依次推导直到得到最终的结果。</p>
+<p>递归本质就是在做重复的事情，所以理论上递归可以解决的问题循环也都可以解决，只不过在某些情况下，使用递归会更容易实现，比如有一个嵌套多层的列表，要求打印出所有的元素，代码实现如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">items = [[<span class="number">1</span>,<span class="number">2</span>], <span class="number">3</span>, [<span class="number">4</span>, [<span class="number">5</span>, [<span class="number">6</span>, <span class="number">7</span>]]]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">items</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(i, <span class="built_in">list</span>):</span><br><span class="line">            foo(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(i, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">foo(items)  <span class="comment"># 打印结果1 2 3 4 5 6 7</span></span><br></pre></td></tr></table></figure>
+
+<p>使用递归，我们只需要分析出要重复执行的代码逻辑，然后提取进入下一次递归调用的条件或者说递归结束的条件即可，代码实现起来简洁清晰</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/">展开全文 >></a>
         </p>
       
 
@@ -753,19 +1063,19 @@
 
 
   
-    <article id="post-16、迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-21、包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/">迭代器</a>
+      <a class="article-title" href="/2022/05/13/21%E3%80%81%E5%8C%85/">包</a>
     </h1>
   
 
         
-        <a href="/2022/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
+        <a href="/2022/05/13/21%E3%80%81%E5%8C%85/" class="archive-article-date">
   	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
 </a>
         
@@ -773,46 +1083,61 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、迭代器介绍</p>
+        <p>包的介绍</p>
+<p>包的使用</p>
 <ul>
-<li>可迭代对象</li>
-<li>迭代器对象</li>
+<li>导入包与__init__.py</li>
+<li>绝对导入与相对导入</li>
+<li>from包import*</li>
 </ul>
-<p>二、for循环原理</p>
-<p>三、迭代器的优缺点</p>
-<ul>
-<li>优点</li>
-<li>缺点</li>
-</ul>
-<h1 id="一-迭代器介绍"><a href="#一-迭代器介绍" class="headerlink" title="一 迭代器介绍"></a>一 迭代器介绍</h1><p>迭代器即用来迭代取值的工具，而迭代是重复反馈过程的活动，其目的通常是为了逼近所需的目标或结果，每一次对过程的重复称为一次”迭代“，而每一次迭代得到的结果会作为下一次迭代的初始值，单纯的重复并不是迭代</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> Ture:</span><br><span class="line">    msg = <span class="built_in">input</span>(<span class="string">&#x27;&gt;&gt;&gt;:&#x27;</span>).strip()</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
+<h1 id="一、包的介绍"><a href="#一、包的介绍" class="headerlink" title="一、包的介绍"></a>一、包的介绍</h1><p>随着模块数目的增多，把所有模块不加区分地放到一起也是极不合理的，于是python为我们提供了一种把模块组织到一起的方法，即创建一个包。包就是一个含有__init__.py文件的文件夹，文件夹内可以组织子模块或子包，例如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pool/</span><br><span class="line">|——__init__.py</span><br><span class="line">|——futures</span><br><span class="line">|	|——__init__.py</span><br><span class="line">|	|——process.py</span><br><span class="line">|	|——thread.py</span><br><span class="line">└── versions.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>下述while循环才是一个迭代过程，不仅满足重复，而且以每次重新赋值后的index值作为下一次循环中的新的索引进行取值，反复迭代，最终可以取尽列表中的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line"></span><br><span class="line">index = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> index &lt; <span class="built_in">len</span>(goods):</span><br><span class="line">    <span class="built_in">print</span>(goods(index))</span><br><span class="line">    index += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>需要强调的是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在python3中，即使包下没有__init__.py文件，import 包仍然不会报错，而在python2中，包下一定要有该文件，否则import 包报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 创建包的目的不是为了运行，而是被导入使用，记住，包只是模块的一种形式而已，包的本质就是一种模块</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h2><p>通过索引的方式进行迭代取值，实现简单，但仅使用于序列类型：字符串，列表，元组。对于没有索引的字典、集合等非序列类型，必须找到一种不依赖索引来进行迭代取值的方式，这就用到了迭代器。</p>
-<p>要想了解迭代器为何物，必须事先搞清楚一个很重要的概念：可迭代对象（Iterable）。从语法形式上讲，内置有__iter__方法的对象都是可迭代对象，字符串、列表、元组、字典、集合、打开的文件都是可迭代对象：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;egon&#x27;</span>&#125;.__iter__</span><br><span class="line">&#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;.__iter__</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>接下来我们就以包pool为例来介绍包的使用，包内各文件内容如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ProcessPoolExecutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">submt</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ProcessPool submit&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"><span class="comment"># thread.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadPoolExcutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="comment"># versions.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;check versions&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># __init__.py文件内容均为空</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><p>调用obj.iter()方法返回的结果就是一个迭代器对象(Iterator)。迭代器对象是内置有iter和next方法的对象，打开的文件本身就是一个迭代器对象，执行迭代器对象.iter()方法得到的仍然是迭代器本身，不依赖于索引的迭代取值方式，只要存在多个”值“，无论序列类型还是非序列类型都可以按照迭代器的方式取值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;  <span class="comment"># 可迭代对象s</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i = <span class="built_in">iter</span>(s)  <span class="comment"># 本质就是载调用s.__iter__()，返回s的迭代器对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)  <span class="comment"># 本质就是再调用i.__next__()</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)  <span class="comment"># 抛出StopIteration的异常，代表无值可取，迭代结束</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
+<h1 id="二、包的使用"><a href="#二、包的使用" class="headerlink" title="二、包的使用"></a>二、包的使用</h1><h2 id="1-导入包与-init-py"><a href="#1-导入包与-init-py" class="headerlink" title="1.导入包与__init__.py"></a>1.导入包与__init__.py</h2><p>包属于模块的一种，因而包以及包内的模块均是用来被导入使用的，而绝非被直接执行，首次导入包（如import pool）同样会做三件事：</p>
+<p>1.执行包下的__init__.py文件</p>
+<p>2.产生一个新的名称空间用于存放__init__.py执行过程中产生的名字</p>
+<p>3.在当前执行文件所在的名称空间中得到一个名字pool，该名子指向__init__.py的名称空间，例如pool.xxx和poo.yyy中的xxx和yyy都是来自于pool下的__init__.py，也就是说导入包时并不会导入包下所有的子模块与子包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.versions.check()  <span class="comment"># 抛出异常AttributeError</span></span><br><span class="line">pool.futures.process.ProcessExecutor(<span class="number">3</span>)  <span class="comment"># 抛出异常AttributeError</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="for循环原理"><a href="#for循环原理" class="headerlink" title="for循环原理"></a>for循环原理</h1><p>有了迭代器后，我们便可以不依赖索引迭代取值了，使用while循环的实现方式如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line">i = <span class="built_in">iter</span>(goods)  <span class="comment"># 每次都需要重新获取一个迭代器对象</span></span><br><span class="line"><span class="keyword">while</span> Ture:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">next</span>(i))</span><br><span class="line">    <span class="keyword">except</span> StopIteration:  <span class="comment"># 捕捉异常终止循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>pool.versions.check()要求pool下有名字versions，进而pool.versions下有名字check。pool.versions下已经有名字check了，所以问题出现在pool下没有名字versions，这就需要在pool下的__init__.py中导入模块versions</p>
+<p><strong>强调</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>关于包相关的导入语句也分为<span class="keyword">import</span>和<span class="keyword">from</span>...<span class="keyword">import</span>...两种，但是无论哪种，无论在什么位置，在导入时都必须遵循一个原则：凡是在导入时带点的，点的左边都必须是一个包，否则非法。可以带有一连串的点，如<span class="keyword">import</span> 顶级包.子包.子模块，但都必须遵循这个原则。但对于导入后，在使用时就没有这种限制了，点的左边可以是包，模块，函数，类</span><br></pre></td></tr></table></figure>
 
-<p>for循环又称为迭代循环，in后可以跟任意可迭代对象，上述while循环可以简写为</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> goods:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure>
+<h2 id="2-绝对导入与相对导入"><a href="#2-绝对导入与相对导入" class="headerlink" title="2.绝对导入与相对导入"></a>2.绝对导入与相对导入</h2><p>针对包内的模块之间互相导入，导入的方式有两种</p>
+<p>1.绝对导入：以顶级包为起始</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
 
-<p>for循环再工作时，首先会调用可迭代对象goods内置的iter方法拿到一个迭代器对象，然后再调用该迭代器对象的next方法将取到的值赋给iten，执行循环体完成一次循环，周而复始，直到捕捉StopIteration异常，结束迭代。</p>
-<h1 id="三-迭代器的优缺点"><a href="#三-迭代器的优缺点" class="headerlink" title="三 迭代器的优缺点"></a>三 迭代器的优缺点</h1><p>基于索引的迭代取值，所有的状态都保存在了索引中，而基于迭代器实现迭代的方式不再需要索引，所有迭代的状态就保存在迭代器中，然而这种处理方式优点于缺点并存：</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>为序列和非序列类型提供了统一的迭代取值方式。</li>
-<li>惰性计算：迭代器对象表示的是一个数据流，可以只在需要时才去调用next来计算出一个值，就迭代器本身来说，同一时刻在内存中只有一个值，因而可以存放无限大的数据流，而对于其他容器类型，如列表，需要把所有的元素都存放于内存中，受内存大小的限制，可以存放的值的个数是有限的。</li>
-</ul>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
-<li>除非取尽，否则无法获取迭代器的长度</li>
-<li>只能取下一个值，不能回到开始，更像是’一次性的‘，迭代器产生后的唯一目标就是重复执行next方法直到值取尽，否则就会停留在某个位置，等待下一次调用next；若是要再次迭代同个对象，你只能重新调用iter方法去创建一个新的迭代器对象，如果有两个或者多个循环使用同一个迭代器，必然只会有一个循环能取到值。</li>
-</ul>
+<p>2.相对导入：代表当前文件所在的目录，..代表当前目录的上一级目录，依次类推</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool 下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
+
+<p>同理，针对pool.futures.process.ProcessPoolExecutor(3)，则需要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#操作pool下的__init__.py，保证pool.futures</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> futures <span class="comment">#或from pool import futures</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#操作futrues下的__init__.py，保证pool.futures.process</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> process <span class="comment">#或from pool.futures import process</span></span><br></pre></td></tr></table></figure>
+
+<p>相对导入只能用from module import symbol的形式,import ..versions语法是不对的，且symbol只能是一个明确的名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> futures.process  <span class="comment"># 语法错误</span></span><br><span class="line"><span class="keyword">from</span> pool.futures <span class="keyword">import</span> process  <span class="comment"># 语法正确</span></span><br></pre></td></tr></table></figure>
+
+<p>针对包内部模块之间的相互导入推荐使用相对导入，需要特别强调：</p>
+<p>1、相对导入只能在包内部使用，用相对导入不同目录下的模块是非法的</p>
+<p>2、无论是import还是from-import，但凡是在导入时带点的，点的左边必须是包,否则语法错误</p>
+<h2 id="3-总结包的使用"><a href="#3-总结包的使用" class="headerlink" title="3.总结包的使用"></a>3.总结包的使用</h2><p>总结包的使用需要牢记三点<br>1、导包就是在导包下__init__.py文件<br>2、包内部的导入应该使用相对导入，相对导入也只能在包内部使用，而且…取上一级不能出包<br>3、<br>    使用语句中的点代表的是访问属性<br>    m.n.x —-&gt; 向m要n，向n要x<br>    而导入语句中的点代表的是路径分隔符<br>    import a.b.c –&gt; a&#x2F;b&#x2F;c，文件夹下a下有子文件夹b，文件夹b下有子文件或文件夹c<br>    所以导入语句中点的左边必须是一个包</p>
+<h2 id="4-from包和import"><a href="#4-from包和import" class="headerlink" title="4.from包和import *"></a>4.from包和import *</h2><p>在使用包时同样支持from pool.futures import * ，毫无疑问<em>代表的是futures下__init__.py中所有的名字，通用是用变量__all__来控制</em>代表的意思</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#futures下的__init__.py</span></span><br><span class="line">__all__ = [<span class="string">&#x27;process&#x27;</span>, <span class="string">&#x27;thread&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>最后说明一点，包内部的目录结构通常是包的开发者为了方便自己管理和维护代码而创建的，这种目录结构对包的使用者往往是无用的，此时通过操作__init__.py可以“隐藏”包内部的目录结构，降低使用难度，比如想要让使用者直接使用</p>
+<p>pool下的__init__.py中导入子模块或子包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .versions <span class="keyword">import</span> check</span><br><span class="line"><span class="keyword">from</span> .futures.process <span class="keyword">import</span> ProcessPoolExecutor</span><br><span class="line"><span class="keyword">from</span> .futures.thread <span class="keyword">import</span> ThreadPoolExecutor</span><br></pre></td></tr></table></figure>
+
+
+
+<p>程序运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.check()</span><br><span class="line">pool.ProcessPoolExecutor(<span class="number">3</span>)</span><br><span class="line">pool.ThreadPoolExecutor(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -825,7 +1150,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/13/21%E3%80%81%E5%8C%85/">展开全文 >></a>
         </p>
       
 
@@ -948,378 +1273,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/13/17%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-20、模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/">模块</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></p>
-<p>模块介绍</p>
-<p>模块的使用</p>
-<ul>
-<li>import语句</li>
-<li>from-import语句</li>
-<li>其他导入语法（as）</li>
-<li>循环导入问题</li>
-<li>搜索模块的路径与优先级</li>
-<li>区分py文件的两种用途</li>
-<li>编写一个规范的模块</li>
-</ul>
-<h1 id="一、模块介绍"><a href="#一、模块介绍" class="headerlink" title="一、模块介绍"></a>一、模块介绍</h1><p>在Python中，一个py文件就是一个模块，文件名为xxx.py模块名则是xxx，导入模块可以引用模块中已经写好的功能，如果把开发程序比喻成制造一台电脑，编写模块就像是在制造电脑的零部件，准备好零部件后，剩下的工作就是按照逻辑把它们组装到一起</p>
-<p>将程序模块化会使得程序的组织结构清晰，维护起来更加方便，比起直接开发一个完整的程序，单独开发一个小的模块也会更加简单，并且程序中的模块与电脑中的零部件稍微不同的是：程序中的模块可以被重复利用。所以总结下来，使用模块既保证了代码的重要性，又增加了程序的结构性和可维护性。另外除了自定义模块外，我们还可以导入使用内置或第三方模块提供的现成功能，这种”拿来主义“极大地提高了程序员的开发效率</p>
-<h1 id="二、模块的使用"><a href="#二、模块的使用" class="headerlink" title="二、模块的使用"></a>二、模块的使用</h1><h2 id="1-import语句"><a href="#1-import语句" class="headerlink" title="1.import语句"></a>1.import语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件名：foo.py</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>():</span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;from the func&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>想要在另外一个py文件中引用foo.py中的功能，需要使用import foo，首次导入模块会做三件事：</p>
-<p>1.执行源文件代码</p>
-<p>2.产生一个新的名称空间用于存放源文件执行过程中产生的名字</p>
-<p>3.在当前执行文件所在的名称空间中得到一个名字foo，该名子指向新创建的模块名称空间，若要引用模块名称空间中的名字，需要加上该前缀，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">imprt foo  <span class="comment"># 导入模块foo</span></span><br><span class="line">a = foo.x  <span class="comment"># 引用模块foo中变量x的值赋值给当前名称空间中的名字a</span></span><br><span class="line">foo.get()  <span class="comment"># 调用模块foo的get函数</span></span><br><span class="line">foo.change()  <span class="comment"># 调用foo中的change函数</span></span><br><span class="line">obj = foo.Foo()  <span class="comment"># 使用模块foo的类Foo来实例化，进一步可以执行obj.func()</span></span><br></pre></td></tr></table></figure>
-
-<p>加上foo.作为前缀就相当于指名道姓地说明要引用foo名称空间中的名字，所以肯定不会与当前执行文件所在名称空间中的名字相冲突，并且若当前执行文件的名称空间中存在x，执行foo.get()或foo.change()操作的都是源文件中的全局变量x</p>
-<p>需要强调一点是，第一次导入模块已经将其加载到内存空间了，之后的重复导入会直接引用内存中已存在的模块，不会重复执行文件，通过import sys，打印sys.modules的值可以看到内存中已经加载的模块名。</p>
-<p>提示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.在python中模块也属于第一类对象，可以进行赋值、以数据形式传递以及作为容器类型的元素等操作</span></span><br><span class="line"><span class="comment"># 2.模块名应该遵循小写形式，标准库从python2过度到python3做出了很多这类调整，比如ConfigParser、Queue、SocketServer全更新为纯小写形式</span></span><br></pre></td></tr></table></figure>
-
-<p>用import语句导入多个模块，可以写多行import语句</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module1</span><br><span class="line"><span class="keyword">import</span> module2</span><br><span class="line"><span class="keyword">import</span> module3</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>还可以在一行导入，用逗号分开不同的模块</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module1, module2</span><br></pre></td></tr></table></figure>
-
-<p>但其实第一种形式更为规范，可读性更强，推荐使用，而且我们导入的模块中可能包含有python内置的模块、第三方模块、自定义的模块，为了便于明显的区分它们，我们通常子啊文件的开头导入模块，并且分类导入，一类模块与另外一类模块的导入用空行隔开，不同类别的导入顺序如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> python内置模块</span><br><span class="line"><span class="keyword">import</span> 第三方模块</span><br><span class="line"><span class="keyword">import</span> 程序员自定义模块</span><br></pre></td></tr></table></figure>
-
-<p>当然，我们也可以在函数内导入模块，对比在文件开头导入模块属于全局作用域，在函数内导入的模块则属于局部的作用域。</p>
-<h2 id="2-from-import-语句"><a href="#2-from-import-语句" class="headerlink" title="2.from-import 语句"></a>2.from-import 语句</h2><p>rom…import…与import语句基本一致，唯一不同的是：使用import foo导入模块后，引用模块中的名字都需要加上foo.作为前缀，而使用from foo omport x, get ,change, Foo则可以在当前执行文件中直接引用模块foo的名字，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> x, get, change  <span class="comment"># 将模块foo中的x，get，change导入当前名称空间</span></span><br><span class="line">a = x  <span class="comment"># 直接使用模块foo中的x赋值给a</span></span><br><span class="line">get()  <span class="comment"># 直接执行foo中的get函数</span></span><br><span class="line">change()  <span class="comment"># 即便是当前又重名的x，修改的仍然是源文件中的x</span></span><br></pre></td></tr></table></figure>
-
-<p>无需加前缀的好处是使得我们的代码更加简洁，坏处则是容易与当前名称空间中的名字冲突，如果当前名称空间存在相同的名字，则后定义的名字会覆盖之前定义的名字</p>
-<p>另外from语句支持from foo import * 语法，*代表将foo中所有的名字都导入到当前位置</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> *  <span class="comment"># 把foo中所有的名字都导入到当前执行文件的名称空间中，在当前位置直接可以使用这些名字</span></span><br><span class="line"></span><br><span class="line">a = x</span><br><span class="line">get()</span><br><span class="line">change()</span><br><span class="line">obj = Foo()</span><br></pre></td></tr></table></figure>
-
-<p>如果我们需要引用模块中的名字过多的话，可以采用上述的导入形式来达到节省代码量的效果，但是需要强调的一点是：只能在模块最顶层使用的方式导入，在函数内则非法，并且这种方式会带来一个副作用，即我们无法搞清楚究竟从源文件中导入了哪些名字到当前位置，这极有可能与当前位置的名字产生冲突，模块的编写者可以在自己的文件中定义__all__变量用来控制*代表的意思</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># foo.py</span></span><br><span class="line">__all__ = [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;get&#x27;</span>]  <span class="comment"># 该列表中所有的元素必须是字符串类型，每个元素对应foo.py中的一个名字</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>():</span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;from the func&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这样我们在另外一个文件中使用*导入时，就只能导入__all__定义的名字了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> *  <span class="comment"># 此时的*只代表x和get</span></span><br><span class="line"></span><br><span class="line">x  <span class="comment"># 可用</span></span><br><span class="line">get()  <span class="comment"># 可用</span></span><br><span class="line">change()  <span class="comment"># 不可用</span></span><br><span class="line">Foo()  <span class="comment"># 不可用</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="3-其他导入语法（as）"><a href="#3-其他导入语法（as）" class="headerlink" title="3.其他导入语法（as）"></a>3.其他导入语法（as）</h2><p>我们还可以在当前位置为导入的模块起一个别名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> foo <span class="keyword">as</span> f  <span class="comment"># 为导入的模块foo在当前位置起别名f，以后再使用时就用这个别名f</span></span><br><span class="line">f.x</span><br><span class="line">f.get()</span><br></pre></td></tr></table></figure>
-
-<p>还可以为导入的一个名字起别名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> get <span class="keyword">as</span> get_x</span><br><span class="line">get_x()</span><br></pre></td></tr></table></figure>
-
-<p>通常在被导入的名字过长时采用起别名的方式来精简代码，另外为被导入的名字起别名可以很好地避免与当前名字发生冲突，还有很重要的一点就是：可以保持调用方式的一致性，例如我们有两个模块json和pickle同时实现了load方法，作用是从一个打开的文件中解析出结构化的数据，但解析的格式不同，可以用下述代码有选择性地加载不同的模块</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> data_format == <span class="string">&#x27;json&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> json <span class="keyword">as</span> serialize  <span class="comment"># 如果数据格式是json，那么导入json模块并命名为serialize</span></span><br><span class="line"><span class="keyword">elif</span> data_format == <span class="string">&#x27;pickle&#x27;</span>:  </span><br><span class="line">    <span class="keyword">import</span> pikle <span class="keyword">as</span> serialize  <span class="comment"># 如果数据格式是&#x27;pickle&#x27;那么导入pickle，模块并命名为serialize</span></span><br><span class="line">    </span><br><span class="line">data = serialize.load(fn)  <span class="comment"># 最终的调用方式是一样的</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-循环导入问题"><a href="#4-循环导入问题" class="headerlink" title="4.循环导入问题"></a>4.循环导入问题</h2><p>循环导入问题指的是在一个模块加载&#x2F;导入的过程中带入另一个模块，而在另一个模块中又返回回来第一个模块的名字，由于第一个模块尚未加载完毕，所以引用失败、抛出异常，究其根源就是在python中马桶一个模块只会在第一次导入时执行其内部代码，再次导入该模块时，即便是该模块尚未加载完毕也不会去重复执行内部代码</p>
-<p><strong>我们以下述文件为例，来详细分析循环&#x2F;嵌套导入出现异常的原因以及解决的方案</strong></p>
-<p>m1.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m1&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line"></span><br><span class="line">x = <span class="string">&#x27;m1&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>m2.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m2&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line"></span><br><span class="line">y = <span class="string">&#x27;m2&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>run.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> m1</span><br></pre></td></tr></table></figure>
-
-<p>测试一</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、执行run.py会抛出异常</span></span><br><span class="line">正在导入m1</span><br><span class="line">正在导入m2</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/aa.py&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">import</span> m1</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m1.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m2.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;x&#x27;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 2、分析</span></span><br><span class="line">先执行run.py---&gt;执行<span class="keyword">import</span> m1，开始导入m1并运行其内部代码---&gt;打印内容“正在导入m1”---&gt;执行<span class="keyword">from</span> m2 <span class="keyword">import</span> y 开始导入m2并运行其内部代码---&gt;打印内容“正在导入m2”---&gt;执行 <span class="keyword">from</span> m1 <span class="keyword">import</span> x，由于m1已经被导入过了，所以不会重新导入，所以直接去m1中拿x，然而x此时并没有存在于m1中，所以报错</span><br></pre></td></tr></table></figure>
-
-<p>测试二</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、执行文件不等于导入文件，比如执行m1.py不等于导入了m1</span></span><br><span class="line">直接执行m1.py抛出异常</span><br><span class="line">正在导入m1</span><br><span class="line">正在导入m2</span><br><span class="line">正在导入m1</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m1.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m2.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m1.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;y&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、分析</span></span><br><span class="line">执行m1.py，打印“正在导入m1”，执行<span class="keyword">from</span> m2 <span class="keyword">import</span> y ，导入m2进而执行m2.py内部代码---&gt;打印<span class="string">&quot;正在导入m2&quot;</span>，执行<span class="keyword">from</span> m1 <span class="keyword">import</span> x，此时m1是第一次被导入，执行m1.py并不等于导入了m1，于是开始导入m1并执行其内部代码---&gt;打印<span class="string">&quot;正在导入m1&quot;</span>，执行<span class="keyword">from</span> m1 <span class="keyword">import</span> y，由于m1已经被导入过了，所以无需继续导入而直接问m2要y，然而y此时并没有存在于m2中所以报错</span><br></pre></td></tr></table></figure>
-
-<p><strong>解决方案</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方案一：导入语句放到最后，保证在导入时，所有名字都已经加载过</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：m1.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">x=<span class="string">&#x27;m1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：m2.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m2&#x27;</span>)</span><br><span class="line">y=<span class="string">&#x27;m2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：run.py内容如下，执行该文件，可以正常使用</span></span><br><span class="line"><span class="keyword">import</span> m1</span><br><span class="line"><span class="built_in">print</span>(m1.x)</span><br><span class="line"><span class="built_in">print</span>(m1.y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方案二：导入语句放到函数中，只有在调用函数时才会执行其内部代码</span></span><br><span class="line"><span class="comment"># 文件：m1.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">    <span class="built_in">print</span>(x,y)</span><br><span class="line"></span><br><span class="line">x = <span class="string">&#x27;m1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：m2.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m2&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">    <span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line">    <span class="built_in">print</span>(x,y)</span><br><span class="line"></span><br><span class="line">y = <span class="string">&#x27;m2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：run.py内容如下，执行该文件，可以正常使用</span></span><br><span class="line"><span class="keyword">import</span> m1</span><br><span class="line"></span><br><span class="line">m1.f1()</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：循环导入问题大多数情况是因为程序设计失误导致，上述解决方案也只是在烂设计之上的无奈之举，在我们的程序中应该尽量避免出现循环&#x2F;嵌套导入，如果多个模块确实都需要共享某些数据，可以将共享的数据集中存放到某一个地方，然后进行导入</strong></p>
-<h2 id="5-搜索模块的路径与优先级"><a href="#5-搜索模块的路径与优先级" class="headerlink" title="5.搜索模块的路径与优先级"></a>5.搜索模块的路径与优先级</h2><p>模块其实分为四个通用类别，分别是</p>
-<p>1.使用纯python代码编写的py文件</p>
-<p>2.包含一系列模块的包</p>
-<p>3.使用C编写并链接到python解释器中的内置模块</p>
-<p>4.使用C或C++编译的扩展模块</p>
-<p>在导入模块时，如果该模块已加载到内存中，则直接引用，否则会优先查找内置模块，然后按照从左到右的顺序依次检索sys.path中定义的路径，直到找到模块对应的文件为主，否则抛出异常。sys.path也被称为模块的搜索路径，它是一个列表类型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path</span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;D:\\python38\\python38.zip&#x27;</span>, <span class="string">&#x27;D:\\python38\\DLLs&#x27;</span>, <span class="string">&#x27;D:\\python38\\lib&#x27;</span>, <span class="string">&#x27;D:\\python38&#x27;</span>, <span class="string">&#x27;D:\\python38\\lib\\site-packages&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>列表中的每个元素其实都可以当作一个目录来看：在列表中会发现有.zip或.egg结尾的文件，二者是不同形式的压缩文件，事实上Python确实支持从一个压缩文件中导入模块，我们也只需要把它们都当成目录去看即可</p>
-<p>sys.path中的第一个路径通常为空，代表执行文件所在的路径，所以在被导入模块与执行文件在同一目录下时肯定是可以正常导入的，而针对被导入的模块与执行文件在不同路径下的情况，为了确保模块对应的源文件仍可以被找到，需要将源文件foo.py所在的路径添加到sys.path中，假设foo.py所在的路径为&#x2F;pythoner&#x2F;projects&#x2F;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.append(<span class="string">r&#x27;/pythoner/projects/&#x27;</span>)  <span class="comment"># 也可以使用sys.insert(...)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> foo  <span class="comment"># 无论foo.py在何处,我们都可以导入它了</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-区分py文件的两种用贴图"><a href="#6-区分py文件的两种用贴图" class="headerlink" title="6.区分py文件的两种用贴图"></a>6.区分py文件的两种用贴图</h2><p>一个python文件有两种用途，一种被当主程序&#x2F;脚本执行，另一种被当作模块导入，为了区别同一个文件的不同用途，每个py文件都内置了__name__变量，该变量在py文件被当作脚本执行时赋值为“__main__”,在py文件被当作模块导入时赋值为模块名</p>
-<p>作为模块foo.py的开发者，可以在文件末尾基于__name__在不同应用场景下值的不同来控制文件执行不同的逻辑</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># foo.py</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> name == <span class="string">&#x27;__name__&#x27;</span>:</span><br><span class="line">    foo.py被当作脚本执行时运行的代码</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    foo.py被当作模块导入时运行的代码</span><br></pre></td></tr></table></figure>
-
-<p>通常我们会在if的子代码中编写针对模块功能的测试代码，这样foo.py在被当作脚本运行时，就会执行测试代码，而被当作模块导入时则不用执行测试代码</p>
-<h2 id="编写一个规范的模块"><a href="#编写一个规范的模块" class="headerlink" title="编写一个规范的模块"></a>编写一个规范的模块</h2><p>我们子啊编写py文件时，需要时刻提醒自己，该文件是给自己用的，也有可能会被其他人使用，因而代码的可读性与易维护性显得十分重要，为此我们在编写一个模块时最好按照统一的规范去编写，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python  # 通常只在unix环境有效，作用是可以使用脚本名来执行，而无需直接调用解释器</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;The module is usde to ...&quot;</span>  <span class="comment"># 模块的文档描述</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="string">&#x27;Class Foo is used to ...&#x27;</span>  <span class="comment"># 定义类，并写好类的注释</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():  <span class="comment"># 定义函数，并写好函数的注释</span></span><br><span class="line">    <span class="string">&#x27;Function test is used to ...&#x27;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> name == <span class="string">&#x27;__main__&#x27;</span>:  <span class="comment"># 主程序</span></span><br><span class="line">    test()  <span class="comment"># 在被当作脚本执行时，执行此处的代码</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-21、包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/21%E3%80%81%E5%8C%85/">包</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/13/21%E3%80%81%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>包的介绍</p>
-<p>包的使用</p>
-<ul>
-<li>导入包与__init__.py</li>
-<li>绝对导入与相对导入</li>
-<li>from包import*</li>
-</ul>
-<h1 id="一、包的介绍"><a href="#一、包的介绍" class="headerlink" title="一、包的介绍"></a>一、包的介绍</h1><p>随着模块数目的增多，把所有模块不加区分地放到一起也是极不合理的，于是python为我们提供了一种把模块组织到一起的方法，即创建一个包。包就是一个含有__init__.py文件的文件夹，文件夹内可以组织子模块或子包，例如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pool/</span><br><span class="line">|——__init__.py</span><br><span class="line">|——futures</span><br><span class="line">|	|——__init__.py</span><br><span class="line">|	|——process.py</span><br><span class="line">|	|——thread.py</span><br><span class="line">└── versions.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>需要强调的是</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在python3中，即使包下没有__init__.py文件，import 包仍然不会报错，而在python2中，包下一定要有该文件，否则import 包报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 创建包的目的不是为了运行，而是被导入使用，记住，包只是模块的一种形式而已，包的本质就是一种模块</span></span><br></pre></td></tr></table></figure>
-
-<p>接下来我们就以包pool为例来介绍包的使用，包内各文件内容如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ProcessPoolExecutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">submt</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ProcessPool submit&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"><span class="comment"># thread.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadPoolExcutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="comment"># versions.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;check versions&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># __init__.py文件内容均为空</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="二、包的使用"><a href="#二、包的使用" class="headerlink" title="二、包的使用"></a>二、包的使用</h1><h2 id="1-导入包与-init-py"><a href="#1-导入包与-init-py" class="headerlink" title="1.导入包与__init__.py"></a>1.导入包与__init__.py</h2><p>包属于模块的一种，因而包以及包内的模块均是用来被导入使用的，而绝非被直接执行，首次导入包（如import pool）同样会做三件事：</p>
-<p>1.执行包下的__init__.py文件</p>
-<p>2.产生一个新的名称空间用于存放__init__.py执行过程中产生的名字</p>
-<p>3.在当前执行文件所在的名称空间中得到一个名字pool，该名子指向__init__.py的名称空间，例如pool.xxx和poo.yyy中的xxx和yyy都是来自于pool下的__init__.py，也就是说导入包时并不会导入包下所有的子模块与子包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.versions.check()  <span class="comment"># 抛出异常AttributeError</span></span><br><span class="line">pool.futures.process.ProcessExecutor(<span class="number">3</span>)  <span class="comment"># 抛出异常AttributeError</span></span><br></pre></td></tr></table></figure>
-
-<p>pool.versions.check()要求pool下有名字versions，进而pool.versions下有名字check。pool.versions下已经有名字check了，所以问题出现在pool下没有名字versions，这就需要在pool下的__init__.py中导入模块versions</p>
-<p><strong>强调</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>关于包相关的导入语句也分为<span class="keyword">import</span>和<span class="keyword">from</span>...<span class="keyword">import</span>...两种，但是无论哪种，无论在什么位置，在导入时都必须遵循一个原则：凡是在导入时带点的，点的左边都必须是一个包，否则非法。可以带有一连串的点，如<span class="keyword">import</span> 顶级包.子包.子模块，但都必须遵循这个原则。但对于导入后，在使用时就没有这种限制了，点的左边可以是包，模块，函数，类</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-绝对导入与相对导入"><a href="#2-绝对导入与相对导入" class="headerlink" title="2.绝对导入与相对导入"></a>2.绝对导入与相对导入</h2><p>针对包内的模块之间互相导入，导入的方式有两种</p>
-<p>1.绝对导入：以顶级包为起始</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
-
-<p>2.相对导入：代表当前文件所在的目录，..代表当前目录的上一级目录，依次类推</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool 下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
-
-<p>同理，针对pool.futures.process.ProcessPoolExecutor(3)，则需要</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#操作pool下的__init__.py，保证pool.futures</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> futures <span class="comment">#或from pool import futures</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#操作futrues下的__init__.py，保证pool.futures.process</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> process <span class="comment">#或from pool.futures import process</span></span><br></pre></td></tr></table></figure>
-
-<p>相对导入只能用from module import symbol的形式,import ..versions语法是不对的，且symbol只能是一个明确的名字</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> futures.process  <span class="comment"># 语法错误</span></span><br><span class="line"><span class="keyword">from</span> pool.futures <span class="keyword">import</span> process  <span class="comment"># 语法正确</span></span><br></pre></td></tr></table></figure>
-
-<p>针对包内部模块之间的相互导入推荐使用相对导入，需要特别强调：</p>
-<p>1、相对导入只能在包内部使用，用相对导入不同目录下的模块是非法的</p>
-<p>2、无论是import还是from-import，但凡是在导入时带点的，点的左边必须是包,否则语法错误</p>
-<h2 id="3-总结包的使用"><a href="#3-总结包的使用" class="headerlink" title="3.总结包的使用"></a>3.总结包的使用</h2><p>总结包的使用需要牢记三点<br>1、导包就是在导包下__init__.py文件<br>2、包内部的导入应该使用相对导入，相对导入也只能在包内部使用，而且…取上一级不能出包<br>3、<br>    使用语句中的点代表的是访问属性<br>    m.n.x —-&gt; 向m要n，向n要x<br>    而导入语句中的点代表的是路径分隔符<br>    import a.b.c –&gt; a&#x2F;b&#x2F;c，文件夹下a下有子文件夹b，文件夹b下有子文件或文件夹c<br>    所以导入语句中点的左边必须是一个包</p>
-<h2 id="4-from包和import"><a href="#4-from包和import" class="headerlink" title="4.from包和import *"></a>4.from包和import *</h2><p>在使用包时同样支持from pool.futures import * ，毫无疑问<em>代表的是futures下__init__.py中所有的名字，通用是用变量__all__来控制</em>代表的意思</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#futures下的__init__.py</span></span><br><span class="line">__all__ = [<span class="string">&#x27;process&#x27;</span>, <span class="string">&#x27;thread&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>最后说明一点，包内部的目录结构通常是包的开发者为了方便自己管理和维护代码而创建的，这种目录结构对包的使用者往往是无用的，此时通过操作__init__.py可以“隐藏”包内部的目录结构，降低使用难度，比如想要让使用者直接使用</p>
-<p>pool下的__init__.py中导入子模块或子包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .versions <span class="keyword">import</span> check</span><br><span class="line"><span class="keyword">from</span> .futures.process <span class="keyword">import</span> ProcessPoolExecutor</span><br><span class="line"><span class="keyword">from</span> .futures.thread <span class="keyword">import</span> ThreadPoolExecutor</span><br></pre></td></tr></table></figure>
-
-
-
-<p>程序运行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.check()</span><br><span class="line">pool.ProcessPoolExecutor(<span class="number">3</span>)</span><br><span class="line">pool.ThreadPoolExecutor(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/21%E3%80%81%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-18、函数递归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/">函数递归</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>函数递归调用介绍</p>
-<p>回溯与递推</p>
-<h1 id="一、函数递归调用介绍"><a href="#一、函数递归调用介绍" class="headerlink" title="一、函数递归调用介绍"></a>一、函数递归调用介绍</h1><p>函数不仅可以嵌套定义，话可以桥套调用，即在调用一个函数的过程中，函数内部又调用另一个函数，而函数的递归调用指的是在调用一个函数的过程中又直接或间接地调用该函数本身</p>
-<p>例如，在调用f1地过程中，又调用f1，这就是直接调用函数f1本身</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    peint(<span class="string">&#x27;from f1&#x27;</span>)</span><br><span class="line">    f1()</span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
-
-<p>在调用f1的过程中，又调用f2，而在调用f2的过程中又调用f1，这就是间接调用f1函数本身</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from f1&#x27;</span>)</span><br><span class="line">    f2()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from f2&#x27;</span>)</span><br><span class="line">    f1()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
-
-<p>可以看出，两种情况下递归调用都是一个无限循环的过程，但在python对函数的递归调用的深度做了限制，因而并不会像大家想的那样进入无线循环，会抛出异常，要避免出现这种情况，就必须让递归调用在某个特定条件下终止</p>
-<p>提示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.可以使用sys.getrecursionlimit()去查看递归深度，默认值为1000，虽然可以使用</span></span><br><span class="line">sys.setrecursionlimit()  <span class="comment"># 去设置该值，但仍受限于主机操作系统栈大小的限制</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.python不是一门函数式编程语言，无法对递归进行尾递归优化</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="二、回溯与递推"><a href="#二、回溯与递推" class="headerlink" title="二、回溯与递推"></a>二、回溯与递推</h1><p>下面我们用一个浅显的例子，为了让读者阐释递归的原理和使用：</p>
-<p>某公司四个员工坐在一起，问第四个人薪水，他说比第三个人多1000，问第三个人薪水，第他说比第二个人多1000，问第二个人薪水，他说比第一个人多1000，最后第一人说自己每月5000，请问第四个人的薪水是多少？</p>
-<p>思路解析：</p>
-<p>要知道第四个人的月薪，就必须知道第三个人的，第三个人的又取决于第二个人的，第二个人的又取决于第一个人的，而且每一个员工都比前一个多一千，数学表达式即：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">salary(<span class="number">4</span>)=salary(<span class="number">3</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">3</span>)=salary(<span class="number">2</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">2</span>)=salary(<span class="number">1</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">1</span>)=<span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 总结为：</span></span><br><span class="line">salary(n) = salary(n-<span class="number">1</span>) + <span class="number">1000</span>  <span class="comment"># n&gt;1</span></span><br><span class="line">salary(<span class="number">1</span>) = <span class="number">5000</span>  <span class="comment"># n = 1</span></span><br></pre></td></tr></table></figure>
-
-<p>很明显这是一个递归的过程，可以将该过程分为两个阶段：回溯和递推。</p>
-<p> 在回溯阶段，要求第n个员工的薪水，需要回溯得到(n-1)个员工的薪水，以此类推，直到得到第一个员工的薪水，此时，salary(1)已知，因而不必再向前回溯了。然后进入递推阶段：从第一个员工的薪水可以推算出第二个员工的薪水(6000)，从第二个员工的薪水可以推算出第三个员工的薪水(7000)，以此类推，一直推算出第第四个员工的薪水(8000)为止，递归结束。需要注意的一点是，递归一定要有一个结束条件，这里n&#x3D;1就是结束条件。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-b8756ae5141d371f4594408e3df84e56_720w.jpg" alt="img"></p>
-<p>代码实现：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">salary</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5000</span></span><br><span class="line">    <span class="keyword">return</span> salary(n - <span class="number">1</span>) + <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">s = salary(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行结果为 8000</span></span><br></pre></td></tr></table></figure>
-
-<p>程序分析：</p>
-<p>在未满足n==1的条件时，一直进行递归调用，即一直回溯，见图4.3的左半部分。而在满足n==1的条件时，终止递归调用，即结束回溯，从而进入递推阶段，依次推导直到得到最终的结果。</p>
-<p>递归本质就是在做重复的事情，所以理论上递归可以解决的问题循环也都可以解决，只不过在某些情况下，使用递归会更容易实现，比如有一个嵌套多层的列表，要求打印出所有的元素，代码实现如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">items = [[<span class="number">1</span>,<span class="number">2</span>], <span class="number">3</span>, [<span class="number">4</span>, [<span class="number">5</span>, [<span class="number">6</span>, <span class="number">7</span>]]]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">items</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(i, <span class="built_in">list</span>):</span><br><span class="line">            foo(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(i, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">foo(items)  <span class="comment"># 打印结果1 2 3 4 5 6 7</span></span><br></pre></td></tr></table></figure>
-
-<p>使用递归，我们只需要分析出要重复执行的代码逻辑，然后提取进入下一次递归调用的条件或者说递归结束的条件即可，代码实现起来简洁清晰</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/">展开全文 >></a>
         </p>
       
 

@@ -152,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-14、函数对象和闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-20、模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/">函数对象与闭包</a>
+      <a class="article-title" href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/">模块</a>
     </h1>
   
 
         
-        <a href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/" class="archive-article-date">
+        <a href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/" class="archive-article-date">
   	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
 </a>
         
@@ -172,61 +172,106 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><ul>
-<li>一 函数对象</li>
+        <p><a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></p>
+<p>模块介绍</p>
+<p>模块的使用</p>
+<ul>
+<li>import语句</li>
+<li>from-import语句</li>
+<li>其他导入语法（as）</li>
+<li>循环导入问题</li>
+<li>搜索模块的路径与优先级</li>
+<li>区分py文件的两种用途</li>
+<li>编写一个规范的模块</li>
 </ul>
-</li>
-<li><ul>
-<li>1.1 函数可以被引用</li>
-<li>1.2 函数可以作为容器类型的元素</li>
-<li>1.3 函数可以作为参数传入另外一个函数</li>
-<li>1.4 函数的返回值可以是一个函数</li>
-</ul>
-</li>
-<li><p>二 闭包函数</p>
-</li>
-<li><ul>
-<li>2.1 闭与包</li>
-<li>2.2 闭包的用途</li>
-</ul>
-</li>
-</ul>
-<h1 id="一-函数对象"><a href="#一-函数对象" class="headerlink" title="一 函数对象"></a>一 函数对象</h1><p>函数对象指的是函数可以被当做’数据’来处理，具体可以分为四个方面的使用，我们如下</p>
-<h2 id="1、函数可以被引用"><a href="#1、函数可以被引用" class="headerlink" title="1、函数可以被引用"></a>1、函数可以被引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x+y</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func=add</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h1 id="一、模块介绍"><a href="#一、模块介绍" class="headerlink" title="一、模块介绍"></a>一、模块介绍</h1><p>在Python中，一个py文件就是一个模块，文件名为xxx.py模块名则是xxx，导入模块可以引用模块中已经写好的功能，如果把开发程序比喻成制造一台电脑，编写模块就像是在制造电脑的零部件，准备好零部件后，剩下的工作就是按照逻辑把它们组装到一起</p>
+<p>将程序模块化会使得程序的组织结构清晰，维护起来更加方便，比起直接开发一个完整的程序，单独开发一个小的模块也会更加简单，并且程序中的模块与电脑中的零部件稍微不同的是：程序中的模块可以被重复利用。所以总结下来，使用模块既保证了代码的重要性，又增加了程序的结构性和可维护性。另外除了自定义模块外，我们还可以导入使用内置或第三方模块提供的现成功能，这种”拿来主义“极大地提高了程序员的开发效率</p>
+<h1 id="二、模块的使用"><a href="#二、模块的使用" class="headerlink" title="二、模块的使用"></a>二、模块的使用</h1><h2 id="1-import语句"><a href="#1-import语句" class="headerlink" title="1.import语句"></a>1.import语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件名：foo.py</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>():</span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;from the func&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
+<p>想要在另外一个py文件中引用foo.py中的功能，需要使用import foo，首次导入模块会做三件事：</p>
+<p>1.执行源文件代码</p>
+<p>2.产生一个新的名称空间用于存放源文件执行过程中产生的名字</p>
+<p>3.在当前执行文件所在的名称空间中得到一个名字foo，该名子指向新创建的模块名称空间，若要引用模块名称空间中的名字，需要加上该前缀，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">imprt foo  <span class="comment"># 导入模块foo</span></span><br><span class="line">a = foo.x  <span class="comment"># 引用模块foo中变量x的值赋值给当前名称空间中的名字a</span></span><br><span class="line">foo.get()  <span class="comment"># 调用模块foo的get函数</span></span><br><span class="line">foo.change()  <span class="comment"># 调用foo中的change函数</span></span><br><span class="line">obj = foo.Foo()  <span class="comment"># 使用模块foo的类Foo来实例化，进一步可以执行obj.func()</span></span><br></pre></td></tr></table></figure>
 
+<p>加上foo.作为前缀就相当于指名道姓地说明要引用foo名称空间中的名字，所以肯定不会与当前执行文件所在名称空间中的名字相冲突，并且若当前执行文件的名称空间中存在x，执行foo.get()或foo.change()操作的都是源文件中的全局变量x</p>
+<p>需要强调一点是，第一次导入模块已经将其加载到内存空间了，之后的重复导入会直接引用内存中已存在的模块，不会重复执行文件，通过import sys，打印sys.modules的值可以看到内存中已经加载的模块名。</p>
+<p>提示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.在python中模块也属于第一类对象，可以进行赋值、以数据形式传递以及作为容器类型的元素等操作</span></span><br><span class="line"><span class="comment"># 2.模块名应该遵循小写形式，标准库从python2过度到python3做出了很多这类调整，比如ConfigParser、Queue、SocketServer全更新为纯小写形式</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="2、函数可以作为容器类型的元素"><a href="#2、函数可以作为容器类型的元素" class="headerlink" title="2、函数可以作为容器类型的元素"></a>2、函数可以作为容器类型的元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic=&#123;<span class="string">&#x27;add&#x27;</span>:add,<span class="string">&#x27;max&#x27;</span>:<span class="built_in">max</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic</span><br><span class="line">&#123;<span class="string">&#x27;add&#x27;</span>: &lt;function add at <span class="number">0x100661e18</span>&gt;, <span class="string">&#x27;max&#x27;</span>: &lt;built-<span class="keyword">in</span> function <span class="built_in">max</span>&gt;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic[<span class="string">&#x27;add&#x27;</span>](<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>用import语句导入多个模块，可以写多行import语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module1</span><br><span class="line"><span class="keyword">import</span> module2</span><br><span class="line"><span class="keyword">import</span> module3</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
+<p>还可以在一行导入，用逗号分开不同的模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module1, module2</span><br></pre></td></tr></table></figure>
 
+<p>但其实第一种形式更为规范，可读性更强，推荐使用，而且我们导入的模块中可能包含有python内置的模块、第三方模块、自定义的模块，为了便于明显的区分它们，我们通常子啊文件的开头导入模块，并且分类导入，一类模块与另外一类模块的导入用空行隔开，不同类别的导入顺序如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> python内置模块</span><br><span class="line"><span class="keyword">import</span> 第三方模块</span><br><span class="line"><span class="keyword">import</span> 程序员自定义模块</span><br></pre></td></tr></table></figure>
 
-<h2 id="3、函数可以作为参数传入另一个函数"><a href="#3、函数可以作为参数传入另一个函数" class="headerlink" title="3、函数可以作为参数传入另一个函数"></a>3、函数可以作为参数传入另一个函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x,y,func</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> func(x,y)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo(<span class="number">1</span>,<span class="number">2</span>,add)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>当然，我们也可以在函数内导入模块，对比在文件开头导入模块属于全局作用域，在函数内导入的模块则属于局部的作用域。</p>
+<h2 id="2-from-import-语句"><a href="#2-from-import-语句" class="headerlink" title="2.from-import 语句"></a>2.from-import 语句</h2><p>rom…import…与import语句基本一致，唯一不同的是：使用import foo导入模块后，引用模块中的名字都需要加上foo.作为前缀，而使用from foo omport x, get ,change, Foo则可以在当前执行文件中直接引用模块foo的名字，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> x, get, change  <span class="comment"># 将模块foo中的x，get，change导入当前名称空间</span></span><br><span class="line">a = x  <span class="comment"># 直接使用模块foo中的x赋值给a</span></span><br><span class="line">get()  <span class="comment"># 直接执行foo中的get函数</span></span><br><span class="line">change()  <span class="comment"># 即便是当前又重名的x，修改的仍然是源文件中的x</span></span><br></pre></td></tr></table></figure>
 
+<p>无需加前缀的好处是使得我们的代码更加简洁，坏处则是容易与当前名称空间中的名字冲突，如果当前名称空间存在相同的名字，则后定义的名字会覆盖之前定义的名字</p>
+<p>另外from语句支持from foo import * 语法，*代表将foo中所有的名字都导入到当前位置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> *  <span class="comment"># 把foo中所有的名字都导入到当前执行文件的名称空间中，在当前位置直接可以使用这些名字</span></span><br><span class="line"></span><br><span class="line">a = x</span><br><span class="line">get()</span><br><span class="line">change()</span><br><span class="line">obj = Foo()</span><br></pre></td></tr></table></figure>
 
+<p>如果我们需要引用模块中的名字过多的话，可以采用上述的导入形式来达到节省代码量的效果，但是需要强调的一点是：只能在模块最顶层使用的方式导入，在函数内则非法，并且这种方式会带来一个副作用，即我们无法搞清楚究竟从源文件中导入了哪些名字到当前位置，这极有可能与当前位置的名字产生冲突，模块的编写者可以在自己的文件中定义__all__变量用来控制*代表的意思</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># foo.py</span></span><br><span class="line">__all__ = [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;get&#x27;</span>]  <span class="comment"># 该列表中所有的元素必须是字符串类型，每个元素对应foo.py中的一个名字</span></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">    <span class="built_in">print</span>(x)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change</span>():</span><br><span class="line">    <span class="keyword">global</span> x</span><br><span class="line">    x = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;from the func&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="4、函数的返回值可以是一个函数"><a href="#4、函数的返回值可以是一个函数" class="headerlink" title="4、函数的返回值可以是一个函数"></a>4、函数的返回值可以是一个函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>(): </span><br><span class="line">     <span class="keyword">return</span> add </span><br><span class="line">func=bar() </span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span> </span><br></pre></td></tr></table></figure>
+<p>这样我们在另外一个文件中使用*导入时，就只能导入__all__定义的名字了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> *  <span class="comment"># 此时的*只代表x和get</span></span><br><span class="line"></span><br><span class="line">x  <span class="comment"># 可用</span></span><br><span class="line">get()  <span class="comment"># 可用</span></span><br><span class="line">change()  <span class="comment"># 不可用</span></span><br><span class="line">Foo()  <span class="comment"># 不可用</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="3-其他导入语法（as）"><a href="#3-其他导入语法（as）" class="headerlink" title="3.其他导入语法（as）"></a>3.其他导入语法（as）</h2><p>我们还可以在当前位置为导入的模块起一个别名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> foo <span class="keyword">as</span> f  <span class="comment"># 为导入的模块foo在当前位置起别名f，以后再使用时就用这个别名f</span></span><br><span class="line">f.x</span><br><span class="line">f.get()</span><br></pre></td></tr></table></figure>
 
+<p>还可以为导入的一个名字起别名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> foo <span class="keyword">import</span> get <span class="keyword">as</span> get_x</span><br><span class="line">get_x()</span><br></pre></td></tr></table></figure>
 
-<h1 id="二-闭包函数"><a href="#二-闭包函数" class="headerlink" title="二 闭包函数"></a>二 闭包函数</h1><h2 id="1、闭与包"><a href="#1、闭与包" class="headerlink" title="1、闭与包"></a>1、闭与包</h2><p>基于函数对象的概念，可以将函数返回到任意位置去调用，但作用域的关系是在定义完函数时就已经被确定了的，与函数的调用位置无关。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f2</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f3</span>():</span><br><span class="line">    x=<span class="number">3</span></span><br><span class="line">    f2=f1() <span class="comment">#调用f1()返回函数f2</span></span><br><span class="line">    f2() <span class="comment">#需要按照函数定义时的作用关系去执行，与调用位置无关</span></span><br><span class="line"></span><br><span class="line">f3() <span class="comment">#结果为1</span></span><br></pre></td></tr></table></figure>
+<p>通常在被导入的名字过长时采用起别名的方式来精简代码，另外为被导入的名字起别名可以很好地避免与当前名字发生冲突，还有很重要的一点就是：可以保持调用方式的一致性，例如我们有两个模块json和pickle同时实现了load方法，作用是从一个打开的文件中解析出结构化的数据，但解析的格式不同，可以用下述代码有选择性地加载不同的模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> data_format == <span class="string">&#x27;json&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> json <span class="keyword">as</span> serialize  <span class="comment"># 如果数据格式是json，那么导入json模块并命名为serialize</span></span><br><span class="line"><span class="keyword">elif</span> data_format == <span class="string">&#x27;pickle&#x27;</span>:  </span><br><span class="line">    <span class="keyword">import</span> pikle <span class="keyword">as</span> serialize  <span class="comment"># 如果数据格式是&#x27;pickle&#x27;那么导入pickle，模块并命名为serialize</span></span><br><span class="line">    </span><br><span class="line">data = serialize.load(fn)  <span class="comment"># 最终的调用方式是一样的</span></span><br></pre></td></tr></table></figure>
 
-<p>也就是说函数被当做数据处理时，始终以自带的作用域为准。若内嵌函数包含对外部函数作用域（而非全局作用域）中变量的引用，那么该’内嵌函数’就是闭包函数，简称闭包(Closures)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>():</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">func=outer()</span><br><span class="line">func() <span class="comment"># 结果为2</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-循环导入问题"><a href="#4-循环导入问题" class="headerlink" title="4.循环导入问题"></a>4.循环导入问题</h2><p>循环导入问题指的是在一个模块加载&#x2F;导入的过程中带入另一个模块，而在另一个模块中又返回回来第一个模块的名字，由于第一个模块尚未加载完毕，所以引用失败、抛出异常，究其根源就是在python中马桶一个模块只会在第一次导入时执行其内部代码，再次导入该模块时，即便是该模块尚未加载完毕也不会去重复执行内部代码</p>
+<p><strong>我们以下述文件为例，来详细分析循环&#x2F;嵌套导入出现异常的原因以及解决的方案</strong></p>
+<p>m1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m1&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line"></span><br><span class="line">x = <span class="string">&#x27;m1&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>可以通过函数的<strong>closure</strong>属性，查看到闭包函数所包裹的外部变量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>func.__closure__</span><br><span class="line">(&lt;cell at <span class="number">0x10212af78</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10028cca0</span>&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func.__closure__[<span class="number">0</span>].cell_contents</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>m2.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m2&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line"></span><br><span class="line">y = <span class="string">&#x27;m2&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>“闭”代表函数是内部的，“包”代表函数外’包裹’着对外层作用域的引用。因而无论在何处调用闭包函数，使用的仍然是包裹在其外层的变量。</p>
-<h2 id="2、闭包的用途"><a href="#2、闭包的用途" class="headerlink" title="2、闭包的用途"></a>2、闭包的用途</h2><p>目前为止，我们得到了两种为函数体传值的方式，一种是直接将值以参数的形式传入，另外一种就是将值包给函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment">#方式一：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">return</span> requests.get(url).text</span><br><span class="line"></span><br><span class="line"><span class="comment">#方式二：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">page</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">        <span class="keyword">return</span> requests.get(url).text</span><br><span class="line">    <span class="keyword">return</span> get</span><br></pre></td></tr></table></figure>
+<p>run.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> m1</span><br></pre></td></tr></table></figure>
 
-<p>提示：requests模块是用来模拟浏览器向网站发送请求并将页面内容下载到本地，需要事先安装：pip3 install requests</p>
-<p>对比两种方式，方式一在下载同一页面时需要重复传入url，而方式二只需要传一次值，就会得到一个包含指定url的闭包函数，以后调用该闭包函数无需再传url</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一下载同一页面</span></span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二下载同一页面</span></span><br><span class="line">python=page(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">python()</span><br><span class="line">python()</span><br><span class="line">python()</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<p>测试一</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、执行run.py会抛出异常</span></span><br><span class="line">正在导入m1</span><br><span class="line">正在导入m2</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/aa.py&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">import</span> m1</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m1.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m2.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;x&#x27;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 2、分析</span></span><br><span class="line">先执行run.py---&gt;执行<span class="keyword">import</span> m1，开始导入m1并运行其内部代码---&gt;打印内容“正在导入m1”---&gt;执行<span class="keyword">from</span> m2 <span class="keyword">import</span> y 开始导入m2并运行其内部代码---&gt;打印内容“正在导入m2”---&gt;执行 <span class="keyword">from</span> m1 <span class="keyword">import</span> x，由于m1已经被导入过了，所以不会重新导入，所以直接去m1中拿x，然而x此时并没有存在于m1中，所以报错</span><br></pre></td></tr></table></figure>
 
-<p>闭包函数的这种特性有时又称为惰性计算。使用将值包给函数的方式，在接下来的装饰器中也将大有用处</p>
+<p>测试二</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、执行文件不等于导入文件，比如执行m1.py不等于导入了m1</span></span><br><span class="line">直接执行m1.py抛出异常</span><br><span class="line">正在导入m1</span><br><span class="line">正在导入m2</span><br><span class="line">正在导入m1</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m1.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m2.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line">  File <span class="string">&quot;/Users/linhaifeng/PycharmProjects/pro01/1 aaaa练习目录/m1.py&quot;</span>, line <span class="number">2</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;y&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、分析</span></span><br><span class="line">执行m1.py，打印“正在导入m1”，执行<span class="keyword">from</span> m2 <span class="keyword">import</span> y ，导入m2进而执行m2.py内部代码---&gt;打印<span class="string">&quot;正在导入m2&quot;</span>，执行<span class="keyword">from</span> m1 <span class="keyword">import</span> x，此时m1是第一次被导入，执行m1.py并不等于导入了m1，于是开始导入m1并执行其内部代码---&gt;打印<span class="string">&quot;正在导入m1&quot;</span>，执行<span class="keyword">from</span> m1 <span class="keyword">import</span> y，由于m1已经被导入过了，所以无需继续导入而直接问m2要y，然而y此时并没有存在于m2中所以报错</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方案</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方案一：导入语句放到最后，保证在导入时，所有名字都已经加载过</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：m1.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">x=<span class="string">&#x27;m1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：m2.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m2&#x27;</span>)</span><br><span class="line">y=<span class="string">&#x27;m2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：run.py内容如下，执行该文件，可以正常使用</span></span><br><span class="line"><span class="keyword">import</span> m1</span><br><span class="line"><span class="built_in">print</span>(m1.x)</span><br><span class="line"><span class="built_in">print</span>(m1.y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方案二：导入语句放到函数中，只有在调用函数时才会执行其内部代码</span></span><br><span class="line"><span class="comment"># 文件：m1.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="keyword">from</span> m2 <span class="keyword">import</span> y</span><br><span class="line">    <span class="built_in">print</span>(x,y)</span><br><span class="line"></span><br><span class="line">x = <span class="string">&#x27;m1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：m2.py</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;正在导入m2&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">    <span class="keyword">from</span> m1 <span class="keyword">import</span> x</span><br><span class="line">    <span class="built_in">print</span>(x,y)</span><br><span class="line"></span><br><span class="line">y = <span class="string">&#x27;m2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件：run.py内容如下，执行该文件，可以正常使用</span></span><br><span class="line"><span class="keyword">import</span> m1</span><br><span class="line"></span><br><span class="line">m1.f1()</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：循环导入问题大多数情况是因为程序设计失误导致，上述解决方案也只是在烂设计之上的无奈之举，在我们的程序中应该尽量避免出现循环&#x2F;嵌套导入，如果多个模块确实都需要共享某些数据，可以将共享的数据集中存放到某一个地方，然后进行导入</strong></p>
+<h2 id="5-搜索模块的路径与优先级"><a href="#5-搜索模块的路径与优先级" class="headerlink" title="5.搜索模块的路径与优先级"></a>5.搜索模块的路径与优先级</h2><p>模块其实分为四个通用类别，分别是</p>
+<p>1.使用纯python代码编写的py文件</p>
+<p>2.包含一系列模块的包</p>
+<p>3.使用C编写并链接到python解释器中的内置模块</p>
+<p>4.使用C或C++编译的扩展模块</p>
+<p>在导入模块时，如果该模块已加载到内存中，则直接引用，否则会优先查找内置模块，然后按照从左到右的顺序依次检索sys.path中定义的路径，直到找到模块对应的文件为主，否则抛出异常。sys.path也被称为模块的搜索路径，它是一个列表类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path</span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;D:\\python38\\python38.zip&#x27;</span>, <span class="string">&#x27;D:\\python38\\DLLs&#x27;</span>, <span class="string">&#x27;D:\\python38\\lib&#x27;</span>, <span class="string">&#x27;D:\\python38&#x27;</span>, <span class="string">&#x27;D:\\python38\\lib\\site-packages&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>列表中的每个元素其实都可以当作一个目录来看：在列表中会发现有.zip或.egg结尾的文件，二者是不同形式的压缩文件，事实上Python确实支持从一个压缩文件中导入模块，我们也只需要把它们都当成目录去看即可</p>
+<p>sys.path中的第一个路径通常为空，代表执行文件所在的路径，所以在被导入模块与执行文件在同一目录下时肯定是可以正常导入的，而针对被导入的模块与执行文件在不同路径下的情况，为了确保模块对应的源文件仍可以被找到，需要将源文件foo.py所在的路径添加到sys.path中，假设foo.py所在的路径为&#x2F;pythoner&#x2F;projects&#x2F;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.append(<span class="string">r&#x27;/pythoner/projects/&#x27;</span>)  <span class="comment"># 也可以使用sys.insert(...)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> foo  <span class="comment"># 无论foo.py在何处,我们都可以导入它了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-区分py文件的两种用贴图"><a href="#6-区分py文件的两种用贴图" class="headerlink" title="6.区分py文件的两种用贴图"></a>6.区分py文件的两种用贴图</h2><p>一个python文件有两种用途，一种被当主程序&#x2F;脚本执行，另一种被当作模块导入，为了区别同一个文件的不同用途，每个py文件都内置了__name__变量，该变量在py文件被当作脚本执行时赋值为“__main__”,在py文件被当作模块导入时赋值为模块名</p>
+<p>作为模块foo.py的开发者，可以在文件末尾基于__name__在不同应用场景下值的不同来控制文件执行不同的逻辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># foo.py</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> name == <span class="string">&#x27;__name__&#x27;</span>:</span><br><span class="line">    foo.py被当作脚本执行时运行的代码</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    foo.py被当作模块导入时运行的代码</span><br></pre></td></tr></table></figure>
+
+<p>通常我们会在if的子代码中编写针对模块功能的测试代码，这样foo.py在被当作脚本运行时，就会执行测试代码，而被当作模块导入时则不用执行测试代码</p>
+<h2 id="编写一个规范的模块"><a href="#编写一个规范的模块" class="headerlink" title="编写一个规范的模块"></a>编写一个规范的模块</h2><p>我们子啊编写py文件时，需要时刻提醒自己，该文件是给自己用的，也有可能会被其他人使用，因而代码的可读性与易维护性显得十分重要，为此我们在编写一个模块时最好按照统一的规范去编写，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python  # 通常只在unix环境有效，作用是可以使用脚本名来执行，而无需直接调用解释器</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;The module is usde to ...&quot;</span>  <span class="comment"># 模块的文档描述</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="string">&#x27;Class Foo is used to ...&#x27;</span>  <span class="comment"># 定义类，并写好类的注释</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():  <span class="comment"># 定义函数，并写好函数的注释</span></span><br><span class="line">    <span class="string">&#x27;Function test is used to ...&#x27;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> name == <span class="string">&#x27;__main__&#x27;</span>:  <span class="comment"># 主程序</span></span><br><span class="line">    test()  <span class="comment"># 在被当作脚本执行时，执行此处的代码</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -239,7 +284,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/">展开全文 >></a>
         </p>
       
 
@@ -356,163 +401,6 @@
 
 
   
-    <article id="post-23、面向对象编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">面向对象编程</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对象的概念</p>
-<p>类与对象</p>
-<p>面对对象编程</p>
-<ul>
-<li>类的定义与实例化</li>
-<li>属性访问</li>
-<li><ul>
-<li>类属性与对象属性</li>
-<li>属性查找顺序与绑方法</li>
-<li>小结</li>
-</ul>
-</li>
-</ul>
-<h1 id="一、对象的概念"><a href="#一、对象的概念" class="headerlink" title="一、对象的概念"></a>一、对象的概念</h1><p>”面向对象“的核心是“对象”二字，而对象的精髓在于“整合“，什么意思？</p>
-<p>所有的程序都是由”数据”与“功能“组成，因而编写程序的本质就是定义出一系列的数据，然后定义出一系列的功能来对数据进行操作。在学习”对象“之前，程序中的数据与功能是分离开的，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据：name、age、sex</span></span><br><span class="line">name = <span class="string">&#x27;lili&#x27;</span></span><br><span class="line">age = <span class="string">&#x27;18&#x27;</span></span><br><span class="line">sex = <span class="string">&#x27;female&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 功能：tell_info</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tell_info</span>(<span class="params">name,age,sex</span>): </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&lt;%s:%s:%s&gt;&#x27;</span> %(name,age,sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时若想执行查看个人信息的功能，需要同时拿来两样东西，一类是功能tell_info，另外一类则是多个数据name、age、sex，然后才能执行，非常麻烦</span></span><br><span class="line">tell_info(name,age,sex)</span><br></pre></td></tr></table></figure>
-
-<p>在学习了“对象”之后，我们就有了一个容器，该容器可以盛放数据与功能，所以我们可以说：对象是把数据与功能整合到一起的产物，或者说”对象“就是一个盛放数据与功能的容器&#x2F;箱子&#x2F;盒子。</p>
-<p>如果把”数据“比喻为”睫毛膏“、”眼影“、”唇彩“等化妆所需要的原材料；把”功能“比喻为眼线笔、眉笔等化妆所需要的工具，那么”对象“就是一个彩妆盒，彩妆盒可以把”原材料“与”工具“都装到一起</p>
-<p>如果我们把”化妆“比喻为要执行的业务逻辑，此时只需要拿来一样东西即可，那就是彩妆盒，因为彩妆盒里整合了化妆所需的所有原材料与功能，这比起你分别拿来原材料与功能才能执行，要方便的多。</p>
-<p>在了解了对象的基本概念之后，理解面向对象的编程方式就相对简单很多了，面向对象编程就是要造出一个个的对象，把原本分散开的相关数据与功能整合到一个个的对象里，这么做既方便使用，也可以提高程序的解耦合程度，进而提升了程序的可扩展性（需要强调的是，软件质量属性包含很多方面，面向对象解决的仅仅只是扩展性问题）</p>
-<p><img src="https://pic1.zhimg.com/v2-be68cd9e27b83c937cf44dbe7a2cf56c_r.jpg" alt="preview"></p>
-<h1 id="二、类与对象"><a href="#二、类与对象" class="headerlink" title="二、类与对象"></a>二、类与对象</h1><p>类即类别&#x2F;种类，是面向对象分析和设计的基石，如果多个对象有相似的数据与功能，那么该多个对象就属于同一种类。有了类的好处是：我们可以把同一类对象相同的数据与功能存放到类里，而无需每个对象都重复存一份，这样每个对象里只需存自己独有的数据即可，极大地节省了空间。所以，如果说对象是用来存放数据与功能的容器，那么类则是用来存放多个对象相同的数据与功能的容器</p>
-<p><img src="https://pic2.zhimg.com/v2-0b1c2138d316307c0c830aa1df3aa1e1_r.jpg" alt="preview"></p>
-<p> 综上所述，虽然我们是先介绍对象后介绍类，但是需要强调的是：在程序中，必须要事先定义类，然后再调用类产生对象（调用类拿到的返回值就是对象）。产生对象的类与对象之间存在关联，这种关联指的是：对象可以访问到类中共有的数据与功能，所以类中的内容仍然是属于对象的，类只不过是一种节省空间、减少代码冗余的机制，面向对象编程最终的核心仍然是去使用对象</p>
-<p> 在了解了类与对象这两大核心概念之后，我们就可以来介绍一下面向对象编程啦</p>
-<h1 id="三、面向对象编程"><a href="#三、面向对象编程" class="headerlink" title="三、面向对象编程"></a>三、面向对象编程</h1><h2 id="1、类的定义与实例化"><a href="#1、类的定义与实例化" class="headerlink" title="1、类的定义与实例化"></a>1、类的定义与实例化</h2><p>我们以开发一个清华大学的选课系统为例，来简单介绍基于面向对象的思想如何编写程序</p>
-<p>面向对象的基本思路就是把程序中要用到的、相关联的数据与功能整合到对象里，然后再去使用，但程序中要用到的数据以及功能那么多，如何找到相关连的呢？我需要先提取选课系统里的角色：学生、老师、课程等，然后显而易见的是：学生有学生相关的数据于功能，老师有老师相关的数据与功能，我们单以学生为例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学校的数据有</span></span><br><span class="line">学校</span><br><span class="line">名字</span><br><span class="line">年龄</span><br><span class="line">性别</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生的功能有</span></span><br><span class="line">选课</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">详细的：</span><br><span class="line"><span class="comment"># 学生1：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=李建刚</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">28</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生2：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=王大力</span><br><span class="line">        性别=女</span><br><span class="line">        年龄=<span class="number">18</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生3：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=牛嗷嗷</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">38</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br></pre></td></tr></table></figure>
-
-<p>我们可以总结出一个学生类，用来存放学生们相同的数据与功能</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学生类</span></span><br><span class="line">	相同的特征：</span><br><span class="line">    	学校 = 清华大学</span><br><span class="line">    相同发的功能：</span><br><span class="line">    	选课</span><br></pre></td></tr></table></figure>
-
-<p>基于上述分析的结果，我们接下来需要做的就是在程序中定义出类，然后调用类产生对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
-
-<p>类体最常见的是变量的定义和函数的定义，但其实类体可以包含任意的Python代码，类体的代码在类定义阶段就会执行，因而会产生新的名称空间用来存放类中定义的名字，可以大一Student.__dict__来查看类这个容器内盛放的东西</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(Student.__dict__)</span><br><span class="line">&#123;..., <span class="string">&#x27;school&#x27;</span>: <span class="string">&#x27;清华大学&#x27;</span>, <span class="string">&#x27;choose&#x27;</span>: &lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;, ...&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用类的过程称为将类实例化，拿到的返回值就是程序中的对象，或称为一个实例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1=Student() <span class="comment"># 每实例化一次Student类就得到一个学生对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2=Student()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3=Student()</span><br></pre></td></tr></table></figure>
-
-<p>如此stu1、stu2、stu3全都一样了（只有类中共有的内容，而没有各自独有的数据），想在实例化的过程中就为三位学生定制各自独有的数据：姓名，性别，年龄，需要我们在类内部新增一个__init__方法,如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 该方法会在对象产生之后自动执行，专门为对象进行初始化操作，可以有任意代码，但一定不能返回非None的值</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.sex = sex</span><br><span class="line">        self.age = age</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
-
-<p>然后我们重新实例化三位学生</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1 = Student(<span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;男&#x27;</span> , <span class="number">28</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2 = Student(<span class="string">&#x27;王大力&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">38</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3 = Student(<span class="string">&#x27;牛姐&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
-
-<p>单拿stu1的产生过程来分析，调用类会先产生一个空对象stu1，然后将stu1连同调用类时括号内参数一起传给Student.<strong>init</strong>(stu1,’李建刚’,28)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">    self.name = name  <span class="comment"># stu1.name = &#x27;李建刚&#x27;</span></span><br><span class="line">    self.sex = sex  <span class="comment"># stu1.sex = &#x27;男&#x27;</span></span><br><span class="line">    self.age = age  <span class="comment"># stu1.age = 28</span></span><br></pre></td></tr></table></figure>
-
-<p>会产生对象名称空间，同样可以用__dict__查看</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">28</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>至此，我们造出了三个对象与一个类，对象存放各自独有的数据，类中存放对象们共有的内容</p>
-<p><img src="https://pic2.zhimg.com/80/v2-c3bb7aefce6ffee1029b1ae5dee72689_720w.jpg" alt="img"></p>
-<p>存的目的是为了用，那么如何访问对象或者类中存放的内容呢？</p>
-<h2 id="2、属性访问"><a href="#2、属性访问" class="headerlink" title="2、属性访问"></a>2、属性访问</h2><h3 id="类属性与对象属性"><a href="#类属性与对象属性" class="headerlink" title="类属性与对象属性"></a>类属性与对象属性</h3><p>在类中定义的名字，都是类的属性，细说的话，类有两种属性：数据属性和函数属性，可以通过__dict__访问属性的值，比如Student.<strong>dict</strong>[‘school’]，但Python提供了专门的属性访问语法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.school</span><br><span class="line"><span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.choose</span><br><span class="line">&lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 除了查看属性外，我们还可以使用Student.attrib = value(修改或新增属性)，用del Student.attrib删除属性</span></span><br></pre></td></tr></table></figure>
-
-<p>操作对象的属性也是一样</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.name  <span class="comment"># 查看，等同于obj1.__dict__[&#x27;name&#x27;]</span></span><br><span class="line"><span class="string">&#x27;李建刚&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.course = <span class="string">&#x27;python&#x27;</span>  <span class="comment"># 新增，等同于obj1.__dict__[‘course&#x27;]=&#x27;python&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.age=<span class="number">38</span> <span class="comment"># 修改，等同于obj1.__dict__[‘age&#x27;]=38</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> obj1.course</span><br></pre></td></tr></table></figure>
-
-<h3 id="属性查找顺序与绑定方法"><a href="#属性查找顺序与绑定方法" class="headerlink" title="属性查找顺序与绑定方法"></a>属性查找顺序与绑定方法</h3><p>对象的名称空间里只存放着对象独有的属性，而对象们相似的属性是存放于类中的。对象在访问属性时，会优先从对象本身的__dict__中查找，未找到，则去类的__dict__中查找</p>
-<p>类中定义的变量是类的数据属性，是共享给所有对象用的，指向相同的内存地址</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># id都一样</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.school)) <span class="comment"># 4301108704</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.school)) <span class="comment"># 4301108704</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>类中定义的函数是类的函数属性，类可以使用，但必须遵循函数的参数规则，有几个参数需要传几个参数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student.choose(stu1) <span class="comment"># 李建刚 is choosing a course</span></span><br><span class="line">Student.choose(stu2) <span class="comment"># 王大力 is choosing a course</span></span><br><span class="line">Student.choose(stu3) <span class="comment"># 牛嗷嗷 is choosing a course</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>但其实类中定义的函数主要是给对象使用的，而且是绑定给对象的，虽然所有对象指向的都是相同的功能，但是绑定到不同的对象就是不同的绑定方法，内存地址各不相同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.choose)) <span class="comment"># 4335426280</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.choose)) <span class="comment"># 4300433608</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>绑定到对象的方法特殊之处在于，绑定给谁就应该由谁来调用，谁来调用，就会将’谁’本身当做第一个参数自动传入（方法__init__也是一样的道理）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stu1.choose()  <span class="comment"># 等同于Student.choose(stu1)</span></span><br><span class="line">stu2.choose()  <span class="comment"># 等同于Student.choose(stu2)</span></span><br><span class="line">stu3.choose()  <span class="comment"># 等同于Student.choose(stu3)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>绑定到不同对象的choose技能，虽然都是选课，但李建刚选的课，不会选给王大力，这正是”绑定“二字的精髓所在</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意：绑定到对象方法的这种自动传值的特征，决定了在类中定义的函数都要默认写一个参数self，self可以是任意名字，但命名为self是约定俗成的。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>Python中一切皆为对象，且Python3中类与类型是一个概念，因而绑定方法我们早就接触过</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#类型list就是类</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span></span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化的到3个对象l1,l2,l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1=<span class="built_in">list</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2=<span class="built_in">list</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3=<span class="built_in">list</span>([<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#三个对象都有绑定方法append,是相同的功能,但内存地址不同</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b48</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b88</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482bc8</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#操作绑定方法l1.append(4),就是在往l1添加4,绝对不会将4添加到l2或l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(<span class="number">4</span>) <span class="comment">#等同于list.append(l1,4)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3</span><br><span class="line">[<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>在上述介绍类与对象的使用过程中，我们更多的是站在底层原理的角度去介绍类与对象之间的关联关系，如果只是站在使用的角度，我们无需考虑语法“对象.属性”中”属性“到底源自于哪里，只需要知道是通过对象获取到的就可以了，所以说，对象是一个高度整合的产物，有了对象，我们只需要使用”对象.xxx“的语法就可以得到跟这个对象相关的所有数据与功能，十分方便且解耦合程度极高</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-24、封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -593,89 +481,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/13/24%E3%80%81%E5%B0%81%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-26、多态性与鸭子类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/26%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E4%B8%8E%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B/">多态性与鸭子类型</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/13/26%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E4%B8%8E%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="多态与多态性"><a href="#多态与多态性" class="headerlink" title="多态与多态性"></a>多态与多态性</h1><p>多态指的是一类事物有多种形态，比如动物有多种形态：猫、狗、猪</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>: <span class="comment">#同一类事物:动物</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的形态之一:猫</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;喵喵喵&#x27;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的形态之二:狗</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;汪汪汪&#x27;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pig</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的形态之三:猪</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;哼哼哼&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化得到三个对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cat=Cat()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog=Dog()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pig=Pig()</span><br></pre></td></tr></table></figure>
-
-<p>多态性指的是可以在不用考虑对象具体类型的情况下而直接使用对象，这就需要在设计时，把对象的使用方法统一成一种：例如cat、dog、pig都是动物,但凡是动物肯定有talk方法，于是我们可以不用考虑它们三者的具体是什么类型的动物,而直接使用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cat.talk()</span><br><span class="line">喵喵喵</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog.talk()</span><br><span class="line">汪汪汪</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pig.talk()</span><br><span class="line">哼哼哼</span><br></pre></td></tr></table></figure>
-
-<p>更进一步,我们可以定义一个统一的接口来使用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">Talk</span>(<span class="params">animal</span>):</span><br><span class="line"><span class="meta">... </span>    animal.talk()</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Talk(cat)</span><br><span class="line">喵喵喵</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Talk(dog)</span><br><span class="line">汪汪汪</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Talk(pig)</span><br><span class="line">哼哼哼</span><br></pre></td></tr></table></figure>
-
-<p>Python中一切皆对象，本身就支持多态性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们可以在不考虑三者类型的情况下直接使用统计三个对象的长度</span></span><br><span class="line">s.__len__()</span><br><span class="line">l.__len__()</span><br><span class="line">t.__len__()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Python内置了一个统一的接口</span></span><br><span class="line"><span class="built_in">len</span>(s)</span><br><span class="line"><span class="built_in">len</span>(l)</span><br><span class="line"><span class="built_in">len</span>(t)</span><br></pre></td></tr></table></figure>
-
-<p>多态性的好处在于增强了程序的灵活性和可扩展性，比如通过继承Animal类创建了一个新的类，实例化得到的对象obj，可以使用相同的方式使用obj.talk()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">Wolf</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的另外一种形态：狼</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;嗷...&#x27;</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wolf=Wolf() <span class="comment"># 实例出一头狼</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wolf.talk() <span class="comment"># 使用者根本无需关心wolf是什么类型而调用talk</span></span><br><span class="line">嗷...</span><br></pre></td></tr></table></figure>
-
-<p>综上我们得知，多态性的本质在于不同的类中定义有相同的方法名，这样我们就可以不考虑类而统一用一种方式去使用对象，可以通过在父类引入抽象类的概念来硬性限制子类必须有某些方法名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定metaclass属性将类设置为抽象类，抽象类本身只是用来约束子类的，不能被实例化</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>(metaclass=abc.ABCMeta):</span><br><span class="line"><span class="meta">    @abc.abstractmethod </span><span class="comment"># 该装饰器限制子类必须定义有一个名为talk的方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>): <span class="comment"># 抽象方法中无需实现具体的功能</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment"># 但凡继承Animal的子类都必须遵循Animal规定的标准</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">cat=Cat() <span class="comment"># 若子类中没有一个名为talk的方法则会抛出异常TypeError，无法实例化</span></span><br></pre></td></tr></table></figure>
-
-<p>但其实我们完全可以不依赖于继承，只需要制造出外观和行为相同对象，同样可以实现不考虑对象类型而使用对象，这正是Python崇尚的“鸭子类型”（duck typing）：“如果看起来像、叫声像而且走起路来像鸭子，那么它就是鸭子”。比起继承的方式，鸭子类型在某种程度上实现了程序的松耦合度，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#二者看起来都像文件,因而就可以当文件一样去用，然而它们并没有直接的关系</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Txt</span>: <span class="comment">#Txt类有两个与文件类型同名的方法，即read和write</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Disk</span>: <span class="comment">#Disk类也有两个与文件类型同名的方法：read和write</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/26%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E4%B8%8E%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 
@@ -906,19 +711,19 @@
 
 
   
-    <article id="post-28、反射、内置方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-23、面向对象编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/28%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">反射、内置方法</a>
+      <a class="article-title" href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">面向对象编程</a>
     </h1>
   
 
         
-        <a href="/2022/05/13/28%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
+        <a href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="archive-article-date">
   	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
 </a>
         
@@ -926,30 +731,183 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、反射"><a href="#一、反射" class="headerlink" title="一、反射"></a>一、反射</h1><p>python是动态语言，而反射(reflection)机制被视为动态语言的关键。</p>
-<p>反射机制指的是在程序的运行状态中</p>
-<p>对于任意一个类，都可以知道这个类的所有属性和方法；</p>
-<p>对于任意一个对象，都能够调用他的任意方法和属性。</p>
-<p>这种动态获取程序信息以及动态调用对象的功能称为反射机制。</p>
-<p>在python中实现反射非常简单，在程序运行过程中，如果我们获取一个不知道存有何种属性的对象，若想操作其内部属性，可以先通过内置函数dir来获取任意一个类或者对象的属性列表，列表中全为字符串格式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">People</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,gender</span>):</span><br><span class="line"><span class="meta">... </span>        self.name=name</span><br><span class="line"><span class="meta">... </span>        self.age=age</span><br><span class="line"><span class="meta">... </span>        self.gender=gender</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj=People(<span class="string">&#x27;egon&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;male&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(obj) <span class="comment"># 列表中查看到的属性全为字符串</span></span><br><span class="line">[......,<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;gender&#x27;</span>, <span class="string">&#x27;name&#x27;</span>]</span><br></pre></td></tr></table></figure>
+        <p>对象的概念</p>
+<p>类与对象</p>
+<p>面对对象编程</p>
+<ul>
+<li>类的定义与实例化</li>
+<li>属性访问</li>
+<li><ul>
+<li>类属性与对象属性</li>
+<li>属性查找顺序与绑方法</li>
+<li>小结</li>
+</ul>
+</li>
+</ul>
+<h1 id="一、对象的概念"><a href="#一、对象的概念" class="headerlink" title="一、对象的概念"></a>一、对象的概念</h1><p>”面向对象“的核心是“对象”二字，而对象的精髓在于“整合“，什么意思？</p>
+<p>所有的程序都是由”数据”与“功能“组成，因而编写程序的本质就是定义出一系列的数据，然后定义出一系列的功能来对数据进行操作。在学习”对象“之前，程序中的数据与功能是分离开的，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据：name、age、sex</span></span><br><span class="line">name = <span class="string">&#x27;lili&#x27;</span></span><br><span class="line">age = <span class="string">&#x27;18&#x27;</span></span><br><span class="line">sex = <span class="string">&#x27;female&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 功能：tell_info</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tell_info</span>(<span class="params">name,age,sex</span>): </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&lt;%s:%s:%s&gt;&#x27;</span> %(name,age,sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时若想执行查看个人信息的功能，需要同时拿来两样东西，一类是功能tell_info，另外一类则是多个数据name、age、sex，然后才能执行，非常麻烦</span></span><br><span class="line">tell_info(name,age,sex)</span><br></pre></td></tr></table></figure>
 
-<p>接下来就是想办法通过字符串来操作对象的属性了，这就涉及到内置函数hasattr、getattr、setattr、delattr的使用了（Python中一切皆对象，类和对象都可以被这四个函数操作，用法一样）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,full_name</span>):</span><br><span class="line">        self.full_name =full_name</span><br><span class="line"></span><br><span class="line">t=Teacher(<span class="string">&#x27;Egon Lin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># hasattr(object,&#x27;name&#x27;)</span></span><br><span class="line"><span class="built_in">hasattr</span>(t,<span class="string">&#x27;full_name&#x27;</span>) <span class="comment"># 按字符串&#x27;full_name&#x27;判断有无属性t.full_name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># getattr(object, &#x27;name&#x27;, default=None)</span></span><br><span class="line"><span class="built_in">getattr</span>(t,<span class="string">&#x27;full_name&#x27;</span>,<span class="literal">None</span>) <span class="comment"># 等同于t.full_name,不存在该属性则返回默认值None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># setattr(x, &#x27;y&#x27;, v)</span></span><br><span class="line"><span class="built_in">setattr</span>(t,<span class="string">&#x27;age&#x27;</span>,<span class="number">18</span>) <span class="comment"># 等同于t.age=18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delattr(x, &#x27;y&#x27;)</span></span><br><span class="line"><span class="built_in">delattr</span>(t,<span class="string">&#x27;age&#x27;</span>) <span class="comment"># 等同于del t.age</span></span><br></pre></td></tr></table></figure>
+<p>在学习了“对象”之后，我们就有了一个容器，该容器可以盛放数据与功能，所以我们可以说：对象是把数据与功能整合到一起的产物，或者说”对象“就是一个盛放数据与功能的容器&#x2F;箱子&#x2F;盒子。</p>
+<p>如果把”数据“比喻为”睫毛膏“、”眼影“、”唇彩“等化妆所需要的原材料；把”功能“比喻为眼线笔、眉笔等化妆所需要的工具，那么”对象“就是一个彩妆盒，彩妆盒可以把”原材料“与”工具“都装到一起</p>
+<p>如果我们把”化妆“比喻为要执行的业务逻辑，此时只需要拿来一样东西即可，那就是彩妆盒，因为彩妆盒里整合了化妆所需的所有原材料与功能，这比起你分别拿来原材料与功能才能执行，要方便的多。</p>
+<p>在了解了对象的基本概念之后，理解面向对象的编程方式就相对简单很多了，面向对象编程就是要造出一个个的对象，把原本分散开的相关数据与功能整合到一个个的对象里，这么做既方便使用，也可以提高程序的解耦合程度，进而提升了程序的可扩展性（需要强调的是，软件质量属性包含很多方面，面向对象解决的仅仅只是扩展性问题）</p>
+<p><img src="https://pic1.zhimg.com/v2-be68cd9e27b83c937cf44dbe7a2cf56c_r.jpg" alt="preview"></p>
+<h1 id="二、类与对象"><a href="#二、类与对象" class="headerlink" title="二、类与对象"></a>二、类与对象</h1><p>类即类别&#x2F;种类，是面向对象分析和设计的基石，如果多个对象有相似的数据与功能，那么该多个对象就属于同一种类。有了类的好处是：我们可以把同一类对象相同的数据与功能存放到类里，而无需每个对象都重复存一份，这样每个对象里只需存自己独有的数据即可，极大地节省了空间。所以，如果说对象是用来存放数据与功能的容器，那么类则是用来存放多个对象相同的数据与功能的容器</p>
+<p><img src="https://pic2.zhimg.com/v2-0b1c2138d316307c0c830aa1df3aa1e1_r.jpg" alt="preview"></p>
+<p> 综上所述，虽然我们是先介绍对象后介绍类，但是需要强调的是：在程序中，必须要事先定义类，然后再调用类产生对象（调用类拿到的返回值就是对象）。产生对象的类与对象之间存在关联，这种关联指的是：对象可以访问到类中共有的数据与功能，所以类中的内容仍然是属于对象的，类只不过是一种节省空间、减少代码冗余的机制，面向对象编程最终的核心仍然是去使用对象</p>
+<p> 在了解了类与对象这两大核心概念之后，我们就可以来介绍一下面向对象编程啦</p>
+<h1 id="三、面向对象编程"><a href="#三、面向对象编程" class="headerlink" title="三、面向对象编程"></a>三、面向对象编程</h1><h2 id="1、类的定义与实例化"><a href="#1、类的定义与实例化" class="headerlink" title="1、类的定义与实例化"></a>1、类的定义与实例化</h2><p>我们以开发一个清华大学的选课系统为例，来简单介绍基于面向对象的思想如何编写程序</p>
+<p>面向对象的基本思路就是把程序中要用到的、相关联的数据与功能整合到对象里，然后再去使用，但程序中要用到的数据以及功能那么多，如何找到相关连的呢？我需要先提取选课系统里的角色：学生、老师、课程等，然后显而易见的是：学生有学生相关的数据于功能，老师有老师相关的数据与功能，我们单以学生为例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学校的数据有</span></span><br><span class="line">学校</span><br><span class="line">名字</span><br><span class="line">年龄</span><br><span class="line">性别</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生的功能有</span></span><br><span class="line">选课</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">详细的：</span><br><span class="line"><span class="comment"># 学生1：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=李建刚</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">28</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生2：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=王大力</span><br><span class="line">        性别=女</span><br><span class="line">        年龄=<span class="number">18</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生3：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=牛嗷嗷</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">38</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br></pre></td></tr></table></figure>
 
-<p>基于反射可以十分灵活地操作对象的属性，比如将用户交互的结果反射到具体的功能执行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">FtpServer</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">serve_forever</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>            inp=<span class="built_in">input</span>(<span class="string">&#x27;input your cmd&gt;&gt;: &#x27;</span>).strip()</span><br><span class="line"><span class="meta">... </span>            cmd,file=inp.split()</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">if</span> <span class="built_in">hasattr</span>(self,cmd): <span class="comment"># 根据用户输入的cmd，判断对象self有无对应的方法属性</span></span><br><span class="line"><span class="meta">... </span>                func=<span class="built_in">getattr</span>(self,cmd) <span class="comment"># 根据字符串cmd，获取对象self对应的方法属性</span></span><br><span class="line"><span class="meta">... </span>                func(file)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self,file</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;Downloading %s...&#x27;</span> %file)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self,file</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;Uploading %s...&#x27;</span> %file)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>server=FtpServer()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>server.serve_forever()</span><br><span class="line"><span class="built_in">input</span> your cmd&gt;&gt;: get a.txt</span><br><span class="line">Downloading a.txt...</span><br><span class="line"><span class="built_in">input</span> your cmd&gt;&gt;: put a.txt</span><br><span class="line">Uploading a.txt...</span><br></pre></td></tr></table></figure>
+<p>我们可以总结出一个学生类，用来存放学生们相同的数据与功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学生类</span></span><br><span class="line">	相同的特征：</span><br><span class="line">    	学校 = 清华大学</span><br><span class="line">    相同发的功能：</span><br><span class="line">    	选课</span><br></pre></td></tr></table></figure>
 
-<h1 id="二、内置方法"><a href="#二、内置方法" class="headerlink" title="二、内置方法"></a>二、内置方法</h1><p>Python的Class机制内置了很多特殊的方法来帮助使用者高度定制自己的类，这些内置方法都是以双下划线开头和结尾的，会在满足某种条件时自动触发，我们以常用的__str__和__del__为例来简单介绍它们的使用。</p>
-<p>__str__方法会在对象被打印时自动触发，print功能打印的就是它的返回值，我们通常基于方法来定制对象的打印信息，该方法必须返回字符串类型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">People</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):</span><br><span class="line"><span class="meta">... </span>        self.name=name</span><br><span class="line"><span class="meta">... </span>        self.age=age</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">&#x27;&lt;Name:%s Age:%s&gt;&#x27;</span> %(self.name,self.age) <span class="comment">#返回类型必须是字符串</span></span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p=People(<span class="string">&#x27;lili&#x27;</span>,<span class="number">18</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(p) <span class="comment">#触发p.__str__()，拿到返回值后进行打印</span></span><br><span class="line">&lt;Name:lili Age:<span class="number">18</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>基于上述分析的结果，我们接下来需要做的就是在程序中定义出类，然后调用类产生对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
 
-<p>__del__会在对象被删除时自动触发。由于Python自带的垃圾回收机制会自动清理Python程序的资源，所以当一个对象只占用应用程序级资源时，完全没必要为对象定制__del__方法，但在产生一个对象的同时涉及到申请系统资源（比如系统打开的文件、网络连接等）的情况下，关于系统资源的回收，Python的垃圾回收机制便派不上用场了，需要我们为对象定制该方法，用来在对象被删除时自动触发回收系统资源的操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MySQL</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,ip,port</span>):</span><br><span class="line">        self.conn=connect(ip,port) <span class="comment"># 伪代码，发起网络连接，需要占用系统资源</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__del__</span>(<span class="params">self</span>):</span><br><span class="line">        self.conn.close() <span class="comment"># 关闭网络连接，回收系统资源</span></span><br><span class="line"></span><br><span class="line">obj=MySQL(<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="number">3306</span>) <span class="comment"># 在对象obj被删除时，自动触发obj.__del__()</span></span><br></pre></td></tr></table></figure>
+<p>类体最常见的是变量的定义和函数的定义，但其实类体可以包含任意的Python代码，类体的代码在类定义阶段就会执行，因而会产生新的名称空间用来存放类中定义的名字，可以大一Student.__dict__来查看类这个容器内盛放的东西</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(Student.__dict__)</span><br><span class="line">&#123;..., <span class="string">&#x27;school&#x27;</span>: <span class="string">&#x27;清华大学&#x27;</span>, <span class="string">&#x27;choose&#x27;</span>: &lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;, ...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用类的过程称为将类实例化，拿到的返回值就是程序中的对象，或称为一个实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1=Student() <span class="comment"># 每实例化一次Student类就得到一个学生对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2=Student()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3=Student()</span><br></pre></td></tr></table></figure>
+
+<p>如此stu1、stu2、stu3全都一样了（只有类中共有的内容，而没有各自独有的数据），想在实例化的过程中就为三位学生定制各自独有的数据：姓名，性别，年龄，需要我们在类内部新增一个__init__方法,如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 该方法会在对象产生之后自动执行，专门为对象进行初始化操作，可以有任意代码，但一定不能返回非None的值</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.sex = sex</span><br><span class="line">        self.age = age</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
+
+<p>然后我们重新实例化三位学生</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1 = Student(<span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;男&#x27;</span> , <span class="number">28</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2 = Student(<span class="string">&#x27;王大力&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">38</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3 = Student(<span class="string">&#x27;牛姐&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
+<p>单拿stu1的产生过程来分析，调用类会先产生一个空对象stu1，然后将stu1连同调用类时括号内参数一起传给Student.<strong>init</strong>(stu1,’李建刚’,28)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">    self.name = name  <span class="comment"># stu1.name = &#x27;李建刚&#x27;</span></span><br><span class="line">    self.sex = sex  <span class="comment"># stu1.sex = &#x27;男&#x27;</span></span><br><span class="line">    self.age = age  <span class="comment"># stu1.age = 28</span></span><br></pre></td></tr></table></figure>
+
+<p>会产生对象名称空间，同样可以用__dict__查看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">28</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，我们造出了三个对象与一个类，对象存放各自独有的数据，类中存放对象们共有的内容</p>
+<p><img src="https://pic2.zhimg.com/80/v2-c3bb7aefce6ffee1029b1ae5dee72689_720w.jpg" alt="img"></p>
+<p>存的目的是为了用，那么如何访问对象或者类中存放的内容呢？</p>
+<h2 id="2、属性访问"><a href="#2、属性访问" class="headerlink" title="2、属性访问"></a>2、属性访问</h2><h3 id="类属性与对象属性"><a href="#类属性与对象属性" class="headerlink" title="类属性与对象属性"></a>类属性与对象属性</h3><p>在类中定义的名字，都是类的属性，细说的话，类有两种属性：数据属性和函数属性，可以通过__dict__访问属性的值，比如Student.<strong>dict</strong>[‘school’]，但Python提供了专门的属性访问语法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.school</span><br><span class="line"><span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.choose</span><br><span class="line">&lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 除了查看属性外，我们还可以使用Student.attrib = value(修改或新增属性)，用del Student.attrib删除属性</span></span><br></pre></td></tr></table></figure>
+
+<p>操作对象的属性也是一样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.name  <span class="comment"># 查看，等同于obj1.__dict__[&#x27;name&#x27;]</span></span><br><span class="line"><span class="string">&#x27;李建刚&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.course = <span class="string">&#x27;python&#x27;</span>  <span class="comment"># 新增，等同于obj1.__dict__[‘course&#x27;]=&#x27;python&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.age=<span class="number">38</span> <span class="comment"># 修改，等同于obj1.__dict__[‘age&#x27;]=38</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> obj1.course</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性查找顺序与绑定方法"><a href="#属性查找顺序与绑定方法" class="headerlink" title="属性查找顺序与绑定方法"></a>属性查找顺序与绑定方法</h3><p>对象的名称空间里只存放着对象独有的属性，而对象们相似的属性是存放于类中的。对象在访问属性时，会优先从对象本身的__dict__中查找，未找到，则去类的__dict__中查找</p>
+<p>类中定义的变量是类的数据属性，是共享给所有对象用的，指向相同的内存地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># id都一样</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.school)) <span class="comment"># 4301108704</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.school)) <span class="comment"># 4301108704</span></span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">class Student:</span><br><span class="line">    school = &#x27;SH&#x27;</span><br><span class="line"></span><br><span class="line">    def __init__(self, name):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    def func(self):</span><br><span class="line">        return self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Teacher(Student):</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        # super(Student, self).__init__(name)   # python2中</span><br><span class="line">        super().__init__(name)  # python3中</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.name  # 只能是字符串</span><br><span class="line"></span><br><span class="line">    def __del__(self):</span><br><span class="line">        print(&#x27;deeeee&#x27;)  # 删除后输出内容</span><br><span class="line"></span><br><span class="line">    def __getattr__(self, item):</span><br><span class="line">        print(&#x27;访问属性不存在输出&#x27;)</span><br><span class="line"></span><br><span class="line">    def __setattr__(self, key, value):</span><br><span class="line">        # self.key = value  # 会无限递归</span><br><span class="line">        self.__dict__[key] = value</span><br><span class="line">        print(&#x27;设置值的时候输出，如果初始化中有自动设值也执行，递归深度一般为1000&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def __call__(self, *args, **kwargs):</span><br><span class="line">        print(&#x27;对象加()调用时执行&#x27;)</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">gte  小于等于</span><br><span class="line">lte  小于等于</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">obj = Teacher(&#x27;cx&#x27;, 18)</span><br><span class="line"># del obj</span><br><span class="line">print(obj.__dict__)</span><br><span class="line">obj()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">NameError</span><br><span class="line">SyntaxError</span><br><span class="line">AttributeError</span><br><span class="line">KeyError</span><br><span class="line">TypeError</span><br><span class="line">ZeroDivisionError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    print(&#x27;a&#x27;)  # 要检测的代码</span><br><span class="line"></span><br><span class="line">except KeyError as e1:</span><br><span class="line">    print(&#x27;Key&#x27;)</span><br><span class="line">except NameError as e2:</span><br><span class="line">    print()</span><br><span class="line">except TypeError as e3:</span><br><span class="line">    print()</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(&#x27;其他所有错误在这被捕捉并执行下面代码&#x27;)</span><br><span class="line">else:</span><br><span class="line">    print(&#x27;没有错误则执行&#x27;)  # else以及以上的代码只会执行一种</span><br><span class="line">finally:</span><br><span class="line">    print(&#x27;不管有没有异常都会执行的代码&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l = [1, 2, 3]</span><br><span class="line">if len(l) &lt;5:</span><br><span class="line">    raise Exception(&#x27;断言失败&#x27;)  # 抛出异常: raise Execption/TypeErroe</span><br><span class="line"></span><br><span class="line">assert len(l) == 3  # 当l长度为3是抛出异常</span><br></pre></td></tr></table></figure>
+<p>类中定义的函数是类的函数属性，类可以使用，但必须遵循函数的参数规则，有几个参数需要传几个参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student.choose(stu1) <span class="comment"># 李建刚 is choosing a course</span></span><br><span class="line">Student.choose(stu2) <span class="comment"># 王大力 is choosing a course</span></span><br><span class="line">Student.choose(stu3) <span class="comment"># 牛嗷嗷 is choosing a course</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>但其实类中定义的函数主要是给对象使用的，而且是绑定给对象的，虽然所有对象指向的都是相同的功能，但是绑定到不同的对象就是不同的绑定方法，内存地址各不相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.choose)) <span class="comment"># 4335426280</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.choose)) <span class="comment"># 4300433608</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>绑定到对象的方法特殊之处在于，绑定给谁就应该由谁来调用，谁来调用，就会将’谁’本身当做第一个参数自动传入（方法__init__也是一样的道理）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stu1.choose()  <span class="comment"># 等同于Student.choose(stu1)</span></span><br><span class="line">stu2.choose()  <span class="comment"># 等同于Student.choose(stu2)</span></span><br><span class="line">stu3.choose()  <span class="comment"># 等同于Student.choose(stu3)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>绑定到不同对象的choose技能，虽然都是选课，但李建刚选的课，不会选给王大力，这正是”绑定“二字的精髓所在</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意：绑定到对象方法的这种自动传值的特征，决定了在类中定义的函数都要默认写一个参数self，self可以是任意名字，但命名为self是约定俗成的。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Python中一切皆为对象，且Python3中类与类型是一个概念，因而绑定方法我们早就接触过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#类型list就是类</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span></span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化的到3个对象l1,l2,l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1=<span class="built_in">list</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2=<span class="built_in">list</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3=<span class="built_in">list</span>([<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#三个对象都有绑定方法append,是相同的功能,但内存地址不同</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b48</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b88</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482bc8</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#操作绑定方法l1.append(4),就是在往l1添加4,绝对不会将4添加到l2或l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(<span class="number">4</span>) <span class="comment">#等同于list.append(l1,4)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3</span><br><span class="line">[<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>在上述介绍类与对象的使用过程中，我们更多的是站在底层原理的角度去介绍类与对象之间的关联关系，如果只是站在使用的角度，我们无需考虑语法“对象.属性”中”属性“到底源自于哪里，只需要知道是通过对象获取到的就可以了，所以说，对象是一个高度整合的产物，有了对象，我们只需要使用”对象.xxx“的语法就可以得到跟这个对象相关的所有数据与功能，十分方便且解耦合程度极高</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-26、多态性与鸭子类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/13/26%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E4%B8%8E%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B/">多态性与鸭子类型</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/26%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E4%B8%8E%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="多态与多态性"><a href="#多态与多态性" class="headerlink" title="多态与多态性"></a>多态与多态性</h1><p>多态指的是一类事物有多种形态，比如动物有多种形态：猫、狗、猪</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>: <span class="comment">#同一类事物:动物</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的形态之一:猫</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;喵喵喵&#x27;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的形态之二:狗</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;汪汪汪&#x27;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pig</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的形态之三:猪</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;哼哼哼&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化得到三个对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cat=Cat()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog=Dog()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pig=Pig()</span><br></pre></td></tr></table></figure>
+
+<p>多态性指的是可以在不用考虑对象具体类型的情况下而直接使用对象，这就需要在设计时，把对象的使用方法统一成一种：例如cat、dog、pig都是动物,但凡是动物肯定有talk方法，于是我们可以不用考虑它们三者的具体是什么类型的动物,而直接使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cat.talk()</span><br><span class="line">喵喵喵</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dog.talk()</span><br><span class="line">汪汪汪</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pig.talk()</span><br><span class="line">哼哼哼</span><br></pre></td></tr></table></figure>
+
+<p>更进一步,我们可以定义一个统一的接口来使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">Talk</span>(<span class="params">animal</span>):</span><br><span class="line"><span class="meta">... </span>    animal.talk()</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Talk(cat)</span><br><span class="line">喵喵喵</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Talk(dog)</span><br><span class="line">汪汪汪</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Talk(pig)</span><br><span class="line">哼哼哼</span><br></pre></td></tr></table></figure>
+
+<p>Python中一切皆对象，本身就支持多态性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们可以在不考虑三者类型的情况下直接使用统计三个对象的长度</span></span><br><span class="line">s.__len__()</span><br><span class="line">l.__len__()</span><br><span class="line">t.__len__()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Python内置了一个统一的接口</span></span><br><span class="line"><span class="built_in">len</span>(s)</span><br><span class="line"><span class="built_in">len</span>(l)</span><br><span class="line"><span class="built_in">len</span>(t)</span><br></pre></td></tr></table></figure>
+
+<p>多态性的好处在于增强了程序的灵活性和可扩展性，比如通过继承Animal类创建了一个新的类，实例化得到的对象obj，可以使用相同的方式使用obj.talk()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">Wolf</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment">#动物的另外一种形态：狼</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;嗷...&#x27;</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wolf=Wolf() <span class="comment"># 实例出一头狼</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>wolf.talk() <span class="comment"># 使用者根本无需关心wolf是什么类型而调用talk</span></span><br><span class="line">嗷...</span><br></pre></td></tr></table></figure>
+
+<p>综上我们得知，多态性的本质在于不同的类中定义有相同的方法名，这样我们就可以不考虑类而统一用一种方式去使用对象，可以通过在父类引入抽象类的概念来硬性限制子类必须有某些方法名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定metaclass属性将类设置为抽象类，抽象类本身只是用来约束子类的，不能被实例化</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>(metaclass=abc.ABCMeta):</span><br><span class="line"><span class="meta">    @abc.abstractmethod </span><span class="comment"># 该装饰器限制子类必须定义有一个名为talk的方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>): <span class="comment"># 抽象方法中无需实现具体的功能</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="title class_ inherited__">Animal</span>): <span class="comment"># 但凡继承Animal的子类都必须遵循Animal规定的标准</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">talk</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">cat=Cat() <span class="comment"># 若子类中没有一个名为talk的方法则会抛出异常TypeError，无法实例化</span></span><br></pre></td></tr></table></figure>
+
+<p>但其实我们完全可以不依赖于继承，只需要制造出外观和行为相同对象，同样可以实现不考虑对象类型而使用对象，这正是Python崇尚的“鸭子类型”（duck typing）：“如果看起来像、叫声像而且走起路来像鸭子，那么它就是鸭子”。比起继承的方式，鸭子类型在某种程度上实现了程序的松耦合度，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#二者看起来都像文件,因而就可以当文件一样去用，然而它们并没有直接的关系</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Txt</span>: <span class="comment">#Txt类有两个与文件类型同名的方法，即read和write</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Disk</span>: <span class="comment">#Disk类也有两个与文件类型同名的方法：read和write</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -963,7 +921,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/28%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/13/26%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E4%B8%8E%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 
@@ -1037,6 +995,93 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/13/27%E3%80%81%E7%BB%91%E5%AE%9A%E6%96%B9%E6%B3%95%E4%B8%8E%E9%9D%9E%E7%BB%91%E5%AE%9A%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-28、反射、内置方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/13/28%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">反射、内置方法</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/28%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、反射"><a href="#一、反射" class="headerlink" title="一、反射"></a>一、反射</h1><p>python是动态语言，而反射(reflection)机制被视为动态语言的关键。</p>
+<p>反射机制指的是在程序的运行状态中</p>
+<p>对于任意一个类，都可以知道这个类的所有属性和方法；</p>
+<p>对于任意一个对象，都能够调用他的任意方法和属性。</p>
+<p>这种动态获取程序信息以及动态调用对象的功能称为反射机制。</p>
+<p>在python中实现反射非常简单，在程序运行过程中，如果我们获取一个不知道存有何种属性的对象，若想操作其内部属性，可以先通过内置函数dir来获取任意一个类或者对象的属性列表，列表中全为字符串格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">People</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age,gender</span>):</span><br><span class="line"><span class="meta">... </span>        self.name=name</span><br><span class="line"><span class="meta">... </span>        self.age=age</span><br><span class="line"><span class="meta">... </span>        self.gender=gender</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj=People(<span class="string">&#x27;egon&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;male&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(obj) <span class="comment"># 列表中查看到的属性全为字符串</span></span><br><span class="line">[......,<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;gender&#x27;</span>, <span class="string">&#x27;name&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是想办法通过字符串来操作对象的属性了，这就涉及到内置函数hasattr、getattr、setattr、delattr的使用了（Python中一切皆对象，类和对象都可以被这四个函数操作，用法一样）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,full_name</span>):</span><br><span class="line">        self.full_name =full_name</span><br><span class="line"></span><br><span class="line">t=Teacher(<span class="string">&#x27;Egon Lin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># hasattr(object,&#x27;name&#x27;)</span></span><br><span class="line"><span class="built_in">hasattr</span>(t,<span class="string">&#x27;full_name&#x27;</span>) <span class="comment"># 按字符串&#x27;full_name&#x27;判断有无属性t.full_name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># getattr(object, &#x27;name&#x27;, default=None)</span></span><br><span class="line"><span class="built_in">getattr</span>(t,<span class="string">&#x27;full_name&#x27;</span>,<span class="literal">None</span>) <span class="comment"># 等同于t.full_name,不存在该属性则返回默认值None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># setattr(x, &#x27;y&#x27;, v)</span></span><br><span class="line"><span class="built_in">setattr</span>(t,<span class="string">&#x27;age&#x27;</span>,<span class="number">18</span>) <span class="comment"># 等同于t.age=18</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># delattr(x, &#x27;y&#x27;)</span></span><br><span class="line"><span class="built_in">delattr</span>(t,<span class="string">&#x27;age&#x27;</span>) <span class="comment"># 等同于del t.age</span></span><br></pre></td></tr></table></figure>
+
+<p>基于反射可以十分灵活地操作对象的属性，比如将用户交互的结果反射到具体的功能执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">FtpServer</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">serve_forever</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>            inp=<span class="built_in">input</span>(<span class="string">&#x27;input your cmd&gt;&gt;: &#x27;</span>).strip()</span><br><span class="line"><span class="meta">... </span>            cmd,file=inp.split()</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">if</span> <span class="built_in">hasattr</span>(self,cmd): <span class="comment"># 根据用户输入的cmd，判断对象self有无对应的方法属性</span></span><br><span class="line"><span class="meta">... </span>                func=<span class="built_in">getattr</span>(self,cmd) <span class="comment"># 根据字符串cmd，获取对象self对应的方法属性</span></span><br><span class="line"><span class="meta">... </span>                func(file)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self,file</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;Downloading %s...&#x27;</span> %file)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self,file</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;Uploading %s...&#x27;</span> %file)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>server=FtpServer()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>server.serve_forever()</span><br><span class="line"><span class="built_in">input</span> your cmd&gt;&gt;: get a.txt</span><br><span class="line">Downloading a.txt...</span><br><span class="line"><span class="built_in">input</span> your cmd&gt;&gt;: put a.txt</span><br><span class="line">Uploading a.txt...</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、内置方法"><a href="#二、内置方法" class="headerlink" title="二、内置方法"></a>二、内置方法</h1><p>Python的Class机制内置了很多特殊的方法来帮助使用者高度定制自己的类，这些内置方法都是以双下划线开头和结尾的，会在满足某种条件时自动触发，我们以常用的__str__和__del__为例来简单介绍它们的使用。</p>
+<p>__str__方法会在对象被打印时自动触发，print功能打印的就是它的返回值，我们通常基于方法来定制对象的打印信息，该方法必须返回字符串类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">People</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):</span><br><span class="line"><span class="meta">... </span>        self.name=name</span><br><span class="line"><span class="meta">... </span>        self.age=age</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">&#x27;&lt;Name:%s Age:%s&gt;&#x27;</span> %(self.name,self.age) <span class="comment">#返回类型必须是字符串</span></span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>p=People(<span class="string">&#x27;lili&#x27;</span>,<span class="number">18</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(p) <span class="comment">#触发p.__str__()，拿到返回值后进行打印</span></span><br><span class="line">&lt;Name:lili Age:<span class="number">18</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>__del__会在对象被删除时自动触发。由于Python自带的垃圾回收机制会自动清理Python程序的资源，所以当一个对象只占用应用程序级资源时，完全没必要为对象定制__del__方法，但在产生一个对象的同时涉及到申请系统资源（比如系统打开的文件、网络连接等）的情况下，关于系统资源的回收，Python的垃圾回收机制便派不上用场了，需要我们为对象定制该方法，用来在对象被删除时自动触发回收系统资源的操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MySQL</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,ip,port</span>):</span><br><span class="line">        self.conn=connect(ip,port) <span class="comment"># 伪代码，发起网络连接，需要占用系统资源</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__del__</span>(<span class="params">self</span>):</span><br><span class="line">        self.conn.close() <span class="comment"># 关闭网络连接，回收系统资源</span></span><br><span class="line"></span><br><span class="line">obj=MySQL(<span class="string">&#x27;127.0.0.1&#x27;</span>,<span class="number">3306</span>) <span class="comment"># 在对象obj被删除时，自动触发obj.__del__()</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">class Student:</span><br><span class="line">    school = &#x27;SH&#x27;</span><br><span class="line"></span><br><span class="line">    def __init__(self, name):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    def func(self):</span><br><span class="line">        return self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Teacher(Student):</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        # super(Student, self).__init__(name)   # python2中</span><br><span class="line">        super().__init__(name)  # python3中</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.name  # 只能是字符串</span><br><span class="line"></span><br><span class="line">    def __del__(self):</span><br><span class="line">        print(&#x27;deeeee&#x27;)  # 删除后输出内容</span><br><span class="line"></span><br><span class="line">    def __getattr__(self, item):</span><br><span class="line">        print(&#x27;访问属性不存在输出&#x27;)</span><br><span class="line"></span><br><span class="line">    def __setattr__(self, key, value):</span><br><span class="line">        # self.key = value  # 会无限递归</span><br><span class="line">        self.__dict__[key] = value</span><br><span class="line">        print(&#x27;设置值的时候输出，如果初始化中有自动设值也执行，递归深度一般为1000&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def __call__(self, *args, **kwargs):</span><br><span class="line">        print(&#x27;对象加()调用时执行&#x27;)</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">gte  小于等于</span><br><span class="line">lte  小于等于</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">obj = Teacher(&#x27;cx&#x27;, 18)</span><br><span class="line"># del obj</span><br><span class="line">print(obj.__dict__)</span><br><span class="line">obj()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">NameError</span><br><span class="line">SyntaxError</span><br><span class="line">AttributeError</span><br><span class="line">KeyError</span><br><span class="line">TypeError</span><br><span class="line">ZeroDivisionError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    print(&#x27;a&#x27;)  # 要检测的代码</span><br><span class="line"></span><br><span class="line">except KeyError as e1:</span><br><span class="line">    print(&#x27;Key&#x27;)</span><br><span class="line">except NameError as e2:</span><br><span class="line">    print()</span><br><span class="line">except TypeError as e3:</span><br><span class="line">    print()</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(&#x27;其他所有错误在这被捕捉并执行下面代码&#x27;)</span><br><span class="line">else:</span><br><span class="line">    print(&#x27;没有错误则执行&#x27;)  # else以及以上的代码只会执行一种</span><br><span class="line">finally:</span><br><span class="line">    print(&#x27;不管有没有异常都会执行的代码&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l = [1, 2, 3]</span><br><span class="line">if len(l) &lt;5:</span><br><span class="line">    raise Exception(&#x27;断言失败&#x27;)  # 抛出异常: raise Execption/TypeErroe</span><br><span class="line"></span><br><span class="line">assert len(l) == 3  # 当l长度为3是抛出异常</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/13/28%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">展开全文 >></a>
         </p>
       
 
@@ -1199,19 +1244,19 @@
 
 
   
-    <article id="post-32、python并发编程之背景知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-29、元类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/13/32%E3%80%81python%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86/">Python并发编程背景知识</a>
+      <a class="article-title" href="/2022/05/13/29%E3%80%81%E5%85%83%E7%B1%BB/">元类</a>
     </h1>
   
 
         
-        <a href="/2022/05/13/32%E3%80%81python%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <a href="/2022/05/13/29%E3%80%81%E5%85%83%E7%B1%BB/" class="archive-article-date">
   	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
 </a>
         
@@ -1219,108 +1264,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="目录："><a href="#目录：" class="headerlink" title="目录："></a>目录：</h2><ul>
-<li>一 引子</li>
-<li>二 为什么要有操作系统</li>
-<li>三 什么是操作系统</li>
-<li>四 操作系统与普通软件的区别</li>
-<li>五 操作系统发展史</li>
-<li>六 总结视频链接：</li>
-</ul>
-<h2 id="一-引子"><a href="#一-引子" class="headerlink" title="一 引子"></a>一 引子</h2><p>顾名思义，进程即正在执行的一个过程。进程是对正在运行程序的一个抽象。</p>
-<p>进程的概念起源于操作系统，是操作系统最核心的概念，也是操作系统提供的最古老也是最重要的抽象概念之一。操作系统的其他所有内容都是围绕进程的概念展开的。</p>
-<p>所以想要真正了解进程，必须事先了解操作系统</p>
-<h2 id="二-为什么要有操作系统"><a href="#二-为什么要有操作系统" class="headerlink" title="二 为什么要有操作系统"></a>二 为什么要有操作系统</h2><p>现代的计算机系统主要是由一个或者多个处理器，主存，硬盘，键盘，鼠标，显示器，打印机，网络接口及其他输入输出设备组成。</p>
-<p>一般而言，现代计算机系统是一个复杂的系统。</p>
-<p>其一：如果每位应用程序员都必须掌握该系统所有的细节，那就不可能再编写代码了（严重影响了程序员的开发效率：全部掌握这些细节可能需要一万年….）</p>
-<p>其二：并且管理这些部件并加以优化使用，是一件极富挑战性的工作，于是，计算安装了一层软件（系统软件），称为操作系统。它的任务就是为用户程序提供一个更好、更简单、更清晰的计算机模型，并管理刚才提到的所有设备。</p>
-<p><strong>总结：</strong></p>
-<p><strong>程序员无法把所有的硬件操作细节都了解到，管理这些硬件并且加以优化使用是非常繁琐的工作，这个繁琐的工作就是操作系统来干的，有了他，程序员就从这些繁琐的工作中解脱了出来，只需要考虑自己的应用软件的编写就可以了，应用软件直接使用操作系统提供的功能来间接使用硬件。</strong></p>
-<h2 id="三-什么是操作系统"><a href="#三-什么是操作系统" class="headerlink" title="三 什么是操作系统"></a>三 什么是操作系统</h2><p><strong>精简的说的话，操作系统就是一个协调、管理和控制计算机硬件资源和软件资源的控制程序。操作系统所处的位置如图1</strong></p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#操作系统位于计算机硬件与应用软件之间，本质也是一个软件。操作系统由操作系统的内核（运行于内核态，管理硬件资源）以及系统调用（运行于用户态，为应用程序员写的应用程序提供系统调用接口）两部分组成，所以，单纯的说操作系统是运行于内核态的，是不准确的。</span><br></pre></td></tr></table></figure>
+        <p>元类介绍</p>
+<p>class关键字创建类的流程分析</p>
+<p>自定义袁磊控制类StanfordTeacher的创建</p>
+<p>自定义元类控制类StanfordTeacher的调用</p>
+<p>再看属性查找</p>
+<p>作业</p>
+<h1 id="一-元类介绍"><a href="#一-元类介绍" class="headerlink" title="一  元类介绍"></a>一  元类介绍</h1><p>什么是元类呢？一切源自于一句话：python中一切皆为对象。让我们先定义一个类，然后逐步分析</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StanfordTeacher</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    school=<span class="string">&#x27;Stanford&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):</span><br><span class="line">        self.name=name</span><br><span class="line">        self.age=age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">say</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s says welcome to the Stanford to learn Python&#x27;</span> %self.name)</span><br></pre></td></tr></table></figure>
+
+<p>所有的对象都是实例化或者说调用类而得到的（调用类的过程称为类的实例化），比如对象t1是调用类StanfordTeacher得到的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t1=StanfordTeacher(<span class="string">&#x27;lili&#x27;</span>,<span class="number">18</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(t1)) <span class="comment">#查看对象t1的类是&lt;class &#x27;__main__.StanfordTeacher&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果一切皆为对象，那么类StanfordTeacher本质也是一个对象，既然所有的对象都是调用类得到的，那么StanfordTeacher必然也是调用了一个类得到的，这个类称为元类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(StanfordTeacher)) <span class="comment"># 结果为&lt;class &#x27;type&#x27;&gt;，证明是调用了type这个元类而产生的StanfordTeacher，即默认的元类为type</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="https://pic4.zhimg.com/80/v2-6ad1085ae57855ce665ca5b8692b6e67_720w.jpg" alt="img"></p>
-<p> 图1</p>
-<p><strong>细说的话，操作系统应该分成两部分功能：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#一：隐藏了丑陋的硬件调用接口，为应用程序员提供调用硬件资源的更好，更简单，更清晰的模型（系统调用接口）。应用程序员有了这些接口后，就不用再考虑操作硬件的细节，专心开发自己的应用程序即可。</span></span><br><span class="line">例如：操作系统提供了文件这个抽象概念，对文件的操作就是对磁盘的操作，有了文件我们无需再去考虑关于磁盘的读写控制（比如控制磁盘转动，移动磁头读写数据等细节），</span><br><span class="line"></span><br><span class="line"><span class="comment">#二：将应用程序对硬件资源的竞态请求变得有序化</span></span><br><span class="line">例如：很多应用软件其实是共享一套计算机硬件，比方说有可能有三个应用程序同时需要申请打印机来输出内容，那么a程序竞争到了打印机资源就打印，然后可能是b竞争到打印机资源，也可能是c，这就导致了无序，打印机可能打印一段a的内容然后又去打印c...,操作系统的一个功能就是将这种无序变得有序。</span><br></pre></td></tr></table></figure>
+<h1 id="二-class关键字创建类的流程分析"><a href="#二-class关键字创建类的流程分析" class="headerlink" title="二  class关键字创建类的流程分析"></a>二  class关键字创建类的流程分析</h1><p>上文我们基于python中一切皆为对象的概念分析出：我们用class关键字定义的类本身也是一个对象，负责产生该对象的类称之为元类（元类可以简称为类的类），内置的元类为type</p>
+<p>class关键字在帮我们创建类时，必然帮我们调用了元类StanfordTeacher&#x3D;type(…)，那调用type时传入的参数是什么呢？必然是类的关键组成部分，一个类有三大组成部分，分别是</p>
+<p>1、类名class_name&#x3D;’StanfordTeacher’</p>
+<p>2、基类们class_bases&#x3D;(object,)</p>
+<p>3、类的名称空间class_dic，类的名称空间是执行类体代码而得到的</p>
+<p>调用type时会依次传入以上三个参数</p>
+<p>综上，class关键字帮我们创建一个类应该细分为以下四个过程</p>
+<p><img src="https://pic3.zhimg.com/80/v2-434226f9a3a7c464e73981972ab666a6_720w.jpg" alt="img"></p>
+<p>补充：exec的用法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#exec：三个参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#参数一：包含一系列python代码的字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#参数二：全局作用域（字典形式），如果不指定，默认为globals()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#参数三：局部作用域（字典形式），如果不指定，默认为locals()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#可以把exec命令的执行当成是一个函数的执行，会将执行期间产生的名字存放于局部名称空间中</span></span><br><span class="line">g=&#123;</span><br><span class="line">    <span class="string">&#x27;x&#x27;</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;y&#x27;</span>:<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">l=&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span>(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">global x,z</span></span><br><span class="line"><span class="string">x=100</span></span><br><span class="line"><span class="string">z=200</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">m=300</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>,g,l)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(g) <span class="comment">#&#123;&#x27;x&#x27;: 100, &#x27;y&#x27;: 2,&#x27;z&#x27;:200,......&#125;</span></span><br><span class="line"><span class="built_in">print</span>(l) <span class="comment">#&#123;&#x27;m&#x27;: 300&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>详解</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">现代计算机或者网络都是多用户的，多个用户不仅共享硬件，而且共享文件，数据库等信息，共享意味着冲突和无序。</span><br><span class="line"></span><br><span class="line">操作系统主要使用来</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>记录哪个程序使用什么资源</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>对资源请求进行分配</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>为不同的程序和用户调解互相冲突的资源请求。</span><br><span class="line"></span><br><span class="line">我们可将上述操作系统的功能总结为：处理来自多个程序发起的多个（多个即多路）共享（共享即复用）资源的请求，简称多路复用</span><br><span class="line"></span><br><span class="line">多路复用有两种实现方式</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>时间上的复用</span><br><span class="line"></span><br><span class="line">当一个资源在时间上复用时，不同的程序或用户轮流使用它，第一个程序获取该资源使用结束后，在轮到第二个。。。第三个。。。</span><br><span class="line"></span><br><span class="line">例如：只有一个cpu，多个程序需要在该cpu上运行，操作系统先把cpu分给第一个程序，在这个程序运行的足够长的时间（时间长短由操作系统的算法说了算）或者遇到了I/O阻塞，操作系统则把cpu分配给下一个程序，以此类推，直到第一个程序重新被分配到了cpu然后再次运行，由于cpu的切换速度很快，给用户的感觉就是这些程序是同时运行的，或者说是并发的，或者说是伪并行的。至于资源如何实现时间复用，或者说谁应该是下一个要运行的程序，以及一个任务需要运行多长时间，这些都是操作系统的工作。</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>空间上的复用</span><br><span class="line"></span><br><span class="line">每个客户都获取了一个大的资源中的一小部分资源，从而减少了排队等待资源的时间。</span><br><span class="line"></span><br><span class="line">例如：多个运行的程序同时进入内存，硬件层面提供保护机制来确保各自的内存是分割开的，且由操作系统控制，这比一个程序独占内存一个一个排队进入内存效率要高的多。</span><br><span class="line"></span><br><span class="line">有关空间复用的其他资源还有磁盘，在许多系统中，一个磁盘同时为许多用户保存文件。分配磁盘空间并且记录谁正在使用哪个磁盘块是操作系统资源管理的典型任务。</span><br><span class="line"></span><br><span class="line">这两种方式合起来便是多道技术</span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="https://pic2.zhimg.com/80/v2-fb67806e24ae5472d9f9cfbb19a01855_720w.jpg" alt="img"></p>
-<p> 图 2</p>
-<h2 id="四-操作系统与普通软件的区别"><a href="#四-操作系统与普通软件的区别" class="headerlink" title="四 操作系统与普通软件的区别"></a>四 操作系统与普通软件的区别</h2><p>1.主要区别是：你不想用暴风影音了你可以选择用迅雷播放器或者干脆自己写一个，但是你无法写一个属于操作系统一部分的程序（时钟中断处理程序），操作系统由硬件保护，不能被用户修改。</p>
-<p>2.操作系统与用户程序的差异并不在于二者所处的地位。特别地，操作系统是一个大型、复杂、长寿的软件，</p>
-<ul>
-<li>大型：linux或windows的源代码有五百万行数量级。按照每页50行共1000行的书来算，五百万行要有100卷，要用一整个书架子来摆置，这还仅仅是内核部分。用户程序，如GUI，库以及基本应用软件（如windows Explorer等），很容易就能达到这个数量的10倍或者20倍之多。</li>
-<li>长寿：操作系统很难编写，如此大的代码量，一旦完成，操作系统所有者便不会轻易扔掉，再写一个。而是在原有的基础上进行改进。（基本上可以把windows95&#x2F;98&#x2F;Me看出一个操作系统，而windows NT&#x2F;2000&#x2F;XP&#x2F;Vista则是两位一个操作系统，对于用户来说它们十分相似。还有UNIX以及它的变体和克隆版本也演化了多年，如System V版，Solaris以及FreeBSD等都是Unix的原始版，不过尽管linux非常依照UNIX模式而仿制，并且与UNIX高度兼容，但是linux具有全新的代码基础）</li>
-</ul>
-<h2 id="五-操作系统发展史"><a href="#五-操作系统发展史" class="headerlink" title="五 操作系统发展史"></a>五 操作系统发展史</h2><p><strong>第一代计算机（1940~1955）：真空管和穿孔卡片</strong></p>
-<p>第一代计算机的产生背景：</p>
-<p>第一代之前人类是想用机械取代人力，第一代计算机的产生是计算机由机械时代进入电子时代的标志，从Babbage失败之后一直到第二次世界大战，数字计算机的建造几乎没有什么进展，第二次世界大战刺激了有关计算机研究的爆炸性进展。</p>
-<p>lowa州立大学的john Atanasoff教授和他的学生Clifford Berry建造了据认为是第一台可工作的数字计算机。该机器使用300个真空管。大约在同时，Konrad Zuse在柏林用继电器构建了Z3计算机，英格兰布莱切利园的一个小组在1944年构建了Colossus，Howard Aiken在哈佛大学建造了Mark 1，宾夕法尼亚大学的William Mauchley和他的学生J.Presper Eckert建造了ENIAC。这些机器有的是二进制的，有的使用真空管，有的是可编程的，但都非常原始，设置需要花费数秒钟时间才能完成最简单的运算。</p>
-<p>在这个时期，同一个小组里的工程师们，设计、建造、编程、操作及维护同一台机器，所有的程序设计是用纯粹的机器语言编写的，甚至更糟糕，需要通过成千上万根电缆接到插件板上连成电路来控制机器的基本功能。没有程序设计语言（汇编也没有），操作系统则是从来都没听说过。使用机器的过程更加原始，详见下‘工作过程’</p>
-<p>特点： 没有操作系统的概念 所有的程序设计都是直接操控硬件</p>
-<p>工作过程： 程序员在墙上的机时表预约一段时间，然后程序员拿着他的插件版到机房里，将自己的插件板街道计算机里，这几个小时内他独享整个计算机资源，后面的一批人都得等着(两万多个真空管经常会有被烧坏的情况出现)。</p>
-<p>后来出现了穿孔卡片，可以将程序写在卡片上，然后读入机而不用插件板</p>
-<p>优点：</p>
-<p>程序员在申请的时间段内独享整个资源，可以即时地调试自己的程序（有bug可以立刻处理）</p>
-<p>缺点：</p>
-<p>浪费计算机资源，一个时间段内只有一个人用。 注意：同一时刻只有一个程序在内存中，被cpu调用执行，比方说10个程序的执行，是串行的</p>
-<p>**第二代计算机*<em>（1955~1965）*<em>：晶体管和批处理系统</em></em></p>
-<p>第二代计算机的产生背景：</p>
-<p>由于当时的计算机非常昂贵，自认很自然的想办法较少机时的浪费。通常采用的方法就是批处理系统。</p>
-<p>特点： 设计人员、生产人员、操作人员、程序人员和维护人员直接有了明确的分工，计算机被锁在专用空调房间中，由专业操作人员运行，这便是‘大型机’。</p>
-<p>有了操作系统的概念</p>
-<p>有了程序设计语言：FORTRAN语言或汇编语言，写到纸上，然后穿孔打成卡片，再讲卡片盒带到输入室，交给操作员，然后喝着咖啡等待输出接口</p>
-<p>工作过程：插图</p>
-<p><img src="https://pic3.zhimg.com/80/v2-342367e551bb23a7f1bceedd8a3cdf36_720w.jpg" alt="img"></p>
-<p><img src="https://pic1.zhimg.com/80/v2-7e573545a6efac95f8d52717d2c74ffc_720w.jpg" alt="img"></p>
-<p>第二代如何解决第一代的问题&#x2F;缺点： 1.把一堆人的输入攒成一大波输入， 2.然后顺序计算（这是有问题的，但是第二代计算也没有解决） 3.把一堆人的输出攒成一大波输出</p>
-<p>现代操作系统的前身:(见图）</p>
-<p>优点：批处理，节省了机时</p>
-<p>缺点： <em>1.整个流程需要人参与控制，将磁带搬来搬去（中间俩小人）</em></p>
-<p>2.计算的过程仍然是顺序计算-》串行</p>
-<p>3.程序员原来独享一段时间的计算机，现在必须被统一规划到一批作业中，等待结果和重新调试的过程都需要等同批次的其他程序都运作完才可以（这极大的影响了程序的开发效率，无法及时调试程序）</p>
-<p>**第三代计算机*<em>（1965~1980）*<em>：集成电路芯片和多道程序设计</em></em></p>
-<p>第三代计算机的产生背景：</p>
-<p>20世纪60年代初期，大多数计算机厂商都有两条完全不兼容的生产线。</p>
-<p>一条是面向字的：大型的科学计算机，如IBM 7094，见上图，主要用于科学计算和工程计算</p>
-<p>另外一条是面向字符的：商用计算机，如IBM 1401，见上图，主要用于银行和保险公司从事磁带归档和打印服务</p>
-<p>开发和维护完全不同的产品是昂贵的，同时不同的用户对计算机的用途不同。</p>
-<p>IBM公司试图通过引入system&#x2F;360系列来同时满足科学计算和商业计算，360系列低档机与1401相当，高档机比7094功能强很多，不同的性能卖不同的价格</p>
-<p>360是第一个采用了（小规模）芯片（集成电路）的主流机型，与采用晶体管的第二代计算机相比，性价比有了很大的提高。这些计算机的后代仍在大型的计算机中心里使用，<strong>此乃现在服务器的前身</strong>，这些服务器每秒处理不小于千次的请求。</p>
-<p>如何解决第二代计算机的问题1： 卡片被拿到机房后能够很快的将作业从卡片读入磁盘，于是任何时刻当一个作业结束时，操作系统就能将一个作业从磁带读出，装进空出来的内存区域运行，这种技术叫做 同时的外部设备联机操作：SPOOLING，该技术同时用于输出。当采用了这种技术后，就不在需要IBM1401机了，也不必将磁带搬来搬去了（中间俩小人不再需要）</p>
-<p>如何解决第二代计算机的问题2：</p>
-<p>第三代计算机的操作系统广泛应用了第二代计算机的操作系统没有的关键技术：多道技术</p>
-<p>*<strong>cpu在执行一个任务的过程中，若需要操作硬盘，则发送操作硬盘的指令，指令一旦发出，硬盘上的机械手臂滑动读取数据到内存中，这一段时间，cpu需要等待，时间可能很短，但对于cpu来说已经很长很长，长到可以让cpu做很多其他的任务，如果我们让cpu在这段时间内切换到去做其他的任务，这样cpu不就充分利用了吗。这正是多道技术产生的技术背景*</strong></p>
-<p><strong>多道技术：</strong></p>
-<p>多道技术中的多道指的是多个程序，多道技术的实现是为了解决多个程序竞争或者说共享同一个资源（比如cpu）的有序调度问题，解决方式即多路复用，多路复用分为时间上的复用和空间上的复用。</p>
-<p><strong>空间上的复用</strong>：将内存分为几部分，每个部分放入一个程序，这样，同一时间内存中就有了多道程序。</p>
-<p><img src="https://pic4.zhimg.com/80/v2-668294576c0e934be21f7aebeb1ed45f_720w.png" alt="img"></p>
-<p><strong>时间上的复用</strong>：当一个程序在等待I&#x2F;O时，另一个程序可以使用cpu，如果内存中可以同时存放足够多的作业，则cpu的利用率可以接近100%，类似于我们小学数学所学的<strong>统筹方法</strong>。（操作系统采用了多道技术后，可以控制进程的切换，或者说进程之间去争抢cpu的执行权限。这种切换不仅会在一个进程遇到io时进行，一个进程占用cpu时间过长也会切换，或者说被操作系统夺走cpu的执行权限）</p>
-<p><img src="https://pic3.zhimg.com/80/v2-1c53668bcee393edac0d7b3b3daff1ae_720w.jpg" alt="img"></p>
-<p>详解</p>
-<p>空间上的复用最大的问题是：程序之间的内存必须分割，这种分割需要在硬件层面实现，由操作系统控制。如果内存彼此不分割，则一个程序可以访问另外一个程序的内存，</p>
-<p>首先丧失的是安全性，比如你的qq程序可以访问操作系统的内存，这意味着你的qq可以拿到操作系统的所有权限。</p>
-<p>其次丧失的是稳定性，某个程序崩溃时有可能把别的程序的内存也给回收了，比方说把操作系统的内存给回收了，则操作系统崩溃。</p>
-<p>第三代计算机的操作系统仍然是批处理</p>
-<p>许多程序员怀念第一代独享的计算机，可以即时调试自己的程序。为了满足程序员们很快可以得到响应，出现了分时操作系统</p>
-<p>如何解决第二代计算机的问题3：</p>
-<p>分时操作系统： 多个联机终端+多道技术</p>
-<p>20个客户端同时加载到内存，有17在思考，3个在运行，cpu就采用多道的方式处理内存中的这3个程序，由于客户提交的一般都是简短的指令而且很少有耗时长的，索引计算机能够为许多用户提供快速的交互式服务，所有的用户都以为自己独享了计算机资源</p>
-<p>CTTS：麻省理工（MIT）在一台改装过的7094机上开发成功的，CTSS兼容分时系统，<strong>第三代计算机广泛采用了必须的保护硬件（程序之间的内存彼此隔离）之后，分时系统才开始流行</strong></p>
-<p>MIT，贝尔实验室和通用电气在CTTS成功研制后决定开发能够同时支持上百终端的MULTICS（其设计者着眼于建造满足波士顿地区所有用户计算需求的一台机器），很明显真是要上天啊，最后摔死了。</p>
-<p>后来一位参加过MULTICS研制的贝尔实验室计算机科学家Ken Thompson开发了一个简易的，单用户版本的MULTICS，<strong>这就是后来的UNIX系统</strong>。基于它衍生了很多其他的Unix版本，为了使程序能在任何版本的unix上运行，IEEE提出了一个unix标准，即<strong>posix（可移植的操作系统接口Portable Operating System Interface）</strong></p>
-<p>后来，在1987年，出现了一个UNIX的小型克隆，即minix，用于教学使用。芬兰学生Linus Torvalds基于它编写了Linux</p>
-<p><strong>第四代计算机*<em>（1980~至今）：个人计算机*</em></strong></p>
-<p>PS：即使可以利用的cpu只有一个（早期的计算机确实如此），也能保证支持（伪）并发的能力。将一个单独的cpu变成多个虚拟的cpu（多道技术：时间多路复用和空间多路复用+硬件上支持隔离），没有进程的抽象，现代计算机将不复存在。</p>
-<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六 总结"></a>六 总结</h2><p><strong>必备的理论基础：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#一 操作系统的作用：</span></span><br><span class="line">    <span class="number">1</span>：隐藏丑陋复杂的硬件接口，提供良好的抽象接口</span><br><span class="line">    <span class="number">2</span>：管理、调度进程，并且将多个进程对硬件的竞争变得有序</span><br><span class="line"></span><br><span class="line"><span class="comment">#二 多道技术：</span></span><br><span class="line">    <span class="number">1.</span>产生背景：针对单核，实现并发</span><br><span class="line">    ps：</span><br><span class="line">    现在的主机一般是多核，那么每个核都会利用多道技术</span><br><span class="line">    有<span class="number">4</span>个cpu，运行于cpu1的某个程序遇到io阻塞，会等到io结束再重新调度，会被调度到<span class="number">4</span>个</span><br><span class="line">    cpu中的任意一个，具体由操作系统调度算法决定。</span><br><span class="line"></span><br><span class="line">    <span class="number">2.</span>空间上的复用：如内存中同时有多道程序</span><br><span class="line">    <span class="number">3.</span>时间上的复用：复用一个cpu的时间片</span><br><span class="line">       强调：遇到io切，占用cpu时间过长也切，核心在于切之前将进程的状态保存下来，这样</span><br><span class="line">            才能保证下次切换回来时，能基于上次切走的位置继续运行</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1332,7 +1306,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/13/32%E3%80%81python%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/13/29%E3%80%81%E5%85%83%E7%B1%BB/">展开全文 >></a>
         </p>
       
 
