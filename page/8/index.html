@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://chenxiao0629.github.io">
-  <title>Hexo</title>
+  <title>Xiao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Xiao&#39;s blog">
 <meta property="og:url" content="https://chenxiao0629.github.io/page/8/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Xiao&#39;s blog">
 <meta property="og:locale">
 <meta property="article:author" content="Chen Xiao">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Xiao&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -152,331 +152,109 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-04、python语法入门--基本数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day09笔记 lb nginx实现负载均衡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/04%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">4、基本数据类型</a>
+      <a class="article-title" href="/2018/06/23/day09%E7%AC%94%E8%AE%B0%20lb%20nginx%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">08、代理（方式、Nginx代理服务支持的协议、实践）、Nginx代理常用参数（添加发往后端服务器的请求头信息、代理到后端的TCP连接、响应、返回等待超时时间、proxy_buffer代理缓冲区、配置代理优化文件）、负载均衡（架构、实现）、负载均衡部署bbs</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/04%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/06/23/day09%E7%AC%94%E8%AE%B0%20lb%20nginx%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="archive-article-date">
+  	<time datetime="2018-06-23T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python是一门解释型的、强类型的、动态语言</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一：数字类型</span></span><br><span class="line"><span class="comment"># 1.1 整型int：记录人的年龄、等级、号码、个数</span></span><br><span class="line"><span class="comment"># age = 18</span></span><br><span class="line"><span class="comment"># print(type(age))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.2 浮点数float：记录人的薪资、身高、体重</span></span><br><span class="line"><span class="comment"># salary = 3.7</span></span><br><span class="line"><span class="comment"># print(type(salary))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># x = 18</span></span><br><span class="line"><span class="comment"># y = 3.7</span></span><br><span class="line"><span class="comment"># print(x + y)</span></span><br><span class="line"><span class="comment"># print(x &gt; y)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二：字符串:记录描述性质的状态，比如名字、一段话、性别</span></span><br><span class="line"><span class="comment"># x = &quot;两个黄鹂鸣翠柳&quot;</span></span><br><span class="line"><span class="comment"># y = &#x27;两个黄鹂鸣翠柳&#x27;</span></span><br><span class="line"><span class="comment"># m = &quot;&quot;&quot;两个黄鹂鸣翠柳&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># n = &#x27;&#x27;&#x27;两个黄鹂鸣翠柳&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(x)</span></span><br><span class="line"><span class="comment"># print(y)</span></span><br><span class="line"><span class="comment"># print(m)</span></span><br><span class="line"><span class="comment"># print(n)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># msg = &quot;my name is &#x27;egon&#x27;&quot;</span></span><br><span class="line"><span class="comment"># print(msg,type(msg))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># gender = 1</span></span><br><span class="line"><span class="comment"># gender = 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># age  # 变量名</span></span><br><span class="line"><span class="comment"># &quot;age&quot;  # 变量值的一种，str</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 了解：</span></span><br><span class="line"><span class="comment"># print(&quot;abc&quot;+&quot;xxx&quot;)</span></span><br><span class="line"><span class="comment"># print(&quot;abc&quot;*3)</span></span><br><span class="line"><span class="comment"># print(&quot;*&quot;*50)</span></span><br><span class="line"><span class="comment"># print(&#x27;hello&#x27;)</span></span><br><span class="line"><span class="comment"># print(&quot;*&quot;*50)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三 列表：按照位置存放多个值，比如记录一个人的爱好</span></span><br><span class="line"><span class="comment"># hobbies = &quot;打篮球 阅读 看电影&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#            0        1        2</span></span><br><span class="line"><span class="comment"># hobbies = [&quot;打篮球&quot;, &quot;阅读&quot;, &quot;看电影&quot;]</span></span><br><span class="line"><span class="comment"># print(hobbies[0])</span></span><br><span class="line"><span class="comment"># print(hobbies[1])</span></span><br><span class="line"><span class="comment"># print(hobbies[2])</span></span><br><span class="line"><span class="comment"># print(hobbies[3])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(hobbies[-1])</span></span><br><span class="line"><span class="comment"># print(hobbies[-2])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># #      0      1     2         3</span></span><br><span class="line"><span class="comment"># l1 = [1111,1.3333,&quot;aaa&quot;,[&#x27;bbb&#x27;,&#x27;ccc&#x27;]]</span></span><br><span class="line"><span class="comment"># # print(type(l1))</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(l1[3][0])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 四：字典类型：在&#123;&#125;内，按照key:value的格式存放多个元素，其中value可以是任意类型，而key通常是str类型</span></span><br><span class="line"><span class="comment"># info = [&quot;egon&quot;, 18, 1.8, 80, &quot;male&quot;]</span></span><br><span class="line"><span class="comment"># info = &#123;</span></span><br><span class="line"><span class="comment">#     &quot;name&quot;: &quot;egon&quot;,</span></span><br><span class="line"><span class="comment">#     &quot;age&quot;: 18,</span></span><br><span class="line"><span class="comment">#     &quot;height&quot;: 1.8,</span></span><br><span class="line"><span class="comment">#     &quot;weight&quot;: 80,</span></span><br><span class="line"><span class="comment">#     &quot;gender&quot;: &quot;male&quot;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"><span class="comment"># print(info[&quot;name&quot;])</span></span><br><span class="line"><span class="comment"># print(info[&quot;xxxx&quot;])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># info = [&quot;egon&quot;,18,&quot;male&quot;]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># dic = &#123;&quot;k1&quot;:11111,&quot;k2&quot;:1.3,&quot;k3&quot;:&quot;xxx&quot;,&#x27;k4&#x27;:[111,222,333],&quot;k5&quot;:&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(dic[&#x27;k4&#x27;][1])</span></span><br><span class="line"><span class="comment"># print(dic[&#x27;k5&#x27;][&quot;a&quot;])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 五 布尔：记录真假</span></span><br><span class="line"><span class="comment"># print(type(True))</span></span><br><span class="line"><span class="comment"># print(type(False))</span></span><br><span class="line"><span class="comment"># x = True</span></span><br><span class="line"><span class="comment"># y = True</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> &gt; <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-      
+        <h3 id="1、今日内容"><a href="#1、今日内容" class="headerlink" title="1、今日内容"></a>1、今日内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、代理</span><br><span class="line">2、负载均衡</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<h3 id="2、代理"><a href="#2、代理" class="headerlink" title="2、代理"></a>2、代理</h3><blockquote>
+<p>将流量平均分配。</p>
+</blockquote>
+<h4 id="2-1、代理的方式"><a href="#2-1、代理的方式" class="headerlink" title="2.1、代理的方式"></a>2.1、代理的方式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、正向代理</span><br><span class="line">找完代理之后，还需要找服务器。</span><br><span class="line">应用：VPN</span><br><span class="line"></span><br><span class="line">2、反向代理</span><br><span class="line">只需要找代理，不需要找服务器。</span><br><span class="line">应用：负载均衡</span><br></pre></td></tr></table></figure>
 
-      
+<h4 id="2-2、Nginx代理服务支持的协议"><a href="#2-2、Nginx代理服务支持的协议" class="headerlink" title="2.2、Nginx代理服务支持的协议"></a>2.2、Nginx代理服务支持的协议</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ngx_http_uwsgi_module		: Python</span><br><span class="line">ngx_http_fastcgi_module		: PHP </span><br><span class="line">ngx_http_scgi_module		: Java</span><br><span class="line">ngx_http_v2_module			: Golang</span><br><span class="line">ngx_http_proxy_module		: HTTP</span><br></pre></td></tr></table></figure>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/04%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
+<h4 id="2-3、Nginx代理实践"><a href="#2-3、Nginx代理实践" class="headerlink" title="2.3、Nginx代理实践"></a>2.3、Nginx代理实践</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lb01  ---&gt;  web01</span><br></pre></td></tr></table></figure>
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+<h5 id="2-3-1、部署web01"><a href="#2-3-1、部署web01" class="headerlink" title="2.3.1、部署web01"></a>2.3.1、部署web01</h5><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="attribute">web01</span> conf.d]<span class="comment"># cat game5.conf </span></span><br><span class="line">server &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> <span class="number">192.168.15.7</span>;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">root</span> /opt/Super_Marie;</span><br><span class="line">	<span class="attribute">index</span> index.html;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ /images</span> &#123;</span><br><span class="line">        <span class="attribute">root</span> /opt/image;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<h5 id="2-3-2、部署lb01"><a href="#2-3-2、部署lb01" class="headerlink" title="2.3.2、部署lb01"></a>2.3.2、部署lb01</h5><ul>
+<li>部署Nginx</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载Nginx源代码包</span></span><br><span class="line">[root@lb01 ~]<span class="comment"># wget https://nginx.org/download/nginx-1.20.2.tar.gz</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">[root@lb01 ~]<span class="comment"># tar -xf nginx-1.20.2.tar.gz</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入源代码目录</span></span><br><span class="line">[root@lb01 ~]<span class="comment"># cd nginx-1.20.2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖包</span></span><br><span class="line">[root@lb01 nginx-1.20.2]<span class="comment"># yum install openssl openssl-devel zlib zlib-devel -y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置编译参数</span></span><br><span class="line">[root@lb01 nginx-1.20.2]<span class="comment"># ./configure  --with-http_gzip_static_module    --with-stream     --with-http_ssl_module</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">[root@lb01 nginx-1.20.2]<span class="comment"># make </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">[root@lb01 nginx-1.20.2]<span class="comment"># make install </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 优化</span></span><br><span class="line">[root@lb01 nginx]<span class="comment"># mkdir /etc/nginx</span></span><br><span class="line">[root@lb01 nginx]<span class="comment"># mv /usr/local/nginx/conf/* /etc/nginx/</span></span><br><span class="line">[root@lb01 nginx]<span class="comment"># mkdir /etc/nginx/conf.d</span></span><br><span class="line">[root@lb01 nginx]<span class="comment"># groupadd www -g 666</span></span><br><span class="line">[root@lb01 nginx]<span class="comment"># useradd www -u 666 -g 666 -M -r -s /sbin/nologin</span></span><br><span class="line"></span><br><span class="line">[root@lb01 nginx]<span class="comment"># vim /usr/lib/systemd/system/nginx.service</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=nginx - high performance web server</span><br><span class="line">Documentation=http://nginx.org/en/docs/</span><br><span class="line">After=network-online.target remote-fs.target nss-lookup.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/var/run/nginx.pid</span><br><span class="line">ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf</span><br><span class="line">ExecReload=/bin/sh -c <span class="string">&quot;/bin/kill -s HUP <span class="subst">$(/bin/cat /var/run/nginx.pid)</span>&quot;</span></span><br><span class="line">ExecStop=/bin/sh -c <span class="string">&quot;/bin/kill -s TERM <span class="subst">$(/bin/cat /var/run/nginx.pid)</span>&quot;</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">[root@lb01 sbin]<span class="comment"># ln -s /etc/nginx/nginx.conf /usr/local/nginx/conf/nginx.conf</span></span><br><span class="line">[root@lb01 sbin]<span class="comment"># mv /usr/local/nginx/sbin/nginx /usr/sbin/</span></span><br><span class="line">[root@lb01 sbin]<span class="comment"># mkdir /var/log/nginx</span></span><br><span class="line">[root@lb01 sbin]<span class="comment"># systemctl start nginx </span></span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>部署反向代理</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@lb01 conf.d]<span class="comment"># cat /etc/nginx/conf.d/game.conf </span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://172.16.1.7:80;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="2-4、Nginx代理常用参数"><a href="#2-4、Nginx代理常用参数" class="headerlink" title="2.4、Nginx代理常用参数"></a>2.4、Nginx代理常用参数</h4><h5 id="2-4-1、添加发往后端服务器的请求头信息"><a href="#2-4-1、添加发往后端服务器的请求头信息" class="headerlink" title="2.4.1、添加发往后端服务器的请求头信息"></a>2.4.1、添加发往后端服务器的请求头信息</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Syntax:    proxy_set_header field value;</span><br><span class="line">Default:    proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line">            proxy_set_header Connection close;</span><br><span class="line">Context:    http, server, location</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 用户请求的时候HOST的值是linux.proxy.com, 那么代理服务会像后端传递请求的还是linux.proxy.com</span></span><br><span class="line">proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line"><span class="comment"># 将$remote_addr的值放进变量X-Real-IP中，$remote_addr的值为客户端的ip</span></span><br><span class="line">proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line"><span class="comment"># 客户端通过代理服务访问后端服务, 后端服务通过该变量会记录真实客户端地址</span></span><br><span class="line">proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br></pre></td></tr></table></figure>
 
+<h5 id="2-4-2、代理到后端的TCP连接、响应、返回等超时时间"><a href="#2-4-2、代理到后端的TCP连接、响应、返回等超时时间" class="headerlink" title="2.4.2、代理到后端的TCP连接、响应、返回等超时时间"></a>2.4.2、代理到后端的TCP连接、响应、返回等超时时间</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nginx代理与后端服务器连接超时时间(代理连接超时)</span></span><br><span class="line">Syntax: proxy_connect_timeout time;</span><br><span class="line">Default: proxy_connect_timeout 60s;</span><br><span class="line">Context: http, server, location</span><br><span class="line"> </span><br><span class="line"><span class="comment">#nginx代理等待后端服务器的响应时间</span></span><br><span class="line">Syntax:    proxy_read_timeout time;</span><br><span class="line">Default:    proxy_read_timeout 60s;</span><br><span class="line">Context:    http, server, location</span><br><span class="line"> </span><br><span class="line"><span class="comment">#后端服务器数据回传给nginx代理超时时间</span></span><br><span class="line">Syntax: proxy_send_timeout time;</span><br><span class="line">Default: proxy_send_timeout 60s;</span><br><span class="line">Context: http, server, location</span><br><span class="line"></span><br><span class="line">proxy_connect_timeout 1s;</span><br><span class="line">proxy_read_timeout 3s;</span><br><span class="line">proxy_send_timeout 3s;</span><br></pre></td></tr></table></figure>
 
-  
-    <article id="post-03、python语法入门--注释、变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/03%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/">3、注释、变量</a>
-    </h1>
-  
+<h5 id="2-4-3、proxy-buffer代理缓冲区"><a href="#2-4-3、proxy-buffer代理缓冲区" class="headerlink" title="2.4.3、proxy_buffer代理缓冲区"></a>2.4.3、proxy_buffer代理缓冲区</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nignx会把后端返回的内容先放到缓冲区当中，然后再返回给客户端，边收边传, 不是全部接收完再传给客户端</span></span><br><span class="line">Syntax: proxy_buffering on | off;</span><br><span class="line">Default: proxy_buffering on;</span><br><span class="line">Context: http, server, location</span><br><span class="line"> </span><br><span class="line"><span class="comment">#设置nginx代理保存用户头信息的缓冲区大小</span></span><br><span class="line">Syntax: proxy_buffer_size size;</span><br><span class="line">Default: proxy_buffer_size 4k|8k;</span><br><span class="line">Context: http, server, location</span><br><span class="line"> </span><br><span class="line"><span class="comment">#proxy_buffers 缓冲区</span></span><br><span class="line">Syntax: proxy_buffers number size;</span><br><span class="line">Default: proxy_buffers 8 4k|8k;</span><br><span class="line">Context: http, server, location</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-        
-        <a href="/2018/05/13/03%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">多行注释加在整个py文件的开头</span></span><br><span class="line"><span class="string">用来对该py文件进行一个整体性的说明</span></span><br><span class="line"><span class="string">通常一个py中只有一个多行注释</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是一行贼溜的代码</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello&quot;</span>)  <span class="comment"># 这是一行贼溜的代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ctrl+？：批量加减少注释</span></span><br><span class="line"><span class="comment"># print(&#x27;hello1&#x27;)</span></span><br><span class="line"><span class="comment"># print(&#x27;hello2&#x27;)</span></span><br><span class="line"><span class="comment"># print(&#x27;hello3&#x27;)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">总结：注释的两种用途</span></span><br><span class="line"><span class="string">1、对代码进行注解说明，增强代码的可读性</span></span><br><span class="line"><span class="string">2、注释掉暂时不想运行的代码，调试</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-4-4、配置代理优化文件"><a href="#2-4-4、配置代理优化文件" class="headerlink" title="2.4.4、配置代理优化文件"></a>2.4.4、配置代理优化文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@lb01 ~]<span class="comment"># vim /etc/nginx/proxy_params </span></span><br><span class="line">proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line">proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">proxy_connect_timeout 10s;</span><br><span class="line">proxy_read_timeout 10s;</span><br><span class="line">proxy_send_timeout 10s;</span><br><span class="line">proxy_buffering on;</span><br><span class="line">proxy_buffer_size 8k;</span><br><span class="line">proxy_buffers 8 8k;</span><br><span class="line"></span><br><span class="line">[root@lb01 conf.d]<span class="comment"># cat game.conf </span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://172.16.1.7:80;</span><br><span class="line">        include /etc/nginx/proxy_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1、什么是变量</span></span><br><span class="line"><span class="string">    量：事物的状态</span></span><br><span class="line"><span class="string">    变：事物的状态是可以变化的</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    变量就是一种机制/语法？</span></span><br><span class="line"><span class="string">        可以把事物的状态存起来，并且以后可以取出来修改</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    变量其实是一种存取内存的机制</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2、为何要用变量</span></span><br><span class="line"><span class="string">    是为了让计算机能够像人一样记住事物的状态，并且以后可以改变</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3、如何用变量</span></span><br><span class="line"><span class="string">    原则：先定义，后引用</span></span><br><span class="line"><span class="string">        定义语法：</span></span><br><span class="line"><span class="string">            变量名 = 变量值</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        引用：</span></span><br><span class="line"><span class="string">            变量名</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 一 先定义、后引用</span></span><br><span class="line"><span class="comment"># print(age)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># name = &quot;egon&quot;</span></span><br><span class="line"><span class="comment"># age = 18</span></span><br><span class="line"><span class="comment"># height = 1.8</span></span><br><span class="line"><span class="comment"># level = 10</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(name)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二 定义变量的三大组成部分</span></span><br><span class="line"><span class="comment"># 2.1 变量名：访问变量值</span></span><br><span class="line"><span class="comment"># 2.2 赋值符号：把变量值的内存地址绑定给变量名</span></span><br><span class="line"><span class="comment"># 2.3 变量值：就是我们记录的事物的状态，即存储的数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三 变量名命名</span></span><br><span class="line"><span class="comment"># 3.1 大前提：见名知意</span></span><br><span class="line"><span class="comment"># 3.2 规范：</span></span><br><span class="line"><span class="comment"># 1、字母、数字、下划线组成</span></span><br><span class="line"><span class="comment"># 2、不能以数字开头</span></span><br><span class="line"><span class="comment"># 3、不能与python关键字冲突</span></span><br><span class="line"><span class="comment"># [&#x27;and&#x27;, &#x27;as&#x27;, &#x27;assert&#x27;, &#x27;break&#x27;, &#x27;class&#x27;, &#x27;continue&#x27;, &#x27;def&#x27;, &#x27;del&#x27;, &#x27;elif&#x27;, &#x27;else&#x27;, &#x27;except&#x27;, &#x27;exec&#x27;, &#x27;finally&#x27;, &#x27;for&#x27;, &#x27;from&#x27;, &#x27;global&#x27;, &#x27;if&#x27;, &#x27;import&#x27;, &#x27;in&#x27;, &#x27;is&#x27;, &#x27;lambda&#x27;, &#x27;not&#x27;, &#x27;or&#x27;, &#x27;pass&#x27;, &#x27;print&#x27;, &#x27;raise&#x27;, &#x27;return&#x27;, &#x27;try&#x27;, &#x27;while&#x27;, &#x27;with&#x27;, &#x27;yield&#x27;]</span></span><br><span class="line"><span class="comment"># level = 18</span></span><br><span class="line"><span class="comment"># age = 18</span></span><br><span class="line"><span class="comment"># print = 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  3.3 命名风格</span></span><br><span class="line"><span class="comment"># （1） 纯小写加下划线(变量名的命名推荐使用该中风格)</span></span><br><span class="line"><span class="comment"># age_of_egon = 18</span></span><br><span class="line"><span class="comment"># （2） 驼峰体</span></span><br><span class="line"><span class="comment"># AgeOfEgon = 18</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.4 拓展</span></span><br><span class="line"><span class="comment"># print(1)</span></span><br><span class="line"><span class="comment"># print(2)</span></span><br><span class="line"><span class="comment"># print(3)</span></span><br><span class="line"><span class="comment"># # print(</span></span><br><span class="line"><span class="comment"># asdfasfd</span></span><br><span class="line"><span class="comment"># print(&#x27;end&#x27;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># age = 18</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># age = age + 1</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(age)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 四：变量值</span></span><br><span class="line"><span class="comment"># 4.1 变量值有两大特征</span></span><br><span class="line"><span class="comment">#（1）id号：是变量值的身份证号，反映的内存地址</span></span><br><span class="line"><span class="comment"># name = &quot;egon&quot;</span></span><br><span class="line"><span class="comment"># age = 18</span></span><br><span class="line"><span class="comment"># print(id(name))</span></span><br><span class="line"><span class="comment"># print(id(age))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#（2）type类型：</span></span><br><span class="line"><span class="comment"># print(type(name))</span></span><br><span class="line"><span class="comment"># print(type(age))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># is ：判断id是否相等</span></span><br><span class="line"><span class="comment"># ==：判断值是否相等</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># l1 = [1,2,3]</span></span><br><span class="line"><span class="comment"># l2 = [1,2,3]</span></span><br><span class="line"><span class="comment"># print(l1 == l2)</span></span><br><span class="line"><span class="comment"># print(l1 is l2)</span></span><br></pre></td></tr></table></figure>
+<h3 id="3、负载均衡"><a href="#3、负载均衡" class="headerlink" title="3、负载均衡"></a>3、负载均衡</h3><blockquote>
+<p>为什么要用负载均衡？</p>
+</blockquote>
+<h4 id="3-1、负载均衡的架构"><a href="#3-1、负载均衡的架构" class="headerlink" title="3.1、负载均衡的架构"></a>3.1、负载均衡的架构</h4><p>通过代理将流量按照一定的比例，转发到后端。</p>
+<h4 id="3-2、负载均衡的实现"><a href="#3-2、负载均衡的实现" class="headerlink" title="3.2、负载均衡的实现"></a>3.2、负载均衡的实现</h4><h5 id="3-2-1、实现"><a href="#3-2-1、实现" class="headerlink" title="3.2.1、实现"></a>3.2.1、实现</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">将后端服务打包成一个IP连接池。</span><br><span class="line"></span><br><span class="line">1、反向代理</span><br><span class="line">server &#123;</span><br><span class="line">   	listen 80;</span><br><span class="line">   	server_name _;</span><br><span class="line">   	location / &#123;</span><br><span class="line">        proxy_pass http://[连接池];</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、IP连接池</span><br><span class="line">upstream [连接池名称] &#123;</span><br><span class="line">    server [ip]:[port];</span><br><span class="line">    server [ip]:[port];</span><br><span class="line">    server [ip]:[port];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[root@lb01 conf.d]<span class="comment"># cat game.conf </span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80;</span><br><span class="line">    server 172.16.1.8:80;</span><br><span class="line">    server 172.16.1.9:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://supermarie;</span><br><span class="line">        include /etc/nginx/proxy_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h5 id="3-2-2、负载均衡的比例"><a href="#3-2-2、负载均衡的比例" class="headerlink" title="3.2.2、负载均衡的比例"></a>3.2.2、负载均衡的比例</h5><h6 id="3-2-2-1、轮询"><a href="#3-2-2-1、轮询" class="headerlink" title="3.2.2.1、轮询"></a>3.2.2.1、轮询</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认情况下，Nginx负载均衡的轮询状态。</span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80;</span><br><span class="line">    server 172.16.1.8:80;</span><br><span class="line">    server 172.16.1.9:80;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+<h6 id="3-2-2-2、权重"><a href="#3-2-2-2、权重" class="headerlink" title="3.2.2.2、权重"></a>3.2.2.2、权重</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Nginx中的权重0-100，数字越大，权重越高。</span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80 weight=9;</span><br><span class="line">    server 172.16.1.8:80 weight=5;</span><br><span class="line">    server 172.16.1.9:80 weight=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<h6 id="3-2-2-3、ip-hash"><a href="#3-2-2-3、ip-hash" class="headerlink" title="3.2.2.3、ip_hash"></a>3.2.2.3、ip_hash</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每一个IP固定访问某一个后端。</span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80;</span><br><span class="line">    server 172.16.1.8:80;</span><br><span class="line">    server 172.16.1.9:80;</span><br><span class="line">    ip_hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+<h4 id="3-3、负载均衡后端状态"><a href="#3-3、负载均衡后端状态" class="headerlink" title="3.3、负载均衡后端状态"></a>3.3、负载均衡后端状态</h4><table>
+<thead>
+<tr>
+<th><strong>状态</strong></th>
+<th><strong>概述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>down</td>
+<td>当前的server暂时不参与负载均衡</td>
+</tr>
+<tr>
+<td>backup</td>
+<td>预留的备份服务器</td>
+</tr>
+<tr>
+<td>max_fails</td>
+<td>允许请求失败的次数</td>
+</tr>
+<tr>
+<td>fail_timeout</td>
+<td>经过max_fails失败后, 服务暂停时间</td>
+</tr>
+</tbody></table>
+<h5 id="3-3-1、down"><a href="#3-3-1、down" class="headerlink" title="3.3.1、down"></a>3.3.1、down</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂时不分配流量</span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80 down;</span><br><span class="line">    server 172.16.1.8:80;</span><br><span class="line">    server 172.16.1.9:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://supermarie;</span><br><span class="line">        include /etc/nginx/proxy_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/03%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/">展开全文 >></a>
-        </p>
-      
+<h5 id="3-3-2、backup"><a href="#3-3-2、backup" class="headerlink" title="3.3.2、backup"></a>3.3.2、backup</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只有当所有的机器全部宕机，才能启动。</span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80 backup;</span><br><span class="line">    server 172.16.1.8:80;</span><br><span class="line">    server 172.16.1.9:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://supermarie;</span><br><span class="line">        include /etc/nginx/proxy_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+<h5 id="3-3-3、max-fails、fail-timeout"><a href="#3-3-3、max-fails、fail-timeout" class="headerlink" title="3.3.3、max_fails、fail_timeout"></a>3.3.3、max_fails、fail_timeout</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># max_fails</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># proxy_next_upstream 后端错误标识</span></span><br><span class="line"></span><br><span class="line">[root@lb01 ~]<span class="comment"># cat /etc/nginx/conf.d/game.conf </span></span><br><span class="line">upstream supermarie &#123;</span><br><span class="line">    server 172.16.1.7:80 max_fails=3 fail_timeout=3s;</span><br><span class="line">    server 172.16.1.8:80 max_fails=3 fail_timeout=3s;</span><br><span class="line">    server 172.16.1.9:80 max_fails=3 fail_timeout=3s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://supermarie;</span><br><span class="line">        proxy_next_upstream error <span class="built_in">timeout</span> invalid_header http_500 http_502 http_503 http_404; </span><br><span class="line">        include /etc/nginx/proxy_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">注意：proxy_next_upstream error timeout invalid_header http_500 http_503 http_404; </span><br><span class="line"></span><br><span class="line">error             # 与服务器建立连接，向其传递请求或读取响应头时发生错误;</span><br><span class="line">timeout           # 在与服务器建立连接，向其传递请求或读取响应头时发生超时;</span><br><span class="line">invalid_header    # 服务器返回空的或无效的响应;</span><br><span class="line">http_500          # 服务器返回代码为500的响应;</span><br><span class="line">http_502          # 服务器返回代码为502的响应;</span><br><span class="line">http_503          # 服务器返回代码为503的响应;</span><br><span class="line">http_504          # 服务器返回代码504的响应;</span><br><span class="line">http_403          # 服务器返回代码为403的响应;</span><br><span class="line">http_404          # 服务器返回代码为404的响应;</span><br><span class="line">http_429          # 服务器返回代码为429的响应（1.11.13）;</span><br><span class="line">non_idempotent    # 通常，请求与 非幂等 方法（POST，LOCK，PATCH）不传递到请求是否已被发送到上游服务器（1.9.13）的下一个服务器; 启用此选项显式允许重试此类请求;</span><br><span class="line">off               # 禁用将请求传递给下一个服务器。</span><br></pre></td></tr></table></figure>
 
+<h4 id="3-4、负载均衡部署BBS"><a href="#3-4、负载均衡部署BBS" class="headerlink" title="3.4、负载均衡部署BBS"></a>3.4、负载均衡部署BBS</h4><h5 id="3-4-1、部署后端服务"><a href="#3-4-1、部署后端服务" class="headerlink" title="3.4.1、部署后端服务"></a>3.4.1、部署后端服务</h5><h6 id="3-4-1-1、部署Python"><a href="#3-4-1-1、部署Python" class="headerlink" title="3.4.1.1、部署Python"></a>3.4.1.1、部署Python</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、创建用户</span><br><span class="line">[root@web01 opt]<span class="comment"># groupadd django -g 888</span></span><br><span class="line">[root@web01 opt]<span class="comment"># useradd django -u 888 -g 888 -r -M -s /bin/sh</span></span><br><span class="line"></span><br><span class="line">2、安装依赖软件</span><br><span class="line">[root@web01 opt]<span class="comment"># yum install python3 libxml* python-devel gcc* pcre-devel openssl-devel python3-devel -y</span></span><br></pre></td></tr></table></figure>
 
+<h6 id="3-4-1-2、部署Django和uwsgi"><a href="#3-4-1-2、部署Django和uwsgi" class="headerlink" title="3.4.1.2、部署Django和uwsgi"></a>3.4.1.2、部署Django和uwsgi</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">3、安装Django和uwsgi</span><br><span class="line">[root@web01 opt]<span class="comment"># pip3 install django==1.11</span></span><br><span class="line">[root@web01 opt]<span class="comment"># pip3 install uwsgi</span></span><br><span class="line">[root@web01 opt]<span class="comment"># pip3 install pymysql</span></span><br><span class="line"></span><br><span class="line">4、创建项目</span><br><span class="line">[root@web01 opt]<span class="comment"># unzip bbs.zip </span></span><br><span class="line">[root@web03 bbs]<span class="comment"># pwd</span></span><br><span class="line">/opt/bbs</span><br><span class="line">[root@web03 bbs]<span class="comment"># vim bbs/settings.py </span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;bbs&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;172.16.1.61&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: 3306,</span><br><span class="line">        <span class="string">&#x27;CHARSET&#x27;</span>: <span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动测试</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># python3 manage.py runserver 0.0.0.0:8000</span></span><br></pre></td></tr></table></figure>
 
+<h6 id="3-4-1-3、配置并启动"><a href="#3-4-1-3、配置并启动" class="headerlink" title="3.4.1.3、配置并启动"></a>3.4.1.3、配置并启动</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">5、编辑项目配置文件</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /opt/linux/myweb_uwsgi.ini </span></span><br><span class="line">[uwsgi]</span><br><span class="line"><span class="comment"># 端口号</span></span><br><span class="line">socket            = :8000</span><br><span class="line"><span class="comment"># 指定项目的目录</span></span><br><span class="line"><span class="built_in">chdir</span>           = /opt/bbs</span><br><span class="line"><span class="comment"># wsgi文件路径</span></span><br><span class="line">wsgi-file       = bbs/wsgi.py</span><br><span class="line"><span class="comment"># 模块wsgi路径</span></span><br><span class="line">module          = bbs.wsgi</span><br><span class="line"><span class="comment"># 是否开启master进程</span></span><br><span class="line">master          = <span class="literal">true</span></span><br><span class="line"><span class="comment"># 工作进程的最大数目</span></span><br><span class="line">processes       = 4</span><br><span class="line"><span class="comment"># 结束后是否清理文件</span></span><br><span class="line">vacuum          = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">6、启动uwsgi</span><br><span class="line">[root@web01 linux]<span class="comment"># uwsgi -d --ini myweb_uwsgi.ini --uid 666</span></span><br><span class="line"></span><br><span class="line">-d 	  : 以守护进程方式运行</span><br><span class="line">--ini : 指定配置文件路径</span><br><span class="line">--uid : 指定uid</span><br><span class="line"></span><br><span class="line">TCP 服务</span><br><span class="line"></span><br><span class="line">7、编辑Nginx配置文件</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /etc/nginx/conf.d/python.conf </span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name py.test.com;</span><br><span class="line">    location / &#123; </span><br><span class="line">        include uwsgi_params;</span><br><span class="line">        uwsgi_pass 127.0.0.1:8000;</span><br><span class="line">        uwsgi_read_timeout 2;</span><br><span class="line">        uwsgi_param UWSGI_SCRIPT bbs.wsgi;</span><br><span class="line">        uwsgi_param UWSGI_CHDIR /opt/bbs;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        client_max_body_size 35m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">8、重启Nginx配置</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
 
-  
-    <article id="post-02、编程语言与pyhon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">2、编程语言与Python</a>
-    </h1>
-  
+<h5 id="3-4-2、部署负载均衡"><a href="#3-4-2、部署负载均衡" class="headerlink" title="3.4.2、部署负载均衡"></a>3.4.2、部署负载均衡</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@lb01 conf.d]<span class="comment"># cat python.conf </span></span><br><span class="line">upstream bbs &#123;</span><br><span class="line">    server 172.16.1.7:80 max_fails=3 fail_timeout=3s;</span><br><span class="line">    server 172.16.1.8:80 max_fails=3 fail_timeout=3s;</span><br><span class="line">    server 172.16.1.9:80 max_fails=3 fail_timeout=3s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name py.test.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://bbs;</span><br><span class="line">        proxy_next_upstream error <span class="built_in">timeout</span> invalid_header http_500 http_502 http_503 http_404; </span><br><span class="line">        include /etc/nginx/proxy_params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-        <a href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="编程语言分类"><a href="#编程语言分类" class="headerlink" title="编程语言分类"></a>编程语言分类</h1><p>机器语言：直接用计算机能理解的二进制指令去编写程序，是直接在控制计算机硬件</p>
-<p>​		优点：运行效率高</p>
-<p>​		缺点：开发效率低</p>
-<p>​				1.开发一个简单的小功能都要哟个到非常多条数的二进制指令</p>
-<p>​				2.二进制指令非常难记忆</p>
-<p>汇编语言：用英文标签取代二进制指令去编写程序，也直接控制计算机硬件</p>
-<p>​		只解决了机器语言难记忆的问题</p>
-<p>高级语言：用人类能理解的表达方式去编写程序</p>
-<p>​		编译型：c、go</p>
-<p>​				源代码（人话）———-编译器———-计算机能理解的二进制指令</p>
-<p>​		解释型：python、shell</p>
-<p>​				源代码（人话）———-编译器———-计算机能理解的二进制指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一次运行python程序，python解释器会生成字节码文件</span><br><span class="line">第二次运行python程序的时候，python解释器运行的是字节码文件</span><br><span class="line"></span><br><span class="line">解释型语言编写程序每次运行都离不开解释器</span><br><span class="line">编译型语言编写程序如果编译成功，在第二次运行的不需要编译器</span><br></pre></td></tr></table></figure>
-
-<h1 id="python语言的三大特性"><a href="#python语言的三大特性" class="headerlink" title="python语言的三大特性"></a>python语言的三大特性</h1><p>1.语法简单，上手容易</p>
-<p>2.封装程度高</p>
-<p>3.有丰富的第三方库</p>
-<h1 id="编写python的两大地方"><a href="#编写python的两大地方" class="headerlink" title="编写python的两大地方"></a>编写python的两大地方</h1><p>1.交互式环境 python3 D:\ a.py</p>
-<p>2.写入文件（主流：永久保存代码）</p>
-<p>ide集成开发环境</p>
-<p>​		超级编辑器：pycharm</p>
-<h1 id="运行python的三个阶段"><a href="#运行python的三个阶段" class="headerlink" title="运行python的三个阶段"></a>运行python的三个阶段</h1><p>1.先运行python解释器</p>
-<p>2.python解释器将a.py的内容从硬盘读入内存</p>
-<p>3.python解释器识别刚刚读入内存的内容，解释执行</p>
-<p>ps：我们的python程序调用的都是解释器的功能</p>
-<h1 id="遵守PEP8规范"><a href="#遵守PEP8规范" class="headerlink" title="遵守PEP8规范"></a>遵守PEP8规范</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-01、计算机核心基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/01%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">1、计算机核心基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/13/01%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="编程语言介绍"><a href="#编程语言介绍" class="headerlink" title="编程语言介绍"></a>编程语言介绍</h1><h2 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h2><p>python是一门编程语言</p>
-<p>编程语言的本质就是一门语言</p>
-<p>语言是一种事物与另外一种事物沟通的工具</p>
-<p>所以说编程语言也是一种事物与另一种事物沟通的工具</p>
-<p>人———–编程语言—————计算机</p>
-<h3 id="人为何要与计算机沟通？"><a href="#人为何要与计算机沟通？" class="headerlink" title="人为何要与计算机沟通？"></a>人为何要与计算机沟通？</h3><p>在IT领域计算机是人类的奴隶</p>
-<p>人与计算机沟通的目的就是为了奴役计算机</p>
-<h2 id="什么是编程？（翻译官）"><a href="#什么是编程？（翻译官）" class="headerlink" title="什么是编程？（翻译官）"></a>什么是编程？（翻译官）</h2><h3 id="两个环节"><a href="#两个环节" class="headerlink" title="两个环节"></a>两个环节</h3><p>1.把做事的步骤给想清楚了（2&#x2F;3时间）</p>
-<p>2.用计算机能听懂的语言也就是编程语言把做事的步骤给翻译下来（1&#x2F;3时间）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line">银行行长------------------------业务员</span><br><span class="line">		接收用户输入的用户名</span><br><span class="line">		接收用户输入的密码</span><br><span class="line">		判断 输入的用户名 等于 正确的用户名 并且 输入的密码 等于 正确的密码</span><br><span class="line">			告诉用户登录成功</span><br><span class="line">		否则</span><br><span class="line">			告诉用户登录失败</span><br><span class="line"></span><br><span class="line">银行行长------------------------计算机</span><br></pre></td></tr></table></figure>
-
-<h2 id="为何要编程"><a href="#为何要编程" class="headerlink" title="为何要编程"></a>为何要编程</h2><p>为了让计算机帮我们做事</p>
-<h2 id="什么是程序-x2F-软件"><a href="#什么是程序-x2F-软件" class="headerlink" title="什么是程序&#x2F;软件"></a>什么是程序&#x2F;软件</h2><p>程序就是一序列代码文件</p>
-<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><h2 id="计算机的硬件组成与运行原理"><a href="#计算机的硬件组成与运行原理" class="headerlink" title="计算机的硬件组成与运行原理"></a>计算机的硬件组成与运行原理</h2><p>大前提：计算机的核心硬件组成是为了模仿人的某一器官或功能</p>
-<p>1.控制器：是计算机的指挥系统，负责控制所有其他硬件的运行      人脑</p>
-<p>2.运算器：负责数学运算和逻辑运算													人脑</p>
-<p>​	控制器+运算器-》cpu（4核&lt;4核8线程&lt;8核）							人脑</p>
-<p>3.存储器：</p>
-<p>​	内存：存的是电信号，断电数据丢失											人的记忆功能</p>
-<p>​		特点：存取速度都快，但是只能临时存放数据</p>
-<p>​	外存（磁盘）存的是磁信号，断电数据依然存在							笔记</p>
-<p>​		特点：存放数据都慢，但是可以永久保存数据</p>
-<p>4.输入设备</p>
-<p>​	键盘、鼠标</p>
-<p>5.输出设备</p>
-<p>​	显示器、音响、打印机</p>
-<h2 id="三大核心硬件"><a href="#三大核心硬件" class="headerlink" title="三大核心硬件"></a>三大核心硬件</h2><p>cpu： X86 X32 ARM  </p>
-<p>内存  -》主存（RAM） ROM:非易失   CMOS：易失，存时间日期等</p>
-<p>硬盘：机械磁盘（平均延迟时间为转半圈时间、平均寻道时间一般5ms（工艺水平决定））、固态硬盘</p>
-<h2 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h2><p>安装的程序是存放在硬盘中的</p>
-<h3 id="程序的运行要经历的步骤（2个）"><a href="#程序的运行要经历的步骤（2个）" class="headerlink" title="程序的运行要经历的步骤（2个）"></a>程序的运行要经历的步骤（2个）</h3><p>1.加载&#x2F;启动：需要将程序的代码从硬盘读入内存中  （固态硬盘提速）</p>
-<p>2.运行：cpu从内存中读取指令运行								（加内存条提速）</p>
-<h2 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h2><p>操作系统</p>
-<p>计算机网络</p>
-<p>数据结构</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7200</span>转/60s</span><br><span class="line"></span><br><span class="line"><span class="number">120</span>转/s</span><br><span class="line">   转一圈：<span class="number">0.008</span>s-》8ms</span><br><span class="line">   平均延迟时间：转半圈-》4ms</span><br><span class="line">   平均寻道时间：5ms</span><br><span class="line">机械磁盘找到数据需要经历的时间=平均延迟时间+平均寻道时间</span><br><span class="line">所以机械磁盘慢是慢在找数据上，至于找到数据之后往内存读，这个速度是很快的</span><br></pre></td></tr></table></figure>
-
-
-<p>​		</p>
-<p>​		</p>
-<p>有些商家的500GB&#x3D;500 *1000 * 1000 * 1000B</p>
-<p>虚拟内存：内存的1.5-2倍，一般不超过8GB</p>
-<h2 id="计算机三层体系结构"><a href="#计算机三层体系结构" class="headerlink" title="计算机三层体系结构"></a>计算机三层体系结构</h2><p>应用程序			—-》图形界面（桌面、python.exe)</p>
-<p>操作系统			—-》文件</p>
-<p>计算机硬件		—-》硬盘</p>
-<p>桌面程序是一种图形化界面管理其他应用程序的软件</p>
-<h2 id="商用计算机"><a href="#商用计算机" class="headerlink" title="商用计算机"></a>商用计算机</h2><p>服务器</p>
-<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="操作系统的安装于启动"><a href="#操作系统的安装于启动" class="headerlink" title="操作系统的安装于启动"></a>操作系统的安装于启动</h3><p>刚启动：BIOS找真正的操作系统，找到后慢慢退出</p>
-<p>​		cpu</p>
-<p>​		ROM（BIOS: basic input output system）—–电路刻死的</p>
-<p>​		CMOS</p>
-<p>启动完成：</p>
-<p>​		cpu</p>
-<p>​		RAM: Windows系统</p>
-<p>​		本地硬盘</p>
-<h2 id="平台"><a href="#平台" class="headerlink" title="平台"></a>平台</h2><p>平台 &#x3D; 计算机硬件 + 操作系统</p>
-<p>跨平台性：开发的软件可以在任何平台正常运行</p>
 
       
 
@@ -490,7 +268,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">3、Linux架构</a>
         		</li>
       		
 		</ul>
@@ -500,7 +278,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/01%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/23/day09%E7%AC%94%E8%AE%B0%20lb%20nginx%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">展开全文 >></a>
         </p>
       
 
@@ -532,7 +310,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 
