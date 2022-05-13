@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/5 | Hexo</title>
+  <title>面向对象编程 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
+  <meta name="description" content="对象的概念 类与对象 面对对象编程  类的定义与实例化 属性访问  类属性与对象属性 属性查找顺序与绑方法 小结    一、对象的概念”面向对象“的核心是“对象”二字，而对象的精髓在于“整合“，什么意思？ 所有的程序都是由”数据”与“功能“组成，因而编写程序的本质就是定义出一系列的数据，然后定义出一系列的功能来对数据进行操作。在学习”对象“之前，程序中的数据与功能是分离开的，如下 12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象编程">
+<meta property="og:url" content="http://example.com/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对象的概念 类与对象 面对对象编程  类的定义与实例化 属性访问  类属性与对象属性 属性查找顺序与绑方法 小结    一、对象的概念”面向对象“的核心是“对象”二字，而对象的精髓在于“整合“，什么意思？ 所有的程序都是由”数据”与“功能“组成，因而编写程序的本质就是定义出一系列的数据，然后定义出一系列的功能来对数据进行操作。在学习”对象“之前，程序中的数据与功能是分离开的，如下 12345678">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-be68cd9e27b83c937cf44dbe7a2cf56c_r.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-0b1c2138d316307c0c830aa1df3aa1e1_r.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-c3bb7aefce6ffee1029b1ae5dee72689_720w.jpg">
+<meta property="article:published_time" content="2022-05-13T06:04:52.000Z">
+<meta property="article:modified_time" content="2022-05-13T08:05:17.122Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-be68cd9e27b83c937cf44dbe7a2cf56c_r.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +158,258 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-23、面向对象编程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面向对象编程
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对象的概念</p>
+<p>类与对象</p>
+<p>面对对象编程</p>
+<ul>
+<li>类的定义与实例化</li>
+<li>属性访问</li>
+<li><ul>
+<li>类属性与对象属性</li>
+<li>属性查找顺序与绑方法</li>
+<li>小结</li>
+</ul>
+</li>
+</ul>
+<h1 id="一、对象的概念"><a href="#一、对象的概念" class="headerlink" title="一、对象的概念"></a>一、对象的概念</h1><p>”面向对象“的核心是“对象”二字，而对象的精髓在于“整合“，什么意思？</p>
+<p>所有的程序都是由”数据”与“功能“组成，因而编写程序的本质就是定义出一系列的数据，然后定义出一系列的功能来对数据进行操作。在学习”对象“之前，程序中的数据与功能是分离开的，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据：name、age、sex</span></span><br><span class="line">name = <span class="string">&#x27;lili&#x27;</span></span><br><span class="line">age = <span class="string">&#x27;18&#x27;</span></span><br><span class="line">sex = <span class="string">&#x27;female&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 功能：tell_info</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tell_info</span>(<span class="params">name,age,sex</span>): </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&lt;%s:%s:%s&gt;&#x27;</span> %(name,age,sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时若想执行查看个人信息的功能，需要同时拿来两样东西，一类是功能tell_info，另外一类则是多个数据name、age、sex，然后才能执行，非常麻烦</span></span><br><span class="line">tell_info(name,age,sex)</span><br></pre></td></tr></table></figure>
+
+<p>在学习了“对象”之后，我们就有了一个容器，该容器可以盛放数据与功能，所以我们可以说：对象是把数据与功能整合到一起的产物，或者说”对象“就是一个盛放数据与功能的容器&#x2F;箱子&#x2F;盒子。</p>
+<p>如果把”数据“比喻为”睫毛膏“、”眼影“、”唇彩“等化妆所需要的原材料；把”功能“比喻为眼线笔、眉笔等化妆所需要的工具，那么”对象“就是一个彩妆盒，彩妆盒可以把”原材料“与”工具“都装到一起</p>
+<p>如果我们把”化妆“比喻为要执行的业务逻辑，此时只需要拿来一样东西即可，那就是彩妆盒，因为彩妆盒里整合了化妆所需的所有原材料与功能，这比起你分别拿来原材料与功能才能执行，要方便的多。</p>
+<p>在了解了对象的基本概念之后，理解面向对象的编程方式就相对简单很多了，面向对象编程就是要造出一个个的对象，把原本分散开的相关数据与功能整合到一个个的对象里，这么做既方便使用，也可以提高程序的解耦合程度，进而提升了程序的可扩展性（需要强调的是，软件质量属性包含很多方面，面向对象解决的仅仅只是扩展性问题）</p>
+<p><img src="https://pic1.zhimg.com/v2-be68cd9e27b83c937cf44dbe7a2cf56c_r.jpg" alt="preview"></p>
+<h1 id="二、类与对象"><a href="#二、类与对象" class="headerlink" title="二、类与对象"></a>二、类与对象</h1><p>类即类别&#x2F;种类，是面向对象分析和设计的基石，如果多个对象有相似的数据与功能，那么该多个对象就属于同一种类。有了类的好处是：我们可以把同一类对象相同的数据与功能存放到类里，而无需每个对象都重复存一份，这样每个对象里只需存自己独有的数据即可，极大地节省了空间。所以，如果说对象是用来存放数据与功能的容器，那么类则是用来存放多个对象相同的数据与功能的容器</p>
+<p><img src="https://pic2.zhimg.com/v2-0b1c2138d316307c0c830aa1df3aa1e1_r.jpg" alt="preview"></p>
+<p> 综上所述，虽然我们是先介绍对象后介绍类，但是需要强调的是：在程序中，必须要事先定义类，然后再调用类产生对象（调用类拿到的返回值就是对象）。产生对象的类与对象之间存在关联，这种关联指的是：对象可以访问到类中共有的数据与功能，所以类中的内容仍然是属于对象的，类只不过是一种节省空间、减少代码冗余的机制，面向对象编程最终的核心仍然是去使用对象</p>
+<p> 在了解了类与对象这两大核心概念之后，我们就可以来介绍一下面向对象编程啦</p>
+<h1 id="三、面向对象编程"><a href="#三、面向对象编程" class="headerlink" title="三、面向对象编程"></a>三、面向对象编程</h1><h2 id="1、类的定义与实例化"><a href="#1、类的定义与实例化" class="headerlink" title="1、类的定义与实例化"></a>1、类的定义与实例化</h2><p>我们以开发一个清华大学的选课系统为例，来简单介绍基于面向对象的思想如何编写程序</p>
+<p>面向对象的基本思路就是把程序中要用到的、相关联的数据与功能整合到对象里，然后再去使用，但程序中要用到的数据以及功能那么多，如何找到相关连的呢？我需要先提取选课系统里的角色：学生、老师、课程等，然后显而易见的是：学生有学生相关的数据于功能，老师有老师相关的数据与功能，我们单以学生为例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学校的数据有</span></span><br><span class="line">学校</span><br><span class="line">名字</span><br><span class="line">年龄</span><br><span class="line">性别</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生的功能有</span></span><br><span class="line">选课</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">详细的：</span><br><span class="line"><span class="comment"># 学生1：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=李建刚</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">28</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生2：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=王大力</span><br><span class="line">        性别=女</span><br><span class="line">        年龄=<span class="number">18</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生3：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=牛嗷嗷</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">38</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br></pre></td></tr></table></figure>
+
+<p>我们可以总结出一个学生类，用来存放学生们相同的数据与功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学生类</span></span><br><span class="line">	相同的特征：</span><br><span class="line">    	学校 = 清华大学</span><br><span class="line">    相同发的功能：</span><br><span class="line">    	选课</span><br></pre></td></tr></table></figure>
+
+<p>基于上述分析的结果，我们接下来需要做的就是在程序中定义出类，然后调用类产生对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
+
+<p>类体最常见的是变量的定义和函数的定义，但其实类体可以包含任意的Python代码，类体的代码在类定义阶段就会执行，因而会产生新的名称空间用来存放类中定义的名字，可以大一Student.__dict__来查看类这个容器内盛放的东西</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(Student.__dict__)</span><br><span class="line">&#123;..., <span class="string">&#x27;school&#x27;</span>: <span class="string">&#x27;清华大学&#x27;</span>, <span class="string">&#x27;choose&#x27;</span>: &lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;, ...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用类的过程称为将类实例化，拿到的返回值就是程序中的对象，或称为一个实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1=Student() <span class="comment"># 每实例化一次Student类就得到一个学生对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2=Student()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3=Student()</span><br></pre></td></tr></table></figure>
+
+<p>如此stu1、stu2、stu3全都一样了（只有类中共有的内容，而没有各自独有的数据），想在实例化的过程中就为三位学生定制各自独有的数据：姓名，性别，年龄，需要我们在类内部新增一个__init__方法,如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 该方法会在对象产生之后自动执行，专门为对象进行初始化操作，可以有任意代码，但一定不能返回非None的值</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.sex = sex</span><br><span class="line">        self.age = age</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
+
+<p>然后我们重新实例化三位学生</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1 = Student(<span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;男&#x27;</span> , <span class="number">28</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2 = Student(<span class="string">&#x27;王大力&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">38</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3 = Student(<span class="string">&#x27;牛姐&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
+<p>单拿stu1的产生过程来分析，调用类会先产生一个空对象stu1，然后将stu1连同调用类时括号内参数一起传给Student.<strong>init</strong>(stu1,’李建刚’,28)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">    self.name = name  <span class="comment"># stu1.name = &#x27;李建刚&#x27;</span></span><br><span class="line">    self.sex = sex  <span class="comment"># stu1.sex = &#x27;男&#x27;</span></span><br><span class="line">    self.age = age  <span class="comment"># stu1.age = 28</span></span><br></pre></td></tr></table></figure>
+
+<p>会产生对象名称空间，同样可以用__dict__查看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">28</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，我们造出了三个对象与一个类，对象存放各自独有的数据，类中存放对象们共有的内容</p>
+<p><img src="https://pic2.zhimg.com/80/v2-c3bb7aefce6ffee1029b1ae5dee72689_720w.jpg" alt="img"></p>
+<p>存的目的是为了用，那么如何访问对象或者类中存放的内容呢？</p>
+<h2 id="2、属性访问"><a href="#2、属性访问" class="headerlink" title="2、属性访问"></a>2、属性访问</h2><h3 id="类属性与对象属性"><a href="#类属性与对象属性" class="headerlink" title="类属性与对象属性"></a>类属性与对象属性</h3><p>在类中定义的名字，都是类的属性，细说的话，类有两种属性：数据属性和函数属性，可以通过__dict__访问属性的值，比如Student.<strong>dict</strong>[‘school’]，但Python提供了专门的属性访问语法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.school</span><br><span class="line"><span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.choose</span><br><span class="line">&lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 除了查看属性外，我们还可以使用Student.attrib = value(修改或新增属性)，用del Student.attrib删除属性</span></span><br></pre></td></tr></table></figure>
+
+<p>操作对象的属性也是一样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.name  <span class="comment"># 查看，等同于obj1.__dict__[&#x27;name&#x27;]</span></span><br><span class="line"><span class="string">&#x27;李建刚&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.course = <span class="string">&#x27;python&#x27;</span>  <span class="comment"># 新增，等同于obj1.__dict__[‘course&#x27;]=&#x27;python&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.age=<span class="number">38</span> <span class="comment"># 修改，等同于obj1.__dict__[‘age&#x27;]=38</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> obj1.course</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性查找顺序与绑定方法"><a href="#属性查找顺序与绑定方法" class="headerlink" title="属性查找顺序与绑定方法"></a>属性查找顺序与绑定方法</h3><p>对象的名称空间里只存放着对象独有的属性，而对象们相似的属性是存放于类中的。对象在访问属性时，会优先从对象本身的__dict__中查找，未找到，则去类的__dict__中查找</p>
+<p>类中定义的变量是类的数据属性，是共享给所有对象用的，指向相同的内存地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># id都一样</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.school)) <span class="comment"># 4301108704</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.school)) <span class="comment"># 4301108704</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>类中定义的函数是类的函数属性，类可以使用，但必须遵循函数的参数规则，有几个参数需要传几个参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student.choose(stu1) <span class="comment"># 李建刚 is choosing a course</span></span><br><span class="line">Student.choose(stu2) <span class="comment"># 王大力 is choosing a course</span></span><br><span class="line">Student.choose(stu3) <span class="comment"># 牛嗷嗷 is choosing a course</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>但其实类中定义的函数主要是给对象使用的，而且是绑定给对象的，虽然所有对象指向的都是相同的功能，但是绑定到不同的对象就是不同的绑定方法，内存地址各不相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.choose)) <span class="comment"># 4335426280</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.choose)) <span class="comment"># 4300433608</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>绑定到对象的方法特殊之处在于，绑定给谁就应该由谁来调用，谁来调用，就会将’谁’本身当做第一个参数自动传入（方法__init__也是一样的道理）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stu1.choose()  <span class="comment"># 等同于Student.choose(stu1)</span></span><br><span class="line">stu2.choose()  <span class="comment"># 等同于Student.choose(stu2)</span></span><br><span class="line">stu3.choose()  <span class="comment"># 等同于Student.choose(stu3)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>绑定到不同对象的choose技能，虽然都是选课，但李建刚选的课，不会选给王大力，这正是”绑定“二字的精髓所在</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意：绑定到对象方法的这种自动传值的特征，决定了在类中定义的函数都要默认写一个参数self，self可以是任意名字，但命名为self是约定俗成的。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Python中一切皆为对象，且Python3中类与类型是一个概念，因而绑定方法我们早就接触过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#类型list就是类</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span></span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化的到3个对象l1,l2,l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1=<span class="built_in">list</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2=<span class="built_in">list</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3=<span class="built_in">list</span>([<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#三个对象都有绑定方法append,是相同的功能,但内存地址不同</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b48</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b88</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482bc8</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#操作绑定方法l1.append(4),就是在往l1添加4,绝对不会将4添加到l2或l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(<span class="number">4</span>) <span class="comment">#等同于list.append(l1,4)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3</span><br><span class="line">[<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>在上述介绍类与对象的使用过程中，我们更多的是站在底层原理的角度去介绍类与对象之间的关联关系，如果只是站在使用的角度，我们无需考虑语法“对象.属性”中”属性“到底源自于哪里，只需要知道是通过对象获取到的就可以了，所以说，对象是一个高度整合的产物，有了对象，我们只需要使用”对象.xxx“的语法就可以得到跟这个对象相关的所有数据与功能，十分方便且解耦合程度极高</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">计算机核心基础</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          软件开发的目录规范
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/13/24%E3%80%81%E5%B0%81%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">封装</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">编程语言与Python</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基本数据类型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/">与用户交互、运算符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/">注释、变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符编码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">流程控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">基本数据类型与内置方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">函数的基本使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/05/page/2/">2</a><a class="page-number" href="/archives/2022/05/page/3/">3</a><a class="page-number" href="/archives/2022/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2022/05/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +433,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

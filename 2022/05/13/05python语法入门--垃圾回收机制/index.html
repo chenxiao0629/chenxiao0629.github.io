@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/5 | Hexo</title>
+  <title>垃圾回收机制 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
+  <meta name="description" content="123456789101112131415161718192021222324252627# （1）垃圾回收机制GC# 引用计数# x &#x3D; 10  # 值10引用计数为1# y &#x3D; x   # 值10引用计数为2## y &#x3D; 1000  # 值10引用计数减少为1# del x     # 值10引用计数减少为0# 分代回收-》解决引用计数效率问题（存活时间越长扫描频率越低）# 标记&#x2F;清除-》解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垃圾回收机制">
+<meta property="og:url" content="http://example.com/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="123456789101112131415161718192021222324252627# （1）垃圾回收机制GC# 引用计数# x &#x3D; 10  # 值10引用计数为1# y &#x3D; x   # 值10引用计数为2## y &#x3D; 1000  # 值10引用计数减少为1# del x     # 值10引用计数减少为0# 分代回收-》解决引用计数效率问题（存活时间越长扫描频率越低）# 标记&#x2F;清除-》解决">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-13T06:04:52.000Z">
+<meta property="article:modified_time" content="2022-05-13T08:00:44.294Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,295 +154,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-05python语法入门--垃圾回收机制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      垃圾回收机制
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># （1）垃圾回收机制GC</span></span><br><span class="line"><span class="comment"># 引用计数</span></span><br><span class="line"><span class="comment"># x = 10  # 值10引用计数为1</span></span><br><span class="line"><span class="comment"># y = x   # 值10引用计数为2</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># y = 1000  # 值10引用计数减少为1</span></span><br><span class="line"><span class="comment"># del x     # 值10引用计数减少为0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分代回收-》解决引用计数效率问题（存活时间越长扫描频率越低）</span></span><br><span class="line"><span class="comment"># 标记/清除-》解决引用计数有可能会发生内存泄漏（除了可以访问的标记，其余的应清除）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ps：如果我们想要回收python程序的内存空间，只能通过把变量值的引用计数减为0的方式实现</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># （2）小整数池: -5 256 pycharm里要大一些</span></span><br><span class="line"><span class="comment"># x = 1000</span></span><br><span class="line"><span class="comment"># y = 1000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># x = &quot;egon&quot;</span></span><br><span class="line"><span class="comment"># y = &quot;egon&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(id(l1))</span></span><br><span class="line"><span class="comment"># print(id(l2))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 总：</span></span><br><span class="line"><span class="comment"># 1、id相等，值一定相等</span></span><br><span class="line"><span class="comment"># 2、值相等，id不一定相等</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">计算机核心基础</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          流程控制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基本数据类型与内置方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">编程语言与Python</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基本数据类型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/">与用户交互、运算符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/">注释、变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符编码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">流程控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">基本数据类型与内置方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">函数的基本使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/05/page/2/">2</a><a class="page-number" href="/archives/2022/05/page/3/">3</a><a class="page-number" href="/archives/2022/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2022/05/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +336,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

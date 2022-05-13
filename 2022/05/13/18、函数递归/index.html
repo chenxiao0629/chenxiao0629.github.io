@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/5 | Hexo</title>
+  <title>函数递归 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
+  <meta name="description" content="函数递归调用介绍 回溯与递推 一、函数递归调用介绍函数不仅可以嵌套定义，话可以桥套调用，即在调用一个函数的过程中，函数内部又调用另一个函数，而函数的递归调用指的是在调用一个函数的过程中又直接或间接地调用该函数本身 例如，在调用f1地过程中，又调用f1，这就是直接调用函数f1本身 1234def f1():    peint(&amp;#x27;from f1&amp;#x27;)    f1()f1()  在调用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数递归">
+<meta property="og:url" content="http://example.com/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="函数递归调用介绍 回溯与递推 一、函数递归调用介绍函数不仅可以嵌套定义，话可以桥套调用，即在调用一个函数的过程中，函数内部又调用另一个函数，而函数的递归调用指的是在调用一个函数的过程中又直接或间接地调用该函数本身 例如，在调用f1地过程中，又调用f1，这就是直接调用函数f1本身 1234def f1():    peint(&amp;#x27;from f1&amp;#x27;)    f1()f1()  在调用">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-b8756ae5141d371f4594408e3df84e56_720w.jpg">
+<meta property="article:published_time" content="2022-05-13T06:04:52.000Z">
+<meta property="article:modified_time" content="2022-05-13T08:04:17.048Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-b8756ae5141d371f4594408e3df84e56_720w.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +156,194 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-18、函数递归" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      函数递归
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>函数递归调用介绍</p>
+<p>回溯与递推</p>
+<h1 id="一、函数递归调用介绍"><a href="#一、函数递归调用介绍" class="headerlink" title="一、函数递归调用介绍"></a>一、函数递归调用介绍</h1><p>函数不仅可以嵌套定义，话可以桥套调用，即在调用一个函数的过程中，函数内部又调用另一个函数，而函数的递归调用指的是在调用一个函数的过程中又直接或间接地调用该函数本身</p>
+<p>例如，在调用f1地过程中，又调用f1，这就是直接调用函数f1本身</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    peint(<span class="string">&#x27;from f1&#x27;</span>)</span><br><span class="line">    f1()</span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
+
+<p>在调用f1的过程中，又调用f2，而在调用f2的过程中又调用f1，这就是间接调用f1函数本身</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from f1&#x27;</span>)</span><br><span class="line">    f2()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;from f2&#x27;</span>)</span><br><span class="line">    f1()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，两种情况下递归调用都是一个无限循环的过程，但在python对函数的递归调用的深度做了限制，因而并不会像大家想的那样进入无线循环，会抛出异常，要避免出现这种情况，就必须让递归调用在某个特定条件下终止</p>
+<p>提示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.可以使用sys.getrecursionlimit()去查看递归深度，默认值为1000，虽然可以使用</span></span><br><span class="line">sys.setrecursionlimit()  <span class="comment"># 去设置该值，但仍受限于主机操作系统栈大小的限制</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.python不是一门函数式编程语言，无法对递归进行尾递归优化</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、回溯与递推"><a href="#二、回溯与递推" class="headerlink" title="二、回溯与递推"></a>二、回溯与递推</h1><p>下面我们用一个浅显的例子，为了让读者阐释递归的原理和使用：</p>
+<p>某公司四个员工坐在一起，问第四个人薪水，他说比第三个人多1000，问第三个人薪水，第他说比第二个人多1000，问第二个人薪水，他说比第一个人多1000，最后第一人说自己每月5000，请问第四个人的薪水是多少？</p>
+<p>思路解析：</p>
+<p>要知道第四个人的月薪，就必须知道第三个人的，第三个人的又取决于第二个人的，第二个人的又取决于第一个人的，而且每一个员工都比前一个多一千，数学表达式即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">salary(<span class="number">4</span>)=salary(<span class="number">3</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">3</span>)=salary(<span class="number">2</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">2</span>)=salary(<span class="number">1</span>)+<span class="number">1000</span> </span><br><span class="line">salary(<span class="number">1</span>)=<span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 总结为：</span></span><br><span class="line">salary(n) = salary(n-<span class="number">1</span>) + <span class="number">1000</span>  <span class="comment"># n&gt;1</span></span><br><span class="line">salary(<span class="number">1</span>) = <span class="number">5000</span>  <span class="comment"># n = 1</span></span><br></pre></td></tr></table></figure>
+
+<p>很明显这是一个递归的过程，可以将该过程分为两个阶段：回溯和递推。</p>
+<p> 在回溯阶段，要求第n个员工的薪水，需要回溯得到(n-1)个员工的薪水，以此类推，直到得到第一个员工的薪水，此时，salary(1)已知，因而不必再向前回溯了。然后进入递推阶段：从第一个员工的薪水可以推算出第二个员工的薪水(6000)，从第二个员工的薪水可以推算出第三个员工的薪水(7000)，以此类推，一直推算出第第四个员工的薪水(8000)为止，递归结束。需要注意的一点是，递归一定要有一个结束条件，这里n&#x3D;1就是结束条件。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b8756ae5141d371f4594408e3df84e56_720w.jpg" alt="img"></p>
+<p>代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">salary</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5000</span></span><br><span class="line">    <span class="keyword">return</span> salary(n - <span class="number">1</span>) + <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">s = salary(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行结果为 8000</span></span><br></pre></td></tr></table></figure>
+
+<p>程序分析：</p>
+<p>在未满足n==1的条件时，一直进行递归调用，即一直回溯，见图4.3的左半部分。而在满足n==1的条件时，终止递归调用，即结束回溯，从而进入递推阶段，依次推导直到得到最终的结果。</p>
+<p>递归本质就是在做重复的事情，所以理论上递归可以解决的问题循环也都可以解决，只不过在某些情况下，使用递归会更容易实现，比如有一个嵌套多层的列表，要求打印出所有的元素，代码实现如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">items = [[<span class="number">1</span>,<span class="number">2</span>], <span class="number">3</span>, [<span class="number">4</span>, [<span class="number">5</span>, [<span class="number">6</span>, <span class="number">7</span>]]]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">items</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(i, <span class="built_in">list</span>):</span><br><span class="line">            foo(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(i, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">foo(items)  <span class="comment"># 打印结果1 2 3 4 5 6 7</span></span><br></pre></td></tr></table></figure>
+
+<p>使用递归，我们只需要分析出要重复执行的代码逻辑，然后提取进入下一次递归调用的条件或者说递归结束的条件即可，代码实现起来简洁清晰</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">计算机核心基础</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/05/13/21%E3%80%81%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数对象与闭包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">编程语言与Python</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基本数据类型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/">与用户交互、运算符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/">注释、变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符编码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">流程控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">基本数据类型与内置方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">函数的基本使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/05/page/2/">2</a><a class="page-number" href="/archives/2022/05/page/3/">3</a><a class="page-number" href="/archives/2022/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2022/05/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +367,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

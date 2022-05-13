@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/5 | Hexo</title>
+  <title>包 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
+  <meta name="description" content="包的介绍 包的使用  导入包与__init__.py 绝对导入与相对导入 from包import*  一、包的介绍随着模块数目的增多，把所有模块不加区分地放到一起也是极不合理的，于是python为我们提供了一种把模块组织到一起的方法，即创建一个包。包就是一个含有__init__.py文件的文件夹，文件夹内可以组织子模块或子包，例如 12345678pool&#x2F;|——__init__.py|——fut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="包">
+<meta property="og:url" content="http://example.com/2022/05/13/21%E3%80%81%E5%8C%85/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="包的介绍 包的使用  导入包与__init__.py 绝对导入与相对导入 from包import*  一、包的介绍随着模块数目的增多，把所有模块不加区分地放到一起也是极不合理的，于是python为我们提供了一种把模块组织到一起的方法，即创建一个包。包就是一个含有__init__.py文件的文件夹，文件夹内可以组织子模块或子包，例如 12345678pool&#x2F;|——__init__.py|——fut">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-13T06:04:52.000Z">
+<meta property="article:modified_time" content="2022-05-13T08:04:51.427Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,295 +154,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-21、包" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      包
+    </h1>
+  
+
+        
+        <a href="/2022/05/13/21%E3%80%81%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>包的介绍</p>
+<p>包的使用</p>
+<ul>
+<li>导入包与__init__.py</li>
+<li>绝对导入与相对导入</li>
+<li>from包import*</li>
+</ul>
+<h1 id="一、包的介绍"><a href="#一、包的介绍" class="headerlink" title="一、包的介绍"></a>一、包的介绍</h1><p>随着模块数目的增多，把所有模块不加区分地放到一起也是极不合理的，于是python为我们提供了一种把模块组织到一起的方法，即创建一个包。包就是一个含有__init__.py文件的文件夹，文件夹内可以组织子模块或子包，例如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pool/</span><br><span class="line">|——__init__.py</span><br><span class="line">|——futures</span><br><span class="line">|	|——__init__.py</span><br><span class="line">|	|——process.py</span><br><span class="line">|	|——thread.py</span><br><span class="line">└── versions.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>需要强调的是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在python3中，即使包下没有__init__.py文件，import 包仍然不会报错，而在python2中，包下一定要有该文件，否则import 包报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 创建包的目的不是为了运行，而是被导入使用，记住，包只是模块的一种形式而已，包的本质就是一种模块</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来我们就以包pool为例来介绍包的使用，包内各文件内容如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ProcessPoolExecutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">submt</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ProcessPool submit&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"><span class="comment"># thread.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadPoolExcutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="comment"># versions.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;check versions&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># __init__.py文件内容均为空</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、包的使用"><a href="#二、包的使用" class="headerlink" title="二、包的使用"></a>二、包的使用</h1><h2 id="1-导入包与-init-py"><a href="#1-导入包与-init-py" class="headerlink" title="1.导入包与__init__.py"></a>1.导入包与__init__.py</h2><p>包属于模块的一种，因而包以及包内的模块均是用来被导入使用的，而绝非被直接执行，首次导入包（如import pool）同样会做三件事：</p>
+<p>1.执行包下的__init__.py文件</p>
+<p>2.产生一个新的名称空间用于存放__init__.py执行过程中产生的名字</p>
+<p>3.在当前执行文件所在的名称空间中得到一个名字pool，该名子指向__init__.py的名称空间，例如pool.xxx和poo.yyy中的xxx和yyy都是来自于pool下的__init__.py，也就是说导入包时并不会导入包下所有的子模块与子包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.versions.check()  <span class="comment"># 抛出异常AttributeError</span></span><br><span class="line">pool.futures.process.ProcessExecutor(<span class="number">3</span>)  <span class="comment"># 抛出异常AttributeError</span></span><br></pre></td></tr></table></figure>
+
+<p>pool.versions.check()要求pool下有名字versions，进而pool.versions下有名字check。pool.versions下已经有名字check了，所以问题出现在pool下没有名字versions，这就需要在pool下的__init__.py中导入模块versions</p>
+<p><strong>强调</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>关于包相关的导入语句也分为<span class="keyword">import</span>和<span class="keyword">from</span>...<span class="keyword">import</span>...两种，但是无论哪种，无论在什么位置，在导入时都必须遵循一个原则：凡是在导入时带点的，点的左边都必须是一个包，否则非法。可以带有一连串的点，如<span class="keyword">import</span> 顶级包.子包.子模块，但都必须遵循这个原则。但对于导入后，在使用时就没有这种限制了，点的左边可以是包，模块，函数，类</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-绝对导入与相对导入"><a href="#2-绝对导入与相对导入" class="headerlink" title="2.绝对导入与相对导入"></a>2.绝对导入与相对导入</h2><p>针对包内的模块之间互相导入，导入的方式有两种</p>
+<p>1.绝对导入：以顶级包为起始</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
+
+<p>2.相对导入：代表当前文件所在的目录，..代表当前目录的上一级目录，依次类推</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool 下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
+
+<p>同理，针对pool.futures.process.ProcessPoolExecutor(3)，则需要</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#操作pool下的__init__.py，保证pool.futures</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> futures <span class="comment">#或from pool import futures</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#操作futrues下的__init__.py，保证pool.futures.process</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> process <span class="comment">#或from pool.futures import process</span></span><br></pre></td></tr></table></figure>
+
+<p>相对导入只能用from module import symbol的形式,import ..versions语法是不对的，且symbol只能是一个明确的名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> futures.process  <span class="comment"># 语法错误</span></span><br><span class="line"><span class="keyword">from</span> pool.futures <span class="keyword">import</span> process  <span class="comment"># 语法正确</span></span><br></pre></td></tr></table></figure>
+
+<p>针对包内部模块之间的相互导入推荐使用相对导入，需要特别强调：</p>
+<p>1、相对导入只能在包内部使用，用相对导入不同目录下的模块是非法的</p>
+<p>2、无论是import还是from-import，但凡是在导入时带点的，点的左边必须是包,否则语法错误</p>
+<h2 id="3-总结包的使用"><a href="#3-总结包的使用" class="headerlink" title="3.总结包的使用"></a>3.总结包的使用</h2><p>总结包的使用需要牢记三点<br>1、导包就是在导包下__init__.py文件<br>2、包内部的导入应该使用相对导入，相对导入也只能在包内部使用，而且…取上一级不能出包<br>3、<br>    使用语句中的点代表的是访问属性<br>    m.n.x —-&gt; 向m要n，向n要x<br>    而导入语句中的点代表的是路径分隔符<br>    import a.b.c –&gt; a&#x2F;b&#x2F;c，文件夹下a下有子文件夹b，文件夹b下有子文件或文件夹c<br>    所以导入语句中点的左边必须是一个包</p>
+<h2 id="4-from包和import"><a href="#4-from包和import" class="headerlink" title="4.from包和import *"></a>4.from包和import *</h2><p>在使用包时同样支持from pool.futures import * ，毫无疑问<em>代表的是futures下__init__.py中所有的名字，通用是用变量__all__来控制</em>代表的意思</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#futures下的__init__.py</span></span><br><span class="line">__all__ = [<span class="string">&#x27;process&#x27;</span>, <span class="string">&#x27;thread&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>最后说明一点，包内部的目录结构通常是包的开发者为了方便自己管理和维护代码而创建的，这种目录结构对包的使用者往往是无用的，此时通过操作__init__.py可以“隐藏”包内部的目录结构，降低使用难度，比如想要让使用者直接使用</p>
+<p>pool下的__init__.py中导入子模块或子包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .versions <span class="keyword">import</span> check</span><br><span class="line"><span class="keyword">from</span> .futures.process <span class="keyword">import</span> ProcessPoolExecutor</span><br><span class="line"><span class="keyword">from</span> .futures.thread <span class="keyword">import</span> ThreadPoolExecutor</span><br></pre></td></tr></table></figure>
+
+
+
+<p>程序运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.check()</span><br><span class="line">pool.ProcessPoolExecutor(<span class="number">3</span>)</span><br><span class="line">pool.ThreadPoolExecutor(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/01%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">计算机核心基础</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/05/13/21%E3%80%81%E5%8C%85/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/05/13/20%E3%80%81%E6%A8%A1%E5%9D%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          模块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/13/18%E3%80%81%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数递归</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/02%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">编程语言与Python</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/04python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基本数据类型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/06python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6/">与用户交互、运算符</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/03python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B3%A8%E9%87%8A%E3%80%81%E5%8F%98%E9%87%8F/">注释、变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/09%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符编码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/07python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">流程控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/05python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/08python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/">基本数据类型与内置方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-05-13T06:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/05/13/11%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">函数的基本使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/05/page/2/">2</a><a class="page-number" href="/archives/2022/05/page/3/">3</a><a class="page-number" href="/archives/2022/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2022/05/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +389,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
