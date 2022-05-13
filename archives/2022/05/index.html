@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>02、初次前后端交互、css（简介、基本选择器、组合选择器、属性选择器、分组与嵌套、伪类选择器） | Hexo</title>
+  <title>Archives: 2022/5 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初次体验前后端交互123456789101112131415161718192021# 代码无需掌握 只看效果即可&quot;&quot;&quot;后端框架:可以简单的理解为别人写好的一个非常牛逼的TCP服务端&quot;&quot;&quot;以flask框架为例&gt;&gt;&gt;:第三方框架 pip3 install flask 前端通过标签获取用户数据发送给后端的过程中 标签需要有n">
-<meta property="og:type" content="article">
-<meta property="og:title" content="02、初次前后端交互、css（简介、基本选择器、组合选择器、属性选择器、分组与嵌套、伪类选择器）">
-<meta property="og:url" content="http://example.com/2018/06/02/day02/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="初次体验前后端交互123456789101112131415161718192021# 代码无需掌握 只看效果即可&quot;&quot;&quot;后端框架:可以简单的理解为别人写好的一个非常牛逼的TCP服务端&quot;&quot;&quot;以flask框架为例&gt;&gt;&gt;:第三方框架 pip3 install flask 前端通过标签获取用户数据发送给后端的过程中 标签需要有n">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-06-02T06:04:02.000Z">
-<meta property="article:modified_time" content="2022-05-13T13:51:25.399Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="4、前端基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -155,189 +150,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-day02" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      02、初次前后端交互、css（简介、基本选择器、组合选择器、属性选择器、分组与嵌套、伪类选择器）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/05/13/docker-V7-20201012/" class="archive-article-date">
+  	<time datetime="2022-05-13T06:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/05/13/docker-V7-20201012/">11、docker完整笔记</a>
     </h1>
   
 
-        
-        <a href="/2018/06/02/day02/" class="archive-article-date">
-  	<time datetime="2018-06-02T06:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="初次体验前后端交互"><a href="#初次体验前后端交互" class="headerlink" title="初次体验前后端交互"></a>初次体验前后端交互</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码无需掌握 只看效果即可</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;后端框架:可以简单的理解为别人写好的一个非常牛逼的TCP服务端&quot;&quot;&quot;</span></span><br><span class="line">以flask框架为例&gt;&gt;&gt;:第三方框架 pip3 install flask</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">前端通过标签获取用户数据发送给后端的过程中 标签需要有name属性</span><br><span class="line">	相当于字典的key</span><br><span class="line"> 	用户输入的数据会存储到标签的value属性中 相当于字典的value</span><br><span class="line">  	如果是选择型标签需要自行加上name和value</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/index/&#x27;</span>,methods=[<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="built_in">print</span>(request.form)  <span class="comment"># 获取普通数据</span></span><br><span class="line">    <span class="built_in">print</span>(request.files)  <span class="comment"># 获取文件数据</span></span><br><span class="line">    <span class="comment"># print(request.form.get(&#x27;name&#x27;))</span></span><br><span class="line">    file_obj = request.files.get(<span class="string">&#x27;file&#x27;</span>)  <span class="comment"># 获取文件对象</span></span><br><span class="line">    file_obj.save(<span class="string">&#x27;xxx.md&#x27;</span>)  <span class="comment"># 保存文件</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;flask框架真简单&#x27;</span></span><br><span class="line">app.run()</span><br></pre></td></tr></table></figure>
-
-<h3 id="css简介"><a href="#css简介" class="headerlink" title="css简介"></a>css简介</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 层叠样式表&gt;&gt;&gt;:就是给HTML标签修改样式</span></span><br><span class="line">语法结构</span><br><span class="line">	选择器 &#123;</span><br><span class="line">    	属性名<span class="number">1</span>:属性值<span class="number">1</span>;</span><br><span class="line">    	属性名<span class="number">2</span>:属性值<span class="number">2</span></span><br><span class="line">	&#125;</span><br><span class="line">注释语法</span><br><span class="line">	/*注释内容*/ </span><br><span class="line">引入方式</span><br><span class="line">	<span class="number">1.</span>style内部直接编写css代码</span><br><span class="line">  		平时学习、练习的时候推荐使用</span><br><span class="line">	<span class="number">2.</span>link标签引入外部css文件</span><br><span class="line">  		正式工作、实际生产环境推荐使用</span><br><span class="line">	<span class="number">3.</span>标签内直接书写</span><br><span class="line">  		一般情况下不推荐使用 容易造成冗余现象</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">单独开设的css文件内代码也是非常多的 可以借助于注释管理	</span></span><br><span class="line"><span class="string">	/*导航条样式*/	</span></span><br><span class="line"><span class="string">	/*侧边栏样式*/</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="基本选择器-重要"><a href="#基本选择器-重要" class="headerlink" title="基本选择器(重要)"></a>基本选择器(重要)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">css是用来调节标签样式的 那为什么需要学选择器呢?</span></span><br><span class="line"><span class="string">	因为同一个页面上有很多相似的标签 并且这些标签在不同的位置有不同的样式 </span></span><br><span class="line"><span class="string">	所以为了能够区分 我们肯定先需要学习如何查找指定的标签</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="number">1.</span>标签选择器&gt;&gt;&gt;:通过标签名直接查找</span><br><span class="line">  	/*查找所有的div标签*/</span><br><span class="line">  	div &#123;  </span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="number">2.</span>类选择器(关键符号为句点符.)&gt;&gt;&gt;:通过<span class="keyword">class</span>值查找标签</span><br><span class="line">  	/*查找所有含有c1样式类的标签*/</span><br><span class="line">  	.c1 &#123;</span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="number">3.</span><span class="built_in">id</span>选择器(关键符号为警号<span class="comment">#)&gt;&gt;&gt;:通过id值查找标签</span></span><br><span class="line">  	/*查找<span class="built_in">id</span>为d1的标签*/</span><br><span class="line">  	<span class="comment">#d1 &#123;</span></span><br><span class="line">		color: orange;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="number">4.</span>通用选择器(了解)</span><br><span class="line">    /*body内所有的标签*/</span><br><span class="line">    * &#123;</span><br><span class="line">		color: darkgray;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="组合选择器-重点"><a href="#组合选择器-重点" class="headerlink" title="组合选择器(重点)"></a>组合选择器(重点)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">为了区分嵌套标签之间的关系 我们发明了一种称呼</span></span><br><span class="line"><span class="string">	&lt;div&gt;</span></span><br><span class="line"><span class="string">		&lt;p&gt;</span></span><br><span class="line"><span class="string">			&lt;span&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="string">		&lt;/p&gt;</span></span><br><span class="line"><span class="string">	&lt;/div&gt;</span></span><br><span class="line"><span class="string">span是p的儿子 是div的孙子也可以说是div的后代</span></span><br><span class="line"><span class="string">p是div的儿子也是div后代 是span的父亲</span></span><br><span class="line"><span class="string">div是p的父亲是span的爷爷 也可以说是他们的祖先</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">即：</span></span><br><span class="line"><span class="string">	儿子：子标签</span></span><br><span class="line"><span class="string">	孙子：子标签的子标签</span></span><br><span class="line"><span class="string">	后代：无限子标签</span></span><br><span class="line"><span class="string">	父亲：父标签</span></span><br><span class="line"><span class="string">	爷爷：父标签的父标签</span></span><br><span class="line"><span class="string">	祖先：无限父标签</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="number">1.</span>后代选择器(特征为空格)</span><br><span class="line">	/*查找div内部所有的后代span*/</span><br><span class="line">	div span &#123;  </span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">  </span><br><span class="line"><span class="number">2.</span>儿子选择器(特征&gt;)</span><br><span class="line"> 	/*查找div内部所有的儿子span*/</span><br><span class="line">	div &gt; span &#123; </span><br><span class="line">		color: greenyellow;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>毗邻选择器(特征为+)</span><br><span class="line">	/*查找同级别下面紧挨着的第一个span(不能有其他标签间隔)*/</span><br><span class="line">	div + span &#123;  </span><br><span class="line">		color: pink;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>弟弟选择器(特征为~)</span><br><span class="line">	/*查找同级别下面所有的span(不需要紧挨着)*/</span><br><span class="line">	div ~ span &#123;  </span><br><span class="line">		color: deeppink;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标签可以有默认的属性也可以自定义属性</span></span><br><span class="line">	&lt;p <span class="built_in">id</span>=<span class="string">&quot;d1&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;c1&quot;</span> name=<span class="string">&quot;jason&quot;</span> pwd=<span class="string">&quot;123&quot;</span>&gt;<span class="number">123</span>&lt;/p&gt;</span><br><span class="line"> </span><br><span class="line"><span class="number">1</span>、含有name属性名的标签</span><br><span class="line">    [name] &#123;  </span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="number">2</span>、含有name属性名并且值为jason的标签</span><br><span class="line">    [name=<span class="string">&#x27;jason&#x27;</span>] &#123;  </span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="number">3</span>、p标签中含有name属性名并且值为jason的</span><br><span class="line">    p[name=<span class="string">&#x27;jason&#x27;</span>] &#123;  </span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="分组与嵌套"><a href="#分组与嵌套" class="headerlink" title="分组与嵌套"></a>分组与嵌套</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、多个相同选择器并列使用</span></span><br><span class="line">ag：查找div或者span或者p</span><br><span class="line">    div,span,p &#123;  </span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 2、多个不同选择器并列使用</span></span><br><span class="line">ag：标签查找div <span class="built_in">id</span>查找d1 类查找c1</span><br><span class="line">    div,<span class="comment">#d1,.c1 &#123;  </span></span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、不并列同样可以使用组合选择器</span></span><br><span class="line">ag：查找<span class="keyword">class</span>为c1的后代p标签</span><br><span class="line">    .c1 p &#123;   </span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、直接筛选</span></span><br><span class="line">ag1：查找<span class="built_in">id</span>为d1的div标签</span><br><span class="line">	div<span class="comment">#d1 &#123;  </span></span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line">ag2：查找<span class="keyword">class</span>为c1的div标签</span><br><span class="line">	div.c1 &#123;  </span><br><span class="line">		color: red;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">练习题</span></span><br><span class="line"><span class="string">	#d1&gt;div&gt;.c1&gt;span.c2：</span></span><br><span class="line"><span class="string">        查找id为d1的标签内部的儿子div</span></span><br><span class="line"><span class="string">        并且在儿子div内部查找class为c1的儿子标签</span></span><br><span class="line"><span class="string">        并且在该儿子内部查找class为c2的儿子span</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*鼠标悬浮在上面*/</span><br><span class="line">a:hover &#123;   <span class="comment"># 重点掌握 很多网址都在用!!!</span></span><br><span class="line">            color: orange;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="string">&quot;&quot;&quot;a标签默认的颜色会变化 第一次是蓝色 后面是紫色&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">input</span>:focus &#123;</span><br><span class="line">            background-color: red;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="string">&quot;&quot;&quot;我们将input框被用户点击即将录入数据的过程看成是focus状态(聚焦状态)&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">4、前端基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">3、Linux架构</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2018/06/02/day02/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/06/02/day03/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          03、css（伪元素选择器、选择器优先级、字体相关、背景属性、边框属性、display属性、盒子模型）
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/06/02/day01/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">01、HTML（简介、创建、展示）、head内常见标签、body内常见标签、标签的两大重要属性</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -360,8 +226,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

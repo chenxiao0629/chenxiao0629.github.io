@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>06、JavaScript之DOM操作（查找标签、节点操作、获取值操作、class操作、样式操作、事件、内置参数this、事件练习） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上周内容回顾 JS的简介 12JavaScript  不是很严谨结束符、语法注释  JS引入方式 1都是与script标签相关  JS变量与常量 12var、letconst  JS基本数据类型 12345number数值类型string字符类型boolean布尔类型null与undefined类型对象类型(数组、自定义对象、内置对象)  JS运算符 123弱相关与强相关  # &#x3D;&#x3D; &#x3D;&#x3D;&#x3D;逻辑运">
+  <meta name="description" content="DOM操作之查找标签12345678910111213141516171819前缀关键字&gt;&gt;&gt;:document    # 基本查找(核心)document.getElementById           根据ID获取一个标签document.getElementsByClassName   根据class属性获取document.getElementsByTagName">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06、JavaScript之DOM操作（查找标签、节点操作、获取值操作、class操作、样式操作、事件、内置参数this、事件练习）">
 <meta property="og:url" content="http://example.com/2018/06/02/day06/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="上周内容回顾 JS的简介 12JavaScript  不是很严谨结束符、语法注释  JS引入方式 1都是与script标签相关  JS变量与常量 12var、letconst  JS基本数据类型 12345number数值类型string字符类型boolean布尔类型null与undefined类型对象类型(数组、自定义对象、内置对象)  JS运算符 123弱相关与强相关  # &#x3D;&#x3D; &#x3D;&#x3D;&#x3D;逻辑运">
+<meta property="og:description" content="DOM操作之查找标签12345678910111213141516171819前缀关键字&gt;&gt;&gt;:document    # 基本查找(核心)document.getElementById           根据ID获取一个标签document.getElementsByClassName   根据class属性获取document.getElementsByTagName">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-06-02T06:04:06.000Z">
-<meta property="article:modified_time" content="2022-05-13T12:45:15.967Z">
+<meta property="article:modified_time" content="2022-05-13T13:52:43.901Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="4、前端基础">
 <meta name="twitter:card" content="summary">
@@ -175,48 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="上周内容回顾"><a href="#上周内容回顾" class="headerlink" title="上周内容回顾"></a>上周内容回顾</h1><ul>
-<li><p>JS的简介</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JavaScript  不是很严谨</span><br><span class="line">结束符、语法注释</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS引入方式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">都是与script标签相关</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS变量与常量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var、let</span><br><span class="line">const</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS基本数据类型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">number数值类型</span><br><span class="line">string字符类型</span><br><span class="line">boolean布尔类型</span><br><span class="line">null与undefined类型</span><br><span class="line">对象类型(数组、自定义对象、内置对象)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS运算符</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">弱相关与强相关  <span class="comment"># == ===</span></span><br><span class="line">逻辑运算符  &amp;&amp;  ||  !</span><br><span class="line">三元运算符  条件 ? 值<span class="number">1</span> : 值<span class="number">2</span>  <span class="comment"># 值1 if 条件 else 值2</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS自定义对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array</span><br><span class="line">	[<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>]</span><br><span class="line"><span class="built_in">object</span></span><br><span class="line">	&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;jason&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="number">18</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>流程控制</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>()&#123;&#125;<span class="keyword">else</span>&#123;&#125;</span><br><span class="line"><span class="keyword">if</span>()&#123;&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;&#125;<span class="keyword">else</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>函数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function func1()&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS内置对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">关键字&gt;&gt;&gt;:new</span><br><span class="line">	new Date()</span><br><span class="line">	new RegExp()</span><br><span class="line">    	两个小特性: 全局匹配、undefined</span><br><span class="line"></span><br><span class="line">序列化</span><br><span class="line">	JSON.stringify()</span><br><span class="line">    JSON.parse()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BOM操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.history</span><br><span class="line">window.location</span><br><span class="line">window.<span class="built_in">open</span></span><br><span class="line">setTimeOut()</span><br><span class="line">setInterval()</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="今日内容概要"><a href="#今日内容概要" class="headerlink" title="今日内容概要"></a>今日内容概要</h1><ul>
-<li><p>DOM操作</p>
-</li>
-<li><p>DOM操作之查找标签</p>
-</li>
-<li><p>DOM操作之操作标签</p>
-</li>
-<li><p>jQuery</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">内部封装了JS代码 只不过语法更加简单</span><br><span class="line"><span class="string">&quot;&quot;&quot;我们必须两者都会&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="今日内容详细"><a href="#今日内容详细" class="headerlink" title="今日内容详细"></a>今日内容详细</h1><h3 id="DOM操作之查找标签"><a href="#DOM操作之查找标签" class="headerlink" title="DOM操作之查找标签"></a>DOM操作之查找标签</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">前缀关键字&gt;&gt;&gt;:document</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 基本查找(核心)</span></span><br><span class="line">document.getElementById           根据ID获取一个标签</span><br><span class="line">document.getElementsByClassName   根据<span class="keyword">class</span>属性获取</span><br><span class="line">document.getElementsByTagName     根据标签名获取标签合集</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">如果我们的js代码需要页面上某个标签加载完毕</span></span><br><span class="line"><span class="string">那么该js代码应该写在body内部最下方或者引入外部js文件</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 间接查找(重要)</span></span><br><span class="line">parentElement            父节点标签元素</span><br><span class="line">children                 所有子标签</span><br><span class="line">firstElementChild        第一个子标签元素</span><br><span class="line">lastElementChild         最后一个子标签元素</span><br><span class="line">nextElementSibling       下一个兄弟标签元素</span><br><span class="line">previousElementSibling   上一个兄弟标签元素</span><br></pre></td></tr></table></figure>
+        <h3 id="DOM操作之查找标签"><a href="#DOM操作之查找标签" class="headerlink" title="DOM操作之查找标签"></a>DOM操作之查找标签</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">前缀关键字&gt;&gt;&gt;:document</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 基本查找(核心)</span></span><br><span class="line">document.getElementById           根据ID获取一个标签</span><br><span class="line">document.getElementsByClassName   根据<span class="keyword">class</span>属性获取</span><br><span class="line">document.getElementsByTagName     根据标签名获取标签合集</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">如果我们的js代码需要页面上某个标签加载完毕</span></span><br><span class="line"><span class="string">那么该js代码应该写在body内部最下方或者引入外部js文件</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 间接查找(重要)</span></span><br><span class="line">parentElement            父节点标签元素</span><br><span class="line">children                 所有子标签</span><br><span class="line">firstElementChild        第一个子标签元素</span><br><span class="line">lastElementChild         最后一个子标签元素</span><br><span class="line">nextElementSibling       下一个兄弟标签元素</span><br><span class="line">previousElementSibling   上一个兄弟标签元素</span><br></pre></td></tr></table></figure>
 
 <h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var aEle = document.createElement(<span class="string">&#x27;a&#x27;</span>);  <span class="comment"># 创建标签</span></span><br><span class="line">aEle.setAttribute(<span class="string">&#x27;href&#x27;</span>,<span class="string">&#x27;https://www.mmzztt.com/&#x27;</span>)  <span class="comment"># 设置属性</span></span><br><span class="line">aEle.innerText = <span class="string">&#x27;好不好看?&#x27;</span>  <span class="comment"># 设置内容文本</span></span><br><span class="line">document.getElementsByTagName(<span class="string">&#x27;p&#x27;</span>)[<span class="number">0</span>].appendChild(aEle)  <span class="comment"># 动态添加</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;一定要明确当前手上是什么对象&quot;&quot;&quot;</span></span><br><span class="line">imgEle.getAttribute(<span class="string">&#x27;title&#x27;</span>)  <span class="comment"># 获取标签属性</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">innerText</span><br><span class="line">	不加赋值符号是获取内部文本</span><br><span class="line">	加了赋值符号是设置内置文本</span><br><span class="line">	<span class="comment"># 不可以识别HTML标签</span></span><br><span class="line">innerHTML</span><br><span class="line">	不加赋值符号是获取内部标签+文本</span><br><span class="line">	加了赋值符号是设置内置标签+文本</span><br><span class="line">	<span class="comment"># 可以识别HTML标签</span></span><br></pre></td></tr></table></figure>
 
@@ -234,14 +193,7 @@
 
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果某个标签已经有事件了 那么绑定会冲突</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>整理今日内容</span><br><span class="line"><span class="number">2.</span>完善事件练习操作</span><br><span class="line"><span class="number">3.</span>自行编写更多事件案例</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p style="color:red" align='center'><i>WeChat: JTPython666</i></p>
-<p style="color:red"  align='center'><i>EMail: 18817628568@163.com</i></p>
----
-
-
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       
 
       

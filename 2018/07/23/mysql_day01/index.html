@@ -16,7 +16,7 @@
 <meta property="og:description" content="数据发展史123456789101112131、单独的文本文件（Python文本操作的时候）	文件名不统一	数据格式没有统一（代码层不统一）2、软件开发目录规范	规定了文件名和存储位置		文件查找简单了  		并没有解决核心问题3、数据库截断	规定了文件存储位置、数据格式 		目前正在使用的阶段		解决了核心问题  数据存储发展史1234567891011121、单机游戏阶段	数据各自保存在各自的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-07-23T06:04:01.000Z">
-<meta property="article:modified_time" content="2022-05-13T13:03:21.018Z">
+<meta property="article:modified_time" content="2022-05-13T13:54:04.111Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="5、数据库之MySQL">
 <meta name="twitter:card" content="summary">
@@ -205,19 +205,6 @@
 
 <h3 id="字符编码问题"><a href="#字符编码问题" class="headerlink" title="字符编码问题"></a>字符编码问题</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看MySQL内部默认的编码情况</span></span><br><span class="line">	\s</span><br><span class="line"> </span><br><span class="line"><span class="string">&quot;&quot;&quot;MySQL默认的配置文件&gt;&gt;&gt;:mydefault.ini&quot;&quot;&quot;</span></span><br><span class="line"><span class="number">1.</span>拷贝默认的配置文件并且重新命名为my.ini</span><br><span class="line"><span class="number">2.</span>拷贝固定的配置信息</span><br><span class="line">	[mysqld]</span><br><span class="line">	character-<span class="built_in">set</span>-server=utf8</span><br><span class="line">	collation-server=utf8_general_ci</span><br><span class="line">	[client]</span><br><span class="line">	default-character-<span class="built_in">set</span>=utf8</span><br><span class="line">	[mysql]</span><br><span class="line">	default-character-<span class="built_in">set</span>=utf8</span><br><span class="line"><span class="number">3.</span>重启MySQL服务端</span><br></pre></td></tr></table></figure>
 
-<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>整理今日内容</span><br><span class="line"><span class="number">2.</span>反复练习SQL语句</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p style="color:red" align='center'><i>WeChat: JTPython666</i></p>
-<p style="color:red"  align='center'><i>EMail: 18817628568@163.com</i></p>
----
-
-
-
-
-
-
-
 
 
 
@@ -344,8 +331,8 @@
     </a>
   
   
-    <a href="/2018/06/23/docker-V7-20201012/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">11、docker完整笔记</div>
+    <a href="/2018/06/23/day11%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">10、高可用（简介、常用的工具、VRRP协议、部署keepalived、keepalived配置、脑裂问题解决、非抢占式）、四层负载均衡</div>
       <i class="icon-circle-right"></i>
     </a>
   
