@@ -152,126 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-24、封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/24%E3%80%81%E5%B0%81%E8%A3%85/">24、封装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/13/24%E3%80%81%E5%B0%81%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><ul>
-<li>引入</li>
-</ul>
-</li>
-<li>隐藏属性</li>
-<li>开放接口</li>
-<li><ul>
-<li>隐藏数据接口</li>
-<li>隐藏函数接口</li>
-</ul>
-</li>
-<li>property</li>
-</ul>
-<h1 id="一-引入"><a href="#一-引入" class="headerlink" title="一 引入"></a>一 引入</h1><p>面向对象编程有三大特性：封装、继承、多态，其中最重要的一个特性就是封装。封装指的就是把数据与功能都整合到一起，听起来是不是很熟悉，没错，我们之前所说的”整合“二字其实就是封装的通俗说法。除此之外，针对封装到对象或者类中的属性，我们还可以严格控制对它们的访问，分两步实现：隐藏与开放接口</p>
-<h1 id="二-隐藏属性"><a href="#二-隐藏属性" class="headerlink" title="二 隐藏属性"></a>二 隐藏属性</h1><p>Python的Class机制采用双下划线开头的方式将属性隐藏起来（设置成私有的），但其实这仅仅只是一种变形操作，类中所有双下滑线开头的属性都会在类定义阶段、检测语法时自动变成“_类名__属性名”的形式：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    __N=<span class="number">0</span>  <span class="comment"># 变形为__Foo__N</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init</span>(<span class="params">self</span>):  <span class="comment"># 定义函数时，会检测语法函数，所以__开头的属性也会变形</span></span><br><span class="line">    	self.__x = <span class="number">10</span> <span class="comment"># 变形为self._Foo__x</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__f1</span>(<span class="params">self</span>):  <span class="comment"># 变形为_Foo__f1</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;__f1 run&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>(<span class="params">self</span>):  <span class="comment"># 定义函数时，会检测语法，所以__开头的属性也会变形</span></span><br><span class="line">        self.__f1():  <span class="comment"># 变形为self.Foo__f1()</span></span><br><span class="line"><span class="built_in">print</span>(Foo.__N):  <span class="comment"># 报错AttributeError：类Foo没有属性__N</span></span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"><span class="built_in">print</span>(obj.__x):  <span class="comment"># 报错AttributeError：对象obj没有属性__x</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>这种变形需要注意的问题是：</p>
-<p>1、在类外部无法直接访问双下滑线开头的属性，但知道了类名和属性名就可以拼出名字：_类名__属性，然后就可以访问了，如Foo._A__N，所以说这种操作并没有严格意义上地限制外部访问，仅仅只是一种语法意义上的变形。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo.__dict__</span><br><span class="line">mappingproxy(&#123;..., <span class="string">&#x27;_Foo__N&#x27;</span>: <span class="number">0</span>, ...&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;_Foo__x&#x27;</span>: <span class="number">10</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo._Foo__N</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj._Foo__x</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj._Foo__N</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>2、在类内部是可以直接访问双下滑线开头的属性的，比如self.__f1()，因为在类定义阶段类内部双下滑线开头的属性统一发生了变形。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.f2()</span><br><span class="line">__f1 run</span><br></pre></td></tr></table></figure>
-
-<p>3、变形操作只在类定义阶段发生一次,在类定义之后的赋值操作，不会变形。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo.__M=<span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo.__dict__</span><br><span class="line">mappingproxy(&#123;..., <span class="string">&#x27;__M&#x27;</span>: <span class="number">100</span>,...&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo.__M</span><br><span class="line"><span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.__y=<span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;__y&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;_Foo__x&#x27;</span>: <span class="number">10</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.__y</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="三-开放接口"><a href="#三-开放接口" class="headerlink" title="三 开放接口"></a>三 开放接口</h1><p>定义属性就是为了使用，所以隐藏并不是目的</p>
-<h2 id="1、隐藏数据属性"><a href="#1、隐藏数据属性" class="headerlink" title="1、隐藏数据属性"></a>1、隐藏数据属性</h2><p>将数据隐藏起来就限制了类外部对数据的直接操作，然后类内应该提供相应的接口来允许类外部间接地操作数据，接口之上可以附加额外的逻辑来对数据的操作进行严格地控制</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">Teacher</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>): <span class="comment">#将名字和年纪都隐藏起来</span></span><br><span class="line"><span class="meta">... </span>        self.__name=name</span><br><span class="line"><span class="meta">... </span>        self.__age=age</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">tell_info</span>(<span class="params">self</span>): <span class="comment">#对外提供访问老师信息的接口</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;姓名:%s,年龄:%s&#x27;</span> %(self.__name,self.__age))</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">set_info</span>(<span class="params">self,name,age</span>): <span class="comment">#对外提供设置老师信息的接口，并附加类型检查的逻辑</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(name,<span class="built_in">str</span>):</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">raise</span> TypeError(<span class="string">&#x27;姓名必须是字符串类型&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(age,<span class="built_in">int</span>):</span><br><span class="line"><span class="meta">... </span>            <span class="keyword">raise</span> TypeError(<span class="string">&#x27;年龄必须是整型&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>        self.__name=name</span><br><span class="line"><span class="meta">... </span>        self.__age=age</span><br><span class="line"><span class="meta">... </span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t=Teacher(<span class="string">&#x27;lili&#x27;</span>,<span class="number">18</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.set_info(‘LiLi<span class="string">&#x27;,&#x27;</span><span class="number">19</span><span class="string">&#x27;) # 年龄不为整型，抛出异常</span></span><br><span class="line"><span class="string">Traceback (most recent call last):</span></span><br><span class="line"><span class="string">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span></span><br><span class="line"><span class="string">  File &quot;&lt;stdin&gt;&quot;, line 11, in set_info</span></span><br><span class="line"><span class="string">TypeError: 年龄必须是整型</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; t.set_info(&#x27;</span>LiLi<span class="string">&#x27;,19) # 名字为字符串类型，年龄为整形，可以正常设置</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; t.tell_info() # 查看老师的信息</span></span><br><span class="line"><span class="string">姓名:LiLi,年龄:19</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2、隐藏函数属性"><a href="#2、隐藏函数属性" class="headerlink" title="2、隐藏函数属性"></a>2、隐藏函数属性</h2><p>目的的是为了隔离复杂度，例如ATM程序的取款功能,该功能有很多其他功能组成，比如插卡、身份认证、输入金额、打印小票、取钱等，而对使用者来说,只需要开发取款这个功能接口即可,其余功能我们都可以隐藏起来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">ATM</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__card</span>(<span class="params">self</span>): <span class="comment">#插卡</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;插卡&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__auth</span>(<span class="params">self</span>): <span class="comment">#身份认证</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;用户认证&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__input</span>(<span class="params">self</span>): <span class="comment">#输入金额</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;输入取款金额&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__print_bill</span>(<span class="params">self</span>): <span class="comment">#打印小票</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;打印账单&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__take_money</span>(<span class="params">self</span>): <span class="comment">#取钱</span></span><br><span class="line"><span class="meta">... </span>        <span class="built_in">print</span>(<span class="string">&#x27;取款&#x27;</span>)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">withdraw</span>(<span class="params">self</span>): <span class="comment">#取款功能</span></span><br><span class="line"><span class="meta">... </span>        self.__card()</span><br><span class="line"><span class="meta">... </span>        self.__auth()</span><br><span class="line"><span class="meta">... </span>        self.__<span class="built_in">input</span>()</span><br><span class="line"><span class="meta">... </span>        self.__print_bill()</span><br><span class="line"><span class="meta">... </span>        self.__take_money()</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj=ATM()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.withdraw()</span><br></pre></td></tr></table></figure>
-
-<p>总结隐藏属性与开放接口，本质就是为了明确地区分内外，类内部可以修改封装内的东西而不影响外部调用者的代码；而类外部只需拿到一个接口，只要接口名、参数不变，则无论设计者如何改变内部实现代码，使用者均无需改变代码。这就提供一个良好的合作基础，只要接口这个基础约定不变，则代码的修改不足为虑。</p>
-<h1 id="四-property"><a href="#四-property" class="headerlink" title="四 property"></a>四 property</h1><p>BMI指数是用来衡量一个人的体重与身高对健康影响的一个指标，计算公式为</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">体质指数（BMI）=体重（kg）÷身高^<span class="number">2</span>（m）</span><br><span class="line">EX：70kg÷（<span class="number">1.75</span>×<span class="number">1.75</span>）=<span class="number">22.86</span></span><br></pre></td></tr></table></figure>
-
-<p>身高或体重是不断变化的，因而每次想查看BMI值都需要通过计算才能得到，但很明显BMI听起来更像是一个特征而非功能，为此Python专门提供了一个装饰器property，可以将类中的函数“伪装成”对象的数据属性，对象在访问该特殊属性时会触发功能的执行，然后将返回值作为本次访问的结果，例如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">People</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,weight,height</span>):</span><br><span class="line"><span class="meta">... </span>        self.name=name</span><br><span class="line"><span class="meta">... </span>        self.weight=weight</span><br><span class="line"><span class="meta">... </span>        self.height=height</span><br><span class="line"><span class="meta">... </span>    @<span class="built_in">property</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">bmi</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.weight / (self.height**<span class="number">2</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj=People(<span class="string">&#x27;lili&#x27;</span>,<span class="number">75</span>,<span class="number">1.85</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>obj.bmi <span class="comment">#触发方法bmi的执行，将obj自动传给self，执行后返回值作为本次引用的结果</span></span><br><span class="line"><span class="number">21.913805697589478</span></span><br></pre></td></tr></table></figure>
-
-<p>使用property有效地保证了属性访问的一致性。另外property还提供设置和删除属性的功能，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,val</span>):</span><br><span class="line"><span class="meta">... </span>        self.__NAME=val <span class="comment">#将属性隐藏起来</span></span><br><span class="line"><span class="meta">... </span>    @<span class="built_in">property</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">name</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.__NAME</span><br><span class="line"><span class="meta">... </span>    @name.setter</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">name</span>(<span class="params">self,value</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">isinstance</span>(value,<span class="built_in">str</span>):  <span class="comment">#在设定值之前进行类型检查</span></span><br><span class="line"><span class="meta">... </span>            <span class="keyword">raise</span> TypeError(<span class="string">&#x27;%s must be str&#x27;</span> %value)</span><br><span class="line"><span class="meta">... </span>        self.__NAME=value <span class="comment">#通过类型检查后,将值value存放到真实的位置self.__NAME</span></span><br><span class="line"><span class="meta">... </span>    @name.deleter</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">def</span> <span class="title function_">name</span>(<span class="params">self</span>):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">raise</span> PermissionError(<span class="string">&#x27;Can not delete&#x27;</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f=Foo(<span class="string">&#x27;lili&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.name</span><br><span class="line">lili</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.name=<span class="string">&#x27;LiLi&#x27;</span> <span class="comment">#触发name.setter装饰器对应的函数name(f,’Egon&#x27;)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.name=<span class="number">123</span> <span class="comment">#触发name.setter对应的的函数name(f,123),抛出异常TypeError</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> f.name <span class="comment">#触发name.deleter对应的函数name(f),抛出异常PermissionError</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/24%E3%80%81%E5%B0%81%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-23、面向对象编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1469,6 +1349,134 @@
 
 
   
+    <article id="post-14、函数对象和闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/">14、函数对象与闭包</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2018-05-13T06:04:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><ul>
+<li>一 函数对象</li>
+</ul>
+</li>
+<li><ul>
+<li>1.1 函数可以被引用</li>
+<li>1.2 函数可以作为容器类型的元素</li>
+<li>1.3 函数可以作为参数传入另外一个函数</li>
+<li>1.4 函数的返回值可以是一个函数</li>
+</ul>
+</li>
+<li><p>二 闭包函数</p>
+</li>
+<li><ul>
+<li>2.1 闭与包</li>
+<li>2.2 闭包的用途</li>
+</ul>
+</li>
+</ul>
+<h1 id="一-函数对象"><a href="#一-函数对象" class="headerlink" title="一 函数对象"></a>一 函数对象</h1><p>函数对象指的是函数可以被当做’数据’来处理，具体可以分为四个方面的使用，我们如下</p>
+<h2 id="1、函数可以被引用"><a href="#1、函数可以被引用" class="headerlink" title="1、函数可以被引用"></a>1、函数可以被引用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x,y</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> x+y</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func=add</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2、函数可以作为容器类型的元素"><a href="#2、函数可以作为容器类型的元素" class="headerlink" title="2、函数可以作为容器类型的元素"></a>2、函数可以作为容器类型的元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic=&#123;<span class="string">&#x27;add&#x27;</span>:add,<span class="string">&#x27;max&#x27;</span>:<span class="built_in">max</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic</span><br><span class="line">&#123;<span class="string">&#x27;add&#x27;</span>: &lt;function add at <span class="number">0x100661e18</span>&gt;, <span class="string">&#x27;max&#x27;</span>: &lt;built-<span class="keyword">in</span> function <span class="built_in">max</span>&gt;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dic[<span class="string">&#x27;add&#x27;</span>](<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3、函数可以作为参数传入另一个函数"><a href="#3、函数可以作为参数传入另一个函数" class="headerlink" title="3、函数可以作为参数传入另一个函数"></a>3、函数可以作为参数传入另一个函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x,y,func</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> func(x,y)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo(<span class="number">1</span>,<span class="number">2</span>,add)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4、函数的返回值可以是一个函数"><a href="#4、函数的返回值可以是一个函数" class="headerlink" title="4、函数的返回值可以是一个函数"></a>4、函数的返回值可以是一个函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bar</span>(): </span><br><span class="line">     <span class="keyword">return</span> add </span><br><span class="line">func=bar() </span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="二-闭包函数"><a href="#二-闭包函数" class="headerlink" title="二 闭包函数"></a>二 闭包函数</h1><h2 id="1、闭与包"><a href="#1、闭与包" class="headerlink" title="1、闭与包"></a>1、闭与包</h2><p>基于函数对象的概念，可以将函数返回到任意位置去调用，但作用域的关系是在定义完函数时就已经被确定了的，与函数的调用位置无关。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f1</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f2</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f3</span>():</span><br><span class="line">    x=<span class="number">3</span></span><br><span class="line">    f2=f1() <span class="comment">#调用f1()返回函数f2</span></span><br><span class="line">    f2() <span class="comment">#需要按照函数定义时的作用关系去执行，与调用位置无关</span></span><br><span class="line"></span><br><span class="line">f3() <span class="comment">#结果为1</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说函数被当做数据处理时，始终以自带的作用域为准。若内嵌函数包含对外部函数作用域（而非全局作用域）中变量的引用，那么该’内嵌函数’就是闭包函数，简称闭包(Closures)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>():</span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">func=outer()</span><br><span class="line">func() <span class="comment"># 结果为2</span></span><br></pre></td></tr></table></figure>
+
+<p>可以通过函数的<strong>closure</strong>属性，查看到闭包函数所包裹的外部变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>func.__closure__</span><br><span class="line">(&lt;cell at <span class="number">0x10212af78</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10028cca0</span>&gt;,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>func.__closure__[<span class="number">0</span>].cell_contents</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>“闭”代表函数是内部的，“包”代表函数外’包裹’着对外层作用域的引用。因而无论在何处调用闭包函数，使用的仍然是包裹在其外层的变量。</p>
+<h2 id="2、闭包的用途"><a href="#2、闭包的用途" class="headerlink" title="2、闭包的用途"></a>2、闭包的用途</h2><p>目前为止，我们得到了两种为函数体传值的方式，一种是直接将值以参数的形式传入，另外一种就是将值包给函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment">#方式一：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">return</span> requests.get(url).text</span><br><span class="line"></span><br><span class="line"><span class="comment">#方式二：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">page</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>():</span><br><span class="line">        <span class="keyword">return</span> requests.get(url).text</span><br><span class="line">    <span class="keyword">return</span> get</span><br></pre></td></tr></table></figure>
+
+<p>提示：requests模块是用来模拟浏览器向网站发送请求并将页面内容下载到本地，需要事先安装：pip3 install requests</p>
+<p>对比两种方式，方式一在下载同一页面时需要重复传入url，而方式二只需要传一次值，就会得到一个包含指定url的闭包函数，以后调用该闭包函数无需再传url</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一下载同一页面</span></span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二下载同一页面</span></span><br><span class="line">python=page(<span class="string">&#x27;https://www.python.org&#x27;</span>)</span><br><span class="line">python()</span><br><span class="line">python()</span><br><span class="line">python()</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>闭包函数的这种特性有时又称为惰性计算。使用将值包给函数的方式，在接下来的装饰器中也将大有用处</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/13/14%E3%80%81%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%97%AD%E5%8C%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1570,19 +1578,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">4、前端基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">2、Linux基础</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">4、前端基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">3、Linux架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
               </li>
             
             <div class="clearfix"></div>
