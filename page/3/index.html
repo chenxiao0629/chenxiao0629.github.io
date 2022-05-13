@@ -152,6 +152,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux基础--day08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/13/Linux%E5%9F%BA%E7%A1%80--day08/">08、Linux安装软件的三种方式、系统安全优化、防止系统乱码</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/13/Linux%E5%9F%BA%E7%A1%80--day08/" class="archive-article-date">
+  	<time datetime="2018-06-13T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><h3 id="1、晨考"><a href="#1、晨考" class="headerlink" title="1、晨考"></a>1、晨考</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">1、文件的三种时间属性，每一种时间属性在什么情况下改变</span><br><span class="line"></span><br><span class="line">	atime	: 访问时间</span><br><span class="line">	mtime	：修改时间</span><br><span class="line">	ctime	：修改属性时间</span><br><span class="line"></span><br><span class="line">2、权限的类型</span><br><span class="line"></span><br><span class="line">	可读（r, 4）</span><br><span class="line">	可写（w, 2）</span><br><span class="line">	可执行（x, 1）</span><br><span class="line"></span><br><span class="line">3、linux中的权限有三个权限位，分别对应谁的</span><br><span class="line"></span><br><span class="line">	属主</span><br><span class="line">	属组</span><br><span class="line">	其他人</span><br><span class="line"></span><br><span class="line">4、权限归属有几种，分别是什么？</span><br><span class="line"></span><br><span class="line">	属主（u）</span><br><span class="line">	属组（g）</span><br><span class="line">	其他人（o）</span><br><span class="line"></span><br><span class="line">5、查看系统名称，内核版本以及硬件位数</span><br><span class="line"></span><br><span class="line">	<span class="built_in">uname</span> -a</span><br><span class="line"></span><br><span class="line">6、设置用户密码的两种方式</span><br><span class="line"></span><br><span class="line">	passwd [用户名]</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&#x27;密码&#x27;</span> | passwd --stdin [用户名]</span><br><span class="line"></span><br><span class="line">7、查看当前登录系统的用户</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、昨日问题"><a href="#2、昨日问题" class="headerlink" title="2、昨日问题"></a>2、昨日问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum私有仓库</span><br><span class="line">nginx的问题</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、今日内容"><a href="#3、今日内容" class="headerlink" title="3、今日内容"></a>3、今日内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、linux中安装软件的三种方式</span><br><span class="line">2、yum私有仓库</span><br><span class="line">3、selinux和firewalld(iptables)</span><br><span class="line">4、怎么解决系统乱码</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、Linux中安装软件的三种方式"><a href="#4、Linux中安装软件的三种方式" class="headerlink" title="4、Linux中安装软件的三种方式"></a>4、Linux中安装软件的三种方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、哪三种方式？</span><br><span class="line">	rpm安装</span><br><span class="line">	yum安装</span><br><span class="line">	源代码编译安装</span><br><span class="line">	</span><br><span class="line">2、区别</span><br><span class="line">	rpm安装类似于windows中的安装包，下载下来之后直接安装。缺点是不能自己解决依赖。</span><br><span class="line">	yum安装基于rpm安装，也就是在rpm上增加了自动解决依赖的功能。</span><br><span class="line">	源代码安装：通过编译源代码，得到软件包。优点是可以自定制软件包，缺点是比较复杂。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-1、RPM安装"><a href="#4-1、RPM安装" class="headerlink" title="4.1、RPM安装"></a>4.1、RPM安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">安装：rpm -ivh [软件包名称]</span><br><span class="line">卸载：rpm -e [软件包名称]</span><br><span class="line">升级：rpm -Uvh [软件包名称]</span><br><span class="line"></span><br><span class="line">1、下载安装包</span><br><span class="line"></span><br><span class="line">2、安装</span><br><span class="line">       [root@localhost ~]<span class="comment"># rpm -ivh zsh-5.0.2-34.el7_8.2.x86_64.rpm </span></span><br><span class="line">       Preparing...                          <span class="comment">################################# [100%]</span></span><br><span class="line">       Updating / installing...</span><br><span class="line">       1:zsh-5.0.2-34.el7_8.2             <span class="comment">################################# [100%]</span></span><br><span class="line"></span><br><span class="line">3、卸载</span><br><span class="line">	[root@localhost ~]<span class="comment"># rpm -e zsh</span></span><br><span class="line"></span><br><span class="line">4、更新</span><br><span class="line">       [root@localhost ~]<span class="comment"># rpm -Uvh zsh-5.0.2-34.el7_8.2.x86_64.rpm </span></span><br><span class="line">       Preparing...                          <span class="comment">################################# [100%]</span></span><br><span class="line">       Updating / installing...</span><br><span class="line">       1:zsh-5.0.2-34.el7_8.2             <span class="comment">################################# [100%]</span></span><br><span class="line"></span><br><span class="line">5、软件包名称</span><br><span class="line">	zsh-5.0.2-34.el7_8.2.x86_64.rpm </span><br><span class="line">           软件包名称：zsh</span><br><span class="line">           版本号：5.0.2</span><br><span class="line">           第多少次编译：34</span><br><span class="line">           适用的平台：el7_8（CentOS 7）</span><br><span class="line">           适用的系统位数：x86_64</span><br><span class="line">           扩展名：rpm</span><br><span class="line"></span><br><span class="line">6、查看软件包的配置文件</span><br><span class="line">	[root@localhost ~]<span class="comment"># rpm -qc  zsh</span></span><br><span class="line"></span><br><span class="line">7、查看是否安装某软件</span><br><span class="line">	[root@localhost ~]<span class="comment"># rpm -q zsh</span></span><br><span class="line"></span><br><span class="line">8、查看当前系统安装了哪些软件</span><br><span class="line">	[root@localhost ~]<span class="comment"># rpm -qa</span></span><br><span class="line">	</span><br><span class="line">9、查看软件的安装路径，查看安装了哪些东西</span><br><span class="line">	[root@localhost ~]<span class="comment"># rpm -ql zsh</span></span><br><span class="line"></span><br><span class="line">上传与下载：yum install lrzsz -y </span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2、yum安装"><a href="#4-2、yum安装" class="headerlink" title="4.2、yum安装"></a>4.2、yum安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">基于rpm安装，自动解决依赖。</span><br><span class="line"></span><br><span class="line">1、安装</span><br><span class="line">	yum install [软件包的名称] </span><br><span class="line">	</span><br><span class="line">	参数：</span><br><span class="line">		-y : 免交互</span><br><span class="line">		--nogpgcheck : 忽略公钥认证</span><br><span class="line"></span><br><span class="line">2、卸载</span><br><span class="line">	yum remove [软件包名称] </span><br><span class="line">	</span><br><span class="line">	参数：</span><br><span class="line">		-y : 免交互</span><br><span class="line"></span><br><span class="line">3、更新</span><br><span class="line">	yum update [软件包名称]</span><br><span class="line">	参数：</span><br><span class="line">		-y : 免交互</span><br><span class="line">	</span><br><span class="line">	注意：如果跟具体的软件包名称，就会更新指定软件包；如果没有指定，则更新系统所有的需要更新的软件包。</span><br><span class="line">	</span><br><span class="line">4、yum安装的生命周期</span><br><span class="line">	</span><br><span class="line">	1、执行yum install zsh -y</span><br><span class="line">	2、去 /etc/yum.repos.d/ 找以 .repo 结尾的文件</span><br><span class="line">	3、通过 .repo 文件中的链接，找到对应的软件仓库</span><br><span class="line">	4、在对应的软件仓库中下载指定的软件包</span><br><span class="line">	5、缓存至 /var/cache/yum/</span><br><span class="line">	6、根据缓存，安装软件包</span><br><span class="line">	7、删除软件包（keepcache 是否保存缓存，0 代表不保存 ， 1 代表保存）</span><br><span class="line">	</span><br><span class="line">	注：/etc/yum.conf 是yum的配置文件。</span><br><span class="line"></span><br><span class="line">5、yum私有仓库</span><br><span class="line">	1、本地版</span><br><span class="line">	</span><br><span class="line">		1、下载必须的软件包</span><br><span class="line">			yum install yum-utils createrepo -y</span><br><span class="line">		</span><br><span class="line">		2、创建软件仓库</span><br><span class="line">			<span class="built_in">mkdir</span> -p /opt/repos</span><br><span class="line"></span><br><span class="line">		3、下载对应的软件</span><br><span class="line">			<span class="built_in">mkdir</span> -p /opt/repos/Packages</span><br><span class="line">			</span><br><span class="line">			把对应的软件包复制到 Packages 目录中</span><br><span class="line">			</span><br><span class="line">		4、初始化软件仓库</span><br><span class="line">			createrepo /opt/repos</span><br><span class="line">	</span><br><span class="line">		5、添加yum源</span><br><span class="line">			<span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line">			<span class="built_in">mkdir</span> backup</span><br><span class="line">			<span class="built_in">mv</span> *.repo backup/</span><br><span class="line">		[root@localhost ~]<span class="comment"># yum-config-manager --add-repo=file:///opt/repos</span></span><br><span class="line"></span><br><span class="line">         [root@localhost /etc/yum.repos.d]<span class="comment"># cat opt_repos.repo </span></span><br><span class="line"></span><br><span class="line">            [opt_repos]		<span class="comment"># 源的名称</span></span><br><span class="line">            name=added from: file:///opt/repos	<span class="comment"># 源的简介</span></span><br><span class="line">            baseurl=file:///opt/repos			<span class="comment"># 源的下载地址</span></span><br><span class="line">            enabled=1						<span class="comment"># 是否启用：1启用 ，  0不启用</span></span><br><span class="line"></span><br><span class="line">		6、生成缓存</span><br><span class="line">			yum clean all</span><br><span class="line">			yum makecache</span><br><span class="line">		</span><br><span class="line">		7、测试</span><br><span class="line">			 yum install zsh</span><br><span class="line">	</span><br><span class="line">	2、远程版</span><br><span class="line">	</span><br><span class="line">		参考本地版前6步</span><br><span class="line">		</span><br><span class="line">		7、安装远程访问软件（Nginx）</span><br><span class="line">			[root@localhost ~]<span class="comment"># curl -o /etc/yum.repos.d/CentOS-Base.repo https://repo.huaweicloud.com/repository/conf/CentOS-7-reg.repo</span></span><br><span class="line">			[root@localhost ~]<span class="comment"># yum-config-manager --add-repo=https://repo.huaweicloud.com/epel/7/x86_64/</span></span><br><span class="line">			[root@localhost ~]<span class="comment"># yum install nginx --nogpgcheck</span></span><br><span class="line"></span><br><span class="line">		8、修改nginx的配置文件</span><br><span class="line">			https://nginx.org/en/docs/http/ngx_http_autoindex_module.html</span><br><span class="line">			</span><br><span class="line">			[root@localhost ~]<span class="comment"># vim /etc/nginx/nginx.conf</span></span><br><span class="line">			<span class="comment"># include /etc/nginx/conf.d/*.conf;</span></span><br><span class="line">			root         /opt/repos;</span><br><span class="line">			autoindex on;</span><br><span class="line">			</span><br><span class="line">			<span class="comment"># 测试更改是否成功</span></span><br><span class="line">			[root@localhost ~]<span class="comment"># nginx -t</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment"># 启动nginx</span></span><br><span class="line">			[root@localhost ~]<span class="comment"># systemctl start nginx</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment"># 关闭selinux和firewalld</span></span><br><span class="line">			[root@localhost ~]<span class="comment"># systemctl disable --now firewalld</span></span><br><span class="line">			[root@localhost ~]<span class="comment"># setenforce 0</span></span><br><span class="line">		</span><br><span class="line">		9、在测试机</span><br><span class="line">			[root@localhost yum.repos.d]<span class="comment"># yum install yum-utils -y</span></span><br><span class="line"></span><br><span class="line">			<span class="comment"># 备份源</span></span><br><span class="line">			[root@localhost yum.repos.d]<span class="comment"># mkdir backup</span></span><br><span class="line">			[root@localhost yum.repos.d]<span class="comment"># mv *.repo backup/</span></span><br><span class="line"></span><br><span class="line">			<span class="comment"># 添加源</span></span><br><span class="line">			[root@localhost yum.repos.d]<span class="comment"># yum-config-manager --add-repo=http://192.168.15.101/</span></span><br><span class="line"></span><br><span class="line">			<span class="comment"># 刷新缓存</span></span><br><span class="line">             [root@localhost yum.repos.d]<span class="comment"># yum clean all </span></span><br><span class="line">             [root@localhost yum.repos.d]<span class="comment"># yum makecache</span></span><br><span class="line"></span><br><span class="line">		10、测试</span><br><span class="line">			[root@localhost ~]<span class="comment"># yum install zsh -y</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、系统安全优化"><a href="#5、系统安全优化" class="headerlink" title="5、系统安全优化"></a>5、系统安全优化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、selinux</span><br><span class="line"></span><br><span class="line">2、firewalld</span><br><span class="line">	systemctl <span class="built_in">disable</span> --now firewalld</span><br><span class="line">	--now : 立即执行</span><br><span class="line">firewalld   ---&gt;  iptables  ---&gt; 系统安全框架</span><br><span class="line">安全组</span><br><span class="line">vpn iptables</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、防止系统乱码优化"><a href="#6、防止系统乱码优化" class="headerlink" title="6、防止系统乱码优化"></a>6、防止系统乱码优化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">en_US.UTF-8		: 美式英文，utf-8</span><br><span class="line">zh_CN.UTF-8</span><br><span class="line">zh_HK.UTF-8</span><br><span class="line"></span><br><span class="line">临时优化</span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN.UTF-8  : 设置编码</span><br><span class="line"></span><br><span class="line">永久优化</span><br><span class="line">vim /etc/locale.conf</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2、Linux基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/13/Linux%E5%9F%BA%E7%A1%80--day08/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux基础--day07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1032,97 +1123,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/06/02/day07/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-day06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/02/day06/">06、JavaScript之DOM操作（查找标签、节点操作、获取值操作、class操作、样式操作、事件、内置参数this、事件练习）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/02/day06/" class="archive-article-date">
-  	<time datetime="2018-06-02T06:04:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="DOM操作之查找标签"><a href="#DOM操作之查找标签" class="headerlink" title="DOM操作之查找标签"></a>DOM操作之查找标签</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">前缀关键字&gt;&gt;&gt;:document</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 基本查找(核心)</span></span><br><span class="line">document.getElementById           根据ID获取一个标签</span><br><span class="line">document.getElementsByClassName   根据<span class="keyword">class</span>属性获取</span><br><span class="line">document.getElementsByTagName     根据标签名获取标签合集</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">如果我们的js代码需要页面上某个标签加载完毕</span></span><br><span class="line"><span class="string">那么该js代码应该写在body内部最下方或者引入外部js文件</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 间接查找(重要)</span></span><br><span class="line">parentElement            父节点标签元素</span><br><span class="line">children                 所有子标签</span><br><span class="line">firstElementChild        第一个子标签元素</span><br><span class="line">lastElementChild         最后一个子标签元素</span><br><span class="line">nextElementSibling       下一个兄弟标签元素</span><br><span class="line">previousElementSibling   上一个兄弟标签元素</span><br></pre></td></tr></table></figure>
-
-<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var aEle = document.createElement(<span class="string">&#x27;a&#x27;</span>);  <span class="comment"># 创建标签</span></span><br><span class="line">aEle.setAttribute(<span class="string">&#x27;href&#x27;</span>,<span class="string">&#x27;https://www.mmzztt.com/&#x27;</span>)  <span class="comment"># 设置属性</span></span><br><span class="line">aEle.innerText = <span class="string">&#x27;好不好看?&#x27;</span>  <span class="comment"># 设置内容文本</span></span><br><span class="line">document.getElementsByTagName(<span class="string">&#x27;p&#x27;</span>)[<span class="number">0</span>].appendChild(aEle)  <span class="comment"># 动态添加</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;一定要明确当前手上是什么对象&quot;&quot;&quot;</span></span><br><span class="line">imgEle.getAttribute(<span class="string">&#x27;title&#x27;</span>)  <span class="comment"># 获取标签属性</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">innerText</span><br><span class="line">	不加赋值符号是获取内部文本</span><br><span class="line">	加了赋值符号是设置内置文本</span><br><span class="line">	<span class="comment"># 不可以识别HTML标签</span></span><br><span class="line">innerHTML</span><br><span class="line">	不加赋值符号是获取内部标签+文本</span><br><span class="line">	加了赋值符号是设置内置标签+文本</span><br><span class="line">	<span class="comment"># 可以识别HTML标签</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="获取值操作"><a href="#获取值操作" class="headerlink" title="获取值操作"></a>获取值操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 普通的文本数据获取</span></span><br><span class="line">	标签对象.value</span><br><span class="line"><span class="comment"># 特殊的文件数据获取</span></span><br><span class="line">	标签对象.value  <span class="string">&#x27;&#x27;&#x27;仅仅获取一个文件地址而已&#x27;&#x27;&#x27;</span></span><br><span class="line">	标签对象.files[<span class="number">0</span>]  <span class="string">&#x27;&#x27;&#x27;获取单个文件数据&#x27;&#x27;&#x27;</span></span><br><span class="line">	标签对象.files  <span class="string">&#x27;&#x27;&#x27;获取所有文件数据&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="class操作"><a href="#class操作" class="headerlink" title="class操作"></a>class操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classList  查看所有的类</span><br><span class="line">classList.remove(cls)  删除指定类</span><br><span class="line">classList.add(cls)  添加类</span><br><span class="line">classList.contains(cls)  存在返回true，否则返回false</span><br><span class="line">classList.toggle(cls)  存在就删除，否则添加</span><br></pre></td></tr></table></figure>
-
-<h3 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标签对象.style.属性名 = 属性值</span><br></pre></td></tr></table></figure>
-
-<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 就是给HTML元素添加自定义的功能</span></span><br><span class="line">绑定事件的方式<span class="number">1</span></span><br><span class="line">	&lt;button onclick=<span class="string">&quot;func()&quot;</span>&gt;点我&lt;/button&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		function func() &#123;</span><br><span class="line">			alert(<span class="number">123</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">绑定事件的方式<span class="number">2</span></span><br><span class="line">	&lt;button <span class="built_in">id</span>=<span class="string">&quot;d1&quot;</span>&gt;选我&lt;/button&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		// <span class="number">1.</span>先查找标签</span><br><span class="line">		var btnEle = document.getElementById(<span class="string">&#x27;d1&#x27;</span>)</span><br><span class="line">		// <span class="number">2.</span>绑定事件</span><br><span class="line">		btnEle.onclick = function () &#123;</span><br><span class="line">			alert(<span class="number">456</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="内置参数this"><a href="#内置参数this" class="headerlink" title="内置参数this"></a>内置参数this</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this指代的就是当前被操作对象本身</span></span><br><span class="line">在事件的函数体代码内部使用</span><br><span class="line">	btnEle.onclick = function () &#123;</span><br><span class="line">		alert(<span class="number">456</span>)</span><br><span class="line">		console.log(this)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="事件练习"><a href="#事件练习" class="headerlink" title="事件练习"></a>事件练习</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onclick单击事件</span><br><span class="line">onfocus聚焦事件</span><br><span class="line">onblur失去焦点事件</span><br><span class="line">onchange文本域变化事件</span><br><span class="line">onload等待...加载完毕后执行的事件</span><br><span class="line"><span class="comment"># 定时器</span></span><br><span class="line"><span class="comment"># 数据校验</span></span><br><span class="line"><span class="comment"># 省市联动</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果某个标签已经有事件了 那么绑定会冲突</span></span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">4、前端基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/02/day06/">展开全文 >></a>
         </p>
       
 

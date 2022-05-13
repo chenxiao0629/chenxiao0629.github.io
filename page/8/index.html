@@ -152,6 +152,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-04、python语法入门--基本数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/13/04%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">4、基本数据类型</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/13/04%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2018-05-13T06:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python是一门解释型的、强类型的、动态语言</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一：数字类型</span></span><br><span class="line"><span class="comment"># 1.1 整型int：记录人的年龄、等级、号码、个数</span></span><br><span class="line"><span class="comment"># age = 18</span></span><br><span class="line"><span class="comment"># print(type(age))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.2 浮点数float：记录人的薪资、身高、体重</span></span><br><span class="line"><span class="comment"># salary = 3.7</span></span><br><span class="line"><span class="comment"># print(type(salary))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># x = 18</span></span><br><span class="line"><span class="comment"># y = 3.7</span></span><br><span class="line"><span class="comment"># print(x + y)</span></span><br><span class="line"><span class="comment"># print(x &gt; y)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二：字符串:记录描述性质的状态，比如名字、一段话、性别</span></span><br><span class="line"><span class="comment"># x = &quot;两个黄鹂鸣翠柳&quot;</span></span><br><span class="line"><span class="comment"># y = &#x27;两个黄鹂鸣翠柳&#x27;</span></span><br><span class="line"><span class="comment"># m = &quot;&quot;&quot;两个黄鹂鸣翠柳&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># n = &#x27;&#x27;&#x27;两个黄鹂鸣翠柳&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(x)</span></span><br><span class="line"><span class="comment"># print(y)</span></span><br><span class="line"><span class="comment"># print(m)</span></span><br><span class="line"><span class="comment"># print(n)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># msg = &quot;my name is &#x27;egon&#x27;&quot;</span></span><br><span class="line"><span class="comment"># print(msg,type(msg))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># gender = 1</span></span><br><span class="line"><span class="comment"># gender = 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># age  # 变量名</span></span><br><span class="line"><span class="comment"># &quot;age&quot;  # 变量值的一种，str</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 了解：</span></span><br><span class="line"><span class="comment"># print(&quot;abc&quot;+&quot;xxx&quot;)</span></span><br><span class="line"><span class="comment"># print(&quot;abc&quot;*3)</span></span><br><span class="line"><span class="comment"># print(&quot;*&quot;*50)</span></span><br><span class="line"><span class="comment"># print(&#x27;hello&#x27;)</span></span><br><span class="line"><span class="comment"># print(&quot;*&quot;*50)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三 列表：按照位置存放多个值，比如记录一个人的爱好</span></span><br><span class="line"><span class="comment"># hobbies = &quot;打篮球 阅读 看电影&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#            0        1        2</span></span><br><span class="line"><span class="comment"># hobbies = [&quot;打篮球&quot;, &quot;阅读&quot;, &quot;看电影&quot;]</span></span><br><span class="line"><span class="comment"># print(hobbies[0])</span></span><br><span class="line"><span class="comment"># print(hobbies[1])</span></span><br><span class="line"><span class="comment"># print(hobbies[2])</span></span><br><span class="line"><span class="comment"># print(hobbies[3])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(hobbies[-1])</span></span><br><span class="line"><span class="comment"># print(hobbies[-2])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># #      0      1     2         3</span></span><br><span class="line"><span class="comment"># l1 = [1111,1.3333,&quot;aaa&quot;,[&#x27;bbb&#x27;,&#x27;ccc&#x27;]]</span></span><br><span class="line"><span class="comment"># # print(type(l1))</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># print(l1[3][0])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 四：字典类型：在&#123;&#125;内，按照key:value的格式存放多个元素，其中value可以是任意类型，而key通常是str类型</span></span><br><span class="line"><span class="comment"># info = [&quot;egon&quot;, 18, 1.8, 80, &quot;male&quot;]</span></span><br><span class="line"><span class="comment"># info = &#123;</span></span><br><span class="line"><span class="comment">#     &quot;name&quot;: &quot;egon&quot;,</span></span><br><span class="line"><span class="comment">#     &quot;age&quot;: 18,</span></span><br><span class="line"><span class="comment">#     &quot;height&quot;: 1.8,</span></span><br><span class="line"><span class="comment">#     &quot;weight&quot;: 80,</span></span><br><span class="line"><span class="comment">#     &quot;gender&quot;: &quot;male&quot;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"><span class="comment"># print(info[&quot;name&quot;])</span></span><br><span class="line"><span class="comment"># print(info[&quot;xxxx&quot;])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># info = [&quot;egon&quot;,18,&quot;male&quot;]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># dic = &#123;&quot;k1&quot;:11111,&quot;k2&quot;:1.3,&quot;k3&quot;:&quot;xxx&quot;,&#x27;k4&#x27;:[111,222,333],&quot;k5&quot;:&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(dic[&#x27;k4&#x27;][1])</span></span><br><span class="line"><span class="comment"># print(dic[&#x27;k5&#x27;][&quot;a&quot;])</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 五 布尔：记录真假</span></span><br><span class="line"><span class="comment"># print(type(True))</span></span><br><span class="line"><span class="comment"># print(type(False))</span></span><br><span class="line"><span class="comment"># x = True</span></span><br><span class="line"><span class="comment"># y = True</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="number">10</span> &gt; <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/13/04%E3%80%81python%E8%AF%AD%E6%B3%95%E5%85%A5%E9%97%A8--%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-03、python语法入门--注释、变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
