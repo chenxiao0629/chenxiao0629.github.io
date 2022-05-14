@@ -152,83 +152,41 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-01、计算机核心基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/01%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">1、计算机核心基础</a>
+      <a class="article-title" href="/2018/06/02/day07/">07、jQuery（简介、基本选择器、基本筛选器、属性选择器、表单选择器、筛选器方法、节点操作、事件）</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/01%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/06/02/day07/" class="archive-article-date">
+  	<time datetime="2018-06-02T06:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="编程语言介绍"><a href="#编程语言介绍" class="headerlink" title="编程语言介绍"></a>编程语言介绍</h1><h2 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h2><p>python是一门编程语言</p>
-<p>编程语言的本质就是一门语言</p>
-<p>语言是一种事物与另外一种事物沟通的工具</p>
-<p>所以说编程语言也是一种事物与另一种事物沟通的工具</p>
-<p>人———–编程语言—————计算机</p>
-<h3 id="人为何要与计算机沟通？"><a href="#人为何要与计算机沟通？" class="headerlink" title="人为何要与计算机沟通？"></a>人为何要与计算机沟通？</h3><p>在IT领域计算机是人类的奴隶</p>
-<p>人与计算机沟通的目的就是为了奴役计算机</p>
-<h2 id="什么是编程？（翻译官）"><a href="#什么是编程？（翻译官）" class="headerlink" title="什么是编程？（翻译官）"></a>什么是编程？（翻译官）</h2><h3 id="两个环节"><a href="#两个环节" class="headerlink" title="两个环节"></a>两个环节</h3><p>1.把做事的步骤给想清楚了（2&#x2F;3时间）</p>
-<p>2.用计算机能听懂的语言也就是编程语言把做事的步骤给翻译下来（1&#x2F;3时间）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line">银行行长------------------------业务员</span><br><span class="line">		接收用户输入的用户名</span><br><span class="line">		接收用户输入的密码</span><br><span class="line">		判断 输入的用户名 等于 正确的用户名 并且 输入的密码 等于 正确的密码</span><br><span class="line">			告诉用户登录成功</span><br><span class="line">		否则</span><br><span class="line">			告诉用户登录失败</span><br><span class="line"></span><br><span class="line">银行行长------------------------计算机</span><br></pre></td></tr></table></figure>
+        <h3 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">宗旨:Write less, do more.</span><br><span class="line">内部封装了js代码 是编程更加简单并且兼容所有的主流浏览器</span><br><span class="line">版本:<span class="number">1.</span>x <span class="number">2.</span>x <span class="number">3.</span>x  <span class="comment"># 可以使用3.x最新版</span></span><br><span class="line">是第三方的类库:使用jQuery需要提前导入  <span class="comment"># 实际中很容易遗忘了导入</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">jQuery下载</span><br><span class="line">	压缩之后的版本将很多变量名全部使用英文字母代替了</span><br><span class="line">导入方式</span><br><span class="line">	本地导入</span><br><span class="line">		缺点在于需要提前下载文件</span><br><span class="line">		优点在于不会受到网络的影响</span><br><span class="line">	CDN导入</span><br><span class="line">		<span class="comment"># CDN:内容分发网络</span></span><br><span class="line">		网站:bootcdn  jquery最好使用<span class="number">3.4</span><span class="number">.1</span>版本</span><br><span class="line">        </span><br><span class="line"> </span><br><span class="line">基本使用</span><br><span class="line">	很多时候jQuery都是一行代码搞定所有</span><br><span class="line">	<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">	使用jQuery需要有关键字声明</span></span><br><span class="line"><span class="string">		jQuery 或者 $ (推荐)  </span></span><br><span class="line"><span class="string">	&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="为何要编程"><a href="#为何要编程" class="headerlink" title="为何要编程"></a>为何要编程</h2><p>为了让计算机帮我们做事</p>
-<h2 id="什么是程序-x2F-软件"><a href="#什么是程序-x2F-软件" class="headerlink" title="什么是程序&#x2F;软件"></a>什么是程序&#x2F;软件</h2><p>程序就是一序列代码文件</p>
-<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><h2 id="计算机的硬件组成与运行原理"><a href="#计算机的硬件组成与运行原理" class="headerlink" title="计算机的硬件组成与运行原理"></a>计算机的硬件组成与运行原理</h2><p>大前提：计算机的核心硬件组成是为了模仿人的某一器官或功能</p>
-<p>1.控制器：是计算机的指挥系统，负责控制所有其他硬件的运行      人脑</p>
-<p>2.运算器：负责数学运算和逻辑运算													人脑</p>
-<p>​	控制器+运算器-》cpu（4核&lt;4核8线程&lt;8核）							人脑</p>
-<p>3.存储器：</p>
-<p>​	内存：存的是电信号，断电数据丢失											人的记忆功能</p>
-<p>​		特点：存取速度都快，但是只能临时存放数据</p>
-<p>​	外存（磁盘）存的是磁信号，断电数据依然存在							笔记</p>
-<p>​		特点：存放数据都慢，但是可以永久保存数据</p>
-<p>4.输入设备</p>
-<p>​	键盘、鼠标</p>
-<p>5.输出设备</p>
-<p>​	显示器、音响、打印机</p>
-<h2 id="三大核心硬件"><a href="#三大核心硬件" class="headerlink" title="三大核心硬件"></a>三大核心硬件</h2><p>cpu： X86 X32 ARM  </p>
-<p>内存  -》主存（RAM） ROM:非易失   CMOS：易失，存时间日期等</p>
-<p>硬盘：机械磁盘（平均延迟时间为转半圈时间、平均寻道时间一般5ms（工艺水平决定））、固态硬盘</p>
-<h2 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h2><p>安装的程序是存放在硬盘中的</p>
-<h3 id="程序的运行要经历的步骤（2个）"><a href="#程序的运行要经历的步骤（2个）" class="headerlink" title="程序的运行要经历的步骤（2个）"></a>程序的运行要经历的步骤（2个）</h3><p>1.加载&#x2F;启动：需要将程序的代码从硬盘读入内存中  （固态硬盘提速）</p>
-<p>2.运行：cpu从内存中读取指令运行								（加内存条提速）</p>
-<h2 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h2><p>操作系统</p>
-<p>计算机网络</p>
-<p>数据结构</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7200</span>转/60s</span><br><span class="line"></span><br><span class="line"><span class="number">120</span>转/s</span><br><span class="line">   转一圈：<span class="number">0.008</span>s-》8ms</span><br><span class="line">   平均延迟时间：转半圈-》4ms</span><br><span class="line">   平均寻道时间：5ms</span><br><span class="line">机械磁盘找到数据需要经历的时间=平均延迟时间+平均寻道时间</span><br><span class="line">所以机械磁盘慢是慢在找数据上，至于找到数据之后往内存读，这个速度是很快的</span><br></pre></td></tr></table></figure>
+<h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">如何通过变量名来区分指代的是js对象还是jQuery对象</span></span><br><span class="line"><span class="comment">	eg:</span></span><br><span class="line"><span class="comment">		原生的js对象</span></span><br><span class="line"><span class="comment">			var pEle = ...</span></span><br><span class="line"><span class="comment">		jQuery的对象</span></span><br><span class="line"><span class="comment">			var $pEle = ...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">$(<span class="string">&#x27;#d1&#x27;</span>)  <span class="comment">// js：document.getElementById(&#x27;d1&#x27;)</span></span><br><span class="line">$(<span class="string">&#x27;.c1&#x27;</span>)  <span class="comment">// js：document.getElementsByClassName(&#x27;d1&#x27;)</span></span><br><span class="line">$(<span class="string">&#x27;p&#x27;</span>)  <span class="comment">// js：document.getElementsByTagName(&#x27;p&#x27;)</span></span><br><span class="line">$(<span class="string">&#x27;div.c1&#x27;</span>)  <span class="comment">// 查找class含有c1的div标签</span></span><br><span class="line">$(<span class="string">&quot;#d1, .c1, p&quot;</span>)  <span class="comment">// 并列查找</span></span><br><span class="line">$(<span class="string">&quot;x y&quot;</span>)	<span class="comment">// x的所有后代y（子子孙孙）</span></span><br><span class="line">$(<span class="string">&quot;x &gt; y&quot;</span>)	<span class="comment">// x的所有儿子y（儿子）</span></span><br><span class="line">$(<span class="string">&quot;x + y&quot;</span>)	<span class="comment">// 找到所有紧挨在x后面的y</span></span><br><span class="line">$(<span class="string">&quot;x ~ y&quot;</span>)	<span class="comment">// x之后所有的兄弟y</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="基本筛选器"><a href="#基本筛选器" class="headerlink" title="基本筛选器"></a>基本筛选器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:first <span class="comment">// 第一个</span></span><br><span class="line">:last <span class="comment">// 最后一个</span></span><br><span class="line">:<span class="title function_">eq</span>(index)<span class="comment">// 索引等于index的那个元素</span></span><br><span class="line">:even <span class="comment">// 匹配所有索引值为偶数的元素，从 0 开始计数</span></span><br><span class="line">:odd <span class="comment">// 匹配所有索引值为奇数的元素，从 0 开始计数</span></span><br><span class="line">:<span class="title function_">gt</span>(index)<span class="comment">// 匹配所有大于给定索引值的元素</span></span><br><span class="line">:<span class="title function_">lt</span>(index)<span class="comment">// 匹配所有小于给定索引值的元素</span></span><br><span class="line">:<span class="title function_">not</span>(元素选择器)<span class="comment">// 移除所有满足not条件的标签</span></span><br><span class="line">:<span class="title function_">has</span>(元素选择器)<span class="comment">// 选取所有包含一个或多个标签在其内的标签(指的是从后代元素找)</span></span><br></pre></td></tr></table></figure>
 
-<p>​		</p>
-<p>​		</p>
-<p>有些商家的500GB&#x3D;500 *1000 * 1000 * 1000B</p>
-<p>虚拟内存：内存的1.5-2倍，一般不超过8GB</p>
-<h2 id="计算机三层体系结构"><a href="#计算机三层体系结构" class="headerlink" title="计算机三层体系结构"></a>计算机三层体系结构</h2><p>应用程序			—-》图形界面（桌面、python.exe)</p>
-<p>操作系统			—-》文件</p>
-<p>计算机硬件		—-》硬盘</p>
-<p>桌面程序是一种图形化界面管理其他应用程序的软件</p>
-<h2 id="商用计算机"><a href="#商用计算机" class="headerlink" title="商用计算机"></a>商用计算机</h2><p>服务器</p>
-<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="操作系统的安装于启动"><a href="#操作系统的安装于启动" class="headerlink" title="操作系统的安装于启动"></a>操作系统的安装于启动</h3><p>刚启动：BIOS找真正的操作系统，找到后慢慢退出</p>
-<p>​		cpu</p>
-<p>​		ROM（BIOS: basic input output system）—–电路刻死的</p>
-<p>​		CMOS</p>
-<p>启动完成：</p>
-<p>​		cpu</p>
-<p>​		RAM: Windows系统</p>
-<p>​		本地硬盘</p>
-<h2 id="平台"><a href="#平台" class="headerlink" title="平台"></a>平台</h2><p>平台 &#x3D; 计算机硬件 + 操作系统</p>
-<p>跨平台性：开发的软件可以在任何平台正常运行</p>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;[name]&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;[name=&quot;jason&quot;]&#x27;</span>)</span><br><span class="line">$(<span class="string">&#x27;input[name=&quot;jason&quot;]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单筛选器"><a href="#表单筛选器" class="headerlink" title="表单筛选器"></a>表单筛选器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;:text&#x27;</span>) <span class="comment">// 查找属性值是text的form表单内的标签</span></span><br><span class="line">$(<span class="string">&#x27;:checked&#x27;</span>)  <span class="comment">// 会连同option默认的selected一起找到</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="筛选器方法"><a href="#筛选器方法" class="headerlink" title="筛选器方法"></a>筛选器方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">使用原生js代码批量查找到标签之后  结果是一个数组</span></span><br><span class="line"><span class="comment">需要索引取值之后才可以调用标签的一些方法</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">使用jQuery代码批量查找到标签之后 结果是一个jQuery对象(像数组)</span></span><br><span class="line"><span class="comment">不需要索引取值 就可以直接调用封装的方法</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">两者对象的转换</span></span><br><span class="line"><span class="comment">	js对象转jQuery对象</span></span><br><span class="line"><span class="comment">		$(js对象)</span></span><br><span class="line"><span class="comment">	jQuery对象转jd对象</span></span><br><span class="line"><span class="comment">		jQuery对象索引取值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">.<span class="title function_">next</span>()</span><br><span class="line">.<span class="title function_">nextAll</span>()</span><br><span class="line">.<span class="title function_">nextUntil</span>()</span><br><span class="line">.<span class="title function_">prev</span>()</span><br><span class="line">.<span class="title function_">prevAll</span>()</span><br><span class="line">.<span class="title function_">prevUntil</span>()</span><br><span class="line">.<span class="title function_">parent</span>()</span><br><span class="line">.<span class="title function_">parents</span>()</span><br><span class="line">.<span class="title function_">parentsUntil</span>()</span><br><span class="line">.<span class="title function_">children</span>()</span><br><span class="line">.<span class="title function_">siblings</span>()</span><br><span class="line">.<span class="title function_">find</span>()</span><br></pre></td></tr></table></figure>
+
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样式类操作</span></span><br><span class="line">	addClass()  <span class="comment"># classList.add()</span></span><br><span class="line">	removeClass()  <span class="comment"># classList.remove()</span></span><br><span class="line">	hasClass()  <span class="comment"># classList.contains()</span></span><br><span class="line">	toggleClass()  <span class="comment"># classList.toggle()</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># 样式操作</span></span><br><span class="line">	css(<span class="string">&#x27;属性名&#x27;</span>,<span class="string">&#x27;属性值&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">$(window).scroll(function () &#123;</span><br><span class="line">    <span class="keyword">if</span> ($(window).scrollTop() &gt; <span class="number">100</span>) &#123;</span><br><span class="line">      $(<span class="string">&quot;#b2&quot;</span>).removeClass(<span class="string">&quot;hide&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      $(<span class="string">&quot;#b2&quot;</span>).addClass(<span class="string">&quot;hide&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文本操作</span></span><br><span class="line">	text()  <span class="comment"># innerText</span></span><br><span class="line">	html()  <span class="comment"># innerHTML</span></span><br><span class="line">	val()  <span class="comment"># value</span></span><br><span class="line">	jQuery对象先转js对象之后.files</span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">	括号内</span></span><br><span class="line"><span class="string">		不写参数：获取值 </span></span><br><span class="line"><span class="string">		写参数：  设置值</span></span><br><span class="line"><span class="string">	&#x27;&#x27;&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 属性操作</span></span><br><span class="line">	attr()  <span class="comment"># setAttribute()</span></span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;适用于属性为静态的情况(不经常修改动态变化的)&#x27;&#x27;&#x27;</span></span><br><span class="line">	prop()</span><br><span class="line">		$($(<span class="string">&#x27;:checkbox&#x27;</span>)[<span class="number">1</span>]).prop(<span class="string">&#x27;checked&#x27;</span>,true)</span><br><span class="line">	<span class="string">&quot;&quot;&quot;适用于动态变化的情况 尤其是选择类标签&quot;&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line"><span class="comment"># 文档处理</span></span><br><span class="line">	append()  <span class="comment"># 内部的尾部追加元素</span></span><br><span class="line">	prepend()  <span class="comment"># 内部的头部追加元素</span></span><br><span class="line">	after()  <span class="comment"># 同级别下面添加元素</span></span><br><span class="line">	before()  <span class="comment"># 同级别上面添加元素</span></span><br><span class="line">	remove()  <span class="comment"># 移除当前元素</span></span><br><span class="line">	empty()  <span class="comment"># 清空当前元素内部所有的数据</span></span><br><span class="line">	clone()  <span class="comment"># 克隆标签 括号内可以加true来克隆事件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">绑定事件的两种方式</span><br><span class="line">	方式<span class="number">1</span></span><br><span class="line">    	jQuery对象.事件名(function()&#123;&#125;)</span><br><span class="line">        	$(<span class="string">&#x27;#d1&#x27;</span>).click(function()&#123;alert(<span class="number">123</span>)&#125;)</span><br><span class="line">    方式<span class="number">2</span></span><br><span class="line">    	jQuery对象.on(<span class="string">&#x27;事件名&#x27;</span>,function()&#123;&#125;)</span><br><span class="line">        	$(<span class="string">&#x27;#d1&#x27;</span>).on(<span class="string">&#x27;click&#x27;</span>,function()&#123;alert(<span class="number">123</span>)&#125;)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">有时候绑定事件可能没有效果 这个时候可以考虑切换绑定方式</span></span><br><span class="line"><span class="string">	方式1不行就方式2</span></span><br><span class="line"><span class="string">	方式2不行就方式1</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">click(function()&#123;...&#125;)  <span class="comment"># 点击</span></span><br><span class="line">hover(function()&#123;...&#125;)  <span class="comment"># 悬浮</span></span><br><span class="line">blur(function()&#123;...&#125;)  <span class="comment"># 失去焦点</span></span><br><span class="line">focus(function()&#123;...&#125;)  <span class="comment"># 焦点</span></span><br><span class="line">change(function()&#123;...&#125;)  <span class="comment"># 文本域变化</span></span><br><span class="line">keyup(function()&#123;...&#125;)  <span class="comment"># 按钮被松开触发</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -242,7 +200,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">4、前端基础</a>
         		</li>
       		
 		</ul>
@@ -252,7 +210,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/01%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/02/day07/">展开全文 >></a>
         </p>
       
 
@@ -284,7 +242,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/73/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="page-number" href="/page/73/">73</a><span class="page-number current">74</span>
+      <a class="extend prev" rel="prev" href="/page/73/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/72/">72</a><a class="page-number" href="/page/73/">73</a><span class="page-number current">74</span><a class="page-number" href="/page/75/">75</a><a class="page-number" href="/page/76/">76</a><span class="space">&hellip;</span><a class="page-number" href="/page/118/">118</a><a class="extend next" rel="next" href="/page/75/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -383,7 +341,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">6、Django笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">2、Linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">10、爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -395,7 +361,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">7、drf笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">9、django-vue-admin项目</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">8、vue笔记</a>
               </li>
             
             <div class="clearfix"></div>

@@ -152,52 +152,45 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-02、编程语言与pyhon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">2、编程语言与Python</a>
+      <a class="article-title" href="/2018/06/02/day08/">08、jQuery（阻止后续事件执行、事件冒泡、文档加载、事件委托、动画效果）、基于jQuery的前端框架bootstrap（布局容器、栅格系统、图标）</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/06/02/day08/" class="archive-article-date">
+  	<time datetime="2018-06-02T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="编程语言分类"><a href="#编程语言分类" class="headerlink" title="编程语言分类"></a>编程语言分类</h1><p>机器语言：直接用计算机能理解的二进制指令去编写程序，是直接在控制计算机硬件</p>
-<p>​		优点：运行效率高</p>
-<p>​		缺点：开发效率低</p>
-<p>​				1.开发一个简单的小功能都要哟个到非常多条数的二进制指令</p>
-<p>​				2.二进制指令非常难记忆</p>
-<p>汇编语言：用英文标签取代二进制指令去编写程序，也直接控制计算机硬件</p>
-<p>​		只解决了机器语言难记忆的问题</p>
-<p>高级语言：用人类能理解的表达方式去编写程序</p>
-<p>​		编译型：c、go</p>
-<p>​				源代码（人话）———-编译器———-计算机能理解的二进制指令</p>
-<p>​		解释型：python、shell</p>
-<p>​				源代码（人话）———-编译器———-计算机能理解的二进制指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一次运行python程序，python解释器会生成字节码文件</span><br><span class="line">第二次运行python程序的时候，python解释器运行的是字节码文件</span><br><span class="line"></span><br><span class="line">解释型语言编写程序每次运行都离不开解释器</span><br><span class="line">编译型语言编写程序如果编译成功，在第二次运行的不需要编译器</span><br></pre></td></tr></table></figure>
+        <h3 id="阻止后续事件执行"><a href="#阻止后续事件执行" class="headerlink" title="阻止后续事件执行"></a>阻止后续事件执行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#d1&#x27;</span>).click(function (e) &#123;</span><br><span class="line">            alert(<span class="number">123</span>)</span><br><span class="line">            // <span class="number">1.</span>阻止该标签后续事件的执行 方式<span class="number">1</span>   推荐</span><br><span class="line">            // <span class="keyword">return</span> false</span><br><span class="line">            // <span class="number">2.</span>阻止该标签后续事件的执行 方式<span class="number">2</span>   了解</span><br><span class="line">            // e.preventDefault()</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
 
-<h1 id="python语言的三大特性"><a href="#python语言的三大特性" class="headerlink" title="python语言的三大特性"></a>python语言的三大特性</h1><p>1.语法简单，上手容易</p>
-<p>2.封装程度高</p>
-<p>3.有丰富的第三方库</p>
-<h1 id="编写python的两大地方"><a href="#编写python的两大地方" class="headerlink" title="编写python的两大地方"></a>编写python的两大地方</h1><p>1.交互式环境 python3 D:\ a.py</p>
-<p>2.写入文件（主流：永久保存代码）</p>
-<p>ide集成开发环境</p>
-<p>​		超级编辑器：pycharm</p>
-<h1 id="运行python的三个阶段"><a href="#运行python的三个阶段" class="headerlink" title="运行python的三个阶段"></a>运行python的三个阶段</h1><p>1.先运行python解释器</p>
-<p>2.python解释器将a.py的内容从硬盘读入内存</p>
-<p>3.python解释器识别刚刚读入内存的内容，解释执行</p>
-<p>ps：我们的python程序调用的都是解释器的功能</p>
-<h1 id="遵守PEP8规范"><a href="#遵守PEP8规范" class="headerlink" title="遵守PEP8规范"></a>遵守PEP8规范</h1>
+<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子标签的事件完成后会向父标签提交信号，父标签如有相同类型事件则也会执行，然后再向父标签的父标签提交信号。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面有三个事件，如果是div套p套span标签，那么当点击span时，会依次触发span、p、div标签绑定的点击事件</span></span><br><span class="line"><span class="comment"># 依次会弹出span、p、div</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;div&#x27;</span>).click(function (e) &#123;</span><br><span class="line">	alert(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;p&#x27;</span>).click(function (e) &#123;</span><br><span class="line">	alert(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">	// 阻止事件冒泡的方式<span class="number">1</span></span><br><span class="line">	// <span class="keyword">return</span> false</span><br><span class="line">	// 阻止事件冒泡的方式<span class="number">2</span></span><br><span class="line">	// e.stopPropagation()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;span&#x27;</span>).click(function (e) &#123;</span><br><span class="line">	alert(<span class="string">&#x27;span&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="文档加载"><a href="#文档加载" class="headerlink" title="文档加载"></a>文档加载</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 原生js文档加载方式</span><br><span class="line">	window.onload = function () &#123;&#125;</span><br><span class="line">// jQuery文档加载方式01</span><br><span class="line">	$(document).ready(function () &#123;&#125;)</span><br><span class="line">// jQuery文档加载方式02</span><br><span class="line">	$(function()&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将body内部所有的点击事件委托给button按钮执行</span></span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>,<span class="string">&#x27;button&#x27;</span>,<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 创建一个button标签</span></span><br><span class="line">    <span class="keyword">var</span> btnEle = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;button&#x27;</span>)</span><br><span class="line">    <span class="comment">// 设置内部文本</span></span><br><span class="line">    btnEle.<span class="property">innerText</span> = <span class="string">&#x27;点我&#x27;</span></span><br><span class="line">    <span class="comment">// 将button标签添加到body内部</span></span><br><span class="line">    $(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">append</span>(btnEle)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">将事件复制有两个方式：</span></span><br><span class="line"><span class="comment">	1、clone 后面参数加true</span></span><br><span class="line"><span class="comment">	2、事件委托</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#d1&quot;</span>).on(<span class="string">&quot;click&quot;</span>, function () &#123;</span><br><span class="line">  var newI = document.createElement(<span class="string">&quot;i&quot;</span>);</span><br><span class="line">  newI.innerText = <span class="string">&quot;+1&quot;</span>;</span><br><span class="line">  $(this).append(newI);</span><br><span class="line">  $(this).children(<span class="string">&quot;i&quot;</span>).animate(&#123;</span><br><span class="line">    opacity: <span class="number">0</span></span><br><span class="line">  &#125;, <span class="number">1000</span>)  // 创建的i标签（+<span class="number">1</span>效果）<span class="number">1</span>秒后消失（变透明）</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="前端框架bootstrap"><a href="#前端框架bootstrap" class="headerlink" title="前端框架bootstrap"></a>前端框架bootstrap</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Bootstrap框架</span><br><span class="line">	<span class="number">2.</span>X <span class="number">3.</span>X <span class="number">4.</span>X  <span class="comment"># 推荐使用3.X版本</span></span><br><span class="line"></span><br><span class="line">使用框架调整页面样式一般都是操作标签的<span class="keyword">class</span>属性即可</span><br><span class="line"></span><br><span class="line">bootstrap需要依赖于jQuery才能正常执行(动态效果)</span><br><span class="line"></span><br><span class="line">引入方式</span><br><span class="line">	本地引入(最完整的)</span><br><span class="line">    	<span class="number">1.</span>引入jQuery</span><br><span class="line">    	<span class="number">2.</span>引入bootstrap的css文件</span><br><span class="line">    	<span class="number">3.</span>引入bootstrap的js文件</span><br><span class="line">    CDN引入</span><br><span class="line">    	<span class="number">1.</span>引入jQuery CDN</span><br><span class="line">    	<span class="number">2.</span>引入bootstrap css的 CDN</span><br><span class="line">    	<span class="number">3.</span>引入bootstrap js的 CDN</span><br><span class="line"></span><br><span class="line">注意：第一次引入bootstrap框架最好从本地引入，防止写代码没有提示</span><br><span class="line">	让pycharm记住bootstrap的关键字</span><br></pre></td></tr></table></figure>
+
+<h3 id="布局容器"><a href="#布局容器" class="headerlink" title="布局容器"></a>布局容器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container		左右留白</span><br><span class="line">container-fluid  左右不留白</span><br></pre></td></tr></table></figure>
+
+<h3 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">row			行  <span class="comment"># 一个row就是一行 一行是固定的12份</span></span><br><span class="line">col-md-<span class="number">1</span>	占<span class="number">1</span>份 md: middle</span><br><span class="line">col-sm-n	占n份 sm: small</span><br><span class="line">col-xs-n	占n份 xs: extra small(特小)</span><br><span class="line">col-lg-n	占n份 lg: large</span><br></pre></td></tr></table></figure>
+
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bootstrap自带的</span><br><span class="line">	通过span标签的<span class="keyword">class</span>属性值来选择不同图标</span><br><span class="line">fontawesome</span><br><span class="line">	专门提供图标的库  <span class="comment"># 完美兼容bootstrap框架</span></span><br><span class="line">	通过i标签的<span class="keyword">class</span>属性值选择不同图标</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -210,7 +203,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">4、前端基础</a>
         		</li>
       		
 		</ul>
@@ -220,7 +213,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/02/day08/">展开全文 >></a>
         </p>
       
 
@@ -252,7 +245,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/72/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="page-number" href="/page/72/">72</a><span class="page-number current">73</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/74/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/72/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/71/">71</a><a class="page-number" href="/page/72/">72</a><span class="page-number current">73</span><a class="page-number" href="/page/74/">74</a><a class="page-number" href="/page/75/">75</a><span class="space">&hellip;</span><a class="page-number" href="/page/118/">118</a><a class="extend next" rel="next" href="/page/74/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -351,7 +344,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">6、Django笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">2、Linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">10、爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -363,7 +364,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">7、drf笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">9、django-vue-admin项目</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">8、vue笔记</a>
               </li>
             
             <div class="clearfix"></div>

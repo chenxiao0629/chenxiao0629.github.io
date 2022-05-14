@@ -152,51 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-22、软件开发的目录规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day08笔记 部署bbs项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">22、软件开发的目录规范</a>
+      <a class="article-title" href="/2018/06/23/day08%E7%AC%94%E8%AE%B0%20%E9%83%A8%E7%BD%B2bbs%E9%A1%B9%E7%9B%AE/">07、Nginx（location配置）、LNMP架构（uwsgi简介与部署）、bbs项目部署</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/06/23/day08%E7%AC%94%E8%AE%B0%20%E9%83%A8%E7%BD%B2bbs%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
+  	<time datetime="2018-06-23T06:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="软件开发的目录规范"><a href="#软件开发的目录规范" class="headerlink" title="软件开发的目录规范"></a>软件开发的目录规范</h1><p>为了提高程序的可读性与可维护性，我们应该为软件设计良好的目录结构，这与规范的编码风格同等重要。软件的目录规范并无硬性标准，只要清晰可读即可，假设你的软件名为foo，笔者推荐目录结构如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Foo/</span><br><span class="line">|-- core/</span><br><span class="line">|	|--core.py</span><br><span class="line">|</span><br><span class="line">|-- api/</span><br><span class="line">|	|-- api.py</span><br><span class="line">|</span><br><span class="line">|-- db/</span><br><span class="line">|	|-- db_handle.py</span><br><span class="line">|</span><br><span class="line">|--lib/</span><br><span class="line">|	|-- common.py</span><br><span class="line">|</span><br><span class="line">|--conf/</span><br><span class="line">|	|-- settings.py</span><br><span class="line">|</span><br><span class="line">|-- run.py</span><br><span class="line">|-- setup.py</span><br><span class="line">|-- requirements.txt</span><br><span class="line">|--READEME</span><br></pre></td></tr></table></figure>
+        <h3 id="1、复习"><a href="#1、复习" class="headerlink" title="1、复习"></a>1、复习</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、Nginx中常用的模块</span><br><span class="line">    autoindex</span><br><span class="line">    stub_status</span><br><span class="line">    allow 和 deny</span><br><span class="line">    basic</span><br><span class="line">    limit_conn</span><br><span class="line">    limit_req</span><br><span class="line"></span><br><span class="line">2、配置步骤</span><br><span class="line">	1、创建连接池</span><br><span class="line">	2、调用</span><br></pre></td></tr></table></figure>
 
-<p>简要解释一下：</p>
-<ul>
-<li>core&#x2F;	存放业务逻辑相关代码</li>
-<li>api&#x2F;    存放接口文件，接口主要用于为业务逻辑提供数据操作</li>
-<li>db&#x2F;    存放操作数据库相关文件，主要用于与数据库交互</li>
-<li>lib&#x2F;    存放程序中常用的自定义模块</li>
-<li>conf    存放配置文件</li>
-<li>run.py    程序的启动文件，一般放在项目的根目录下，因为在运行时会默认将运行文件所在的文件夹作为sys.path的第一个路径，这样就省去了处理环境变量的步骤</li>
-<li>setup.py    安装、部署、打包的脚本</li>
-<li>requirements.txt    存放软件依赖的外部Python包列表</li>
-<li>README    项目说明文件</li>
-</ul>
-<p>除此之外，有一些方案给出了更加多的内容，比如LICENSE.txt,ChangeLog.txt文件等，主要是在项目需要开源时才会用得到，请读者自行查阅</p>
-<p>关于README的内容，这个应该是每个项目都应该有的一个文件，目的是能简要描述该项目的信息，让读者快速了解这个项目，它需要说明以下几个事项：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、软件定位，软件的基本功能</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、运行代码的方法：安装环境、启动命令等</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、简要的使用说明</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、代码目录结构说明，更详细地可以说明软件的基本原理</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>、常见问题说明</span><br></pre></td></tr></table></figure>
+<h3 id="2、今日内容"><a href="#2、今日内容" class="headerlink" title="2、今日内容"></a>2、今日内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、location</span><br><span class="line">2、LNMP架构</span><br></pre></td></tr></table></figure>
 
+<h3 id="3、location"><a href="#3、location" class="headerlink" title="3、location"></a>3、location</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用Nginx Location可以控制访问网站的路径, 但一个server可以有多个location配置, 多个location的优先级该如何区分。</span><br></pre></td></tr></table></figure>
 
+<h4 id="3-1、location匹配符号"><a href="#3-1、location匹配符号" class="headerlink" title="3.1、location匹配符号"></a>3.1、location匹配符号</h4><table>
+<thead>
+<tr>
+<th><strong>匹配符</strong></th>
+<th><strong>匹配规则</strong></th>
+<th><strong>优先级</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>精确匹配</td>
+<td>1</td>
+</tr>
+<tr>
+<td>^~</td>
+<td>以某个字符串开头</td>
+<td>2</td>
+</tr>
+<tr>
+<td>~</td>
+<td>区分大小写的正则匹配</td>
+<td>3</td>
+</tr>
+<tr>
+<td>~*</td>
+<td>不区分大小写的正则匹配</td>
+<td>3</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>通用匹配，任何请求都会匹配到</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">   </span><br><span class="line">    <span class="section">location</span> <span class="regexp">~* /python</span> &#123;</span><br><span class="line">        <span class="attribute">default_type</span> text/html;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span> <span class="string">&quot;Location ~*&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ /Python</span> &#123;</span><br><span class="line">        <span class="attribute">default_type</span> text/html;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span> <span class="string">&quot;Location ~&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span><span class="regexp"> ^~</span> /python &#123;</span><br><span class="line">        <span class="attribute">default_type</span> text/html;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span> <span class="string">&quot;Location ^~&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> = /python &#123;</span><br><span class="line">        <span class="attribute">default_type</span> text/html;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span> <span class="string">&quot;Location =&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>关于setup.py和requirements.txt:</p>
-<p>一般来说，用setup.py来管理代码的打包、安装、部署问题。业界标准的写法是用python流行的打包工具setuptools来管理这些事情，这种方式普遍应用于开源项目中。不过这里的核心思想不是用标准化的工具来解决这些问题，而是说，一个项目一定要有一个安装部署工具，能快速便捷的在一台新机器上将环境装好、代码部署好和将程序运行起来。</p>
-<p>requirements.txt文件的存在是为了方便开发者维护软件的依赖库。我们需要将开发过程中依赖库的信息添加进该文件中，避免在setup.py安装依赖库时漏掉软件包，同时也方便了使用者明确项目引用了哪些Python包。</p>
-<p>这个文件的格式是每一行包含一个包依赖的说明，通常是flask&gt;&#x3D;0.10这种格式，要求是这个格式能被pip识别，这样就可以简单的通过 pip install -r requirements.txt来把所有Python依赖库都装好了</p>
+<h3 id="4、LNMP架构"><a href="#4、LNMP架构" class="headerlink" title="4、LNMP架构"></a>4、LNMP架构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LNMP是一套技术的组合，L=Linux、N=Nginx、M~=MySQL、P~=Python</span><br><span class="line"></span><br><span class="line">首先Nginx服务是不能处理动态请求，那么当用户发起动态请求时, Nginx又是如何进行处理的。</span><br><span class="line">    1.静态请求：请求的内容是静态文件就是静态请求</span><br><span class="line">        1）静态文件：文件上传到服务器，永远不会改变的文件就是静态文件</span><br><span class="line">        2）html就是一个标准的静态文件</span><br><span class="line">    2.动态请求：请求的内容是动态的就是动态请求</span><br><span class="line">        1）不是真实存在服务器上的内容，是通过数据库或者其他服务拼凑成的数据</span><br><span class="line"> </span><br><span class="line">当用户发起http请求，请求会被Nginx处理，如果是静态资源请求Nginx则直接返回，如果是动态请求Nginx则通过uwsgi协议转交给后端的Python程序处理</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-1、uwsgi"><a href="#4-1、uwsgi" class="headerlink" title="4.1、uwsgi"></a>4.1、uwsgi</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为nginx不支持wsgi协议，无法直接调用py开发的webApp。</span><br><span class="line">在nginx+uWsgi+Django的框架里，nginx代理+webServer，uWsgi是wsgiServer，Django是webApp。</span><br><span class="line">nginx接收用户请求，并判定哪些转发到uWsgi，uWsgi再去调用pyWebApp。</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2、uwsgi服务部署"><a href="#4-2、uwsgi服务部署" class="headerlink" title="4.2、uwsgi服务部署"></a>4.2、uwsgi服务部署</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">1、创建用户</span><br><span class="line">[root@web01 opt]<span class="comment"># groupadd django -g 888</span></span><br><span class="line">[root@web01 opt]<span class="comment"># useradd django -u 888 -g 888 -r -M -s /bin/sh</span></span><br><span class="line"></span><br><span class="line">2、安装依赖软件</span><br><span class="line">[root@web01 opt]<span class="comment"># yum install python3 libxml* python-devel gcc* pcre-devel openssl-devel python3-devel -y</span></span><br><span class="line"></span><br><span class="line">3、安装Django和uwsgi</span><br><span class="line">[root@web01 opt]<span class="comment"># pip3 install django</span></span><br><span class="line">[root@web01 opt]<span class="comment"># pip3 install uwsgi</span></span><br><span class="line"></span><br><span class="line">4、创建项目</span><br><span class="line">[root@web01 opt]<span class="comment"># cd /opt</span></span><br><span class="line">[root@web01 opt]<span class="comment"># django-admin startproject linux</span></span><br><span class="line">[root@web01 opt]<span class="comment"># cd linux</span></span><br><span class="line">[root@web01 opt]<span class="comment"># django-admin startapp app01</span></span><br><span class="line">[root@web01 linux]<span class="comment"># vim linux/settings.py</span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">DATABASES = &#123;&#125;</span><br><span class="line"><span class="comment"># 启动测试</span></span><br><span class="line">[root@web01 linux]<span class="comment"># python3 manage.py runserver 0.0.0.0:8000</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5、编辑项目配置文件</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /opt/linux/myweb_uwsgi.ini </span></span><br><span class="line">[uwsgi]</span><br><span class="line"><span class="comment"># 端口号</span></span><br><span class="line">socket            = :8000</span><br><span class="line"><span class="comment"># 指定项目的目录</span></span><br><span class="line"><span class="built_in">chdir</span>           = /opt/linux</span><br><span class="line"><span class="comment"># wsgi文件路径</span></span><br><span class="line">wsgi-file       = linux/wsgi.py</span><br><span class="line"><span class="comment"># 模块wsgi路径</span></span><br><span class="line">module          = linux.wsgi</span><br><span class="line"><span class="comment"># 是否开启master进程</span></span><br><span class="line">master          = <span class="literal">true</span></span><br><span class="line"><span class="comment"># 工作进程的最大数目</span></span><br><span class="line">processes       = 4</span><br><span class="line"><span class="comment"># 结束后是否清理文件</span></span><br><span class="line">vacuum          = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">6、启动uwsgi</span><br><span class="line">[root@web01 linux]<span class="comment"># uwsgi -d --ini myweb_uwsgi.ini --uid 666</span></span><br><span class="line"></span><br><span class="line">-d 	  : 以守护进程方式运行</span><br><span class="line">--ini : 指定配置文件路径</span><br><span class="line">--uid : 指定uid</span><br><span class="line"></span><br><span class="line">TCP 服务</span><br><span class="line"></span><br><span class="line">7、编辑Nginx配置文件</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /etc/nginx/conf.d/python.conf </span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name py.test.com;</span><br><span class="line">    location / &#123; </span><br><span class="line">        include uwsgi_params;</span><br><span class="line">        uwsgi_pass 127.0.0.1:8000;</span><br><span class="line">        uwsgi_read_timeout 2;</span><br><span class="line">        uwsgi_param UWSGI_SCRIPT linux.wsgi;</span><br><span class="line">        uwsgi_param UWSGI_CHDIR /opt/linux;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        client_max_body_size 35m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">8、重启Nginx配置</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、部署BBS项目"><a href="#5、部署BBS项目" class="headerlink" title="5、部署BBS项目"></a>5、部署BBS项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">1、部署数据库</span><br><span class="line">[root@db01 ~]<span class="comment"># yum install mariadb* -y</span></span><br><span class="line"></span><br><span class="line">2、启动数据库</span><br><span class="line">[root@db01 ~]<span class="comment"># systemctl start mariadb </span></span><br><span class="line"></span><br><span class="line">3、远程连接MySQL数据</span><br><span class="line">MariaDB [(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="string">&#x27;123456&#x27;</span> WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; CREATE DATABASE `bbs` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">4、部署BBS</span><br><span class="line"></span><br><span class="line">4.1、上传代码</span><br><span class="line">[root@db01 ~]<span class="comment"># unzip bbs.zip</span></span><br><span class="line">[root@db01 ~]<span class="comment"># mv bbs /opt/</span></span><br><span class="line"></span><br><span class="line">4.2、数据库迁移</span><br><span class="line">[root@web01 migrations]<span class="comment"># pwd</span></span><br><span class="line">/opt/bbs/app01/migrations</span><br><span class="line">[root@web01 migrations]<span class="comment"># rm -rf 00*</span></span><br><span class="line">[root@web01 migrations]<span class="comment"># rm -rf __pycache__/</span></span><br><span class="line"></span><br><span class="line">[root@web01 migrations]<span class="comment"># cd /opt/bbs/</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># pwd</span></span><br><span class="line">/opt/bbs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改Django版本</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># pip3 uninstall django</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># pip3 install django==1.11</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装MySQL数据库插件</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># pip3 install pymysql</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改数据连接</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># vim bbs/settings.py</span></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]</span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;bbs&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;172.16.1.61&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: 3306,</span><br><span class="line">        <span class="string">&#x27;CHARSET&#x27;</span>: <span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据库迁移文件</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># python3 manage.py makemigrations</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库迁移</span></span><br><span class="line">[root@web01 bbs]<span class="comment"># python3 manage.py migrate</span></span><br><span class="line"></span><br><span class="line">4.3、配置UWSGI</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /opt/bbs/myweb_uwsgi.ini </span></span><br><span class="line">[uwsgi]</span><br><span class="line"><span class="comment"># 端口号</span></span><br><span class="line">socket            = :8002</span><br><span class="line"><span class="comment"># 指定项目的目录</span></span><br><span class="line"><span class="built_in">chdir</span>           = /opt/bbs</span><br><span class="line"><span class="comment"># wsgi文件路径</span></span><br><span class="line">wsgi-file       = bbs/wsgi.py</span><br><span class="line"><span class="comment"># 模块wsgi路径</span></span><br><span class="line">module          = bbs.wsgi</span><br><span class="line"><span class="comment"># 是否开启master进程</span></span><br><span class="line">master          = <span class="literal">true</span></span><br><span class="line"><span class="comment"># 工作进程的最大数目</span></span><br><span class="line">processes       = 4</span><br><span class="line"><span class="comment"># 结束后是否清理文件</span></span><br><span class="line">vacuum          = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[root@web01 bbs]<span class="comment"># uwsgi -d --ini myweb_uwsgi.ini --uid 666</span></span><br><span class="line"></span><br><span class="line">4.4、配置Nginx</span><br><span class="line">[root@localhost ~]<span class="comment"># cat /etc/nginx/conf.d/python.conf </span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name bbs.test.com;</span><br><span class="line">    location / &#123; </span><br><span class="line">        include uwsgi_params;</span><br><span class="line">        uwsgi_pass 127.0.0.1:8002;</span><br><span class="line">        uwsgi_read_timeout 2;</span><br><span class="line">        uwsgi_param UWSGI_SCRIPT bbs.wsgi;</span><br><span class="line">        uwsgi_param UWSGI_CHDIR /opt/bbs;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        client_max_body_size 35m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[root@web01 bbs]<span class="comment"># systemctl restart nginx </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4.5、测试访问BBS</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -210,7 +235,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">3、Linux架构</a>
         		</li>
       		
 		</ul>
@@ -220,7 +245,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/23/day08%E7%AC%94%E8%AE%B0%20%E9%83%A8%E7%BD%B2bbs%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
         </p>
       
 
@@ -252,7 +277,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/52/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="space">&hellip;</span><a class="page-number" href="/page/74/">74</a><a class="extend next" rel="next" href="/page/54/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/52/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="space">&hellip;</span><a class="page-number" href="/page/118/">118</a><a class="extend next" rel="next" href="/page/54/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -351,7 +376,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">6、Django笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">2、Linux基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">10、爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -363,7 +396,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">7、drf笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">9、django-vue-admin项目</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">8、vue笔记</a>
               </li>
             
             <div class="clearfix"></div>
