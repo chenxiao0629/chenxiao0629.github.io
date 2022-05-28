@@ -152,124 +152,45 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-33、python并发编程之多进程（理论篇）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/33%E3%80%81python%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%EF%BC%88%E7%90%86%E8%AE%BA%E7%AF%87%EF%BC%89/">33、Python并发编程之多进程（理论）</a>
+      <a class="article-title" href="/2018/06/02/day06/">06、JavaScript之DOM操作（查找标签、节点操作、获取值操作、class操作、样式操作、事件、内置参数this、事件练习）</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/33%E3%80%81python%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%EF%BC%88%E7%90%86%E8%AE%BA%E7%AF%87%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/06/02/day06/" class="archive-article-date">
+  	<time datetime="2018-06-02T06:04:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="目录："><a href="#目录：" class="headerlink" title="目录："></a>目录：</h2><ul>
-<li>一 什么是进程</li>
-<li>二 进程与程序的区别</li>
-<li>三 并发与并行</li>
-<li>四 同步\异步and阻塞\非阻塞（重点）</li>
-<li>五 进程的创建（了解）</li>
-<li>六 进程的终止（了解）</li>
-<li>七 进程的层次结构</li>
-<li>八 进程的状态</li>
-<li>九 进程并发的实现（了解）</li>
-</ul>
-<h1 id="一-什么是进程"><a href="#一-什么是进程" class="headerlink" title="一 什么是进程"></a>一 什么是进程</h1><p>进程：正在运行的一个过程或者说一个任务。而负责执行任务则是cpu。</p>
-<p>举例：（单核+多道，实现多个进程的并发执行）</p>
-<p>egon在一个时间段内有很多任务要做：python备课的任务，写书的任务，交女朋友的任务，王者荣耀上分的任务，　　</p>
-<p>但egon同一时刻只能做一个任务（cpu同一时间只能干一个活），如何才能玩出多个任务并发执行的效果？</p>
-<p>egon备一会课，再去跟李杰的女朋友聊聊天，再去打一会王者荣耀….这就保证了每个任务都在进行中.</p>
-<h1 id="二-进程与程序的区别"><a href="#二-进程与程序的区别" class="headerlink" title="二 进程与程序的区别"></a>二 进程与程序的区别</h1><p>程序仅仅只是一堆代码而已，而进程指的是程序的运行过程。</p>
-<p>举例：</p>
-<p>想象一位有一手好厨艺的计算机科学家egon正在为他的女儿元昊烘制生日蛋糕。</p>
-<p>他有做生日蛋糕的食谱，</p>
-<p>厨房里有所需的原料:面粉、鸡蛋、韭菜，蒜泥等。</p>
-<p>在这个比喻中：</p>
-<p><strong>做蛋糕的食谱就是程序</strong>(即用适当形式描述的算法)</p>
-<p><strong>计算机科学家就是处理器(cpu)</strong></p>
-<p><strong>而做蛋糕的各种原料就是输入数据</strong>。</p>
-<p><strong>进程就是厨师阅读食谱、取来各种原料以及烘制蛋糕等一系列动作的总和</strong>。</p>
-<p>现在假设计算机科学家egon的儿子alex哭着跑了进来，说：<a href="https://link.zhihu.com/?target=http://fanyi.baidu.com/translate?aldtype=16047&query=%E5%98%BF%EF%BC%8C%E7%88%B8%E7%88%B8%EF%BC%8C%E6%88%91%E7%9A%84%E5%A4%B4%E8%A2%AB%E8%9C%9C%E8%9C%82%E8%9B%B0%E4%BA%86&keyfrom=baidu&smartresult=dict&lang=auto2zh%23zh/en/%E5%98%BF%EF%BC%8C%E7%88%B8%E7%88%B8%EF%BC%8C%E6%88%91%E7%9A%84%E5%A4%B4%E8%A2%AB%E8%9C%9C%E8%9C%82%E8%9B%B0%E4%BA%86">XXXXXXXXXXXXXX</a>。</p>
-<p>科学家egon想了想，处理儿子alex蛰伤的任务比给女儿元昊做蛋糕的任务更重要，于是</p>
-<p>计算机科学家就记录下他照着食谱做到哪儿了(保存进程的当前状态)，然后拿出一本急救手册，按照其中的指示处理蛰伤。这里，我们看到处理机从一个进程(做蛋糕)切换到另一个高优先级的进程(实施医疗救治)，每个进程拥有各自的程序(食谱和急救手册)。当蜜蜂蛰伤处理完之后，这位计算机科学家又回来做蛋糕，从他 离开时的那一步继续做下去。</p>
-<p><strong>需要强调的是：同一个程序执行两次，那也是两个进程，比如打开暴风影音，虽然都是同一个软件，但是一个可以播放苍井空，一个可以播放饭岛爱。</strong></p>
-<h1 id="三-并发与并行"><a href="#三-并发与并行" class="headerlink" title="三 并发与并行"></a>三 并发与并行</h1><p>无论是并行还是并发，在用户看来都是’同时’运行的，不管是进程还是线程，都只是一个任务而已，真正干活的是cpu，cpu来做这些任务，而一个cou同一时刻只能执行一个任务</p>
-<h2 id="一-并发："><a href="#一-并发：" class="headerlink" title="一 并发："></a>一 并发：</h2><p>是伪并行，即看起来是同时运行。单个cou+多道技术就可以实现并发（并行也属于并发）</p>
-<p>单cpu多进程，并发举例1：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">你是一个cpu，你同时谈了三个女朋友，每一个都可以是一个恋爱任务，你被这三个任务共享</span><br><span class="line">要玩出并发恋爱的效果，</span><br><span class="line">应该是你先跟女友1去看电影，看了一会说：不好，我要拉肚子，然后跑去跟第二个女友吃饭，吃了一会说：那啥，我</span><br><span class="line">去趟洗手间，然后跑去跟女友3开了个房</span><br></pre></td></tr></table></figure>
+        <h3 id="DOM操作之查找标签"><a href="#DOM操作之查找标签" class="headerlink" title="DOM操作之查找标签"></a>DOM操作之查找标签</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">前缀关键字&gt;&gt;&gt;:document</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 基本查找(核心)</span></span><br><span class="line">document.getElementById           根据ID获取一个标签</span><br><span class="line">document.getElementsByClassName   根据<span class="keyword">class</span>属性获取</span><br><span class="line">document.getElementsByTagName     根据标签名获取标签合集</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">如果我们的js代码需要页面上某个标签加载完毕</span></span><br><span class="line"><span class="string">那么该js代码应该写在body内部最下方或者引入外部js文件</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 间接查找(重要)</span></span><br><span class="line">parentElement            父节点标签元素</span><br><span class="line">children                 所有子标签</span><br><span class="line">firstElementChild        第一个子标签元素</span><br><span class="line">lastElementChild         最后一个子标签元素</span><br><span class="line">nextElementSibling       下一个兄弟标签元素</span><br><span class="line">previousElementSibling   上一个兄弟标签元素</span><br></pre></td></tr></table></figure>
 
-<p>单cpu多进程，并发举例2：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">某天下午，egon，yuanhao，wupeiqi，alex约好了一起去嫖娼，但娼只有一个，cpu只有一个，但是却要‘同时’干</span><br><span class="line">四个任务(嫖出并发的效果)，那就必须是干一会egon，再干一会yuanhao，再干一会wupeiqi，再干一会alex</span><br><span class="line">egon：花了200块钱，因为人美活好</span><br><span class="line">yuanhao：500块钱</span><br><span class="line">wupeiqi：100块钱，可能是不太行</span><br><span class="line">alex：没要钱，为啥？？？因为大家刚刚嫖的是他女朋友</span><br></pre></td></tr></table></figure>
+<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var aEle = document.createElement(<span class="string">&#x27;a&#x27;</span>);  <span class="comment"># 创建标签</span></span><br><span class="line">aEle.setAttribute(<span class="string">&#x27;href&#x27;</span>,<span class="string">&#x27;https://www.mmzztt.com/&#x27;</span>)  <span class="comment"># 设置属性</span></span><br><span class="line">aEle.innerText = <span class="string">&#x27;好不好看?&#x27;</span>  <span class="comment"># 设置内容文本</span></span><br><span class="line">document.getElementsByTagName(<span class="string">&#x27;p&#x27;</span>)[<span class="number">0</span>].appendChild(aEle)  <span class="comment"># 动态添加</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;一定要明确当前手上是什么对象&quot;&quot;&quot;</span></span><br><span class="line">imgEle.getAttribute(<span class="string">&#x27;title&#x27;</span>)  <span class="comment"># 获取标签属性</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">innerText</span><br><span class="line">	不加赋值符号是获取内部文本</span><br><span class="line">	加了赋值符号是设置内置文本</span><br><span class="line">	<span class="comment"># 不可以识别HTML标签</span></span><br><span class="line">innerHTML</span><br><span class="line">	不加赋值符号是获取内部标签+文本</span><br><span class="line">	加了赋值符号是设置内置标签+文本</span><br><span class="line">	<span class="comment"># 可以识别HTML标签</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="二-并行："><a href="#二-并行：" class="headerlink" title="二 并行："></a>二 并行：</h2><p>同时运行，只有具备多个cpu才能实现并行</p>
-<p>单核下，可以利用多道技术，多个核，每个核也都可以利用多道技术（躲到技术是针对单核而言的）</p>
-<p>有四个核，六个任务，这样同一时间有四个任务被执行，假设分别被分配给了cpu1，cpu2，cpu3，cpu4，一旦任务1遇到I&#x2F;O就被迫中断执行，此时任务5就拿到cpu1的时间片去执行，这就是单核下的多道技术</p>
-<p>而，一旦任务1的I&#x2F;O结束了，操作系统会重新调用它（需知进程的调度、分配给哪个cpu运行，由操作系统说了算），可能被分配给四个cpu的任意一个去执行</p>
-<p><img src="https://pic2.zhimg.com/80/v2-7137159d323204d49821595cb18e4729_720w.jpg" alt="img"></p>
-<p>所有现代计算机经常会在同一时间做很多件事，一个用户的PC（无论是单cpu还是多cpu），都可以同时运行多个任务（一个任务可以理解为一个进程）。</p>
-<p>启动一个进程来杀毒（360软件）</p>
-<p>启动一个进程来看电影（暴风影音）</p>
-<p>启动一个进程来聊天（腾讯QQ）</p>
-<p>所有的这些进程都需被管理，于是一个支持多进程的多道程序系统是至关重要的</p>
-<p>多道技术概念回顾：内存中同时存入多道程序，cpu从一个进程快速切换到另外一个，使每个进程各自运行几十或几百毫秒，这样，虽然在某一个瞬间，一个cpu只能执行一个任务，但在1秒内，cpu却可以运行多个进程，这就给人产生了并行的错觉，即伪并发，以此来区分多处理器操作系统的真正硬件并行（多个cpu共享同一个物理内存）</p>
-<h1 id="四-同步-异步and阻塞-非阻塞（重点）"><a href="#四-同步-异步and阻塞-非阻塞（重点）" class="headerlink" title="四 同步\异步and阻塞\非阻塞（重点）"></a>四 同步\异步and阻塞\非阻塞（重点）</h1><p>同步：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#所谓同步，就是在发出一个功能调用时，在没有得到结果之前，该调用就不会返回。按照这个定义，其实绝大多数函数都是同步调用。但是一般而言，我们在说同步、异步的时候，特指那些需要其他部件协作或者需要一定时间完成的任务。</span><br><span class="line">#举例：</span><br><span class="line">#1. multiprocessing.Pool下的apply #发起同步调用后，就在原地等着任务结束，根本不考虑任务是在计算还是在io阻塞，总之就是一股脑地等任务结束</span><br><span class="line">#2. concurrent.futures.ProcessPoolExecutor().submit(func,).result()</span><br><span class="line">#3. concurrent.futures.ThreadPoolExecutor().submit(func,).result()</span><br></pre></td></tr></table></figure>
+<h3 id="获取值操作"><a href="#获取值操作" class="headerlink" title="获取值操作"></a>获取值操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 普通的文本数据获取</span></span><br><span class="line">	标签对象.value</span><br><span class="line"><span class="comment"># 特殊的文件数据获取</span></span><br><span class="line">	标签对象.value  <span class="string">&#x27;&#x27;&#x27;仅仅获取一个文件地址而已&#x27;&#x27;&#x27;</span></span><br><span class="line">	标签对象.files[<span class="number">0</span>]  <span class="string">&#x27;&#x27;&#x27;获取单个文件数据&#x27;&#x27;&#x27;</span></span><br><span class="line">	标签对象.files  <span class="string">&#x27;&#x27;&#x27;获取所有文件数据&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>异步：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#异步的概念和同步相对。当一个异步功能调用发出后，调用者不能立刻得到结果。当该异步功能完成后，通过状态、通知或回调来通知调用者。如果异步功能用状态来通知，那么调用者就需要每隔一定时间检查一次，效率就很低（有些初学多线程编程的人，总喜欢用一个循环去检查某个变量的值，这其实是一 种很严重的错误）。如果是使用通知的方式，效率则很高，因为异步功能几乎不需要做额外的操作。至于回调函数，其实和通知没太多区别。</span><br><span class="line">#举例：</span><br><span class="line">#1. multiprocessing.Pool().apply_async() #发起异步调用后，并不会等待任务结束才返回，相反，会立即获取一个临时结果（并不是最终的结果，可能是封装好的一个对象）。</span><br><span class="line">#2. concurrent.futures.ProcessPoolExecutor(3).submit(func,)</span><br><span class="line">#3. concurrent.futures.ThreadPoolExecutor(3).submit(func,)</span><br></pre></td></tr></table></figure>
+<h3 id="class操作"><a href="#class操作" class="headerlink" title="class操作"></a>class操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">classList  查看所有的类</span><br><span class="line">classList.remove(cls)  删除指定类</span><br><span class="line">classList.add(cls)  添加类</span><br><span class="line">classList.contains(cls)  存在返回true，否则返回false</span><br><span class="line">classList.toggle(cls)  存在就删除，否则添加</span><br></pre></td></tr></table></figure>
 
-<p>阻塞：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#阻塞调用是指调用结果返回之前，当前线程会被挂起（如遇到io操作）。函数只有在得到结果之后才会将阻塞的线程激活。有人也许会把阻塞调用和同步调用等同起来，实际上他是不同的。对于同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已。</span><br><span class="line">#举例：</span><br><span class="line">#1. 同步调用：apply一个累计1亿次的任务，该调用会一直等待，直到任务返回结果为止，但并未阻塞住（即便是被抢走cpu的执行权限，那也是处于就绪态）;</span><br><span class="line">#2. 阻塞调用：当socket工作在阻塞模式的时候，如果没有数据的情况下调用recv函数，则当前线程就会被挂起，直到有数据为止。</span><br></pre></td></tr></table></figure>
+<h3 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标签对象.style.属性名 = 属性值</span><br></pre></td></tr></table></figure>
 
-<p>非阻塞：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#非阻塞和阻塞的概念相对应，指在不能立刻得到结果之前也会立刻返回，同时该函数不会阻塞当前线程。</span><br></pre></td></tr></table></figure>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 就是给HTML元素添加自定义的功能</span></span><br><span class="line">绑定事件的方式<span class="number">1</span></span><br><span class="line">	&lt;button onclick=<span class="string">&quot;func()&quot;</span>&gt;点我&lt;/button&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		function func() &#123;</span><br><span class="line">			alert(<span class="number">123</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">    </span><br><span class="line">绑定事件的方式<span class="number">2</span></span><br><span class="line">	&lt;button <span class="built_in">id</span>=<span class="string">&quot;d1&quot;</span>&gt;选我&lt;/button&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">		// <span class="number">1.</span>先查找标签</span><br><span class="line">		var btnEle = document.getElementById(<span class="string">&#x27;d1&#x27;</span>)</span><br><span class="line">		// <span class="number">2.</span>绑定事件</span><br><span class="line">		btnEle.onclick = function () &#123;</span><br><span class="line">			alert(<span class="number">456</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<p>小结：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#1. 同步与异步针对的是函数/任务的调用方式：同步就是当一个进程发起一个函数（任务）调用的时候，一直等到函数（任务）完成，而进程继续处于激活状态。而异步情况下是当一个进程发起一个函数（任务）调用的时候，不会等函数返回，而是继续往下执行当，函数返回的时候通过状态、通知、事件等方式通知进程任务完成。</span><br><span class="line"></span><br><span class="line">#2. 阻塞与非阻塞针对的是进程或线程：阻塞是当请求不能满足的时候就将进程挂起，而非阻塞则不会阻塞当前进程</span><br></pre></td></tr></table></figure>
+<h3 id="内置参数this"><a href="#内置参数this" class="headerlink" title="内置参数this"></a>内置参数this</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this指代的就是当前被操作对象本身</span></span><br><span class="line">在事件的函数体代码内部使用</span><br><span class="line">	btnEle.onclick = function () &#123;</span><br><span class="line">		alert(<span class="number">456</span>)</span><br><span class="line">		console.log(this)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="事件练习"><a href="#事件练习" class="headerlink" title="事件练习"></a>事件练习</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">onclick单击事件</span><br><span class="line">onfocus聚焦事件</span><br><span class="line">onblur失去焦点事件</span><br><span class="line">onchange文本域变化事件</span><br><span class="line">onload等待...加载完毕后执行的事件</span><br><span class="line"><span class="comment"># 定时器</span></span><br><span class="line"><span class="comment"># 数据校验</span></span><br><span class="line"><span class="comment"># 省市联动</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果某个标签已经有事件了 那么绑定会冲突</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="五-进程的创建（了解）"><a href="#五-进程的创建（了解）" class="headerlink" title="五 进程的创建（了解）"></a>五 进程的创建（了解）</h1><p>但凡是硬件，都需要有操作系统去管理，只要有操作系统，就有进程的概念，就需要有创建进程的方式，一些操作系统只为一个应用程序设计，比如微波炉中的控制器，一旦启动微波炉，所有的进程都已经存在。</p>
-<p>而对于通用系统（跑很多应用程序），需要有系统运行过程中创建或撤销进程的能力，主要分为4中形式创建新的进程</p>
-<p>\1. 系统初始化（查看进程linux中用ps命令，windows中用任务管理器，前台进程负责与用户交互，后台运行的进程与用户无关，运行在后台并且只在需要时才唤醒的进程，称为守护进程，如电子邮件、web页面、新闻、打印）</p>
-<p>\2. 一个进程在运行过程中开启了子进程（如nginx开启多进程，os.fork,subprocess.Popen等）</p>
-<p>\3. 用户的交互式请求，而创建一个新进程（如用户双击暴风影音）</p>
-<p>\4. 一个批处理作业的初始化（只在大型机的批处理系统中应用）</p>
-<p>无论哪一种，新进程的创建都是由一个已经存在的进程执行了一个用于创建进程的系统调用而创建的：</p>
-<p>\1. 在UNIX中该系统调用是：fork，fork会创建一个与父进程一模一样的副本，二者有相同的存储映像、同样的环境字符串和同样的打开文件（在shell解释器进程中，执行一个命令就会创建一个子进程）</p>
-<p>\2. 在windows中该系统调用是：CreateProcess，CreateProcess既处理进程的创建，也负责把正确的程序装入新进程。　</p>
-<p>关于创建的子进程，UNIX和windows</p>
-<p>1.相同的是：进程创建后，父进程和子进程有各自不同的地址空间（<strong>多道技术要求物理层面实现进程之间内存的隔离</strong>），任何一个进程的在其地址空间中的修改都不会影响到另外一个进程。</p>
-<p>2.不同的是：在UNIX中，子进程的初始地址空间是父进程的一个副本，提示：子进程和父进程是可以有只读的共享内存区的。但是对于windows系统来说，从一开始父进程与子进程的地址空间就是不同的。</p>
-<h1 id="六-进程的终止（了解）"><a href="#六-进程的终止（了解）" class="headerlink" title="六 进程的终止（了解）"></a>六 进程的终止（了解）</h1><p>\1. 正常退出（自愿，如用户点击交互式页面的叉号，或程序执行完毕调用发起系统调用正常退出，在linux中用exit，在windows中用ExitProcess）</p>
-<p>\2. 出错退出（自愿，python a.py中a.py不存在）</p>
-<p>\3. 严重错误（非自愿，执行非法指令，如引用不存在的内存，1&#x2F;0等，可以捕捉异常，try…except…）</p>
-<p>\4. 被其他进程杀死（非自愿，如kill -9）</p>
-<h1 id="七-进程的层次结构"><a href="#七-进程的层次结构" class="headerlink" title="七 进程的层次结构"></a>七 进程的层次结构</h1><p>无论UNIX还是windows，进程只有一个父进程，不同的是：</p>
-<p>\1. 在UNIX中所有的进程，都是以init进程为根，组成树形结构。父子进程共同组成一个进程组，这样，当从键盘发出一个信号时，该信号被送给当前与键盘相关的进程组中的所有成员。</p>
-<p>\2. 在windows中，没有进程层次的概念，所有的进程都是地位相同的，唯一类似于进程层次的暗示，是在创建进程时，父进程得到一个特别的令牌（<strong>称为句柄</strong>）,该句柄可以用来控制子进程，但是父进程有权把该句柄传给其他子进程，这样就没有层次了。</p>
-<h1 id="八-进程的状态"><a href="#八-进程的状态" class="headerlink" title="八 进程的状态"></a>八 进程的状态</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f access.log |grep &#x27;404&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>执行程序tail，开启一个子进程，执行程序grep，开启另外一个子进程，两个进程之间基于管道’|’通讯，将tail的结果作为grep的输入。</p>
-<p>进程grep在等待输入（即I&#x2F;O）时的状态称为阻塞，此时grep命令都无法运行</p>
-<p>其实在两种情况下会导致一个进程在逻辑上不能运行，</p>
-<p>\1. 进程挂起是自身原因，遇到I&#x2F;O阻塞，便要让出CPU让其他进程去执行，这样保证CPU一直在工作</p>
-<p>\2. 与进程无关，是操作系统层面，可能会因为一个进程占用时间过多，或者优先级等原因，而调用其他的进程去使用CPU。</p>
-<p>因而一个进程由三种状态</p>
-<p><img src="https://pic1.zhimg.com/80/v2-1b816bea5d7900ca5faad9abdee1cec4_720w.jpg" alt="img"></p>
-<h1 id="九-进程并发的实现（了解）"><a href="#九-进程并发的实现（了解）" class="headerlink" title="九 进程并发的实现（了解）"></a>九 进程并发的实现（了解）</h1><p>进程并发的实现在于，硬件中断一个正在运行的进程，把此时进程运行的所有状态保存下来，为此，操作系统维护一张表格，即进程表（process table），每个进程占用一个进程表项（这些表项也称为进程控制块）</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c7e653f1793ccc5d2aeed7d128459698_720w.jpg" alt="img"></p>
-<p>该表存放了进程状态的重要信息：程序计数器、堆栈指针、内存分配状况、所有打开文件的状态、帐号和调度信息，以及其他在进程由运行态转为就绪态或阻塞态时，必须保存的信息，从而保证该进程在再次启动时，就像从未被中断过一样。</p>
-
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       
 
       
@@ -282,7 +203,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">1、Python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">4、前端基础</a>
         		</li>
       		
 		</ul>
@@ -292,7 +213,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/33%E3%80%81python%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%EF%BC%88%E7%90%86%E8%AE%BA%E7%AF%87%EF%BC%89/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/02/day06/">展开全文 >></a>
         </p>
       
 
@@ -324,7 +245,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/85/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/84/">84</a><a class="page-number" href="/page/85/">85</a><span class="page-number current">86</span><a class="page-number" href="/page/87/">87</a><a class="page-number" href="/page/88/">88</a><span class="space">&hellip;</span><a class="page-number" href="/page/118/">118</a><a class="extend next" rel="next" href="/page/87/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/85/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/84/">84</a><a class="page-number" href="/page/85/">85</a><span class="page-number current">86</span><a class="page-number" href="/page/87/">87</a><a class="page-number" href="/page/88/">88</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/87/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -447,11 +368,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">13、Elasticsearch笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">11、Flask笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">9、django-vue-admin项目</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">12、Redis笔记</a>
               </li>
              
               <li class="article-tag-list-item">

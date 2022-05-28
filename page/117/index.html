@@ -152,52 +152,70 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-02、编程语言与pyhon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-13、名称空间与作用域" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">2、编程语言与Python</a>
+      <a class="article-title" href="/2018/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">13、名称空间与作用域</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2018-05-13T06:04:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="编程语言分类"><a href="#编程语言分类" class="headerlink" title="编程语言分类"></a>编程语言分类</h1><p>机器语言：直接用计算机能理解的二进制指令去编写程序，是直接在控制计算机硬件</p>
-<p>​		优点：运行效率高</p>
-<p>​		缺点：开发效率低</p>
-<p>​				1.开发一个简单的小功能都要哟个到非常多条数的二进制指令</p>
-<p>​				2.二进制指令非常难记忆</p>
-<p>汇编语言：用英文标签取代二进制指令去编写程序，也直接控制计算机硬件</p>
-<p>​		只解决了机器语言难记忆的问题</p>
-<p>高级语言：用人类能理解的表达方式去编写程序</p>
-<p>​		编译型：c、go</p>
-<p>​				源代码（人话）———-编译器———-计算机能理解的二进制指令</p>
-<p>​		解释型：python、shell</p>
-<p>​				源代码（人话）———-编译器———-计算机能理解的二进制指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一次运行python程序，python解释器会生成字节码文件</span><br><span class="line">第二次运行python程序的时候，python解释器运行的是字节码文件</span><br><span class="line"></span><br><span class="line">解释型语言编写程序每次运行都离不开解释器</span><br><span class="line">编译型语言编写程序如果编译成功，在第二次运行的不需要编译器</span><br></pre></td></tr></table></figure>
+        <p>一、名称空间</p>
+<p>​	1.内建名称空间</p>
+<p>​	2、全局名称空间</p>
+<p>​	3、局部名称空间</p>
+<p>二、作用域</p>
+<p>​	1、全局作用域</p>
+<p>​	2、作用域与名字查找的优先级</p>
+<h1 id="一、名称空间"><a href="#一、名称空间" class="headerlink" title="一、名称空间"></a>一、名称空间</h1><p>名称空间即存放名字与对象映射&#x2F;绑定关系的地方。对于x&#x3D;3，Python会申请内存空间存放对象3，然后将名字x与3的绑定关系存放于名称空间中，del x表示清除该绑定关系</p>
+<p>在程序执行期间最多会存在三种名称空间</p>
+<h2 id="1-内建名称空间"><a href="#1-内建名称空间" class="headerlink" title="1.内建名称空间"></a>1.内建名称空间</h2><p>伴随python解释器的启动&#x2F;关闭而产生&#x2F;回收，因而是第一个被加载的名称空间，用来存放一些内置的名字，比如内建函数名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">max</span></span><br><span class="line">&lt;built-<span class="keyword">in</span> function <span class="built_in">max</span>&gt; <span class="comment">#built-in内建</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="python语言的三大特性"><a href="#python语言的三大特性" class="headerlink" title="python语言的三大特性"></a>python语言的三大特性</h1><p>1.语法简单，上手容易</p>
-<p>2.封装程度高</p>
-<p>3.有丰富的第三方库</p>
-<h1 id="编写python的两大地方"><a href="#编写python的两大地方" class="headerlink" title="编写python的两大地方"></a>编写python的两大地方</h1><p>1.交互式环境 python3 D:\ a.py</p>
-<p>2.写入文件（主流：永久保存代码）</p>
-<p>ide集成开发环境</p>
-<p>​		超级编辑器：pycharm</p>
-<h1 id="运行python的三个阶段"><a href="#运行python的三个阶段" class="headerlink" title="运行python的三个阶段"></a>运行python的三个阶段</h1><p>1.先运行python解释器</p>
-<p>2.python解释器将a.py的内容从硬盘读入内存</p>
-<p>3.python解释器识别刚刚读入内存的内容，解释执行</p>
-<p>ps：我们的python程序调用的都是解释器的功能</p>
-<h1 id="遵守PEP8规范"><a href="#遵守PEP8规范" class="headerlink" title="遵守PEP8规范"></a>遵守PEP8规范</h1>
+<h2 id="2、全局名称空间"><a href="#2、全局名称空间" class="headerlink" title="2、全局名称空间"></a>2、全局名称空间</h2><p>伴随python文件的开始执行&#x2F;执行完毕而产生&#x2F;回收，是第二个被加载的名称空间，文件执行过程中产生的名字都会存放于该名称空间中，如下名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys <span class="comment">#模块名sys</span></span><br><span class="line"></span><br><span class="line">x=<span class="number">1</span> <span class="comment">#变量名x</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> x == <span class="number">1</span>:</span><br><span class="line">    y=<span class="number">2</span> <span class="comment">#变量名y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x</span>): <span class="comment">#函数名foo</span></span><br><span class="line">    y=<span class="number">1</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bar</span>():</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">Class Bar: <span class="comment">#类名Bar</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、局部名称空间"><a href="#3、局部名称空间" class="headerlink" title="3、局部名称空间"></a>3、局部名称空间</h2><p>伴随函数的调用&#x2F;结束而临时产生&#x2F;回收，函数的形参、函数内定义的名字都会被存放于该名称空间中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">x</span>):</span><br><span class="line">    y=<span class="number">3</span> <span class="comment">#调用函数时，才会执行函数代码，名字x和y都存放于该函数的局部名称空间中</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="二、作用域"><a href="#二、作用域" class="headerlink" title="二、作用域"></a>二、作用域</h1><h2 id="1、全局作用域与局部作用域"><a href="#1、全局作用域与局部作用域" class="headerlink" title="1、全局作用域与局部作用域"></a>1、全局作用域与局部作用域</h2><p>按照名字作用范围的不同可以将三个名称空间划分为两个区域：</p>
+<ol>
+<li>全局作用域:位于全局名称空间、内建名称空间中的名字属于全局范围，该范围内的名字全局存活（除非被删除，否则在整个文件执行过程中存活）、全局有效（在任意位置都可以使用）；</li>
+<li>局部作用域:位于局部名称空间中的名字属于局部范围。该范围内的名字临时存活（即在函数调用时临时生成，函数调用结束后就释放）、局部有效（只能在函数内使用）。</li>
+</ol>
+<h2 id="2、作用域与名字查找的优先级"><a href="#2、作用域与名字查找的优先级" class="headerlink" title="2、作用域与名字查找的优先级"></a>2、作用域与名字查找的优先级</h2><p>在局部作用域查找名字时，起始位置是局部作用域，所以先查找局部名称空间，没有找到，再去全局作用域查找：先查找全局名称空间，没有找到，再查找内置名称空间，最后都没有找到就会抛出异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">100</span> <span class="comment">#全局作用域的名字x</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    x=<span class="number">300</span> <span class="comment">#局部作用域的名字x</span></span><br><span class="line">    <span class="built_in">print</span>(x) <span class="comment">#在局部找x</span></span><br><span class="line">foo()<span class="comment">#结果为300</span></span><br></pre></td></tr></table></figure>
+
+<p>在全局作用域查找名字时，起始位置便是全局作用域，所以先查找全局名称空间，没有找到，再查找内置名称空间，最后都没有找到就会抛出异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">100</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    x=<span class="number">300</span> <span class="comment">#在函数调用时产生局部作用域的名字x</span></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">#在全局找x,结果为100</span></span><br></pre></td></tr></table></figure>
+
+<p>提示：可以调用内建函数locals()和globals()来分别查看局部作用域和全局作用域的名字，查看的结果都是字典格式。在全局作用域查看到的locals()的结果等于globals()</p>
+<p>Python支持函数的嵌套定义，在内嵌的函数内查找名字时，会优先查找自己局部作用域的名字，然后由内而外一层层查找外部嵌套函数定义的作用域，没有找到，则查找全局作用域</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">outer</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner</span>(): <span class="comment"># 函数名inner属于outer这一层作用域的名字</span></span><br><span class="line">        x=<span class="number">3</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;inner x:%s&#x27;</span> %x)</span><br><span class="line"></span><br><span class="line">    inner()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;outer x:%s&#x27;</span> %x)</span><br><span class="line"></span><br><span class="line">outer() </span><br><span class="line"><span class="comment">#结果为</span></span><br><span class="line">inner x:<span class="number">3</span></span><br><span class="line">outer x:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>在函数内，无论嵌套多少层，都可以查看到全局作用域的名字，若要在函数内修改全局名称空间中名字的值，当值为不可变类型时，则需要用到global关键字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="number">1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>():</span><br><span class="line">    <span class="keyword">global</span> x <span class="comment">#声明x为全局名称空间的名字</span></span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">print</span>(x) <span class="comment">#结果为2</span></span><br></pre></td></tr></table></figure>
+
+<p>当实参的值为可变类型时，函数体内对该值的修改将直接反应到原值，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">num_list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">nums</span>):</span><br><span class="line">    nums.append(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">foo(num_list)</span><br><span class="line"><span class="built_in">print</span>(num_list)</span><br><span class="line"><span class="comment">#结果为</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>对于嵌套多层的函数，使用nonlocal关键字可以将名字声明为来自外部嵌套函数定义的作用域（非全局）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span>  <span class="title function_">f1</span>():</span><br><span class="line">    x=<span class="number">2</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f2</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> x</span><br><span class="line">        x=<span class="number">3</span></span><br><span class="line">    f2() <span class="comment">#调用f2(),修改f1作用域中名字x的值</span></span><br><span class="line">    <span class="built_in">print</span>(x) <span class="comment">#在f1作用域查看x</span></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line"></span><br><span class="line"><span class="comment">#结果</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>nonlocal x会从当前函数的外层函数开始一层层去查找名字x，若是一直到最外层函数都找不到，则会抛出异常。</p>
+
       
 
       
@@ -220,7 +238,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/02%E3%80%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%8Epyhon/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/13/13%E3%80%81%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F/">展开全文 >></a>
         </p>
       
 
@@ -252,7 +270,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/116/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/115/">115</a><a class="page-number" href="/page/116/">116</a><span class="page-number current">117</span><a class="page-number" href="/page/118/">118</a><a class="extend next" rel="next" href="/page/118/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/116/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/115/">115</a><a class="page-number" href="/page/116/">116</a><span class="page-number current">117</span><a class="page-number" href="/page/118/">118</a><a class="page-number" href="/page/119/">119</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/118/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -375,11 +393,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">13、Elasticsearch笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">11、Flask笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">9、django-vue-admin项目</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">5、数据库之MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">12、Redis笔记</a>
               </li>
              
               <li class="article-tag-list-item">
