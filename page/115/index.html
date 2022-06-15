@@ -152,88 +152,66 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-15、装饰器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-16、迭代器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/15%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/">15、装饰器</a>
+      <a class="article-title" href="/2018/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/">16、迭代器</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/15%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2018-05-13T06:04:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、装饰器介绍</p>
+        <p>一、迭代器介绍</p>
 <ul>
-<li>1.1 为什么要用装饰器</li>
-<li>1.2 什么是装饰器</li>
+<li>可迭代对象</li>
+<li>迭代器对象</li>
 </ul>
-<p>二、装饰器的实现</p>
+<p>二、for循环原理</p>
+<p>三、迭代器的优缺点</p>
 <ul>
-<li>2.1 无参装饰器的实现</li>
-<li>2.2 有参装饰器的实现</li>
+<li>优点</li>
+<li>缺点</li>
 </ul>
-<h1 id="一、装饰器介绍"><a href="#一、装饰器介绍" class="headerlink" title="一、装饰器介绍"></a>一、装饰器介绍</h1><h2 id="为何要用装饰器"><a href="#为何要用装饰器" class="headerlink" title="为何要用装饰器"></a>为何要用装饰器</h2><p>软件的设计应该遵循开放封闭原则，即对扩展是开放的，而对修改是封闭的。对扩展开放，意味着有新的需求或变化时，可以对现有的代码进行扩展，以适应新的情况。对修改封闭，意味着对象一旦设计完成，就可以独立完成其工作，而不要对其进行修改。</p>
-<p>软件包含的所有功能的源代码以及调用方式，都应该避免修改，否则一旦改错，则极有可能产生连锁反应，最终导致程序崩溃，而对于上线后的软件，新需求或者变化又层出不穷，我们必须为程序提供扩展的可能性，这就用到了装饰器。</p>
-<h2 id="什么是装饰器"><a href="#什么是装饰器" class="headerlink" title="什么是装饰器"></a>什么是装饰器</h2><p>‘装饰’代指为被装饰对象添加新的功能，‘器’代指器具&#x2F;工具，装饰器与被装饰的对象均可以是任意可调用对象。概括地讲，装饰器的作用就是在不修改装饰器对象源代码和调用方式的前提下为被装饰对象添加额外的功能。装饰器经常用于有切面需求的场景，比如：插入日志、性能测试、事务处理、缓存、权限校验等应用场景，装饰器是解决这类问题的绝佳设计，有了装饰器，就可以抽离出大量与函数功能本身无关的雷同代码并继续使用。</p>
-<p>提示：可调用对象有函数，方法或者类，此处我们单以函数为例，来介绍装饰器，并且被装饰的对象也是函数。</p>
-<h1 id="二、装饰器的实现"><a href="#二、装饰器的实现" class="headerlink" title="二、装饰器的实现"></a>二、装饰器的实现</h1><p>函数装饰器分为：无参装饰器和有参装饰器两种，二者实现原理一样，都是‘函数+闭包+函数对象’的组合使用的产物。</p>
-<h2 id="无参装饰器的实现"><a href="#无参装饰器的实现" class="headerlink" title="无参装饰器的实现"></a>无参装饰器的实现</h2><p>如果想为下述函数添加统计其执行时间的功能</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Welcome to the index page&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">200</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">index()  <span class="comment"># 函数执行</span></span><br></pre></td></tr></table></figure>
+<h1 id="一-迭代器介绍"><a href="#一-迭代器介绍" class="headerlink" title="一 迭代器介绍"></a>一 迭代器介绍</h1><p>迭代器即用来迭代取值的工具，而迭代是重复反馈过程的活动，其目的通常是为了逼近所需的目标或结果，每一次对过程的重复称为一次”迭代“，而每一次迭代得到的结果会作为下一次迭代的初始值，单纯的重复并不是迭代</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> Ture:</span><br><span class="line">    msg = <span class="built_in">input</span>(<span class="string">&#x27;&gt;&gt;&gt;:&#x27;</span>).strip()</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
 
-<p>遵循不修改被装饰器对象源代码的原则，我们想到的解决方法可能是这样</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start_time = time.time()</span><br><span class="line">index()</span><br><span class="line">stop_time = time.time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;run time is %s&#x27;</span> % (stop_time-start_time))</span><br></pre></td></tr></table></figure>
+<p>下述while循环才是一个迭代过程，不仅满足重复，而且以每次重新赋值后的index值作为下一次循环中的新的索引进行取值，反复迭代，最终可以取尽列表中的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line"></span><br><span class="line">index = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> index &lt; <span class="built_in">len</span>(goods):</span><br><span class="line">    <span class="built_in">print</span>(goods(index))</span><br><span class="line">    index += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<p>考虑到还有可能要统计其他函数的执行之间，于是我们将其做成一个单独的工具，，函数体需要外部传入被装饰的函数从而进行调用，我们可以使用参数的形式传入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">func</span>):  <span class="comment"># 通过参数接收外部的值</span></span><br><span class="line">    start_time = time.time()</span><br><span class="line">    res = func()</span><br><span class="line">    stop_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;run time is %s&#x27;</span> % (stop_time-start_time))</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h2><p>通过索引的方式进行迭代取值，实现简单，但仅使用于序列类型：字符串，列表，元组。对于没有索引的字典、集合等非序列类型，必须找到一种不依赖索引来进行迭代取值的方式，这就用到了迭代器。</p>
+<p>要想了解迭代器为何物，必须事先搞清楚一个很重要的概念：可迭代对象（Iterable）。从语法形式上讲，内置有__iter__方法的对象都是可迭代对象，字符串、列表、元组、字典、集合、打开的文件都是可迭代对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;egon&#x27;</span>&#125;.__iter__</span><br><span class="line">&#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;.__iter__</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 
-<p>但之后函数的调用方式都需要改成</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wrapper(index)</span><br><span class="line">wrapper(其他函数)</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h2><p>调用obj.iter()方法返回的结果就是一个迭代器对象(Iterator)。迭代器对象是内置有iter和next方法的对象，打开的文件本身就是一个迭代器对象，执行迭代器对象.iter()方法得到的仍然是迭代器本身，不依赖于索引的迭代取值方式，只要存在多个”值“，无论序列类型还是非序列类型都可以按照迭代器的方式取值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;  <span class="comment"># 可迭代对象s</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i = <span class="built_in">iter</span>(s)  <span class="comment"># 本质就是载调用s.__iter__()，返回s的迭代器对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)  <span class="comment"># 本质就是再调用i.__next__()</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">next</span>(i)  <span class="comment"># 抛出StopIteration的异常，代表无值可取，迭代结束</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
 
-<p>这便违反了不能修改被装饰对象调用方式的原则，于是我们换一种为函数体传值的方式，即将值包给函数，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">timer</span>(<span class="params">func</span>):    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>():  <span class="comment"># 通过参数接收外部的值</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        res = func()</span><br><span class="line">        stop_time = time.time()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;run time is %s&#x27;</span> % (stop_time-start_time))</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
+<h1 id="for循环原理"><a href="#for循环原理" class="headerlink" title="for循环原理"></a>for循环原理</h1><p>有了迭代器后，我们便可以不依赖索引迭代取值了，使用while循环的实现方式如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line">i = <span class="built_in">iter</span>(goods)  <span class="comment"># 每次都需要重新获取一个迭代器对象</span></span><br><span class="line"><span class="keyword">while</span> Ture:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">next</span>(i))</span><br><span class="line">    <span class="keyword">except</span> StopIteration:  <span class="comment"># 捕捉异常终止循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-<p>这样我们便可以在不修改被装饰函数源代码和调用方式的前提下为其加上统计时间的功能，只不过需要事先执行一次timer将被装饰的函数传入，返回一个闭包函数wrapper重新赋值给变量名&#x2F;函数名index，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index = timer(index)  <span class="comment"># 得到index = wrapper,wrapper携带对外作用域的引用；func = 原始的index</span></span><br><span class="line">index()  <span class="comment"># 执行的是wrapper(),在wrapper的函数体内再执行最原始的index</span></span><br></pre></td></tr></table></figure>
+<p>for循环又称为迭代循环，in后可以跟任意可迭代对象，上述while循环可以简写为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">goods = [<span class="string">&#x27;mac&#x27;</span>, <span class="string">&#x27;lenovo&#x27;</span>, <span class="string">&#x27;acer&#x27;</span>, <span class="string">&#x27;dell&#x27;</span>, <span class="string">&#x27;sony&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> goods:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure>
 
-<p>至此我们便实现了一个无参装饰器timer，可以在不修改被装饰对象index源代码和调用方式的前提下为其加上新功能。但我们忽略了若被装饰的函数是一个有参函数，便会抛出异常</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>(<span class="params">name</span>):</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Welcome to the home page&#x27;</span>, name)</span><br><span class="line">    </span><br><span class="line">home = timer(home)</span><br><span class="line">home(<span class="string">&#x27;egon&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 抛出异常</span></span><br><span class="line">TypeError: wrapper() takes <span class="number">0</span> positional arguments but <span class="number">1</span> was given</span><br></pre></td></tr></table></figure>
-
-<p>之所以会抛出异常，是因为home(‘egon’)调用的其实是wrapper(‘egon’),而函数wrapper没有参数。wrapper函数接收的参数其实是给最原始的func用的，为了能满足被装饰函数参数的所有情况，使用上*args+**kwargs组合，于是修正装饰器timer如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">timer</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args,**kwargs</span>):  </span><br><span class="line">        start_time = time.time()</span><br><span class="line">        res = func(*args,**kwargs)</span><br><span class="line">        stop_time = time.time()</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;run time is %s&#x27;</span> % (stop_time-start_time))</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
-
-<p>此时我们就可以用timer来装饰带参数或不带参数的函数了，但是为了简洁而优雅地使用装饰器，python提供了专门的装饰器语法来取代index&#x3D;timer(index)的形式，需要在被装饰对象的正上方单独一行添加@timer,当解释器解释到@time函数，且把它正下方的函数名当作实参传入，然后将返回的结果重新赋值给原函数名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@timer  </span><span class="comment"># index = timer(index)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Welcome to the index page&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">200</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@timer  </span><span class="comment"># home = timer(home)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>(<span class="params">name</span>):</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Welcome to the home page&#x27;</span>, name)</span><br></pre></td></tr></table></figure>
-
-<p>如果我们有多个装饰器，可以叠加多个</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@deco3</span></span><br><span class="line"><span class="meta">@deco2</span></span><br><span class="line"><span class="meta">@deco1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 本质：index = deco3(deco2(deco1(index)))</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="有参装饰器的实现"><a href="#有参装饰器的实现" class="headerlink" title="有参装饰器的实现"></a>有参装饰器的实现</h2><p>了解无参装饰器的实现原理后，我们可以再实现一个用来为被装饰对象添加认证功能的装饰器，实现的基本形式如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">deco</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args,**kwargs</span>):</span><br><span class="line">        res=func(*args,**kwargs)  <span class="comment"># 编写基于文件的认证，认证通过则执行,并返回res</span></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
-
-<p>如果我们想提供多种不同的认证方式以供选择，单从wrapper函数的实现角度改写如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">deco</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapper</span>(<span class="params">*args,**kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> driver == <span class="string">&#x27;file&#x27;</span>:</span><br><span class="line">            res=func(*args,**kwargs)  <span class="comment"># 编写基于文件的认证，认证通过则执行,并返回res</span></span><br><span class="line">        <span class="keyword">elif</span> driver == <span class="string">&#x27;mysql&#x27;</span>:</span><br><span class="line">            res=func(*args,**kwargs)  <span class="comment"># 编写基于文件的认证，认证通过则执行,并返回res</span></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
-
-<p>函数wrapper需要一个driver参数，而函数deco与wrapper的参数都有其特定的功能，不能用来接收其他类别的参数，可以再deco的外部再包一层auth，用来专门接收额外的参数，这样便保证了再auth函数内无论有多少层都可以引用到</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def auth(driver):</span><br><span class="line">    def deco(func):</span><br><span class="line">        ...</span><br><span class="line">    return deco</span><br></pre></td></tr></table></figure>
-
-<p>此时我们就实现了一个有参装饰器，使用方式如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先调用auth_type(drive=&#x27;file&#x27;),得到@deco,deco是一个闭包函数，包含了对外部作用域名字driver的引用，@driver的语义与无参装饰器一样</span></span><br><span class="line"><span class="meta">@auth(<span class="params">driver=<span class="string">&#x27;file&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@auth(<span class="params">driver=<span class="string">&#x27;mysql&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">home</span>():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<p>可以使用help(函数名)来查看函数的文档注释，本质就是查看函数的doc属性，但对于装饰之后的函数，查看文档注释</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
+<p>for循环再工作时，首先会调用可迭代对象goods内置的iter方法拿到一个迭代器对象，然后再调用该迭代器对象的next方法将取到的值赋给iten，执行循环体完成一次循环，周而复始，直到捕捉StopIteration异常，结束迭代。</p>
+<h1 id="三-迭代器的优缺点"><a href="#三-迭代器的优缺点" class="headerlink" title="三 迭代器的优缺点"></a>三 迭代器的优缺点</h1><p>基于索引的迭代取值，所有的状态都保存在了索引中，而基于迭代器实现迭代的方式不再需要索引，所有迭代的状态就保存在迭代器中，然而这种处理方式优点于缺点并存：</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>为序列和非序列类型提供了统一的迭代取值方式。</li>
+<li>惰性计算：迭代器对象表示的是一个数据流，可以只在需要时才去调用next来计算出一个值，就迭代器本身来说，同一时刻在内存中只有一个值，因而可以存放无限大的数据流，而对于其他容器类型，如列表，需要把所有的元素都存放于内存中，受内存大小的限制，可以存放的值的个数是有限的。</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>除非取尽，否则无法获取迭代器的长度</li>
+<li>只能取下一个值，不能回到开始，更像是’一次性的‘，迭代器产生后的唯一目标就是重复执行next方法直到值取尽，否则就会停留在某个位置，等待下一次调用next；若是要再次迭代同个对象，你只能重新调用iter方法去创建一个新的迭代器对象，如果有两个或者多个循环使用同一个迭代器，必然只会有一个循环能取到值。</li>
+</ul>
 
       
 
@@ -257,7 +235,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/15%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/13/16%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8/">展开全文 >></a>
         </p>
       
 
@@ -289,7 +267,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/114/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/113/">113</a><a class="page-number" href="/page/114/">114</a><span class="page-number current">115</span><a class="page-number" href="/page/116/">116</a><a class="page-number" href="/page/117/">117</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/116/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/114/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/113/">113</a><a class="page-number" href="/page/114/">114</a><span class="page-number current">115</span><a class="page-number" href="/page/116/">116</a><a class="page-number" href="/page/117/">117</a><span class="space">&hellip;</span><a class="page-number" href="/page/130/">130</a><a class="extend next" rel="next" href="/page/116/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -417,6 +395,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">11、Flask笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">13、Go导航</a>
               </li>
              
               <li class="article-tag-list-item">

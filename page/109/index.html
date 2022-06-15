@@ -152,81 +152,51 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-21、包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-22、软件开发的目录规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/21%E3%80%81%E5%8C%85/">21、包</a>
+      <a class="article-title" href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">22、软件开发的目录规范</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/21%E3%80%81%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/" class="archive-article-date">
+  	<time datetime="2018-05-13T06:04:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>包的介绍</p>
-<p>包的使用</p>
+        <h1 id="软件开发的目录规范"><a href="#软件开发的目录规范" class="headerlink" title="软件开发的目录规范"></a>软件开发的目录规范</h1><p>为了提高程序的可读性与可维护性，我们应该为软件设计良好的目录结构，这与规范的编码风格同等重要。软件的目录规范并无硬性标准，只要清晰可读即可，假设你的软件名为foo，笔者推荐目录结构如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Foo/</span><br><span class="line">|-- core/</span><br><span class="line">|	|--core.py</span><br><span class="line">|</span><br><span class="line">|-- api/</span><br><span class="line">|	|-- api.py</span><br><span class="line">|</span><br><span class="line">|-- db/</span><br><span class="line">|	|-- db_handle.py</span><br><span class="line">|</span><br><span class="line">|--lib/</span><br><span class="line">|	|-- common.py</span><br><span class="line">|</span><br><span class="line">|--conf/</span><br><span class="line">|	|-- settings.py</span><br><span class="line">|</span><br><span class="line">|-- run.py</span><br><span class="line">|-- setup.py</span><br><span class="line">|-- requirements.txt</span><br><span class="line">|--READEME</span><br></pre></td></tr></table></figure>
+
+<p>简要解释一下：</p>
 <ul>
-<li>导入包与__init__.py</li>
-<li>绝对导入与相对导入</li>
-<li>from包import*</li>
+<li>core&#x2F;	存放业务逻辑相关代码</li>
+<li>api&#x2F;    存放接口文件，接口主要用于为业务逻辑提供数据操作</li>
+<li>db&#x2F;    存放操作数据库相关文件，主要用于与数据库交互</li>
+<li>lib&#x2F;    存放程序中常用的自定义模块</li>
+<li>conf    存放配置文件</li>
+<li>run.py    程序的启动文件，一般放在项目的根目录下，因为在运行时会默认将运行文件所在的文件夹作为sys.path的第一个路径，这样就省去了处理环境变量的步骤</li>
+<li>setup.py    安装、部署、打包的脚本</li>
+<li>requirements.txt    存放软件依赖的外部Python包列表</li>
+<li>README    项目说明文件</li>
 </ul>
-<h1 id="一、包的介绍"><a href="#一、包的介绍" class="headerlink" title="一、包的介绍"></a>一、包的介绍</h1><p>随着模块数目的增多，把所有模块不加区分地放到一起也是极不合理的，于是python为我们提供了一种把模块组织到一起的方法，即创建一个包。包就是一个含有__init__.py文件的文件夹，文件夹内可以组织子模块或子包，例如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pool/</span><br><span class="line">|——__init__.py</span><br><span class="line">|——futures</span><br><span class="line">|	|——__init__.py</span><br><span class="line">|	|——process.py</span><br><span class="line">|	|——thread.py</span><br><span class="line">└── versions.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>需要强调的是</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 在python3中，即使包下没有__init__.py文件，import 包仍然不会报错，而在python2中，包下一定要有该文件，否则import 包报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 创建包的目的不是为了运行，而是被导入使用，记住，包只是模块的一种形式而已，包的本质就是一种模块</span></span><br></pre></td></tr></table></figure>
-
-<p>接下来我们就以包pool为例来介绍包的使用，包内各文件内容如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ProcessPoolExecutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">submt</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;ProcessPool submit&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"><span class="comment"># thread.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadPoolExcutor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_workers</span>):</span><br><span class="line">        self.max_workers = max_workers</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="comment"># versions.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;check versions&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># __init__.py文件内容均为空</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="二、包的使用"><a href="#二、包的使用" class="headerlink" title="二、包的使用"></a>二、包的使用</h1><h2 id="1-导入包与-init-py"><a href="#1-导入包与-init-py" class="headerlink" title="1.导入包与__init__.py"></a>1.导入包与__init__.py</h2><p>包属于模块的一种，因而包以及包内的模块均是用来被导入使用的，而绝非被直接执行，首次导入包（如import pool）同样会做三件事：</p>
-<p>1.执行包下的__init__.py文件</p>
-<p>2.产生一个新的名称空间用于存放__init__.py执行过程中产生的名字</p>
-<p>3.在当前执行文件所在的名称空间中得到一个名字pool，该名子指向__init__.py的名称空间，例如pool.xxx和poo.yyy中的xxx和yyy都是来自于pool下的__init__.py，也就是说导入包时并不会导入包下所有的子模块与子包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.versions.check()  <span class="comment"># 抛出异常AttributeError</span></span><br><span class="line">pool.futures.process.ProcessExecutor(<span class="number">3</span>)  <span class="comment"># 抛出异常AttributeError</span></span><br></pre></td></tr></table></figure>
-
-<p>pool.versions.check()要求pool下有名字versions，进而pool.versions下有名字check。pool.versions下已经有名字check了，所以问题出现在pool下没有名字versions，这就需要在pool下的__init__.py中导入模块versions</p>
-<p><strong>强调</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>关于包相关的导入语句也分为<span class="keyword">import</span>和<span class="keyword">from</span>...<span class="keyword">import</span>...两种，但是无论哪种，无论在什么位置，在导入时都必须遵循一个原则：凡是在导入时带点的，点的左边都必须是一个包，否则非法。可以带有一连串的点，如<span class="keyword">import</span> 顶级包.子包.子模块，但都必须遵循这个原则。但对于导入后，在使用时就没有这种限制了，点的左边可以是包，模块，函数，类</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-绝对导入与相对导入"><a href="#2-绝对导入与相对导入" class="headerlink" title="2.绝对导入与相对导入"></a>2.绝对导入与相对导入</h2><p>针对包内的模块之间互相导入，导入的方式有两种</p>
-<p>1.绝对导入：以顶级包为起始</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
-
-<p>2.相对导入：代表当前文件所在的目录，..代表当前目录的上一级目录，依次类推</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pool 下的__init__.py</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> versions</span><br></pre></td></tr></table></figure>
-
-<p>同理，针对pool.futures.process.ProcessPoolExecutor(3)，则需要</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#操作pool下的__init__.py，保证pool.futures</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> futures <span class="comment">#或from pool import futures</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#操作futrues下的__init__.py，保证pool.futures.process</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> process <span class="comment">#或from pool.futures import process</span></span><br></pre></td></tr></table></figure>
-
-<p>相对导入只能用from module import symbol的形式,import ..versions语法是不对的，且symbol只能是一个明确的名字</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pool <span class="keyword">import</span> futures.process  <span class="comment"># 语法错误</span></span><br><span class="line"><span class="keyword">from</span> pool.futures <span class="keyword">import</span> process  <span class="comment"># 语法正确</span></span><br></pre></td></tr></table></figure>
-
-<p>针对包内部模块之间的相互导入推荐使用相对导入，需要特别强调：</p>
-<p>1、相对导入只能在包内部使用，用相对导入不同目录下的模块是非法的</p>
-<p>2、无论是import还是from-import，但凡是在导入时带点的，点的左边必须是包,否则语法错误</p>
-<h2 id="3-总结包的使用"><a href="#3-总结包的使用" class="headerlink" title="3.总结包的使用"></a>3.总结包的使用</h2><p>总结包的使用需要牢记三点<br>1、导包就是在导包下__init__.py文件<br>2、包内部的导入应该使用相对导入，相对导入也只能在包内部使用，而且…取上一级不能出包<br>3、<br>    使用语句中的点代表的是访问属性<br>    m.n.x —-&gt; 向m要n，向n要x<br>    而导入语句中的点代表的是路径分隔符<br>    import a.b.c –&gt; a&#x2F;b&#x2F;c，文件夹下a下有子文件夹b，文件夹b下有子文件或文件夹c<br>    所以导入语句中点的左边必须是一个包</p>
-<h2 id="4-from包和import"><a href="#4-from包和import" class="headerlink" title="4.from包和import *"></a>4.from包和import *</h2><p>在使用包时同样支持from pool.futures import * ，毫无疑问<em>代表的是futures下__init__.py中所有的名字，通用是用变量__all__来控制</em>代表的意思</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#futures下的__init__.py</span></span><br><span class="line">__all__ = [<span class="string">&#x27;process&#x27;</span>, <span class="string">&#x27;thread&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>最后说明一点，包内部的目录结构通常是包的开发者为了方便自己管理和维护代码而创建的，这种目录结构对包的使用者往往是无用的，此时通过操作__init__.py可以“隐藏”包内部的目录结构，降低使用难度，比如想要让使用者直接使用</p>
-<p>pool下的__init__.py中导入子模块或子包</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .versions <span class="keyword">import</span> check</span><br><span class="line"><span class="keyword">from</span> .futures.process <span class="keyword">import</span> ProcessPoolExecutor</span><br><span class="line"><span class="keyword">from</span> .futures.thread <span class="keyword">import</span> ThreadPoolExecutor</span><br></pre></td></tr></table></figure>
+<p>除此之外，有一些方案给出了更加多的内容，比如LICENSE.txt,ChangeLog.txt文件等，主要是在项目需要开源时才会用得到，请读者自行查阅</p>
+<p>关于README的内容，这个应该是每个项目都应该有的一个文件，目的是能简要描述该项目的信息，让读者快速了解这个项目，它需要说明以下几个事项：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、软件定位，软件的基本功能</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、运行代码的方法：安装环境、启动命令等</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、简要的使用说明</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、代码目录结构说明，更详细地可以说明软件的基本原理</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>、常见问题说明</span><br></pre></td></tr></table></figure>
 
 
 
-<p>程序运行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pool</span><br><span class="line"></span><br><span class="line">pool.check()</span><br><span class="line">pool.ProcessPoolExecutor(<span class="number">3</span>)</span><br><span class="line">pool.ThreadPoolExecutor(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
+<p>关于setup.py和requirements.txt:</p>
+<p>一般来说，用setup.py来管理代码的打包、安装、部署问题。业界标准的写法是用python流行的打包工具setuptools来管理这些事情，这种方式普遍应用于开源项目中。不过这里的核心思想不是用标准化的工具来解决这些问题，而是说，一个项目一定要有一个安装部署工具，能快速便捷的在一台新机器上将环境装好、代码部署好和将程序运行起来。</p>
+<p>requirements.txt文件的存在是为了方便开发者维护软件的依赖库。我们需要将开发过程中依赖库的信息添加进该文件中，避免在setup.py安装依赖库时漏掉软件包，同时也方便了使用者明确项目引用了哪些Python包。</p>
+<p>这个文件的格式是每一行包含一个包依赖的说明，通常是flask&gt;&#x3D;0.10这种格式，要求是这个格式能被pip识别，这样就可以简单的通过 pip install -r requirements.txt来把所有Python依赖库都装好了</p>
 
       
 
@@ -250,7 +220,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/21%E3%80%81%E5%8C%85/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">展开全文 >></a>
         </p>
       
 
@@ -282,7 +252,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/108/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/107/">107</a><a class="page-number" href="/page/108/">108</a><span class="page-number current">109</span><a class="page-number" href="/page/110/">110</a><a class="page-number" href="/page/111/">111</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/110/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/108/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/107/">107</a><a class="page-number" href="/page/108/">108</a><span class="page-number current">109</span><a class="page-number" href="/page/110/">110</a><a class="page-number" href="/page/111/">111</a><span class="space">&hellip;</span><a class="page-number" href="/page/130/">130</a><a class="extend next" rel="next" href="/page/110/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -410,6 +380,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">11、Flask笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">13、Go导航</a>
               </li>
              
               <li class="article-tag-list-item">

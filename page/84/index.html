@@ -152,44 +152,98 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-day08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux基础--day01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/02/day08/">08、jQuery（阻止后续事件执行、事件冒泡、文档加载、事件委托、动画效果）、基于jQuery的前端框架bootstrap（布局容器、栅格系统、图标）</a>
+      <a class="article-title" href="/2018/06/13/Linux%E5%9F%BA%E7%A1%80--day01/">01、虚拟机安装、网络配置、Linux操作系统安装、xshell安装</a>
     </h1>
   
 
         
-        <a href="/2018/06/02/day08/" class="archive-article-date">
-  	<time datetime="2018-06-02T06:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
+        <a href="/2018/06/13/Linux%E5%9F%BA%E7%A1%80--day01/" class="archive-article-date">
+  	<time datetime="2018-06-13T06:04:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="阻止后续事件执行"><a href="#阻止后续事件执行" class="headerlink" title="阻止后续事件执行"></a>阻止后续事件执行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#d1&#x27;</span>).click(function (e) &#123;</span><br><span class="line">            alert(<span class="number">123</span>)</span><br><span class="line">            // <span class="number">1.</span>阻止该标签后续事件的执行 方式<span class="number">1</span>   推荐</span><br><span class="line">            // <span class="keyword">return</span> false</span><br><span class="line">            // <span class="number">2.</span>阻止该标签后续事件的执行 方式<span class="number">2</span>   了解</span><br><span class="line">            // e.preventDefault()</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+        <h2 id="虚拟机安装"><a href="#虚拟机安装" class="headerlink" title="虚拟机安装"></a>虚拟机安装</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">双击虚拟机软件 ---&gt; 下一步 直至安装完毕</span><br><span class="line"></span><br><span class="line">vmware16 密钥：ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br></pre></td></tr></table></figure>
 
-<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子标签的事件完成后会向父标签提交信号，父标签如有相同类型事件则也会执行，然后再向父标签的父标签提交信号。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面有三个事件，如果是div套p套span标签，那么当点击span时，会依次触发span、p、div标签绑定的点击事件</span></span><br><span class="line"><span class="comment"># 依次会弹出span、p、div</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;div&#x27;</span>).click(function (e) &#123;</span><br><span class="line">	alert(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;p&#x27;</span>).click(function (e) &#123;</span><br><span class="line">	alert(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">	// 阻止事件冒泡的方式<span class="number">1</span></span><br><span class="line">	// <span class="keyword">return</span> false</span><br><span class="line">	// 阻止事件冒泡的方式<span class="number">2</span></span><br><span class="line">	// e.stopPropagation()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;span&#x27;</span>).click(function (e) &#123;</span><br><span class="line">	alert(<span class="string">&#x27;span&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208102529.png" alt="微信截图_20211208102529"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208102719.png" alt="微信截图_20211208102719"></p>
+<h2 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h2><p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103459.png" alt="微信截图_20211208103459"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103520.png" alt="微信截图_20211208103520"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103520.png" alt="微信截图_20211208103520"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103657.png" alt="微信截图_20211208103657"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103734.png" alt="微信截图_20211208103734"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103839.png" alt="微信截图_20211208103839"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208103909.png" alt="微信截图_20211208103909"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104113.png" alt="微信截图_20211208104113"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104202.png" alt="微信截图_20211208104202"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104214.png" alt="微信截图_20211208104214"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104400.png" alt="微信截图_20211208104400"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104445.png" alt="微信截图_20211208104445"></p>
+<h2 id="Linux操作系统安装"><a href="#Linux操作系统安装" class="headerlink" title="Linux操作系统安装"></a>Linux操作系统安装</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、下载系统安装包软件</span><br><span class="line">	下载网址：https://developer.aliyun.com/mirror/</span><br><span class="line">    下载链接：https://mirrors.aliyun.com/centos/<span class="number">7.9</span><span class="number">.2009</span>/isos/x86_64/CentOS-<span class="number">7</span>-x86_64-DVD-<span class="number">2009.</span>iso</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、安装操作系统</span><br><span class="line">    <span class="number">1</span>、修改好网络</span><br><span class="line">	   <span class="number">1</span>、配置windows网络</span><br><span class="line">        <span class="number">2</span>、配置虚拟机网络</span><br><span class="line">    <span class="number">2</span>、安装Linux操作系统</span><br><span class="line">    	<span class="number">1</span>、创建虚拟机</span><br><span class="line">        <span class="number">2</span>、安装操作系统</span><br><span class="line">        	修改内核参数：net.ifnames=<span class="number">0</span> biosdevname=<span class="number">0</span></span><br><span class="line"><span class="number">3</span>、安装远程连接工具（xshell）</span><br><span class="line">	下一步直至安装完毕</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
-<h3 id="文档加载"><a href="#文档加载" class="headerlink" title="文档加载"></a>文档加载</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 原生js文档加载方式</span><br><span class="line">	window.onload = function () &#123;&#125;</span><br><span class="line">// jQuery文档加载方式01</span><br><span class="line">	$(document).ready(function () &#123;&#125;)</span><br><span class="line">// jQuery文档加载方式02</span><br><span class="line">	$(function()&#123;&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将body内部所有的点击事件委托给button按钮执行</span></span><br><span class="line">$(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>,<span class="string">&#x27;button&#x27;</span>,<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 创建一个button标签</span></span><br><span class="line">    <span class="keyword">var</span> btnEle = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;button&#x27;</span>)</span><br><span class="line">    <span class="comment">// 设置内部文本</span></span><br><span class="line">    btnEle.<span class="property">innerText</span> = <span class="string">&#x27;点我&#x27;</span></span><br><span class="line">    <span class="comment">// 将button标签添加到body内部</span></span><br><span class="line">    $(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">append</span>(btnEle)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">将事件复制有两个方式：</span></span><br><span class="line"><span class="comment">	1、clone 后面参数加true</span></span><br><span class="line"><span class="comment">	2、事件委托</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#d1&quot;</span>).on(<span class="string">&quot;click&quot;</span>, function () &#123;</span><br><span class="line">  var newI = document.createElement(<span class="string">&quot;i&quot;</span>);</span><br><span class="line">  newI.innerText = <span class="string">&quot;+1&quot;</span>;</span><br><span class="line">  $(this).append(newI);</span><br><span class="line">  $(this).children(<span class="string">&quot;i&quot;</span>).animate(&#123;</span><br><span class="line">    opacity: <span class="number">0</span></span><br><span class="line">  &#125;, <span class="number">1000</span>)  // 创建的i标签（+<span class="number">1</span>效果）<span class="number">1</span>秒后消失（变透明）</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="前端框架bootstrap"><a href="#前端框架bootstrap" class="headerlink" title="前端框架bootstrap"></a>前端框架bootstrap</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Bootstrap框架</span><br><span class="line">	<span class="number">2.</span>X <span class="number">3.</span>X <span class="number">4.</span>X  <span class="comment"># 推荐使用3.X版本</span></span><br><span class="line"></span><br><span class="line">使用框架调整页面样式一般都是操作标签的<span class="keyword">class</span>属性即可</span><br><span class="line"></span><br><span class="line">bootstrap需要依赖于jQuery才能正常执行(动态效果)</span><br><span class="line"></span><br><span class="line">引入方式</span><br><span class="line">	本地引入(最完整的)</span><br><span class="line">    	<span class="number">1.</span>引入jQuery</span><br><span class="line">    	<span class="number">2.</span>引入bootstrap的css文件</span><br><span class="line">    	<span class="number">3.</span>引入bootstrap的js文件</span><br><span class="line">    CDN引入</span><br><span class="line">    	<span class="number">1.</span>引入jQuery CDN</span><br><span class="line">    	<span class="number">2.</span>引入bootstrap css的 CDN</span><br><span class="line">    	<span class="number">3.</span>引入bootstrap js的 CDN</span><br><span class="line"></span><br><span class="line">注意：第一次引入bootstrap框架最好从本地引入，防止写代码没有提示</span><br><span class="line">	让pycharm记住bootstrap的关键字</span><br></pre></td></tr></table></figure>
-
-<h3 id="布局容器"><a href="#布局容器" class="headerlink" title="布局容器"></a>布局容器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container		左右留白</span><br><span class="line">container-fluid  左右不留白</span><br></pre></td></tr></table></figure>
-
-<h3 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">row			行  <span class="comment"># 一个row就是一行 一行是固定的12份</span></span><br><span class="line">col-md-<span class="number">1</span>	占<span class="number">1</span>份 md: middle</span><br><span class="line">col-sm-n	占n份 sm: small</span><br><span class="line">col-xs-n	占n份 xs: extra small(特小)</span><br><span class="line">col-lg-n	占n份 lg: large</span><br></pre></td></tr></table></figure>
-
-<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bootstrap自带的</span><br><span class="line">	通过span标签的<span class="keyword">class</span>属性值来选择不同图标</span><br><span class="line">fontawesome</span><br><span class="line">	专门提供图标的库  <span class="comment"># 完美兼容bootstrap框架</span></span><br><span class="line">	通过i标签的<span class="keyword">class</span>属性值选择不同图标</span><br></pre></td></tr></table></figure>
-
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104743.png" alt="微信截图_20211208104743"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104909.png" alt="微信截图_20211208104909"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208104924.png" alt="微信截图_20211208104924"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208105046.png" alt="微信截图_20211208105046"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208105219.png" alt="微信截图_20211208105219"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208105400.png" alt="微信截图_20211208105400"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208105537.png" alt="微信截图_20211208105537"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208105638.png" alt="微信截图_20211208105638"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110144.png" alt="微信截图_20211208110144"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110204.png" alt="微信截图_20211208110204"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110217.png" alt="微信截图_20211208110217"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110341.png" alt="微信截图_20211208110341"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110532.png" alt="微信截图_20211208110532"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110550.png" alt="微信截图_20211208110550"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110602.png" alt="微信截图_20211208110602"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110629.png" alt="微信截图_20211208110629"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208110745.png" alt="微信截图_20211208110745"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208111304.png" alt="微信截图_20211208111304"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208111408.png" alt="微信截图_20211208111408"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208113903.png" alt="微信截图_20211208113903"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114007.png" alt="微信截图_20211208114007"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114033.png" alt="微信截图_20211208114033"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114119.png" alt="微信截图_20211208114119"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114253.png" alt="微信截图_20211208114253"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114459.png" alt="微信截图_20211208114459"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114651.png" alt="微信截图_20211208114651"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114833.png" alt="微信截图_20211208114833"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114846.png" alt="微信截图_20211208114846"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208114953.png" alt="微信截图_20211208114953"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208115212.png" alt="微信截图_20211208115212"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208115358.png" alt="微信截图_20211208115358"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208115413.png" alt="微信截图_20211208115413"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208115438.png" alt="微信截图_20211208115438"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208115855.png" alt="微信截图_20211208115855"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208115921.png" alt="微信截图_20211208115921"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120050.png" alt="微信截图_20211208120050"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120113.png" alt="微信截图_20211208120113"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120130.png" alt="微信截图_20211208120130"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120201.png" alt="微信截图_20211208120201"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120239.png" alt="微信截图_20211208120239"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120311.png" alt="微信截图_20211208120311"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120427.png" alt="微信截图_20211208120427"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208120907.png" alt="微信截图_20211208120907"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208121151.png" alt="微信截图_20211208121151"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208121606.png" alt="微信截图_20211208121606"></p>
+<h2 id="xshell安装"><a href="#xshell安装" class="headerlink" title="xshell安装"></a>xshell安装</h2><p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208121745.png" alt="微信截图_20211208121745"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208122027.png" alt="微信截图_20211208122027"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208122101.png" alt="微信截图_20211208122101"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208122135.png" alt="微信截图_20211208122135"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208122151.png" alt="微信截图_20211208122151"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208122205.png" alt="微信截图_20211208122205"></p>
+<p><img src="https://gitee.com/jane-eyre-cx/blog_image/raw/master/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208122218.png" alt="微信截图_20211208122218"></p>
 
       
 
@@ -203,7 +257,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">4、前端基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">2、Linux基础</a>
         		</li>
       		
 		</ul>
@@ -213,7 +267,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/02/day08/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/13/Linux%E5%9F%BA%E7%A1%80--day01/">展开全文 >></a>
         </p>
       
 
@@ -245,7 +299,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/83/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/82/">82</a><a class="page-number" href="/page/83/">83</a><span class="page-number current">84</span><a class="page-number" href="/page/85/">85</a><a class="page-number" href="/page/86/">86</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/85/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/83/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/82/">82</a><a class="page-number" href="/page/83/">83</a><span class="page-number current">84</span><a class="page-number" href="/page/85/">85</a><a class="page-number" href="/page/86/">86</a><span class="space">&hellip;</span><a class="page-number" href="/page/130/">130</a><a class="extend next" rel="next" href="/page/85/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -373,6 +427,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">11、Flask笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">13、Go导航</a>
               </li>
              
               <li class="article-tag-list-item">

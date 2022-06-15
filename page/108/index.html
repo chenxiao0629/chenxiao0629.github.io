@@ -152,51 +152,121 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-22、软件开发的目录规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-23、面向对象编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">22、软件开发的目录规范</a>
+      <a class="article-title" href="/2018/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">23、面向对象编程</a>
     </h1>
   
 
         
-        <a href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/" class="archive-article-date">
-  	<time datetime="2018-05-13T06:04:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
+        <a href="/2018/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2018-05-13T06:04:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="软件开发的目录规范"><a href="#软件开发的目录规范" class="headerlink" title="软件开发的目录规范"></a>软件开发的目录规范</h1><p>为了提高程序的可读性与可维护性，我们应该为软件设计良好的目录结构，这与规范的编码风格同等重要。软件的目录规范并无硬性标准，只要清晰可读即可，假设你的软件名为foo，笔者推荐目录结构如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Foo/</span><br><span class="line">|-- core/</span><br><span class="line">|	|--core.py</span><br><span class="line">|</span><br><span class="line">|-- api/</span><br><span class="line">|	|-- api.py</span><br><span class="line">|</span><br><span class="line">|-- db/</span><br><span class="line">|	|-- db_handle.py</span><br><span class="line">|</span><br><span class="line">|--lib/</span><br><span class="line">|	|-- common.py</span><br><span class="line">|</span><br><span class="line">|--conf/</span><br><span class="line">|	|-- settings.py</span><br><span class="line">|</span><br><span class="line">|-- run.py</span><br><span class="line">|-- setup.py</span><br><span class="line">|-- requirements.txt</span><br><span class="line">|--READEME</span><br></pre></td></tr></table></figure>
-
-<p>简要解释一下：</p>
+        <p>对象的概念</p>
+<p>类与对象</p>
+<p>面对对象编程</p>
 <ul>
-<li>core&#x2F;	存放业务逻辑相关代码</li>
-<li>api&#x2F;    存放接口文件，接口主要用于为业务逻辑提供数据操作</li>
-<li>db&#x2F;    存放操作数据库相关文件，主要用于与数据库交互</li>
-<li>lib&#x2F;    存放程序中常用的自定义模块</li>
-<li>conf    存放配置文件</li>
-<li>run.py    程序的启动文件，一般放在项目的根目录下，因为在运行时会默认将运行文件所在的文件夹作为sys.path的第一个路径，这样就省去了处理环境变量的步骤</li>
-<li>setup.py    安装、部署、打包的脚本</li>
-<li>requirements.txt    存放软件依赖的外部Python包列表</li>
-<li>README    项目说明文件</li>
+<li>类的定义与实例化</li>
+<li>属性访问</li>
+<li><ul>
+<li>类属性与对象属性</li>
+<li>属性查找顺序与绑方法</li>
+<li>小结</li>
 </ul>
-<p>除此之外，有一些方案给出了更加多的内容，比如LICENSE.txt,ChangeLog.txt文件等，主要是在项目需要开源时才会用得到，请读者自行查阅</p>
-<p>关于README的内容，这个应该是每个项目都应该有的一个文件，目的是能简要描述该项目的信息，让读者快速了解这个项目，它需要说明以下几个事项：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、软件定位，软件的基本功能</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、运行代码的方法：安装环境、启动命令等</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、简要的使用说明</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、代码目录结构说明，更详细地可以说明软件的基本原理</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>、常见问题说明</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="一、对象的概念"><a href="#一、对象的概念" class="headerlink" title="一、对象的概念"></a>一、对象的概念</h1><p>”面向对象“的核心是“对象”二字，而对象的精髓在于“整合“，什么意思？</p>
+<p>所有的程序都是由”数据”与“功能“组成，因而编写程序的本质就是定义出一系列的数据，然后定义出一系列的功能来对数据进行操作。在学习”对象“之前，程序中的数据与功能是分离开的，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据：name、age、sex</span></span><br><span class="line">name = <span class="string">&#x27;lili&#x27;</span></span><br><span class="line">age = <span class="string">&#x27;18&#x27;</span></span><br><span class="line">sex = <span class="string">&#x27;female&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 功能：tell_info</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tell_info</span>(<span class="params">name,age,sex</span>): </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&lt;%s:%s:%s&gt;&#x27;</span> %(name,age,sex))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时若想执行查看个人信息的功能，需要同时拿来两样东西，一类是功能tell_info，另外一类则是多个数据name、age、sex，然后才能执行，非常麻烦</span></span><br><span class="line">tell_info(name,age,sex)</span><br></pre></td></tr></table></figure>
+
+<p>在学习了“对象”之后，我们就有了一个容器，该容器可以盛放数据与功能，所以我们可以说：对象是把数据与功能整合到一起的产物，或者说”对象“就是一个盛放数据与功能的容器&#x2F;箱子&#x2F;盒子。</p>
+<p>如果把”数据“比喻为”睫毛膏“、”眼影“、”唇彩“等化妆所需要的原材料；把”功能“比喻为眼线笔、眉笔等化妆所需要的工具，那么”对象“就是一个彩妆盒，彩妆盒可以把”原材料“与”工具“都装到一起</p>
+<p>如果我们把”化妆“比喻为要执行的业务逻辑，此时只需要拿来一样东西即可，那就是彩妆盒，因为彩妆盒里整合了化妆所需的所有原材料与功能，这比起你分别拿来原材料与功能才能执行，要方便的多。</p>
+<p>在了解了对象的基本概念之后，理解面向对象的编程方式就相对简单很多了，面向对象编程就是要造出一个个的对象，把原本分散开的相关数据与功能整合到一个个的对象里，这么做既方便使用，也可以提高程序的解耦合程度，进而提升了程序的可扩展性（需要强调的是，软件质量属性包含很多方面，面向对象解决的仅仅只是扩展性问题）</p>
+<p><img src="https://pic1.zhimg.com/v2-be68cd9e27b83c937cf44dbe7a2cf56c_r.jpg" alt="preview"></p>
+<h1 id="二、类与对象"><a href="#二、类与对象" class="headerlink" title="二、类与对象"></a>二、类与对象</h1><p>类即类别&#x2F;种类，是面向对象分析和设计的基石，如果多个对象有相似的数据与功能，那么该多个对象就属于同一种类。有了类的好处是：我们可以把同一类对象相同的数据与功能存放到类里，而无需每个对象都重复存一份，这样每个对象里只需存自己独有的数据即可，极大地节省了空间。所以，如果说对象是用来存放数据与功能的容器，那么类则是用来存放多个对象相同的数据与功能的容器</p>
+<p><img src="https://pic2.zhimg.com/v2-0b1c2138d316307c0c830aa1df3aa1e1_r.jpg" alt="preview"></p>
+<p> 综上所述，虽然我们是先介绍对象后介绍类，但是需要强调的是：在程序中，必须要事先定义类，然后再调用类产生对象（调用类拿到的返回值就是对象）。产生对象的类与对象之间存在关联，这种关联指的是：对象可以访问到类中共有的数据与功能，所以类中的内容仍然是属于对象的，类只不过是一种节省空间、减少代码冗余的机制，面向对象编程最终的核心仍然是去使用对象</p>
+<p> 在了解了类与对象这两大核心概念之后，我们就可以来介绍一下面向对象编程啦</p>
+<h1 id="三、面向对象编程"><a href="#三、面向对象编程" class="headerlink" title="三、面向对象编程"></a>三、面向对象编程</h1><h2 id="1、类的定义与实例化"><a href="#1、类的定义与实例化" class="headerlink" title="1、类的定义与实例化"></a>1、类的定义与实例化</h2><p>我们以开发一个清华大学的选课系统为例，来简单介绍基于面向对象的思想如何编写程序</p>
+<p>面向对象的基本思路就是把程序中要用到的、相关联的数据与功能整合到对象里，然后再去使用，但程序中要用到的数据以及功能那么多，如何找到相关连的呢？我需要先提取选课系统里的角色：学生、老师、课程等，然后显而易见的是：学生有学生相关的数据于功能，老师有老师相关的数据与功能，我们单以学生为例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学校的数据有</span></span><br><span class="line">学校</span><br><span class="line">名字</span><br><span class="line">年龄</span><br><span class="line">性别</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生的功能有</span></span><br><span class="line">选课</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">详细的：</span><br><span class="line"><span class="comment"># 学生1：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=李建刚</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">28</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生2：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=王大力</span><br><span class="line">        性别=女</span><br><span class="line">        年龄=<span class="number">18</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生3：</span></span><br><span class="line">    数据:</span><br><span class="line">        学校=清华大学</span><br><span class="line">        姓名=牛嗷嗷</span><br><span class="line">        性别=男</span><br><span class="line">        年龄=<span class="number">38</span></span><br><span class="line">    功能：</span><br><span class="line">        选课</span><br></pre></td></tr></table></figure>
+
+<p>我们可以总结出一个学生类，用来存放学生们相同的数据与功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学生类</span></span><br><span class="line">	相同的特征：</span><br><span class="line">    	学校 = 清华大学</span><br><span class="line">    相同发的功能：</span><br><span class="line">    	选课</span><br></pre></td></tr></table></figure>
+
+<p>基于上述分析的结果，我们接下来需要做的就是在程序中定义出类，然后调用类产生对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
+
+<p>类体最常见的是变量的定义和函数的定义，但其实类体可以包含任意的Python代码，类体的代码在类定义阶段就会执行，因而会产生新的名称空间用来存放类中定义的名字，可以大一Student.__dict__来查看类这个容器内盛放的东西</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(Student.__dict__)</span><br><span class="line">&#123;..., <span class="string">&#x27;school&#x27;</span>: <span class="string">&#x27;清华大学&#x27;</span>, <span class="string">&#x27;choose&#x27;</span>: &lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;, ...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用类的过程称为将类实例化，拿到的返回值就是程序中的对象，或称为一个实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1=Student() <span class="comment"># 每实例化一次Student类就得到一个学生对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2=Student()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3=Student()</span><br></pre></td></tr></table></figure>
+
+<p>如此stu1、stu2、stu3全都一样了（只有类中共有的内容，而没有各自独有的数据），想在实例化的过程中就为三位学生定制各自独有的数据：姓名，性别，年龄，需要我们在类内部新增一个__init__方法,如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    school = <span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 该方法会在对象产生之后自动执行，专门为对象进行初始化操作，可以有任意代码，但一定不能返回非None的值</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.sex = sex</span><br><span class="line">        self.age = age</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s is choosing a course&#x27;</span> % self.name)</span><br></pre></td></tr></table></figure>
+
+<p>然后我们重新实例化三位学生</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1 = Student(<span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;男&#x27;</span> , <span class="number">28</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu2 = Student(<span class="string">&#x27;王大力&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">38</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu3 = Student(<span class="string">&#x27;牛姐&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
+<p>单拿stu1的产生过程来分析，调用类会先产生一个空对象stu1，然后将stu1连同调用类时括号内参数一起传给Student.<strong>init</strong>(stu1,’李建刚’,28)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, sex, age</span>):</span><br><span class="line">    self.name = name  <span class="comment"># stu1.name = &#x27;李建刚&#x27;</span></span><br><span class="line">    self.sex = sex  <span class="comment"># stu1.sex = &#x27;男&#x27;</span></span><br><span class="line">    self.age = age  <span class="comment"># stu1.age = 28</span></span><br></pre></td></tr></table></figure>
+
+<p>会产生对象名称空间，同样可以用__dict__查看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.__dict__</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;李建刚&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>: <span class="string">&#x27;男&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">28</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，我们造出了三个对象与一个类，对象存放各自独有的数据，类中存放对象们共有的内容</p>
+<p><img src="https://pic2.zhimg.com/80/v2-c3bb7aefce6ffee1029b1ae5dee72689_720w.jpg" alt="img"></p>
+<p>存的目的是为了用，那么如何访问对象或者类中存放的内容呢？</p>
+<h2 id="2、属性访问"><a href="#2、属性访问" class="headerlink" title="2、属性访问"></a>2、属性访问</h2><h3 id="类属性与对象属性"><a href="#类属性与对象属性" class="headerlink" title="类属性与对象属性"></a>类属性与对象属性</h3><p>在类中定义的名字，都是类的属性，细说的话，类有两种属性：数据属性和函数属性，可以通过__dict__访问属性的值，比如Student.<strong>dict</strong>[‘school’]，但Python提供了专门的属性访问语法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.school</span><br><span class="line"><span class="string">&#x27;清华大学&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Student.choose</span><br><span class="line">&lt;function Student.choose at <span class="number">0x1018a2950</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 除了查看属性外，我们还可以使用Student.attrib = value(修改或新增属性)，用del Student.attrib删除属性</span></span><br></pre></td></tr></table></figure>
+
+<p>操作对象的属性也是一样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.name  <span class="comment"># 查看，等同于obj1.__dict__[&#x27;name&#x27;]</span></span><br><span class="line"><span class="string">&#x27;李建刚&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.course = <span class="string">&#x27;python&#x27;</span>  <span class="comment"># 新增，等同于obj1.__dict__[‘course&#x27;]=&#x27;python&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>stu1.age=<span class="number">38</span> <span class="comment"># 修改，等同于obj1.__dict__[‘age&#x27;]=38</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> obj1.course</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性查找顺序与绑定方法"><a href="#属性查找顺序与绑定方法" class="headerlink" title="属性查找顺序与绑定方法"></a>属性查找顺序与绑定方法</h3><p>对象的名称空间里只存放着对象独有的属性，而对象们相似的属性是存放于类中的。对象在访问属性时，会优先从对象本身的__dict__中查找，未找到，则去类的__dict__中查找</p>
+<p>类中定义的变量是类的数据属性，是共享给所有对象用的，指向相同的内存地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># id都一样</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.school)) <span class="comment"># 4301108704</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.school)) <span class="comment"># 4301108704</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.school)) <span class="comment"># 4301108704</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p>关于setup.py和requirements.txt:</p>
-<p>一般来说，用setup.py来管理代码的打包、安装、部署问题。业界标准的写法是用python流行的打包工具setuptools来管理这些事情，这种方式普遍应用于开源项目中。不过这里的核心思想不是用标准化的工具来解决这些问题，而是说，一个项目一定要有一个安装部署工具，能快速便捷的在一台新机器上将环境装好、代码部署好和将程序运行起来。</p>
-<p>requirements.txt文件的存在是为了方便开发者维护软件的依赖库。我们需要将开发过程中依赖库的信息添加进该文件中，避免在setup.py安装依赖库时漏掉软件包，同时也方便了使用者明确项目引用了哪些Python包。</p>
-<p>这个文件的格式是每一行包含一个包依赖的说明，通常是flask&gt;&#x3D;0.10这种格式，要求是这个格式能被pip识别，这样就可以简单的通过 pip install -r requirements.txt来把所有Python依赖库都装好了</p>
+<p>类中定义的函数是类的函数属性，类可以使用，但必须遵循函数的参数规则，有几个参数需要传几个参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student.choose(stu1) <span class="comment"># 李建刚 is choosing a course</span></span><br><span class="line">Student.choose(stu2) <span class="comment"># 王大力 is choosing a course</span></span><br><span class="line">Student.choose(stu3) <span class="comment"># 牛嗷嗷 is choosing a course</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>但其实类中定义的函数主要是给对象使用的，而且是绑定给对象的，虽然所有对象指向的都是相同的功能，但是绑定到不同的对象就是不同的绑定方法，内存地址各不相同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(Student.choose)) <span class="comment"># 4335426280</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu1.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu2.choose)) <span class="comment"># 4300433608</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(stu3.choose)) <span class="comment"># 4300433608</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>绑定到对象的方法特殊之处在于，绑定给谁就应该由谁来调用，谁来调用，就会将’谁’本身当做第一个参数自动传入（方法__init__也是一样的道理）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stu1.choose()  <span class="comment"># 等同于Student.choose(stu1)</span></span><br><span class="line">stu2.choose()  <span class="comment"># 等同于Student.choose(stu2)</span></span><br><span class="line">stu3.choose()  <span class="comment"># 等同于Student.choose(stu3)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>绑定到不同对象的choose技能，虽然都是选课，但李建刚选的课，不会选给王大力，这正是”绑定“二字的精髓所在</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意：绑定到对象方法的这种自动传值的特征，决定了在类中定义的函数都要默认写一个参数self，self可以是任意名字，但命名为self是约定俗成的。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Python中一切皆为对象，且Python3中类与类型是一个概念，因而绑定方法我们早就接触过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#类型list就是类</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span></span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化的到3个对象l1,l2,l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1=<span class="built_in">list</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2=<span class="built_in">list</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3=<span class="built_in">list</span>([<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#三个对象都有绑定方法append,是相同的功能,但内存地址不同</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b48</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482b88</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3.append</span><br><span class="line">&lt;built-<span class="keyword">in</span> method append of <span class="built_in">list</span> <span class="built_in">object</span> at <span class="number">0x10b482bc8</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#操作绑定方法l1.append(4),就是在往l1添加4,绝对不会将4添加到l2或l3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1.append(<span class="number">4</span>) <span class="comment">#等同于list.append(l1,4)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l1</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l2</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l3</span><br><span class="line">[<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>在上述介绍类与对象的使用过程中，我们更多的是站在底层原理的角度去介绍类与对象之间的关联关系，如果只是站在使用的角度，我们无需考虑语法“对象.属性”中”属性“到底源自于哪里，只需要知道是通过对象获取到的就可以了，所以说，对象是一个高度整合的产物，有了对象，我们只需要使用”对象.xxx“的语法就可以得到跟这个对象相关的所有数据与功能，十分方便且解耦合程度极高</p>
 
       
 
@@ -220,7 +290,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/13/22%E3%80%81%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/13/23%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -252,7 +322,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/107/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/106/">106</a><a class="page-number" href="/page/107/">107</a><span class="page-number current">108</span><a class="page-number" href="/page/109/">109</a><a class="page-number" href="/page/110/">110</a><span class="space">&hellip;</span><a class="page-number" href="/page/129/">129</a><a class="extend next" rel="next" href="/page/109/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/107/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/106/">106</a><a class="page-number" href="/page/107/">107</a><span class="page-number current">108</span><a class="page-number" href="/page/109/">109</a><a class="page-number" href="/page/110/">110</a><span class="space">&hellip;</span><a class="page-number" href="/page/130/">130</a><a class="extend next" rel="next" href="/page/109/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -380,6 +450,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">11、Flask笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">13、Go导航</a>
               </li>
              
               <li class="article-tag-list-item">
